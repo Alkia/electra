@@ -1,7 +1,32 @@
-# electra
-**electra** is a blockchain built using Cosmos SDK and Tendermint and created with [Ignite CLI](https://ignite.com/cli).
+![Electra Logo](/vue/public/Electra.png "Electra")
+
+# Electra
+**electra** is the blockchain that enables local micro-grid to operate smoothly between trustless actors enabling a real circular economy based on exchange of electricity units (kWh) by the means of pre-purchased tokens.
+
+## The BlockChain based Micro-Grid Architecture
+
+A **micro-grid**, is a local transport structure semi-isolated from the main transport backbone.
+
+![Electra Logo](/vue/public/Concept.jpg "Architecture")
+
+**BlockChain Meters**, are the key element of the solution. 
+- They precisely measure the power exchanged
+- They are a circuit breaker for the microgrid
+- They embeds a secure wallet having the capacity to validate the blocks
+- They store a full copy of the local chain 
+
+**The Grid Gateway** 
+The grid gateway synchronize the micro-grid and import extra energy as needed. This gateway is the master node validating the blocks. In some case the national grid gateway can export energy too should the microgrid and the regulation enables it. 
+
+- The grit All features of a BlockChain meter +
+- Demand response 
+- Stake/Validate the local Layer 2 BlockChain AS well AS the Layer 1 main chain.
+
+![Electra Logo](/vue/public/Concept.png "The concept")
 
 ## Get started
+
+**electra** is built using Cosmos SDK and Tendermint and created with [Ignite CLI](https://ignite.com/cli).
 
 ```
 ignite chain serve
