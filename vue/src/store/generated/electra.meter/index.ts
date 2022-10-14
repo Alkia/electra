@@ -3,9 +3,10 @@ import { Client, registry, MissingWalletError } from 'electra-client-ts'
 import { Meterdirectory } from "electra-client-ts/electra.meter/types"
 import { Meterreadings } from "electra-client-ts/electra.meter/types"
 import { Params } from "electra-client-ts/electra.meter/types"
+import { PowerPurchaseContract } from "electra-client-ts/electra.meter/types"
 
 
-export { Meterdirectory, Meterreadings, Params };
+export { Meterdirectory, Meterreadings, Params, PowerPurchaseContract };
 
 function initClient(vuexGetters) {
 	return new Client(vuexGetters['common/env/getEnv'], vuexGetters['common/wallet/signer'])
@@ -42,11 +43,14 @@ const getDefaultState = () => {
 				Meterdirectory: {},
 				MeterdirectoryAll: {},
 				Listrecordings: {},
+				PowerPurchaseContract: {},
+				PowerPurchaseContractAll: {},
 				
 				_Structure: {
 						Meterdirectory: getStructure(Meterdirectory.fromPartial({})),
 						Meterreadings: getStructure(Meterreadings.fromPartial({})),
 						Params: getStructure(Params.fromPartial({})),
+						PowerPurchaseContract: getStructure(PowerPurchaseContract.fromPartial({})),
 						
 		},
 		_Registry: registry,
@@ -110,6 +114,18 @@ export default {
 						(<any> params).query=null
 					}
 			return state.Listrecordings[JSON.stringify(params)] ?? {}
+		},
+				getPowerPurchaseContract: (state) => (params = { params: {}}) => {
+					if (!(<any> params).query) {
+						(<any> params).query=null
+					}
+			return state.PowerPurchaseContract[JSON.stringify(params)] ?? {}
+		},
+				getPowerPurchaseContractAll: (state) => (params = { params: {}}) => {
+					if (!(<any> params).query) {
+						(<any> params).query=null
+					}
+			return state.PowerPurchaseContractAll[JSON.stringify(params)] ?? {}
 		},
 				
 		getTypeStructure: (state) => (type) => {
@@ -285,19 +301,54 @@ export default {
 		},
 		
 		
-		async sendMsgRecord({ rootGetters }, { value, fee = [], memo = '' }) {
+		
+		
+		 		
+		
+		
+		async QueryPowerPurchaseContract({ commit, rootGetters, getters }, { options: { subscribe, all} = { subscribe:false, all:false}, params, query=null }) {
 			try {
-				const client=await initClient(rootGetters)
-				const result = await client.ElectraMeter.tx.sendMsgRecord({ value, fee: {amount: fee, gas: "200000"}, memo })
-				return result
+				const key = params ?? {};
+				const client = initClient(rootGetters);
+				let value= (await client.ElectraMeter.query.queryPowerPurchaseContract( key.contractID,  key.contractDeviceID)).data
+				
+					
+				commit('QUERY', { query: 'PowerPurchaseContract', key: { params: {...key}, query}, value })
+				if (subscribe) commit('SUBSCRIBE', { action: 'QueryPowerPurchaseContract', payload: { options: { all }, params: {...key},query }})
+				return getters['getPowerPurchaseContract']( { params: {...key}, query}) ?? {}
 			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgRecord:Init Could not initialize signing client. Wallet is required.')
-				}else{
-					throw new Error('TxClient:MsgRecord:Send Could not broadcast Tx: '+ e.message)
-				}
+				throw new Error('QueryClient:QueryPowerPurchaseContract API Node Unavailable. Could not perform query: ' + e.message)
+				
 			}
 		},
+		
+		
+		
+		
+		 		
+		
+		
+		async QueryPowerPurchaseContractAll({ commit, rootGetters, getters }, { options: { subscribe, all} = { subscribe:false, all:false}, params, query=null }) {
+			try {
+				const key = params ?? {};
+				const client = initClient(rootGetters);
+				let value= (await client.ElectraMeter.query.queryPowerPurchaseContractAll(query ?? undefined)).data
+				
+					
+				while (all && (<any> value).pagination && (<any> value).pagination.next_key!=null) {
+					let next_values=(await client.ElectraMeter.query.queryPowerPurchaseContractAll({...query ?? {}, 'pagination.key':(<any> value).pagination.next_key} as any)).data
+					value = mergeResults(value, next_values);
+				}
+				commit('QUERY', { query: 'PowerPurchaseContractAll', key: { params: {...key}, query}, value })
+				if (subscribe) commit('SUBSCRIBE', { action: 'QueryPowerPurchaseContractAll', payload: { options: { all }, params: {...key},query }})
+				return getters['getPowerPurchaseContractAll']( { params: {...key}, query}) ?? {}
+			} catch (e) {
+				throw new Error('QueryClient:QueryPowerPurchaseContractAll API Node Unavailable. Could not perform query: ' + e.message)
+				
+			}
+		},
+		
+		
 		async sendMsgRecord3({ rootGetters }, { value, fee = [], memo = '' }) {
 			try {
 				const client=await initClient(rootGetters)
@@ -311,7 +362,85 @@ export default {
 				}
 			}
 		},
+		async sendMsgDeletePowerPurchaseContract({ rootGetters }, { value, fee = [], memo = '' }) {
+			try {
+				const client=await initClient(rootGetters)
+				const result = await client.ElectraMeter.tx.sendMsgDeletePowerPurchaseContract({ value, fee: {amount: fee, gas: "200000"}, memo })
+				return result
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgDeletePowerPurchaseContract:Init Could not initialize signing client. Wallet is required.')
+				}else{
+					throw new Error('TxClient:MsgDeletePowerPurchaseContract:Send Could not broadcast Tx: '+ e.message)
+				}
+			}
+		},
+		async sendMsgRecord({ rootGetters }, { value, fee = [], memo = '' }) {
+			try {
+				const client=await initClient(rootGetters)
+				const result = await client.ElectraMeter.tx.sendMsgRecord({ value, fee: {amount: fee, gas: "200000"}, memo })
+				return result
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgRecord:Init Could not initialize signing client. Wallet is required.')
+				}else{
+					throw new Error('TxClient:MsgRecord:Send Could not broadcast Tx: '+ e.message)
+				}
+			}
+		},
+		async sendMsgUpdatePowerPurchaseContract({ rootGetters }, { value, fee = [], memo = '' }) {
+			try {
+				const client=await initClient(rootGetters)
+				const result = await client.ElectraMeter.tx.sendMsgUpdatePowerPurchaseContract({ value, fee: {amount: fee, gas: "200000"}, memo })
+				return result
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgUpdatePowerPurchaseContract:Init Could not initialize signing client. Wallet is required.')
+				}else{
+					throw new Error('TxClient:MsgUpdatePowerPurchaseContract:Send Could not broadcast Tx: '+ e.message)
+				}
+			}
+		},
+		async sendMsgCreatePowerPurchaseContract({ rootGetters }, { value, fee = [], memo = '' }) {
+			try {
+				const client=await initClient(rootGetters)
+				const result = await client.ElectraMeter.tx.sendMsgCreatePowerPurchaseContract({ value, fee: {amount: fee, gas: "200000"}, memo })
+				return result
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgCreatePowerPurchaseContract:Init Could not initialize signing client. Wallet is required.')
+				}else{
+					throw new Error('TxClient:MsgCreatePowerPurchaseContract:Send Could not broadcast Tx: '+ e.message)
+				}
+			}
+		},
 		
+		async MsgRecord3({ rootGetters }, { value }) {
+			try {
+				const client=initClient(rootGetters)
+				const msg = await client.ElectraMeter.tx.msgRecord3({value})
+				return msg
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgRecord3:Init Could not initialize signing client. Wallet is required.')
+				} else{
+					throw new Error('TxClient:MsgRecord3:Create Could not create message: ' + e.message)
+				}
+			}
+		},
+		async MsgDeletePowerPurchaseContract({ rootGetters }, { value }) {
+			try {
+				const client=initClient(rootGetters)
+				const msg = await client.ElectraMeter.tx.msgDeletePowerPurchaseContract({value})
+				return msg
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgDeletePowerPurchaseContract:Init Could not initialize signing client. Wallet is required.')
+				} else{
+					throw new Error('TxClient:MsgDeletePowerPurchaseContract:Create Could not create message: ' + e.message)
+				}
+			}
+		},
 		async MsgRecord({ rootGetters }, { value }) {
 			try {
 				const client=initClient(rootGetters)
@@ -325,16 +454,29 @@ export default {
 				}
 			}
 		},
-		async MsgRecord3({ rootGetters }, { value }) {
+		async MsgUpdatePowerPurchaseContract({ rootGetters }, { value }) {
 			try {
 				const client=initClient(rootGetters)
-				const msg = await client.ElectraMeter.tx.msgRecord3({value})
+				const msg = await client.ElectraMeter.tx.msgUpdatePowerPurchaseContract({value})
 				return msg
 			} catch (e) {
 				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgRecord3:Init Could not initialize signing client. Wallet is required.')
+					throw new Error('TxClient:MsgUpdatePowerPurchaseContract:Init Could not initialize signing client. Wallet is required.')
 				} else{
-					throw new Error('TxClient:MsgRecord3:Create Could not create message: ' + e.message)
+					throw new Error('TxClient:MsgUpdatePowerPurchaseContract:Create Could not create message: ' + e.message)
+				}
+			}
+		},
+		async MsgCreatePowerPurchaseContract({ rootGetters }, { value }) {
+			try {
+				const client=initClient(rootGetters)
+				const msg = await client.ElectraMeter.tx.msgCreatePowerPurchaseContract({value})
+				return msg
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgCreatePowerPurchaseContract:Init Could not initialize signing client. Wallet is required.')
+				} else{
+					throw new Error('TxClient:MsgCreatePowerPurchaseContract:Create Could not create message: ' + e.message)
 				}
 			}
 		},

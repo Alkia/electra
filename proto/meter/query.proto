@@ -7,6 +7,7 @@ import "cosmos/base/query/v1beta1/pagination.proto";
 import "meter/params.proto";
 import "meter/meterreadings.proto";
 import "meter/meterdirectory.proto";
+import "meter/power_purchase_contract.proto";
 // this line is used by starport scaffolding # 1
 
 option go_package = "electra/x/meter/types";
@@ -40,6 +41,16 @@ service Query {
 // Queries a list of Listrecordings items.
 	rpc Listrecordings(QueryListrecordingsRequest) returns (QueryListrecordingsResponse) {
 		option (google.api.http).get = "/electra/meter/listrecordings/{deviceID}/{start}/{end}/{byUnixTime}";
+	}
+
+// Queries a PowerPurchaseContract by index.
+	rpc PowerPurchaseContract(QueryGetPowerPurchaseContractRequest) returns (QueryGetPowerPurchaseContractResponse) {
+		option (google.api.http).get = "/electra/meter/power_purchase_contract/{contractID}/{contractDeviceID}";
+	}
+
+	// Queries a list of PowerPurchaseContract items.
+	rpc PowerPurchaseContractAll(QueryAllPowerPurchaseContractRequest) returns (QueryAllPowerPurchaseContractResponse) {
+		option (google.api.http).get = "/electra/meter/power_purchase_contract";
 	}
 
 // this line is used by starport scaffolding # 2
@@ -103,6 +114,25 @@ message QueryListrecordingsResponse {
   string listrecording = 1;
   string comments = 2;
   uint64 total = 3;
+}
+
+message QueryGetPowerPurchaseContractRequest {
+	  string contractID = 1;
+  string contractDeviceID = 2;
+
+}
+
+message QueryGetPowerPurchaseContractResponse {
+	PowerPurchaseContract powerPurchaseContract = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllPowerPurchaseContractRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllPowerPurchaseContractResponse {
+	repeated PowerPurchaseContract powerPurchaseContract = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 
 // this line is used by starport scaffolding # 3

@@ -625,6 +625,198 @@ func (m *QueryListrecordingsResponse) GetTotal() uint64 {
 	return 0
 }
 
+type QueryGetPowerPurchaseContractRequest struct {
+	ContractID       string `protobuf:"bytes,1,opt,name=contractID,proto3" json:"contractID,omitempty"`
+	ContractDeviceID string `protobuf:"bytes,2,opt,name=contractDeviceID,proto3" json:"contractDeviceID,omitempty"`
+}
+
+func (m *QueryGetPowerPurchaseContractRequest) Reset()         { *m = QueryGetPowerPurchaseContractRequest{} }
+func (m *QueryGetPowerPurchaseContractRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryGetPowerPurchaseContractRequest) ProtoMessage()    {}
+func (*QueryGetPowerPurchaseContractRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_cc237984313bc5e0, []int{12}
+}
+func (m *QueryGetPowerPurchaseContractRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetPowerPurchaseContractRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetPowerPurchaseContractRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetPowerPurchaseContractRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetPowerPurchaseContractRequest.Merge(m, src)
+}
+func (m *QueryGetPowerPurchaseContractRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetPowerPurchaseContractRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetPowerPurchaseContractRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetPowerPurchaseContractRequest proto.InternalMessageInfo
+
+func (m *QueryGetPowerPurchaseContractRequest) GetContractID() string {
+	if m != nil {
+		return m.ContractID
+	}
+	return ""
+}
+
+func (m *QueryGetPowerPurchaseContractRequest) GetContractDeviceID() string {
+	if m != nil {
+		return m.ContractDeviceID
+	}
+	return ""
+}
+
+type QueryGetPowerPurchaseContractResponse struct {
+	PowerPurchaseContract PowerPurchaseContract `protobuf:"bytes,1,opt,name=powerPurchaseContract,proto3" json:"powerPurchaseContract"`
+}
+
+func (m *QueryGetPowerPurchaseContractResponse) Reset()         { *m = QueryGetPowerPurchaseContractResponse{} }
+func (m *QueryGetPowerPurchaseContractResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryGetPowerPurchaseContractResponse) ProtoMessage()    {}
+func (*QueryGetPowerPurchaseContractResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_cc237984313bc5e0, []int{13}
+}
+func (m *QueryGetPowerPurchaseContractResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetPowerPurchaseContractResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetPowerPurchaseContractResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetPowerPurchaseContractResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetPowerPurchaseContractResponse.Merge(m, src)
+}
+func (m *QueryGetPowerPurchaseContractResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetPowerPurchaseContractResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetPowerPurchaseContractResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetPowerPurchaseContractResponse proto.InternalMessageInfo
+
+func (m *QueryGetPowerPurchaseContractResponse) GetPowerPurchaseContract() PowerPurchaseContract {
+	if m != nil {
+		return m.PowerPurchaseContract
+	}
+	return PowerPurchaseContract{}
+}
+
+type QueryAllPowerPurchaseContractRequest struct {
+	Pagination *query.PageRequest `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllPowerPurchaseContractRequest) Reset()         { *m = QueryAllPowerPurchaseContractRequest{} }
+func (m *QueryAllPowerPurchaseContractRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryAllPowerPurchaseContractRequest) ProtoMessage()    {}
+func (*QueryAllPowerPurchaseContractRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_cc237984313bc5e0, []int{14}
+}
+func (m *QueryAllPowerPurchaseContractRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllPowerPurchaseContractRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllPowerPurchaseContractRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllPowerPurchaseContractRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllPowerPurchaseContractRequest.Merge(m, src)
+}
+func (m *QueryAllPowerPurchaseContractRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllPowerPurchaseContractRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllPowerPurchaseContractRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllPowerPurchaseContractRequest proto.InternalMessageInfo
+
+func (m *QueryAllPowerPurchaseContractRequest) GetPagination() *query.PageRequest {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
+type QueryAllPowerPurchaseContractResponse struct {
+	PowerPurchaseContract []PowerPurchaseContract `protobuf:"bytes,1,rep,name=powerPurchaseContract,proto3" json:"powerPurchaseContract"`
+	Pagination            *query.PageResponse     `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllPowerPurchaseContractResponse) Reset()         { *m = QueryAllPowerPurchaseContractResponse{} }
+func (m *QueryAllPowerPurchaseContractResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryAllPowerPurchaseContractResponse) ProtoMessage()    {}
+func (*QueryAllPowerPurchaseContractResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_cc237984313bc5e0, []int{15}
+}
+func (m *QueryAllPowerPurchaseContractResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllPowerPurchaseContractResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllPowerPurchaseContractResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllPowerPurchaseContractResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllPowerPurchaseContractResponse.Merge(m, src)
+}
+func (m *QueryAllPowerPurchaseContractResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllPowerPurchaseContractResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllPowerPurchaseContractResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllPowerPurchaseContractResponse proto.InternalMessageInfo
+
+func (m *QueryAllPowerPurchaseContractResponse) GetPowerPurchaseContract() []PowerPurchaseContract {
+	if m != nil {
+		return m.PowerPurchaseContract
+	}
+	return nil
+}
+
+func (m *QueryAllPowerPurchaseContractResponse) GetPagination() *query.PageResponse {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*QueryParamsRequest)(nil), "electra.meter.QueryParamsRequest")
 	proto.RegisterType((*QueryParamsResponse)(nil), "electra.meter.QueryParamsResponse")
@@ -638,62 +830,78 @@ func init() {
 	proto.RegisterType((*QueryAllMeterdirectoryResponse)(nil), "electra.meter.QueryAllMeterdirectoryResponse")
 	proto.RegisterType((*QueryListrecordingsRequest)(nil), "electra.meter.QueryListrecordingsRequest")
 	proto.RegisterType((*QueryListrecordingsResponse)(nil), "electra.meter.QueryListrecordingsResponse")
+	proto.RegisterType((*QueryGetPowerPurchaseContractRequest)(nil), "electra.meter.QueryGetPowerPurchaseContractRequest")
+	proto.RegisterType((*QueryGetPowerPurchaseContractResponse)(nil), "electra.meter.QueryGetPowerPurchaseContractResponse")
+	proto.RegisterType((*QueryAllPowerPurchaseContractRequest)(nil), "electra.meter.QueryAllPowerPurchaseContractRequest")
+	proto.RegisterType((*QueryAllPowerPurchaseContractResponse)(nil), "electra.meter.QueryAllPowerPurchaseContractResponse")
 }
 
 func init() { proto.RegisterFile("meter/query.proto", fileDescriptor_cc237984313bc5e0) }
 
 var fileDescriptor_cc237984313bc5e0 = []byte{
-	// 798 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x96, 0xdf, 0x4e, 0xd4, 0x4e,
-	0x14, 0xc7, 0x77, 0x58, 0xe0, 0x07, 0xe7, 0x97, 0x25, 0x30, 0x42, 0x5c, 0xeb, 0x6e, 0xc1, 0x06,
-	0x15, 0x51, 0xdb, 0x00, 0x31, 0x31, 0x7a, 0x23, 0xf8, 0x07, 0x15, 0x4d, 0x70, 0xa3, 0x89, 0xf1,
-	0x6e, 0x76, 0x77, 0x6c, 0x9a, 0xb4, 0x9d, 0xa5, 0x1d, 0x08, 0x84, 0x6c, 0x62, 0x7c, 0x02, 0x13,
-	0x2e, 0x7c, 0x04, 0x2f, 0x4d, 0x8c, 0xf1, 0xc2, 0x27, 0xe0, 0x92, 0xc4, 0x1b, 0xaf, 0x8c, 0x01,
-	0x1f, 0xc4, 0x74, 0x3a, 0x5b, 0x76, 0x4a, 0xbb, 0x6e, 0x08, 0x37, 0x9b, 0xce, 0xcc, 0x99, 0x73,
-	0x3e, 0xe7, 0x9c, 0x39, 0xdf, 0x2c, 0x4c, 0x78, 0x94, 0xd3, 0xc0, 0xda, 0xd8, 0xa4, 0xc1, 0x8e,
-	0xd9, 0x0a, 0x18, 0x67, 0xb8, 0x44, 0x5d, 0xda, 0xe0, 0x01, 0x31, 0xc5, 0x91, 0x36, 0x69, 0x33,
-	0x9b, 0x89, 0x13, 0x2b, 0xfa, 0x8a, 0x8d, 0xb4, 0x8a, 0xcd, 0x98, 0xed, 0x52, 0x8b, 0xb4, 0x1c,
-	0x8b, 0xf8, 0x3e, 0xe3, 0x84, 0x3b, 0xcc, 0x0f, 0xe5, 0xe9, 0x7c, 0x83, 0x85, 0x1e, 0x0b, 0xad,
-	0x3a, 0x09, 0x69, 0xec, 0xdb, 0xda, 0x5a, 0xa8, 0x53, 0x4e, 0x16, 0xac, 0x16, 0xb1, 0x1d, 0x5f,
-	0x18, 0x4b, 0x5b, 0x1c, 0x13, 0xb4, 0x48, 0x40, 0xbc, 0xce, 0xfd, 0x0b, 0xf1, 0x9e, 0xf8, 0x0d,
-	0x28, 0x69, 0x3a, 0xbe, 0xdd, 0x39, 0xd2, 0xba, 0x8e, 0x9a, 0x4e, 0x40, 0x1b, 0x9c, 0x75, 0xc8,
-	0x8d, 0x49, 0xc0, 0x2f, 0xa2, 0x60, 0xeb, 0xc2, 0x57, 0x8d, 0x6e, 0x6c, 0xd2, 0x90, 0x1b, 0x4f,
-	0xe1, 0x9c, 0xb2, 0x1b, 0xb6, 0x98, 0x1f, 0x52, 0xbc, 0x04, 0xc3, 0x71, 0xcc, 0x32, 0x9a, 0x41,
-	0x73, 0xff, 0x2f, 0x4e, 0x99, 0x4a, 0xde, 0x66, 0x6c, 0xbe, 0x32, 0xb8, 0xff, 0x6b, 0xba, 0x50,
-	0x93, 0xa6, 0xc6, 0x6b, 0xa8, 0x08, 0x5f, 0xab, 0x94, 0x3f, 0xef, 0x86, 0x93, 0xb1, 0xb0, 0x06,
-	0x23, 0x4d, 0xba, 0xe5, 0x34, 0xe8, 0x93, 0x07, 0xc2, 0xed, 0x68, 0x2d, 0x59, 0xe3, 0x0a, 0x8c,
-	0x72, 0xc7, 0xa3, 0x21, 0x27, 0x5e, 0xab, 0x3c, 0x30, 0x83, 0xe6, 0x06, 0x6b, 0xc7, 0x1b, 0x86,
-	0x03, 0xd5, 0x1c, 0xcf, 0x92, 0xf7, 0x31, 0x94, 0x94, 0x7a, 0x48, 0xec, 0x4a, 0x0a, 0x5b, 0xb9,
-	0x2c, 0xe9, 0xd5, 0x8b, 0xc6, 0x5b, 0x99, 0xc4, 0xb2, 0xeb, 0x66, 0x26, 0xf1, 0x08, 0xe0, 0xb8,
-	0x4b, 0x32, 0xcc, 0x15, 0x33, 0x6e, 0xa9, 0x19, 0xb5, 0xd4, 0x8c, 0x9f, 0x8b, 0x6c, 0xa9, 0xb9,
-	0x4e, 0x6c, 0x2a, 0xef, 0xd6, 0xba, 0x6e, 0x1a, 0x5f, 0x90, 0xcc, 0xe9, 0x64, 0xa0, 0xfc, 0x9c,
-	0x8a, 0xa7, 0xca, 0x09, 0xaf, 0x2a, 0xcc, 0x03, 0x82, 0xf9, 0xea, 0x3f, 0x99, 0x63, 0x0c, 0x05,
-	0x9a, 0xa4, 0xfa, 0x90, 0xbc, 0xb1, 0x7e, 0x5a, 0x3c, 0x0b, 0xa5, 0x3a, 0x09, 0x1a, 0xac, 0x49,
-	0x43, 0x1a, 0x38, 0xc4, 0x15, 0x20, 0xa3, 0x35, 0x75, 0xd3, 0xf0, 0x40, 0xcf, 0x0b, 0x21, 0xeb,
-	0xb2, 0x06, 0x63, 0xea, 0x03, 0x97, 0x5d, 0xa8, 0x66, 0x15, 0x26, 0x31, 0x92, 0x95, 0x49, 0x5d,
-	0x35, 0xec, 0x54, 0x17, 0x4e, 0x64, 0x74, 0x56, 0xfd, 0xfe, 0x86, 0x64, 0x62, 0x19, 0x91, 0x7a,
-	0x24, 0x56, 0x3c, 0x65, 0x62, 0x67, 0xd7, 0xf3, 0x77, 0x08, 0x34, 0x01, 0xfe, 0xcc, 0x09, 0x79,
-	0x40, 0x1b, 0x2c, 0xe8, 0x7b, 0xa8, 0x27, 0x61, 0x28, 0xe4, 0x24, 0xe0, 0x72, 0xa0, 0xe3, 0x05,
-	0x1e, 0x87, 0x22, 0xf5, 0x9b, 0xe5, 0xa2, 0xd8, 0x8b, 0x3e, 0xb1, 0x0e, 0x50, 0xdf, 0x79, 0xe5,
-	0x3b, 0xdb, 0x2f, 0x1d, 0x8f, 0x96, 0x07, 0x67, 0xd0, 0xdc, 0x48, 0xad, 0x6b, 0xc7, 0xd8, 0x84,
-	0x8b, 0x99, 0x04, 0xb2, 0x6e, 0xb3, 0x50, 0x72, 0xbb, 0x4f, 0x24, 0x87, 0xba, 0x19, 0x81, 0x36,
-	0x98, 0xe7, 0x51, 0x9f, 0x87, 0xf2, 0xe5, 0x25, 0xeb, 0x08, 0x94, 0x33, 0x4e, 0x5c, 0x09, 0x15,
-	0x2f, 0x16, 0xbf, 0xff, 0x07, 0x43, 0x22, 0x2e, 0xf6, 0x61, 0x38, 0x56, 0x3c, 0x7c, 0x29, 0xd5,
-	0x8b, 0x93, 0x92, 0xaa, 0x19, 0xbd, 0x4c, 0x62, 0x64, 0xa3, 0xfa, 0xfe, 0xc7, 0x9f, 0xbd, 0x81,
-	0xf3, 0x78, 0xca, 0x92, 0xb6, 0x56, 0xb7, 0xd0, 0xe3, 0x4f, 0x08, 0x4a, 0xca, 0x5c, 0xe3, 0xeb,
-	0x59, 0x4e, 0x73, 0x84, 0x56, 0xbb, 0xd1, 0x9f, 0xb1, 0x64, 0xb9, 0x2b, 0x58, 0x6e, 0xe1, 0xa5,
-	0x14, 0x8b, 0xa2, 0x21, 0xd6, 0x6e, 0xa7, 0xab, 0x6d, 0x6b, 0x37, 0x11, 0xe6, 0x36, 0xde, 0x43,
-	0x30, 0xae, 0xb8, 0x5d, 0x76, 0xdd, 0x6c, 0xd8, 0x1c, 0x41, 0xcd, 0x86, 0xcd, 0x13, 0x45, 0x63,
-	0x56, 0xc0, 0xea, 0xb8, 0xd2, 0x0b, 0x16, 0x7f, 0x46, 0x30, 0xa6, 0x4e, 0x09, 0xee, 0x59, 0x93,
-	0xf4, 0xd4, 0x6b, 0x37, 0xfb, 0xb4, 0x96, 0x54, 0xf7, 0x04, 0xd5, 0x1d, 0x7c, 0x3b, 0x8b, 0x2a,
-	0x31, 0x57, 0x6a, 0xa8, 0xa8, 0x5e, 0x1b, 0x7f, 0x44, 0x30, 0xa1, 0x3a, 0x8f, 0x0a, 0xd9, 0xb3,
-	0x36, 0xfd, 0x41, 0xe7, 0xca, 0x8d, 0x71, 0x59, 0x40, 0x4f, 0xe3, 0x6a, 0x4f, 0x68, 0xfc, 0x15,
-	0xc1, 0x98, 0x3a, 0x78, 0xf8, 0x5a, 0x56, 0xa0, 0x4c, 0x79, 0xd0, 0xe6, 0xfb, 0x31, 0x95, 0x40,
-	0x6b, 0x02, 0xe8, 0x21, 0xbe, 0x9f, 0x02, 0x52, 0xe6, 0x58, 0x7d, 0x89, 0x42, 0x51, 0xda, 0xd6,
-	0x2e, 0xf5, 0x9b, 0x51, 0x4d, 0x13, 0xc9, 0x68, 0xaf, 0x58, 0xfb, 0x87, 0x3a, 0x3a, 0x38, 0xd4,
-	0xd1, 0xef, 0x43, 0x1d, 0x7d, 0x38, 0xd2, 0x0b, 0x07, 0x47, 0x7a, 0xe1, 0xe7, 0x91, 0x5e, 0x78,
-	0x33, 0xd5, 0xf1, 0xbe, 0x2d, 0xfd, 0xf3, 0x9d, 0x16, 0x0d, 0xeb, 0xc3, 0xe2, 0x6f, 0xd2, 0xd2,
-	0xdf, 0x00, 0x00, 0x00, 0xff, 0xff, 0x9c, 0x91, 0xdc, 0xd7, 0xf5, 0x09, 0x00, 0x00,
+	// 985 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x97, 0x41, 0x6f, 0x1b, 0x45,
+	0x14, 0xc7, 0x33, 0x71, 0x1a, 0x35, 0x0f, 0x39, 0x4a, 0x87, 0x58, 0x98, 0xc5, 0xd9, 0x86, 0xc1,
+	0x2d, 0x21, 0x80, 0x57, 0xad, 0x41, 0x42, 0x70, 0x21, 0x6d, 0x69, 0x0b, 0x05, 0x14, 0x2c, 0x90,
+	0x10, 0x97, 0x32, 0x5e, 0x0f, 0x66, 0xa5, 0xdd, 0x9d, 0xed, 0xee, 0xa4, 0x34, 0x8a, 0x2c, 0x21,
+	0x6e, 0xdc, 0x90, 0x7a, 0xe0, 0x23, 0x70, 0x44, 0x42, 0xc0, 0x57, 0xa0, 0xc7, 0xaa, 0x5c, 0x38,
+	0x21, 0x94, 0xf0, 0x41, 0xaa, 0x9d, 0x7d, 0xeb, 0x78, 0x36, 0xbb, 0x8e, 0x1b, 0xf9, 0x12, 0x79,
+	0x66, 0xde, 0xcc, 0xfb, 0xfd, 0xdf, 0x9b, 0x79, 0x6f, 0x03, 0x17, 0x02, 0xa1, 0x44, 0xec, 0xdc,
+	0xdb, 0x13, 0xf1, 0x7e, 0x27, 0x8a, 0xa5, 0x92, 0xb4, 0x2e, 0x7c, 0xe1, 0xaa, 0x98, 0x77, 0xf4,
+	0x92, 0xb5, 0x3e, 0x94, 0x43, 0xa9, 0x57, 0x9c, 0xf4, 0x57, 0x66, 0x64, 0xb5, 0x86, 0x52, 0x0e,
+	0x7d, 0xe1, 0xf0, 0xc8, 0x73, 0x78, 0x18, 0x4a, 0xc5, 0x95, 0x27, 0xc3, 0x04, 0x57, 0xb7, 0x5d,
+	0x99, 0x04, 0x32, 0x71, 0xfa, 0x3c, 0x11, 0xd9, 0xd9, 0xce, 0xfd, 0x2b, 0x7d, 0xa1, 0xf8, 0x15,
+	0x27, 0xe2, 0x43, 0x2f, 0xd4, 0xc6, 0x68, 0x4b, 0x33, 0x82, 0x88, 0xc7, 0x3c, 0xc8, 0xf7, 0xbf,
+	0x98, 0xcd, 0xe9, 0xbf, 0xb1, 0xe0, 0x03, 0x2f, 0x1c, 0xe6, 0x4b, 0xd6, 0xc4, 0xd2, 0xc0, 0x8b,
+	0x85, 0xab, 0x64, 0x4e, 0x6e, 0xbd, 0x82, 0x47, 0xc9, 0xef, 0x44, 0x7c, 0x37, 0xda, 0x8b, 0xdd,
+	0x6f, 0x79, 0x22, 0xee, 0xba, 0x32, 0x54, 0x31, 0x77, 0x55, 0x66, 0xc4, 0xd6, 0x81, 0x7e, 0x96,
+	0x12, 0xed, 0x6a, 0x87, 0x3d, 0x71, 0x6f, 0x4f, 0x24, 0x8a, 0x7d, 0x04, 0xcf, 0x1b, 0xb3, 0x49,
+	0x24, 0xc3, 0x44, 0xd0, 0x2e, 0x2c, 0x67, 0x60, 0x4d, 0xb2, 0x49, 0xb6, 0x9e, 0xbb, 0xda, 0xe8,
+	0x18, 0xc1, 0xe9, 0x64, 0xe6, 0xd7, 0x96, 0x1e, 0xfd, 0x7b, 0x71, 0xa1, 0x87, 0xa6, 0xec, 0x4b,
+	0x68, 0xe9, 0xb3, 0x6e, 0x09, 0xf5, 0xc9, 0xa4, 0x02, 0xf4, 0x45, 0x2d, 0x38, 0x3f, 0x10, 0xf7,
+	0x3d, 0x57, 0x7c, 0x78, 0x43, 0x1f, 0xbb, 0xd2, 0x1b, 0x8f, 0x69, 0x0b, 0x56, 0x94, 0x17, 0x88,
+	0x44, 0xf1, 0x20, 0x6a, 0x2e, 0x6e, 0x92, 0xad, 0xa5, 0xde, 0xf1, 0x04, 0xf3, 0x60, 0xa3, 0xe2,
+	0x64, 0xe4, 0xbd, 0x0d, 0x75, 0x23, 0x68, 0x88, 0xdd, 0x2a, 0x60, 0x1b, 0x9b, 0x91, 0xde, 0xdc,
+	0xc8, 0xbe, 0x41, 0x11, 0x3b, 0xbe, 0x5f, 0x2a, 0xe2, 0x26, 0xc0, 0x71, 0x2a, 0xd1, 0xcd, 0xe5,
+	0x4e, 0x96, 0xf7, 0x4e, 0x9a, 0xf7, 0x4e, 0x76, 0xa7, 0x30, 0xef, 0x9d, 0x5d, 0x3e, 0x14, 0xb8,
+	0xb7, 0x37, 0xb1, 0x93, 0xfd, 0x46, 0x50, 0xd3, 0x49, 0x47, 0xd5, 0x9a, 0x6a, 0x67, 0xd2, 0x44,
+	0x6f, 0x19, 0xcc, 0x8b, 0x9a, 0xf9, 0xd5, 0x53, 0x99, 0x33, 0x0c, 0x03, 0x9a, 0x17, 0xf2, 0x30,
+	0xbe, 0x88, 0xb3, 0xa4, 0xb8, 0x0d, 0xf5, 0x3e, 0x8f, 0x5d, 0x39, 0x10, 0x89, 0x88, 0x3d, 0xee,
+	0x6b, 0x90, 0x95, 0x9e, 0x39, 0xc9, 0x02, 0xb0, 0xab, 0x5c, 0x60, 0x5c, 0xee, 0xc0, 0xaa, 0xf9,
+	0x0a, 0x30, 0x0b, 0x1b, 0x65, 0x81, 0x19, 0x1b, 0x61, 0x64, 0x0a, 0x5b, 0xd9, 0xb0, 0x90, 0x85,
+	0x13, 0x8a, 0xe6, 0x95, 0xef, 0x3f, 0x09, 0x0a, 0x2b, 0xf1, 0x34, 0x45, 0x58, 0xed, 0x8c, 0xc2,
+	0xe6, 0x97, 0xf3, 0xef, 0x09, 0x58, 0x1a, 0xfc, 0x63, 0x2f, 0x51, 0xb1, 0x70, 0x65, 0x3c, 0xf3,
+	0xa3, 0x5e, 0x87, 0x73, 0x89, 0xe2, 0xb1, 0xc2, 0x07, 0x9d, 0x0d, 0xe8, 0x1a, 0xd4, 0x44, 0x38,
+	0x68, 0xd6, 0xf4, 0x5c, 0xfa, 0x93, 0xda, 0x00, 0xfd, 0xfd, 0x2f, 0x42, 0xef, 0xc1, 0xe7, 0x5e,
+	0x20, 0x9a, 0x4b, 0x9b, 0x64, 0xeb, 0x7c, 0x6f, 0x62, 0x86, 0xed, 0xc1, 0x4b, 0xa5, 0x04, 0x18,
+	0xb7, 0x36, 0xd4, 0xfd, 0xc9, 0x15, 0xe4, 0x30, 0x27, 0x53, 0x50, 0x57, 0x06, 0x81, 0x08, 0x55,
+	0x82, 0x37, 0x6f, 0x3c, 0x4e, 0x41, 0x95, 0x54, 0xdc, 0x47, 0xa8, 0x6c, 0xc0, 0x62, 0x68, 0xe7,
+	0x57, 0x71, 0x37, 0x2d, 0xad, 0xbb, 0x58, 0x59, 0xaf, 0x63, 0x61, 0xcd, 0x43, 0x60, 0x03, 0xe4,
+	0xb5, 0x76, 0x1c, 0x84, 0x89, 0x19, 0xba, 0x0d, 0x6b, 0xf9, 0xe8, 0x46, 0x1e, 0xaa, 0x8c, 0xe0,
+	0xc4, 0x3c, 0xfb, 0x91, 0xc0, 0xa5, 0x53, 0x9c, 0xa2, 0xea, 0xaf, 0xa1, 0x11, 0x95, 0x19, 0xe0,
+	0x1d, 0x6d, 0x17, 0x2b, 0x76, 0x99, 0x2d, 0xde, 0x9d, 0xf2, 0x83, 0x58, 0x88, 0xfa, 0x77, 0x7c,
+	0x7f, 0xaa, 0xfe, 0x79, 0x3d, 0x91, 0x27, 0xb9, 0xf6, 0x6a, 0x87, 0xa7, 0x6b, 0xaf, 0xcd, 0x45,
+	0xfb, 0xdc, 0x9e, 0xcf, 0xd5, 0xbf, 0x00, 0xce, 0x69, 0x51, 0x34, 0x84, 0xe5, 0xac, 0x6d, 0xd2,
+	0x97, 0x0b, 0x7c, 0x27, 0xfb, 0xb2, 0xc5, 0xa6, 0x99, 0x64, 0x6e, 0xd8, 0xc6, 0x0f, 0x7f, 0xff,
+	0xff, 0x70, 0xf1, 0x05, 0xda, 0x70, 0xd0, 0xd6, 0x99, 0xfc, 0xa4, 0xa0, 0xbf, 0x10, 0xa8, 0x1b,
+	0xcd, 0x81, 0xbe, 0x5e, 0x76, 0x68, 0x45, 0xb7, 0xb6, 0xde, 0x98, 0xcd, 0x18, 0x59, 0xde, 0xd3,
+	0x2c, 0x6f, 0xd3, 0x6e, 0x81, 0xc5, 0x68, 0x44, 0xce, 0x41, 0x5e, 0x1a, 0x46, 0xce, 0xc1, 0xb8,
+	0xbb, 0x8f, 0xe8, 0x43, 0x02, 0x6b, 0xc6, 0xb1, 0x3b, 0xbe, 0x5f, 0x0e, 0x5b, 0xd1, 0x95, 0xcb,
+	0x61, 0xab, 0x3a, 0x2b, 0x6b, 0x6b, 0x58, 0x9b, 0xb6, 0xa6, 0xc1, 0xd2, 0x5f, 0x09, 0xac, 0x9a,
+	0xa5, 0x96, 0x4e, 0x8d, 0x49, 0xb1, 0x75, 0x58, 0x6f, 0xce, 0x68, 0x8d, 0x54, 0xef, 0x6b, 0xaa,
+	0x77, 0xe9, 0x3b, 0x65, 0x54, 0x63, 0x73, 0x23, 0x86, 0x46, 0xeb, 0x1c, 0xd1, 0x9f, 0x09, 0x5c,
+	0x30, 0x0f, 0x4f, 0x03, 0x39, 0x35, 0x36, 0xb3, 0x41, 0x57, 0xf6, 0x2c, 0x76, 0x49, 0x43, 0x5f,
+	0xa4, 0x1b, 0x53, 0xa1, 0xe9, 0xef, 0x04, 0x56, 0xcd, 0xea, 0x4d, 0x5f, 0x2b, 0x73, 0x54, 0xda,
+	0x63, 0xac, 0xed, 0x59, 0x4c, 0x11, 0xe8, 0x8e, 0x06, 0xfa, 0x80, 0x5e, 0x2f, 0x00, 0x19, 0xcd,
+	0xc0, 0xbc, 0x89, 0xba, 0x2d, 0x8d, 0x9c, 0x03, 0x11, 0x0e, 0xd2, 0x98, 0x8e, 0xfb, 0xce, 0x88,
+	0x3e, 0x21, 0xd0, 0x28, 0x2d, 0x1e, 0xb4, 0x5b, 0x91, 0xdb, 0x69, 0x85, 0xd2, 0x7a, 0xeb, 0xd9,
+	0x36, 0xa1, 0xa2, 0x4f, 0xb5, 0xa2, 0xdb, 0xf4, 0x66, 0xf1, 0x99, 0x97, 0x7f, 0xee, 0x3b, 0x07,
+	0xc7, 0xad, 0x67, 0x74, 0x3c, 0xc8, 0x3b, 0xcc, 0x88, 0xfe, 0x41, 0xa0, 0x59, 0xea, 0x31, 0xbd,
+	0x2c, 0xdd, 0x8a, 0xf4, 0x3f, 0xbb, 0xae, 0xd3, 0x8a, 0x38, 0xeb, 0x68, 0x5d, 0x5b, 0xf4, 0xf2,
+	0x6c, 0xba, 0xae, 0x39, 0x8f, 0x0e, 0x6d, 0xf2, 0xf8, 0xd0, 0x26, 0xff, 0x1d, 0xda, 0xe4, 0xa7,
+	0x23, 0x7b, 0xe1, 0xf1, 0x91, 0xbd, 0xf0, 0xcf, 0x91, 0xbd, 0xf0, 0x55, 0x23, 0x3f, 0xe0, 0x01,
+	0x1e, 0xa1, 0xf6, 0x23, 0x91, 0xf4, 0x97, 0xf5, 0x3f, 0x3e, 0xdd, 0xa7, 0x01, 0x00, 0x00, 0xff,
+	0xff, 0xf5, 0x63, 0xd9, 0x7f, 0xec, 0x0d, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -720,6 +928,10 @@ type QueryClient interface {
 	MeterdirectoryAll(ctx context.Context, in *QueryAllMeterdirectoryRequest, opts ...grpc.CallOption) (*QueryAllMeterdirectoryResponse, error)
 	// Queries a list of Listrecordings items.
 	Listrecordings(ctx context.Context, in *QueryListrecordingsRequest, opts ...grpc.CallOption) (*QueryListrecordingsResponse, error)
+	// Queries a PowerPurchaseContract by index.
+	PowerPurchaseContract(ctx context.Context, in *QueryGetPowerPurchaseContractRequest, opts ...grpc.CallOption) (*QueryGetPowerPurchaseContractResponse, error)
+	// Queries a list of PowerPurchaseContract items.
+	PowerPurchaseContractAll(ctx context.Context, in *QueryAllPowerPurchaseContractRequest, opts ...grpc.CallOption) (*QueryAllPowerPurchaseContractResponse, error)
 }
 
 type queryClient struct {
@@ -784,6 +996,24 @@ func (c *queryClient) Listrecordings(ctx context.Context, in *QueryListrecording
 	return out, nil
 }
 
+func (c *queryClient) PowerPurchaseContract(ctx context.Context, in *QueryGetPowerPurchaseContractRequest, opts ...grpc.CallOption) (*QueryGetPowerPurchaseContractResponse, error) {
+	out := new(QueryGetPowerPurchaseContractResponse)
+	err := c.cc.Invoke(ctx, "/electra.meter.Query/PowerPurchaseContract", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) PowerPurchaseContractAll(ctx context.Context, in *QueryAllPowerPurchaseContractRequest, opts ...grpc.CallOption) (*QueryAllPowerPurchaseContractResponse, error) {
+	out := new(QueryAllPowerPurchaseContractResponse)
+	err := c.cc.Invoke(ctx, "/electra.meter.Query/PowerPurchaseContractAll", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // QueryServer is the server API for Query service.
 type QueryServer interface {
 	// Parameters queries the parameters of the module.
@@ -798,6 +1028,10 @@ type QueryServer interface {
 	MeterdirectoryAll(context.Context, *QueryAllMeterdirectoryRequest) (*QueryAllMeterdirectoryResponse, error)
 	// Queries a list of Listrecordings items.
 	Listrecordings(context.Context, *QueryListrecordingsRequest) (*QueryListrecordingsResponse, error)
+	// Queries a PowerPurchaseContract by index.
+	PowerPurchaseContract(context.Context, *QueryGetPowerPurchaseContractRequest) (*QueryGetPowerPurchaseContractResponse, error)
+	// Queries a list of PowerPurchaseContract items.
+	PowerPurchaseContractAll(context.Context, *QueryAllPowerPurchaseContractRequest) (*QueryAllPowerPurchaseContractResponse, error)
 }
 
 // UnimplementedQueryServer can be embedded to have forward compatible implementations.
@@ -821,6 +1055,12 @@ func (*UnimplementedQueryServer) MeterdirectoryAll(ctx context.Context, req *Que
 }
 func (*UnimplementedQueryServer) Listrecordings(ctx context.Context, req *QueryListrecordingsRequest) (*QueryListrecordingsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Listrecordings not implemented")
+}
+func (*UnimplementedQueryServer) PowerPurchaseContract(ctx context.Context, req *QueryGetPowerPurchaseContractRequest) (*QueryGetPowerPurchaseContractResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PowerPurchaseContract not implemented")
+}
+func (*UnimplementedQueryServer) PowerPurchaseContractAll(ctx context.Context, req *QueryAllPowerPurchaseContractRequest) (*QueryAllPowerPurchaseContractResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PowerPurchaseContractAll not implemented")
 }
 
 func RegisterQueryServer(s grpc1.Server, srv QueryServer) {
@@ -935,6 +1175,42 @@ func _Query_Listrecordings_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Query_PowerPurchaseContract_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetPowerPurchaseContractRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).PowerPurchaseContract(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/electra.meter.Query/PowerPurchaseContract",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).PowerPurchaseContract(ctx, req.(*QueryGetPowerPurchaseContractRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_PowerPurchaseContractAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllPowerPurchaseContractRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).PowerPurchaseContractAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/electra.meter.Query/PowerPurchaseContractAll",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).PowerPurchaseContractAll(ctx, req.(*QueryAllPowerPurchaseContractRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Query_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "electra.meter.Query",
 	HandlerType: (*QueryServer)(nil),
@@ -962,6 +1238,14 @@ var _Query_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Listrecordings",
 			Handler:    _Query_Listrecordings_Handler,
+		},
+		{
+			MethodName: "PowerPurchaseContract",
+			Handler:    _Query_PowerPurchaseContract_Handler,
+		},
+		{
+			MethodName: "PowerPurchaseContractAll",
+			Handler:    _Query_PowerPurchaseContractAll_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -1422,6 +1706,160 @@ func (m *QueryListrecordingsResponse) MarshalToSizedBuffer(dAtA []byte) (int, er
 	return len(dAtA) - i, nil
 }
 
+func (m *QueryGetPowerPurchaseContractRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetPowerPurchaseContractRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetPowerPurchaseContractRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.ContractDeviceID) > 0 {
+		i -= len(m.ContractDeviceID)
+		copy(dAtA[i:], m.ContractDeviceID)
+		i = encodeVarintQuery(dAtA, i, uint64(len(m.ContractDeviceID)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.ContractID) > 0 {
+		i -= len(m.ContractID)
+		copy(dAtA[i:], m.ContractID)
+		i = encodeVarintQuery(dAtA, i, uint64(len(m.ContractID)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryGetPowerPurchaseContractResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetPowerPurchaseContractResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetPowerPurchaseContractResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	{
+		size, err := m.PowerPurchaseContract.MarshalToSizedBuffer(dAtA[:i])
+		if err != nil {
+			return 0, err
+		}
+		i -= size
+		i = encodeVarintQuery(dAtA, i, uint64(size))
+	}
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllPowerPurchaseContractRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllPowerPurchaseContractRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllPowerPurchaseContractRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllPowerPurchaseContractResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllPowerPurchaseContractResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllPowerPurchaseContractResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.PowerPurchaseContract) > 0 {
+		for iNdEx := len(m.PowerPurchaseContract) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.PowerPurchaseContract[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintQuery(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
+	}
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintQuery(dAtA []byte, offset int, v uint64) int {
 	offset -= sovQuery(v)
 	base := offset
@@ -1610,6 +2048,66 @@ func (m *QueryListrecordingsResponse) Size() (n int) {
 	}
 	if m.Total != 0 {
 		n += 1 + sovQuery(uint64(m.Total))
+	}
+	return n
+}
+
+func (m *QueryGetPowerPurchaseContractRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.ContractID)
+	if l > 0 {
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	l = len(m.ContractDeviceID)
+	if l > 0 {
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryGetPowerPurchaseContractResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = m.PowerPurchaseContract.Size()
+	n += 1 + l + sovQuery(uint64(l))
+	return n
+}
+
+func (m *QueryAllPowerPurchaseContractRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryAllPowerPurchaseContractResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if len(m.PowerPurchaseContract) > 0 {
+		for _, e := range m.PowerPurchaseContract {
+			l = e.Size()
+			n += 1 + l + sovQuery(uint64(l))
+		}
+	}
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
 	}
 	return n
 }
@@ -2798,6 +3296,409 @@ func (m *QueryListrecordingsResponse) Unmarshal(dAtA []byte) error {
 					break
 				}
 			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetPowerPurchaseContractRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetPowerPurchaseContractRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetPowerPurchaseContractRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ContractID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ContractID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ContractDeviceID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ContractDeviceID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetPowerPurchaseContractResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetPowerPurchaseContractResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetPowerPurchaseContractResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field PowerPurchaseContract", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if err := m.PowerPurchaseContract.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllPowerPurchaseContractRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllPowerPurchaseContractRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllPowerPurchaseContractRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageRequest{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllPowerPurchaseContractResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllPowerPurchaseContractResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllPowerPurchaseContractResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field PowerPurchaseContract", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.PowerPurchaseContract = append(m.PowerPurchaseContract, PowerPurchaseContract{})
+			if err := m.PowerPurchaseContract[len(m.PowerPurchaseContract)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageResponse{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
 			skippy, err := skipQuery(dAtA[iNdEx:])

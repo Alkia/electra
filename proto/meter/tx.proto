@@ -1,6 +1,7 @@
 syntax = "proto3";
 package electra.meter;
 
+import "meter/power_purchase_contract.proto";
 // this line is used by starport scaffolding # proto/tx/import
 
 option go_package = "electra/x/meter/types";
@@ -9,6 +10,9 @@ option go_package = "electra/x/meter/types";
 service Msg {
       rpc Record(MsgRecord) returns (MsgRecordResponse);
   rpc Record3(MsgRecord3) returns (MsgRecord3Response);
+  rpc CreatePowerPurchaseContract(MsgCreatePowerPurchaseContract) returns (MsgCreatePowerPurchaseContractResponse);
+  rpc UpdatePowerPurchaseContract(MsgUpdatePowerPurchaseContract) returns (MsgUpdatePowerPurchaseContractResponse);
+  rpc DeletePowerPurchaseContract(MsgDeletePowerPurchaseContract) returns (MsgDeletePowerPurchaseContractResponse);
 // this line is used by starport scaffolding # proto/tx/rpc
 }
 
@@ -52,5 +56,60 @@ message MsgRecord3 {
 
 message MsgRecord3Response {
 }
+
+message MsgCreatePowerPurchaseContract {
+  string creator = 1;
+  string contractID = 2;
+  string contractDeviceID = 3;
+
+  string contractName = 4;
+  bool contractActive = 5;
+  uint64 contractPhase = 6;
+  bool contractForAll = 7;
+  uint64 contractForAllPrice = 8;
+  string contractForAllCurency = 9;
+  string contractForAllActivePeriod = 10;
+  bool contractPreferred = 11;
+  uint64 contractPreferredPrice = 12;
+  string contractPreferredActivePeriod = 13;
+  string contractPreferredCurency = 14;
+  uint64 contractStartDate = 15;
+  uint64 contractEndDate = 16;
+  uint64 phase1RemainingWh = 17;
+  uint64 phase2RemainingWh = 18;
+  uint64 phase3RemainingWh = 19;
+}
+message MsgCreatePowerPurchaseContractResponse {}
+
+message MsgUpdatePowerPurchaseContract {
+  string creator = 1;
+  string contractID = 2;
+  string contractDeviceID = 3;
+
+  string contractName = 4;
+  bool contractActive = 5;
+  uint64 contractPhase = 6;
+  bool contractForAll = 7;
+  uint64 contractForAllPrice = 8;
+  string contractForAllCurency = 9;
+  string contractForAllActivePeriod = 10;
+  bool contractPreferred = 11;
+  uint64 contractPreferredPrice = 12;
+  string contractPreferredActivePeriod = 13;
+  string contractPreferredCurency = 14;
+  uint64 contractStartDate = 15;
+  uint64 contractEndDate = 16;
+  uint64 phase1RemainingWh = 17;
+  uint64 phase2RemainingWh = 18;
+  uint64 phase3RemainingWh = 19;
+}
+message MsgUpdatePowerPurchaseContractResponse {}
+
+message MsgDeletePowerPurchaseContract {
+  string creator = 1;
+  string contractID = 2;
+  string contractDeviceID = 3;
+}
+message MsgDeletePowerPurchaseContractResponse {}
 
 // this line is used by starport scaffolding # proto/tx/message

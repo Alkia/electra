@@ -1,0 +1,27 @@
+syntax = "proto3";
+package electra.meter;
+
+option go_package = "electra/x/meter/types";
+
+message PowerPurchaseContract {
+  string contractID = 1; 
+  string contractDeviceID = 2; 
+  string contractName = 3; 
+  bool contractActive = 4; 
+  uint64 contractPhase = 5; 
+  bool contractForAll = 6; 
+  uint64 contractForAllPrice = 7; 
+  string contractForAllCurency = 8; 
+  string contractForAllActivePeriod = 9; 
+  bool contractPreferred = 10; 
+  uint64 contractPreferredPrice = 11; 
+  string contractPreferredActivePeriod = 12; 
+  string contractPreferredCurency = 13; 
+  uint64 contractStartDate = 14; 
+  uint64 contractEndDate = 15; 
+  uint64 phase1RemainingWh = 16; 
+  uint64 phase2RemainingWh = 17; 
+  uint64 phase3RemainingWh = 18; 
+  string creator = 19;
+}
+

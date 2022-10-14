@@ -8,6 +8,7 @@ import {
   PageResponse,
 } from "../cosmos/base/query/v1beta1/pagination";
 import { Meterdirectory } from "../meter/meterdirectory";
+import { PowerPurchaseContract } from "../meter/power_purchase_contract";
 
 export const protobufPackage = "electra.meter";
 
@@ -67,6 +68,24 @@ export interface QueryListrecordingsResponse {
   listrecording: string;
   comments: string;
   total: number;
+}
+
+export interface QueryGetPowerPurchaseContractRequest {
+  contractID: string;
+  contractDeviceID: string;
+}
+
+export interface QueryGetPowerPurchaseContractResponse {
+  powerPurchaseContract: PowerPurchaseContract | undefined;
+}
+
+export interface QueryAllPowerPurchaseContractRequest {
+  pagination: PageRequest | undefined;
+}
+
+export interface QueryAllPowerPurchaseContractResponse {
+  powerPurchaseContract: PowerPurchaseContract[];
+  pagination: PageResponse | undefined;
 }
 
 const baseQueryParamsRequest: object = {};
@@ -1080,6 +1099,373 @@ export const QueryListrecordingsResponse = {
   },
 };
 
+const baseQueryGetPowerPurchaseContractRequest: object = {
+  contractID: "",
+  contractDeviceID: "",
+};
+
+export const QueryGetPowerPurchaseContractRequest = {
+  encode(
+    message: QueryGetPowerPurchaseContractRequest,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.contractID !== "") {
+      writer.uint32(10).string(message.contractID);
+    }
+    if (message.contractDeviceID !== "") {
+      writer.uint32(18).string(message.contractDeviceID);
+    }
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): QueryGetPowerPurchaseContractRequest {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseQueryGetPowerPurchaseContractRequest,
+    } as QueryGetPowerPurchaseContractRequest;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.contractID = reader.string();
+          break;
+        case 2:
+          message.contractDeviceID = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryGetPowerPurchaseContractRequest {
+    const message = {
+      ...baseQueryGetPowerPurchaseContractRequest,
+    } as QueryGetPowerPurchaseContractRequest;
+    if (object.contractID !== undefined && object.contractID !== null) {
+      message.contractID = String(object.contractID);
+    } else {
+      message.contractID = "";
+    }
+    if (
+      object.contractDeviceID !== undefined &&
+      object.contractDeviceID !== null
+    ) {
+      message.contractDeviceID = String(object.contractDeviceID);
+    } else {
+      message.contractDeviceID = "";
+    }
+    return message;
+  },
+
+  toJSON(message: QueryGetPowerPurchaseContractRequest): unknown {
+    const obj: any = {};
+    message.contractID !== undefined && (obj.contractID = message.contractID);
+    message.contractDeviceID !== undefined &&
+      (obj.contractDeviceID = message.contractDeviceID);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<QueryGetPowerPurchaseContractRequest>
+  ): QueryGetPowerPurchaseContractRequest {
+    const message = {
+      ...baseQueryGetPowerPurchaseContractRequest,
+    } as QueryGetPowerPurchaseContractRequest;
+    if (object.contractID !== undefined && object.contractID !== null) {
+      message.contractID = object.contractID;
+    } else {
+      message.contractID = "";
+    }
+    if (
+      object.contractDeviceID !== undefined &&
+      object.contractDeviceID !== null
+    ) {
+      message.contractDeviceID = object.contractDeviceID;
+    } else {
+      message.contractDeviceID = "";
+    }
+    return message;
+  },
+};
+
+const baseQueryGetPowerPurchaseContractResponse: object = {};
+
+export const QueryGetPowerPurchaseContractResponse = {
+  encode(
+    message: QueryGetPowerPurchaseContractResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.powerPurchaseContract !== undefined) {
+      PowerPurchaseContract.encode(
+        message.powerPurchaseContract,
+        writer.uint32(10).fork()
+      ).ldelim();
+    }
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): QueryGetPowerPurchaseContractResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseQueryGetPowerPurchaseContractResponse,
+    } as QueryGetPowerPurchaseContractResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.powerPurchaseContract = PowerPurchaseContract.decode(
+            reader,
+            reader.uint32()
+          );
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryGetPowerPurchaseContractResponse {
+    const message = {
+      ...baseQueryGetPowerPurchaseContractResponse,
+    } as QueryGetPowerPurchaseContractResponse;
+    if (
+      object.powerPurchaseContract !== undefined &&
+      object.powerPurchaseContract !== null
+    ) {
+      message.powerPurchaseContract = PowerPurchaseContract.fromJSON(
+        object.powerPurchaseContract
+      );
+    } else {
+      message.powerPurchaseContract = undefined;
+    }
+    return message;
+  },
+
+  toJSON(message: QueryGetPowerPurchaseContractResponse): unknown {
+    const obj: any = {};
+    message.powerPurchaseContract !== undefined &&
+      (obj.powerPurchaseContract = message.powerPurchaseContract
+        ? PowerPurchaseContract.toJSON(message.powerPurchaseContract)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<QueryGetPowerPurchaseContractResponse>
+  ): QueryGetPowerPurchaseContractResponse {
+    const message = {
+      ...baseQueryGetPowerPurchaseContractResponse,
+    } as QueryGetPowerPurchaseContractResponse;
+    if (
+      object.powerPurchaseContract !== undefined &&
+      object.powerPurchaseContract !== null
+    ) {
+      message.powerPurchaseContract = PowerPurchaseContract.fromPartial(
+        object.powerPurchaseContract
+      );
+    } else {
+      message.powerPurchaseContract = undefined;
+    }
+    return message;
+  },
+};
+
+const baseQueryAllPowerPurchaseContractRequest: object = {};
+
+export const QueryAllPowerPurchaseContractRequest = {
+  encode(
+    message: QueryAllPowerPurchaseContractRequest,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.pagination !== undefined) {
+      PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): QueryAllPowerPurchaseContractRequest {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseQueryAllPowerPurchaseContractRequest,
+    } as QueryAllPowerPurchaseContractRequest;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.pagination = PageRequest.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryAllPowerPurchaseContractRequest {
+    const message = {
+      ...baseQueryAllPowerPurchaseContractRequest,
+    } as QueryAllPowerPurchaseContractRequest;
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromJSON(object.pagination);
+    } else {
+      message.pagination = undefined;
+    }
+    return message;
+  },
+
+  toJSON(message: QueryAllPowerPurchaseContractRequest): unknown {
+    const obj: any = {};
+    message.pagination !== undefined &&
+      (obj.pagination = message.pagination
+        ? PageRequest.toJSON(message.pagination)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<QueryAllPowerPurchaseContractRequest>
+  ): QueryAllPowerPurchaseContractRequest {
+    const message = {
+      ...baseQueryAllPowerPurchaseContractRequest,
+    } as QueryAllPowerPurchaseContractRequest;
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromPartial(object.pagination);
+    } else {
+      message.pagination = undefined;
+    }
+    return message;
+  },
+};
+
+const baseQueryAllPowerPurchaseContractResponse: object = {};
+
+export const QueryAllPowerPurchaseContractResponse = {
+  encode(
+    message: QueryAllPowerPurchaseContractResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    for (const v of message.powerPurchaseContract) {
+      PowerPurchaseContract.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+    if (message.pagination !== undefined) {
+      PageResponse.encode(
+        message.pagination,
+        writer.uint32(18).fork()
+      ).ldelim();
+    }
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): QueryAllPowerPurchaseContractResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseQueryAllPowerPurchaseContractResponse,
+    } as QueryAllPowerPurchaseContractResponse;
+    message.powerPurchaseContract = [];
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.powerPurchaseContract.push(
+            PowerPurchaseContract.decode(reader, reader.uint32())
+          );
+          break;
+        case 2:
+          message.pagination = PageResponse.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryAllPowerPurchaseContractResponse {
+    const message = {
+      ...baseQueryAllPowerPurchaseContractResponse,
+    } as QueryAllPowerPurchaseContractResponse;
+    message.powerPurchaseContract = [];
+    if (
+      object.powerPurchaseContract !== undefined &&
+      object.powerPurchaseContract !== null
+    ) {
+      for (const e of object.powerPurchaseContract) {
+        message.powerPurchaseContract.push(PowerPurchaseContract.fromJSON(e));
+      }
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromJSON(object.pagination);
+    } else {
+      message.pagination = undefined;
+    }
+    return message;
+  },
+
+  toJSON(message: QueryAllPowerPurchaseContractResponse): unknown {
+    const obj: any = {};
+    if (message.powerPurchaseContract) {
+      obj.powerPurchaseContract = message.powerPurchaseContract.map((e) =>
+        e ? PowerPurchaseContract.toJSON(e) : undefined
+      );
+    } else {
+      obj.powerPurchaseContract = [];
+    }
+    message.pagination !== undefined &&
+      (obj.pagination = message.pagination
+        ? PageResponse.toJSON(message.pagination)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<QueryAllPowerPurchaseContractResponse>
+  ): QueryAllPowerPurchaseContractResponse {
+    const message = {
+      ...baseQueryAllPowerPurchaseContractResponse,
+    } as QueryAllPowerPurchaseContractResponse;
+    message.powerPurchaseContract = [];
+    if (
+      object.powerPurchaseContract !== undefined &&
+      object.powerPurchaseContract !== null
+    ) {
+      for (const e of object.powerPurchaseContract) {
+        message.powerPurchaseContract.push(
+          PowerPurchaseContract.fromPartial(e)
+        );
+      }
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromPartial(object.pagination);
+    } else {
+      message.pagination = undefined;
+    }
+    return message;
+  },
+};
+
 /** Query defines the gRPC querier service. */
 export interface Query {
   /** Parameters queries the parameters of the module. */
@@ -1104,6 +1490,14 @@ export interface Query {
   Listrecordings(
     request: QueryListrecordingsRequest
   ): Promise<QueryListrecordingsResponse>;
+  /** Queries a PowerPurchaseContract by index. */
+  PowerPurchaseContract(
+    request: QueryGetPowerPurchaseContractRequest
+  ): Promise<QueryGetPowerPurchaseContractResponse>;
+  /** Queries a list of PowerPurchaseContract items. */
+  PowerPurchaseContractAll(
+    request: QueryAllPowerPurchaseContractRequest
+  ): Promise<QueryAllPowerPurchaseContractResponse>;
 }
 
 export class QueryClientImpl implements Query {
@@ -1184,6 +1578,34 @@ export class QueryClientImpl implements Query {
     );
     return promise.then((data) =>
       QueryListrecordingsResponse.decode(new Reader(data))
+    );
+  }
+
+  PowerPurchaseContract(
+    request: QueryGetPowerPurchaseContractRequest
+  ): Promise<QueryGetPowerPurchaseContractResponse> {
+    const data = QueryGetPowerPurchaseContractRequest.encode(request).finish();
+    const promise = this.rpc.request(
+      "electra.meter.Query",
+      "PowerPurchaseContract",
+      data
+    );
+    return promise.then((data) =>
+      QueryGetPowerPurchaseContractResponse.decode(new Reader(data))
+    );
+  }
+
+  PowerPurchaseContractAll(
+    request: QueryAllPowerPurchaseContractRequest
+  ): Promise<QueryAllPowerPurchaseContractResponse> {
+    const data = QueryAllPowerPurchaseContractRequest.encode(request).finish();
+    const promise = this.rpc.request(
+      "electra.meter.Query",
+      "PowerPurchaseContractAll",
+      data
+    );
+    return promise.then((data) =>
+      QueryAllPowerPurchaseContractResponse.decode(new Reader(data))
     );
   }
 }
