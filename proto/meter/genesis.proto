@@ -1,0 +1,14 @@
+syntax = "proto3";
+package electra.meter;
+
+import "gogoproto/gogo.proto";
+import "meter/params.proto";
+// this line is used by starport scaffolding # genesis/proto/import
+
+option go_package = "electra/x/meter/types";
+
+// GenesisState defines the meter module's genesis state.
+message GenesisState {
+  Params params = 1 [(gogoproto.nullable) = false];
+  // this line is used by starport scaffolding # genesis/proto/state
+}
