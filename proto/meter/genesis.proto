@@ -6,6 +6,12 @@ import "meter/params.proto";
 import "meter/meterreadings.proto";
 import "meter/meterdirectory.proto";
 import "meter/power_purchase_contract.proto";
+import "meter/ppa_map.proto";
+import "meter/billingcycles.proto";
+import "meter/customerbillingline.proto";
+import "meter/customerbills.proto";
+import "meter/producerbillingline.proto";
+import "meter/producerbills.proto";
 // this line is used by starport scaffolding # genesis/proto/import
 
 option go_package = "electra/x/meter/types";
@@ -16,5 +22,11 @@ message GenesisState {
   repeated Meterreadings meterreadingsList = 2 [(gogoproto.nullable) = false];
   repeated Meterdirectory meterdirectoryList = 3 [(gogoproto.nullable) = false];
   repeated PowerPurchaseContract powerPurchaseContractList = 4 [(gogoproto.nullable) = false];
+  repeated PpaMap ppaMapList = 5 [(gogoproto.nullable) = false];
+  repeated Billingcycles billingcyclesList = 6 [(gogoproto.nullable) = false];
+  repeated Customerbillingline customerbillinglineList = 7 [(gogoproto.nullable) = false];
+  repeated Customerbills customerbillsList = 8 [(gogoproto.nullable) = false];
+  repeated Producerbillingline producerbillinglineList = 9 [(gogoproto.nullable) = false];
+  repeated Producerbills producerbillsList = 10 [(gogoproto.nullable) = false];
   // this line is used by starport scaffolding # genesis/proto/state
 }

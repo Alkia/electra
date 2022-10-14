@@ -3,6 +3,12 @@ import { Params } from "../meter/params";
 import { Meterreadings } from "../meter/meterreadings";
 import { Meterdirectory } from "../meter/meterdirectory";
 import { PowerPurchaseContract } from "../meter/power_purchase_contract";
+import { PpaMap } from "../meter/ppa_map";
+import { Billingcycles } from "../meter/billingcycles";
+import { Customerbillingline } from "../meter/customerbillingline";
+import { Customerbills } from "../meter/customerbills";
+import { Producerbillingline } from "../meter/producerbillingline";
+import { Producerbills } from "../meter/producerbills";
 import { Writer, Reader } from "protobufjs/minimal";
 
 export const protobufPackage = "electra.meter";
@@ -12,8 +18,14 @@ export interface GenesisState {
   params: Params | undefined;
   meterreadingsList: Meterreadings[];
   meterdirectoryList: Meterdirectory[];
-  /** this line is used by starport scaffolding # genesis/proto/state */
   powerPurchaseContractList: PowerPurchaseContract[];
+  ppaMapList: PpaMap[];
+  billingcyclesList: Billingcycles[];
+  customerbillinglineList: Customerbillingline[];
+  customerbillsList: Customerbills[];
+  producerbillinglineList: Producerbillingline[];
+  /** this line is used by starport scaffolding # genesis/proto/state */
+  producerbillsList: Producerbills[];
 }
 
 const baseGenesisState: object = {};
@@ -32,6 +44,24 @@ export const GenesisState = {
     for (const v of message.powerPurchaseContractList) {
       PowerPurchaseContract.encode(v!, writer.uint32(34).fork()).ldelim();
     }
+    for (const v of message.ppaMapList) {
+      PpaMap.encode(v!, writer.uint32(42).fork()).ldelim();
+    }
+    for (const v of message.billingcyclesList) {
+      Billingcycles.encode(v!, writer.uint32(50).fork()).ldelim();
+    }
+    for (const v of message.customerbillinglineList) {
+      Customerbillingline.encode(v!, writer.uint32(58).fork()).ldelim();
+    }
+    for (const v of message.customerbillsList) {
+      Customerbills.encode(v!, writer.uint32(66).fork()).ldelim();
+    }
+    for (const v of message.producerbillinglineList) {
+      Producerbillingline.encode(v!, writer.uint32(74).fork()).ldelim();
+    }
+    for (const v of message.producerbillsList) {
+      Producerbills.encode(v!, writer.uint32(82).fork()).ldelim();
+    }
     return writer;
   },
 
@@ -42,6 +72,12 @@ export const GenesisState = {
     message.meterreadingsList = [];
     message.meterdirectoryList = [];
     message.powerPurchaseContractList = [];
+    message.ppaMapList = [];
+    message.billingcyclesList = [];
+    message.customerbillinglineList = [];
+    message.customerbillsList = [];
+    message.producerbillinglineList = [];
+    message.producerbillsList = [];
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -63,6 +99,34 @@ export const GenesisState = {
             PowerPurchaseContract.decode(reader, reader.uint32())
           );
           break;
+        case 5:
+          message.ppaMapList.push(PpaMap.decode(reader, reader.uint32()));
+          break;
+        case 6:
+          message.billingcyclesList.push(
+            Billingcycles.decode(reader, reader.uint32())
+          );
+          break;
+        case 7:
+          message.customerbillinglineList.push(
+            Customerbillingline.decode(reader, reader.uint32())
+          );
+          break;
+        case 8:
+          message.customerbillsList.push(
+            Customerbills.decode(reader, reader.uint32())
+          );
+          break;
+        case 9:
+          message.producerbillinglineList.push(
+            Producerbillingline.decode(reader, reader.uint32())
+          );
+          break;
+        case 10:
+          message.producerbillsList.push(
+            Producerbills.decode(reader, reader.uint32())
+          );
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -76,6 +140,12 @@ export const GenesisState = {
     message.meterreadingsList = [];
     message.meterdirectoryList = [];
     message.powerPurchaseContractList = [];
+    message.ppaMapList = [];
+    message.billingcyclesList = [];
+    message.customerbillinglineList = [];
+    message.customerbillsList = [];
+    message.producerbillinglineList = [];
+    message.producerbillsList = [];
     if (object.params !== undefined && object.params !== null) {
       message.params = Params.fromJSON(object.params);
     } else {
@@ -107,6 +177,51 @@ export const GenesisState = {
         );
       }
     }
+    if (object.ppaMapList !== undefined && object.ppaMapList !== null) {
+      for (const e of object.ppaMapList) {
+        message.ppaMapList.push(PpaMap.fromJSON(e));
+      }
+    }
+    if (
+      object.billingcyclesList !== undefined &&
+      object.billingcyclesList !== null
+    ) {
+      for (const e of object.billingcyclesList) {
+        message.billingcyclesList.push(Billingcycles.fromJSON(e));
+      }
+    }
+    if (
+      object.customerbillinglineList !== undefined &&
+      object.customerbillinglineList !== null
+    ) {
+      for (const e of object.customerbillinglineList) {
+        message.customerbillinglineList.push(Customerbillingline.fromJSON(e));
+      }
+    }
+    if (
+      object.customerbillsList !== undefined &&
+      object.customerbillsList !== null
+    ) {
+      for (const e of object.customerbillsList) {
+        message.customerbillsList.push(Customerbills.fromJSON(e));
+      }
+    }
+    if (
+      object.producerbillinglineList !== undefined &&
+      object.producerbillinglineList !== null
+    ) {
+      for (const e of object.producerbillinglineList) {
+        message.producerbillinglineList.push(Producerbillingline.fromJSON(e));
+      }
+    }
+    if (
+      object.producerbillsList !== undefined &&
+      object.producerbillsList !== null
+    ) {
+      for (const e of object.producerbillsList) {
+        message.producerbillsList.push(Producerbills.fromJSON(e));
+      }
+    }
     return message;
   },
 
@@ -135,6 +250,48 @@ export const GenesisState = {
     } else {
       obj.powerPurchaseContractList = [];
     }
+    if (message.ppaMapList) {
+      obj.ppaMapList = message.ppaMapList.map((e) =>
+        e ? PpaMap.toJSON(e) : undefined
+      );
+    } else {
+      obj.ppaMapList = [];
+    }
+    if (message.billingcyclesList) {
+      obj.billingcyclesList = message.billingcyclesList.map((e) =>
+        e ? Billingcycles.toJSON(e) : undefined
+      );
+    } else {
+      obj.billingcyclesList = [];
+    }
+    if (message.customerbillinglineList) {
+      obj.customerbillinglineList = message.customerbillinglineList.map((e) =>
+        e ? Customerbillingline.toJSON(e) : undefined
+      );
+    } else {
+      obj.customerbillinglineList = [];
+    }
+    if (message.customerbillsList) {
+      obj.customerbillsList = message.customerbillsList.map((e) =>
+        e ? Customerbills.toJSON(e) : undefined
+      );
+    } else {
+      obj.customerbillsList = [];
+    }
+    if (message.producerbillinglineList) {
+      obj.producerbillinglineList = message.producerbillinglineList.map((e) =>
+        e ? Producerbillingline.toJSON(e) : undefined
+      );
+    } else {
+      obj.producerbillinglineList = [];
+    }
+    if (message.producerbillsList) {
+      obj.producerbillsList = message.producerbillsList.map((e) =>
+        e ? Producerbills.toJSON(e) : undefined
+      );
+    } else {
+      obj.producerbillsList = [];
+    }
     return obj;
   },
 
@@ -143,6 +300,12 @@ export const GenesisState = {
     message.meterreadingsList = [];
     message.meterdirectoryList = [];
     message.powerPurchaseContractList = [];
+    message.ppaMapList = [];
+    message.billingcyclesList = [];
+    message.customerbillinglineList = [];
+    message.customerbillsList = [];
+    message.producerbillinglineList = [];
+    message.producerbillsList = [];
     if (object.params !== undefined && object.params !== null) {
       message.params = Params.fromPartial(object.params);
     } else {
@@ -172,6 +335,55 @@ export const GenesisState = {
         message.powerPurchaseContractList.push(
           PowerPurchaseContract.fromPartial(e)
         );
+      }
+    }
+    if (object.ppaMapList !== undefined && object.ppaMapList !== null) {
+      for (const e of object.ppaMapList) {
+        message.ppaMapList.push(PpaMap.fromPartial(e));
+      }
+    }
+    if (
+      object.billingcyclesList !== undefined &&
+      object.billingcyclesList !== null
+    ) {
+      for (const e of object.billingcyclesList) {
+        message.billingcyclesList.push(Billingcycles.fromPartial(e));
+      }
+    }
+    if (
+      object.customerbillinglineList !== undefined &&
+      object.customerbillinglineList !== null
+    ) {
+      for (const e of object.customerbillinglineList) {
+        message.customerbillinglineList.push(
+          Customerbillingline.fromPartial(e)
+        );
+      }
+    }
+    if (
+      object.customerbillsList !== undefined &&
+      object.customerbillsList !== null
+    ) {
+      for (const e of object.customerbillsList) {
+        message.customerbillsList.push(Customerbills.fromPartial(e));
+      }
+    }
+    if (
+      object.producerbillinglineList !== undefined &&
+      object.producerbillinglineList !== null
+    ) {
+      for (const e of object.producerbillinglineList) {
+        message.producerbillinglineList.push(
+          Producerbillingline.fromPartial(e)
+        );
+      }
+    }
+    if (
+      object.producerbillsList !== undefined &&
+      object.producerbillsList !== null
+    ) {
+      for (const e of object.producerbillsList) {
+        message.producerbillsList.push(Producerbills.fromPartial(e));
       }
     }
     return message;

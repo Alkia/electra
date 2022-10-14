@@ -29,6 +29,12 @@ type GenesisState struct {
 	MeterreadingsList         []Meterreadings         `protobuf:"bytes,2,rep,name=meterreadingsList,proto3" json:"meterreadingsList"`
 	MeterdirectoryList        []Meterdirectory        `protobuf:"bytes,3,rep,name=meterdirectoryList,proto3" json:"meterdirectoryList"`
 	PowerPurchaseContractList []PowerPurchaseContract `protobuf:"bytes,4,rep,name=powerPurchaseContractList,proto3" json:"powerPurchaseContractList"`
+	PpaMapList                []PpaMap                `protobuf:"bytes,5,rep,name=ppaMapList,proto3" json:"ppaMapList"`
+	BillingcyclesList         []Billingcycles         `protobuf:"bytes,6,rep,name=billingcyclesList,proto3" json:"billingcyclesList"`
+	CustomerbillinglineList   []Customerbillingline   `protobuf:"bytes,7,rep,name=customerbillinglineList,proto3" json:"customerbillinglineList"`
+	CustomerbillsList         []Customerbills         `protobuf:"bytes,8,rep,name=customerbillsList,proto3" json:"customerbillsList"`
+	ProducerbillinglineList   []Producerbillingline   `protobuf:"bytes,9,rep,name=producerbillinglineList,proto3" json:"producerbillinglineList"`
+	ProducerbillsList         []Producerbills         `protobuf:"bytes,10,rep,name=producerbillsList,proto3" json:"producerbillsList"`
 }
 
 func (m *GenesisState) Reset()         { *m = GenesisState{} }
@@ -92,6 +98,48 @@ func (m *GenesisState) GetPowerPurchaseContractList() []PowerPurchaseContract {
 	return nil
 }
 
+func (m *GenesisState) GetPpaMapList() []PpaMap {
+	if m != nil {
+		return m.PpaMapList
+	}
+	return nil
+}
+
+func (m *GenesisState) GetBillingcyclesList() []Billingcycles {
+	if m != nil {
+		return m.BillingcyclesList
+	}
+	return nil
+}
+
+func (m *GenesisState) GetCustomerbillinglineList() []Customerbillingline {
+	if m != nil {
+		return m.CustomerbillinglineList
+	}
+	return nil
+}
+
+func (m *GenesisState) GetCustomerbillsList() []Customerbills {
+	if m != nil {
+		return m.CustomerbillsList
+	}
+	return nil
+}
+
+func (m *GenesisState) GetProducerbillinglineList() []Producerbillingline {
+	if m != nil {
+		return m.ProducerbillinglineList
+	}
+	return nil
+}
+
+func (m *GenesisState) GetProducerbillsList() []Producerbills {
+	if m != nil {
+		return m.ProducerbillsList
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*GenesisState)(nil), "electra.meter.GenesisState")
 }
@@ -99,26 +147,36 @@ func init() {
 func init() { proto.RegisterFile("meter/genesis.proto", fileDescriptor_f94ef95df787a508) }
 
 var fileDescriptor_f94ef95df787a508 = []byte{
-	// 304 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x74, 0x91, 0x3f, 0x4f, 0xc2, 0x40,
-	0x18, 0xc6, 0x5b, 0x20, 0x0c, 0x87, 0x0e, 0x9e, 0x92, 0x40, 0xa3, 0x27, 0x51, 0x07, 0xa6, 0x36,
-	0x81, 0x6f, 0x80, 0x83, 0x8b, 0x26, 0x8d, 0x6c, 0x2e, 0xe4, 0x2c, 0x6f, 0x4a, 0x13, 0xe9, 0x35,
-	0xd7, 0x33, 0xca, 0xb7, 0xf0, 0x63, 0x31, 0x32, 0x38, 0x38, 0x19, 0xd3, 0x7e, 0x11, 0xe3, 0x7b,
-	0xaf, 0x86, 0x62, 0x59, 0x9a, 0xe6, 0x9e, 0xe7, 0xf9, 0xbd, 0xff, 0xd8, 0xf1, 0x12, 0x0c, 0xe8,
-	0x20, 0x86, 0x14, 0xf2, 0x24, 0xf7, 0x33, 0xad, 0x8c, 0xe2, 0x87, 0xf0, 0x04, 0x91, 0xd1, 0xd2,
-	0x47, 0xd1, 0x3b, 0x89, 0x55, 0xac, 0x50, 0x09, 0x7e, 0xfe, 0xac, 0xc9, 0xe3, 0x36, 0x99, 0x49,
-	0x2d, 0x97, 0x14, 0xf4, 0xfa, 0xf6, 0x0d, 0xbf, 0x1a, 0xe4, 0x3c, 0x49, 0xe3, 0x5f, 0xc9, 0xdb,
-	0x92, 0xe6, 0x89, 0x86, 0xc8, 0x28, 0xbd, 0x22, 0xed, 0x92, 0x50, 0xea, 0x05, 0xf4, 0x2c, 0x7b,
-	0xd6, 0xd1, 0x42, 0xe6, 0x30, 0x8b, 0x54, 0x6a, 0xb4, 0x8c, 0x8c, 0x35, 0x5d, 0xbc, 0x37, 0xd8,
-	0xc1, 0x8d, 0x6d, 0x73, 0x6a, 0xa4, 0x01, 0x3e, 0x66, 0x6d, 0x5b, 0xbc, 0xe7, 0x0e, 0xdc, 0x61,
-	0x67, 0xd4, 0xf5, 0x2b, 0x6d, 0xfb, 0x21, 0x8a, 0x93, 0xd6, 0xfa, 0xf3, 0xdc, 0xb9, 0x27, 0x2b,
-	0x0f, 0xd9, 0x51, 0xa5, 0xbb, 0xdb, 0x24, 0x37, 0xbd, 0xc6, 0xa0, 0x39, 0xec, 0x8c, 0x4e, 0x77,
-	0xf2, 0x77, 0xdb, 0x3e, 0xc2, 0xfc, 0x0f, 0xf3, 0x29, 0xe3, 0xd5, 0xa1, 0x10, 0xd9, 0x44, 0xe4,
-	0x59, 0x1d, 0xf2, 0xcf, 0x48, 0xcc, 0x9a, 0x38, 0x5f, 0xb0, 0x3e, 0x6e, 0x23, 0xa4, 0x65, 0x5c,
-	0xd3, 0x2e, 0x90, 0xdd, 0x42, 0xf6, 0xd5, 0xee, 0xb8, 0x75, 0x7e, 0x2a, 0xb1, 0x1f, 0x36, 0x09,
-	0xd6, 0x85, 0x70, 0x37, 0x85, 0x70, 0xbf, 0x0a, 0xe1, 0xbe, 0x95, 0xc2, 0xd9, 0x94, 0xc2, 0xf9,
-	0x28, 0x85, 0xf3, 0xd0, 0x25, 0x7e, 0xf0, 0x6a, 0xaf, 0x16, 0x98, 0x55, 0x06, 0xf9, 0x63, 0x1b,
-	0xcf, 0x31, 0xfe, 0x0e, 0x00, 0x00, 0xff, 0xff, 0x0e, 0xcb, 0x89, 0x13, 0x3a, 0x02, 0x00, 0x00,
+	// 458 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x94, 0xc1, 0x6f, 0xd3, 0x30,
+	0x14, 0xc6, 0x1b, 0x36, 0x02, 0x78, 0x70, 0xc0, 0x30, 0xb1, 0x45, 0x90, 0x4d, 0x83, 0xc3, 0x4e,
+	0x89, 0xb4, 0x1d, 0xb9, 0x75, 0x07, 0x2e, 0x4c, 0x8a, 0xd8, 0x8d, 0x4b, 0xe5, 0xba, 0x56, 0x16,
+	0x29, 0x89, 0x2d, 0xc7, 0x15, 0xf4, 0xbf, 0xe0, 0xcf, 0xda, 0x8d, 0x1e, 0x39, 0x21, 0xd4, 0xfe,
+	0x23, 0x28, 0x2f, 0x2f, 0x95, 0x9d, 0xb8, 0xbb, 0x54, 0x55, 0xdf, 0xf7, 0xfd, 0xfc, 0xf5, 0xf3,
+	0x4b, 0xc8, 0x9b, 0x4a, 0x18, 0xa1, 0xd3, 0x5c, 0xd4, 0xa2, 0x29, 0x9a, 0x44, 0x69, 0x69, 0x24,
+	0x7d, 0x25, 0x4a, 0xc1, 0x8d, 0x66, 0x09, 0x0c, 0xa3, 0xb7, 0xb9, 0xcc, 0x25, 0x4c, 0xd2, 0xf6,
+	0x5b, 0x27, 0x8a, 0x68, 0xe7, 0x54, 0x4c, 0xb3, 0x0a, 0x8d, 0xd1, 0x69, 0xf7, 0x1b, 0x7c, 0x6a,
+	0xc1, 0x16, 0x45, 0x9d, 0xf7, 0xa3, 0xc8, 0x1a, 0x2d, 0x0a, 0x2d, 0xb8, 0x91, 0x7a, 0x85, 0xb3,
+	0x8f, 0x88, 0x92, 0x3f, 0x84, 0x9e, 0xa9, 0xa5, 0xe6, 0xf7, 0xac, 0x11, 0x33, 0x2e, 0x6b, 0xa3,
+	0x19, 0x37, 0x28, 0xc2, 0xa4, 0x4a, 0xb1, 0x59, 0xc5, 0x94, 0x7b, 0xe0, 0xbc, 0x28, 0xcb, 0xa2,
+	0xce, 0xf9, 0x8a, 0x97, 0xa2, 0x3f, 0xf0, 0xac, 0x1b, 0xf1, 0x65, 0x63, 0x64, 0x25, 0x34, 0x4a,
+	0xca, 0xa2, 0x16, 0xae, 0xd7, 0x16, 0x0c, 0xbc, 0x4a, 0xcb, 0xc5, 0x92, 0x3f, 0xe2, 0xb5, 0x05,
+	0xe8, 0xbd, 0xf8, 0x1d, 0x92, 0x97, 0x5f, 0xba, 0x3a, 0xef, 0x0c, 0x33, 0x82, 0x5e, 0x93, 0xb0,
+	0x2b, 0xe9, 0x24, 0x38, 0x0f, 0x2e, 0x8f, 0xae, 0x8e, 0x13, 0xa7, 0xde, 0x24, 0x83, 0xe1, 0xf4,
+	0xf0, 0xe1, 0xef, 0xd9, 0xe4, 0x1b, 0x4a, 0x69, 0x46, 0x5e, 0x3b, 0x2d, 0x7e, 0x2d, 0x1a, 0x73,
+	0xf2, 0xe4, 0xfc, 0xe0, 0xf2, 0xe8, 0xea, 0xfd, 0xc0, 0x7f, 0x6b, 0xeb, 0x10, 0x33, 0x36, 0xd3,
+	0x3b, 0x42, 0xdd, 0xf2, 0x01, 0x79, 0x00, 0xc8, 0x0f, 0x3e, 0xe4, 0x4e, 0x88, 0x4c, 0x8f, 0x9d,
+	0xde, 0x93, 0x53, 0xb8, 0xb5, 0x0c, 0x2f, 0xed, 0x06, 0xef, 0x0c, 0xd8, 0x87, 0xc0, 0xfe, 0x34,
+	0xfc, 0xbb, 0x3e, 0x3d, 0x1e, 0xb1, 0x1f, 0x46, 0x3f, 0x13, 0xa2, 0x14, 0xbb, 0x65, 0x0a, 0xd0,
+	0x4f, 0x01, 0x3d, 0x6a, 0x12, 0x04, 0xc8, 0xb2, 0xe4, 0x6d, 0x9b, 0xce, 0x8a, 0x00, 0x23, 0xf4,
+	0xb6, 0x39, 0xb5, 0x75, 0x7d, 0x9b, 0x23, 0x33, 0x9d, 0x93, 0x77, 0x9e, 0xcd, 0x02, 0xee, 0x33,
+	0xe0, 0x5e, 0x0c, 0xb8, 0x37, 0x63, 0x35, 0xd2, 0xf7, 0x81, 0xda, 0xd4, 0xce, 0x72, 0x02, 0xfd,
+	0xb9, 0x37, 0xb5, 0x4d, 0xdf, 0xa5, 0x1e, 0x99, 0xdb, 0xd4, 0x9e, 0x9d, 0x06, 0xee, 0x0b, 0x6f,
+	0xea, 0x6c, 0xac, 0xee, 0x53, 0xef, 0x01, 0xb5, 0xa9, 0x9d, 0xc7, 0x02, 0xe8, 0xc4, 0x9b, 0xda,
+	0xa6, 0xef, 0x52, 0x8f, 0xcc, 0xd3, 0xf4, 0x61, 0x13, 0x07, 0xeb, 0x4d, 0x1c, 0xfc, 0xdb, 0xc4,
+	0xc1, 0xaf, 0x6d, 0x3c, 0x59, 0x6f, 0xe3, 0xc9, 0x9f, 0x6d, 0x3c, 0xf9, 0x7e, 0x8c, 0xbc, 0xf4,
+	0x67, 0xf7, 0x62, 0x49, 0xcd, 0x4a, 0x89, 0x66, 0x1e, 0xc2, 0x93, 0x78, 0xfd, 0x3f, 0x00, 0x00,
+	0xff, 0xff, 0x2d, 0x14, 0xf2, 0xf8, 0xdd, 0x04, 0x00, 0x00,
 }
 
 func (m *GenesisState) Marshal() (dAtA []byte, err error) {
@@ -141,6 +199,90 @@ func (m *GenesisState) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	_ = i
 	var l int
 	_ = l
+	if len(m.ProducerbillsList) > 0 {
+		for iNdEx := len(m.ProducerbillsList) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.ProducerbillsList[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintGenesis(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x52
+		}
+	}
+	if len(m.ProducerbillinglineList) > 0 {
+		for iNdEx := len(m.ProducerbillinglineList) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.ProducerbillinglineList[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintGenesis(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x4a
+		}
+	}
+	if len(m.CustomerbillsList) > 0 {
+		for iNdEx := len(m.CustomerbillsList) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.CustomerbillsList[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintGenesis(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x42
+		}
+	}
+	if len(m.CustomerbillinglineList) > 0 {
+		for iNdEx := len(m.CustomerbillinglineList) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.CustomerbillinglineList[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintGenesis(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x3a
+		}
+	}
+	if len(m.BillingcyclesList) > 0 {
+		for iNdEx := len(m.BillingcyclesList) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.BillingcyclesList[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintGenesis(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x32
+		}
+	}
+	if len(m.PpaMapList) > 0 {
+		for iNdEx := len(m.PpaMapList) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.PpaMapList[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintGenesis(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x2a
+		}
+	}
 	if len(m.PowerPurchaseContractList) > 0 {
 		for iNdEx := len(m.PowerPurchaseContractList) - 1; iNdEx >= 0; iNdEx-- {
 			{
@@ -229,6 +371,42 @@ func (m *GenesisState) Size() (n int) {
 	}
 	if len(m.PowerPurchaseContractList) > 0 {
 		for _, e := range m.PowerPurchaseContractList {
+			l = e.Size()
+			n += 1 + l + sovGenesis(uint64(l))
+		}
+	}
+	if len(m.PpaMapList) > 0 {
+		for _, e := range m.PpaMapList {
+			l = e.Size()
+			n += 1 + l + sovGenesis(uint64(l))
+		}
+	}
+	if len(m.BillingcyclesList) > 0 {
+		for _, e := range m.BillingcyclesList {
+			l = e.Size()
+			n += 1 + l + sovGenesis(uint64(l))
+		}
+	}
+	if len(m.CustomerbillinglineList) > 0 {
+		for _, e := range m.CustomerbillinglineList {
+			l = e.Size()
+			n += 1 + l + sovGenesis(uint64(l))
+		}
+	}
+	if len(m.CustomerbillsList) > 0 {
+		for _, e := range m.CustomerbillsList {
+			l = e.Size()
+			n += 1 + l + sovGenesis(uint64(l))
+		}
+	}
+	if len(m.ProducerbillinglineList) > 0 {
+		for _, e := range m.ProducerbillinglineList {
+			l = e.Size()
+			n += 1 + l + sovGenesis(uint64(l))
+		}
+	}
+	if len(m.ProducerbillsList) > 0 {
+		for _, e := range m.ProducerbillsList {
 			l = e.Size()
 			n += 1 + l + sovGenesis(uint64(l))
 		}
@@ -403,6 +581,210 @@ func (m *GenesisState) Unmarshal(dAtA []byte) error {
 			}
 			m.PowerPurchaseContractList = append(m.PowerPurchaseContractList, PowerPurchaseContract{})
 			if err := m.PowerPurchaseContractList[len(m.PowerPurchaseContractList)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 5:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field PpaMapList", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenesis
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthGenesis
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthGenesis
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.PpaMapList = append(m.PpaMapList, PpaMap{})
+			if err := m.PpaMapList[len(m.PpaMapList)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 6:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillingcyclesList", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenesis
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthGenesis
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthGenesis
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.BillingcyclesList = append(m.BillingcyclesList, Billingcycles{})
+			if err := m.BillingcyclesList[len(m.BillingcyclesList)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 7:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CustomerbillinglineList", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenesis
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthGenesis
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthGenesis
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.CustomerbillinglineList = append(m.CustomerbillinglineList, Customerbillingline{})
+			if err := m.CustomerbillinglineList[len(m.CustomerbillinglineList)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 8:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CustomerbillsList", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenesis
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthGenesis
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthGenesis
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.CustomerbillsList = append(m.CustomerbillsList, Customerbills{})
+			if err := m.CustomerbillsList[len(m.CustomerbillsList)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 9:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ProducerbillinglineList", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenesis
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthGenesis
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthGenesis
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ProducerbillinglineList = append(m.ProducerbillinglineList, Producerbillingline{})
+			if err := m.ProducerbillinglineList[len(m.ProducerbillinglineList)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 10:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ProducerbillsList", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenesis
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthGenesis
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthGenesis
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ProducerbillsList = append(m.ProducerbillsList, Producerbills{})
+			if err := m.ProducerbillsList[len(m.ProducerbillsList)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex

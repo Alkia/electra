@@ -2,6 +2,12 @@ syntax = "proto3";
 package electra.meter;
 
 import "meter/power_purchase_contract.proto";
+import "meter/ppa_map.proto";
+import "meter/billingcycles.proto";
+import "meter/customerbillingline.proto";
+import "meter/customerbills.proto";
+import "meter/producerbillingline.proto";
+import "meter/producerbills.proto";
 // this line is used by starport scaffolding # proto/tx/import
 
 option go_package = "electra/x/meter/types";
@@ -13,6 +19,24 @@ service Msg {
   rpc CreatePowerPurchaseContract(MsgCreatePowerPurchaseContract) returns (MsgCreatePowerPurchaseContractResponse);
   rpc UpdatePowerPurchaseContract(MsgUpdatePowerPurchaseContract) returns (MsgUpdatePowerPurchaseContractResponse);
   rpc DeletePowerPurchaseContract(MsgDeletePowerPurchaseContract) returns (MsgDeletePowerPurchaseContractResponse);
+  rpc CreatePpaMap(MsgCreatePpaMap) returns (MsgCreatePpaMapResponse);
+  rpc UpdatePpaMap(MsgUpdatePpaMap) returns (MsgUpdatePpaMapResponse);
+  rpc DeletePpaMap(MsgDeletePpaMap) returns (MsgDeletePpaMapResponse);
+  rpc CreateBillingcycles(MsgCreateBillingcycles) returns (MsgCreateBillingcyclesResponse);
+  rpc UpdateBillingcycles(MsgUpdateBillingcycles) returns (MsgUpdateBillingcyclesResponse);
+  rpc DeleteBillingcycles(MsgDeleteBillingcycles) returns (MsgDeleteBillingcyclesResponse);
+  rpc CreateCustomerbillingline(MsgCreateCustomerbillingline) returns (MsgCreateCustomerbillinglineResponse);
+  rpc UpdateCustomerbillingline(MsgUpdateCustomerbillingline) returns (MsgUpdateCustomerbillinglineResponse);
+  rpc DeleteCustomerbillingline(MsgDeleteCustomerbillingline) returns (MsgDeleteCustomerbillinglineResponse);
+  rpc CreateCustomerbills(MsgCreateCustomerbills) returns (MsgCreateCustomerbillsResponse);
+  rpc UpdateCustomerbills(MsgUpdateCustomerbills) returns (MsgUpdateCustomerbillsResponse);
+  rpc DeleteCustomerbills(MsgDeleteCustomerbills) returns (MsgDeleteCustomerbillsResponse);
+  rpc CreateProducerbillingline(MsgCreateProducerbillingline) returns (MsgCreateProducerbillinglineResponse);
+  rpc UpdateProducerbillingline(MsgUpdateProducerbillingline) returns (MsgUpdateProducerbillinglineResponse);
+  rpc DeleteProducerbillingline(MsgDeleteProducerbillingline) returns (MsgDeleteProducerbillinglineResponse);
+  rpc CreateProducerbills(MsgCreateProducerbills) returns (MsgCreateProducerbillsResponse);
+  rpc UpdateProducerbills(MsgUpdateProducerbills) returns (MsgUpdateProducerbillsResponse);
+  rpc DeleteProducerbills(MsgDeleteProducerbills) returns (MsgDeleteProducerbillsResponse);
 // this line is used by starport scaffolding # proto/tx/rpc
 }
 
@@ -111,5 +135,224 @@ message MsgDeletePowerPurchaseContract {
   string contractDeviceID = 3;
 }
 message MsgDeletePowerPurchaseContractResponse {}
+
+message MsgCreatePpaMap {
+  string creator = 1;
+  string consumerDeviceID = 2;
+  string agreementID = 3;
+  bool agreementActive = 4;
+  string contractID = 5;
+
+  string producerDeviceID = 6;
+  uint64 agreementStartDate = 7;
+  uint64 agreementEndDate = 8;
+}
+message MsgCreatePpaMapResponse {}
+
+message MsgUpdatePpaMap {
+  string creator = 1;
+  string consumerDeviceID = 2;
+  string agreementID = 3;
+  bool agreementActive = 4;
+  string contractID = 5;
+
+  string producerDeviceID = 6;
+  uint64 agreementStartDate = 7;
+  uint64 agreementEndDate = 8;
+}
+message MsgUpdatePpaMapResponse {}
+
+message MsgDeletePpaMap {
+  string creator = 1;
+  string consumerDeviceID = 2;
+  string agreementID = 3;
+  bool agreementActive = 4;
+  string contractID = 5;
+}
+message MsgDeletePpaMapResponse {}
+
+message MsgCreateBillingcycles {
+  string creator = 1;
+  uint64 cycleID = 2;
+
+  uint64 start = 3;
+  uint64 end = 4;
+  uint64 whin = 5;
+  uint64 whout = 6;
+  uint64 moneyin = 7;
+  uint64 moneyout = 8;
+  string curency = 9;
+}
+message MsgCreateBillingcyclesResponse {}
+
+message MsgUpdateBillingcycles {
+  string creator = 1;
+  uint64 cycleID = 2;
+
+  uint64 start = 3;
+  uint64 end = 4;
+  uint64 whin = 5;
+  uint64 whout = 6;
+  uint64 moneyin = 7;
+  uint64 moneyout = 8;
+  string curency = 9;
+}
+message MsgUpdateBillingcyclesResponse {}
+
+message MsgDeleteBillingcycles {
+  string creator = 1;
+  uint64 cycleID = 2;
+}
+message MsgDeleteBillingcyclesResponse {}
+
+message MsgCreateCustomerbillingline {
+  string creator = 1;
+  string customerdeviceID = 2;
+  uint64 cycleID = 3;
+  uint64 lineid = 4;
+
+  string producerDeviceID = 5;
+  string billContractID = 6;
+  uint64 lineWh = 7;
+  uint64 lineWhPrice = 8;
+  string curency = 9;
+  uint64 decremented = 10;
+  uint64 phase = 11;
+}
+message MsgCreateCustomerbillinglineResponse {}
+
+message MsgUpdateCustomerbillingline {
+  string creator = 1;
+  string customerdeviceID = 2;
+  uint64 cycleID = 3;
+  uint64 lineid = 4;
+
+  string producerDeviceID = 5;
+  string billContractID = 6;
+  uint64 lineWh = 7;
+  uint64 lineWhPrice = 8;
+  string curency = 9;
+  uint64 decremented = 10;
+  uint64 phase = 11;
+}
+message MsgUpdateCustomerbillinglineResponse {}
+
+message MsgDeleteCustomerbillingline {
+  string creator = 1;
+  string customerdeviceID = 2;
+  uint64 cycleID = 3;
+  uint64 lineid = 4;
+}
+message MsgDeleteCustomerbillinglineResponse {}
+
+message MsgCreateCustomerbills {
+  string creator = 1;
+  uint64 billCycleID = 2;
+  string customerdeviceID = 3;
+
+  uint64 billDate = 4;
+  uint64 billTotalWh = 5;
+  uint64 billTotalPrice = 6;
+  string billCurrency = 7;
+  bool billValid = 8;
+  bool paid = 9;
+}
+message MsgCreateCustomerbillsResponse {}
+
+message MsgUpdateCustomerbills {
+  string creator = 1;
+  uint64 billCycleID = 2;
+  string customerdeviceID = 3;
+
+  uint64 billDate = 4;
+  uint64 billTotalWh = 5;
+  uint64 billTotalPrice = 6;
+  string billCurrency = 7;
+  bool billValid = 8;
+  bool paid = 9;
+}
+message MsgUpdateCustomerbillsResponse {}
+
+message MsgDeleteCustomerbills {
+  string creator = 1;
+  uint64 billCycleID = 2;
+  string customerdeviceID = 3;
+}
+message MsgDeleteCustomerbillsResponse {}
+
+message MsgCreateProducerbillingline {
+  string creator = 1;
+  string producerDeviceID = 2;
+  uint64 cycleID = 3;
+  uint64 lineid = 4;
+
+  string customerdeviceID = 5;
+  string billContractID = 6;
+  uint64 lineWh = 7;
+  uint64 lineWhPrice = 8;
+  string curency = 9;
+  uint64 decremented = 10;
+  uint64 phase = 11;
+}
+message MsgCreateProducerbillinglineResponse {}
+
+message MsgUpdateProducerbillingline {
+  string creator = 1;
+  string producerDeviceID = 2;
+  uint64 cycleID = 3;
+  uint64 lineid = 4;
+
+  string customerdeviceID = 5;
+  string billContractID = 6;
+  uint64 lineWh = 7;
+  uint64 lineWhPrice = 8;
+  string curency = 9;
+  uint64 decremented = 10;
+  uint64 phase = 11;
+}
+message MsgUpdateProducerbillinglineResponse {}
+
+message MsgDeleteProducerbillingline {
+  string creator = 1;
+  string producerDeviceID = 2;
+  uint64 cycleID = 3;
+  uint64 lineid = 4;
+}
+message MsgDeleteProducerbillinglineResponse {}
+
+message MsgCreateProducerbills {
+  string creator = 1;
+  uint64 billCycleID = 2;
+  string producerdeviceID = 3;
+
+  uint64 billDate = 4;
+  uint64 billTotalWh = 5;
+  uint64 billTotalPrice = 6;
+  string billCurrency = 7;
+  bool billValid = 8;
+  bool paid = 9;
+}
+message MsgCreateProducerbillsResponse {}
+
+message MsgUpdateProducerbills {
+  string creator = 1;
+  uint64 billCycleID = 2;
+  string producerdeviceID = 3;
+
+  uint64 billDate = 4;
+  uint64 billTotalWh = 5;
+  uint64 billTotalPrice = 6;
+  string billCurrency = 7;
+  bool billValid = 8;
+  bool paid = 9;
+}
+message MsgUpdateProducerbillsResponse {}
+
+message MsgDeleteProducerbills {
+  string creator = 1;
+  uint64 billCycleID = 2;
+  string producerdeviceID = 3;
+}
+message MsgDeleteProducerbillsResponse {}
 
 // this line is used by starport scaffolding # proto/tx/message

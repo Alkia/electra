@@ -99,6 +99,231 @@ export interface MsgDeletePowerPurchaseContract {
 
 export interface MsgDeletePowerPurchaseContractResponse {}
 
+export interface MsgCreatePpaMap {
+  creator: string;
+  consumerDeviceID: string;
+  agreementID: string;
+  agreementActive: boolean;
+  contractID: string;
+  producerDeviceID: string;
+  agreementStartDate: number;
+  agreementEndDate: number;
+}
+
+export interface MsgCreatePpaMapResponse {}
+
+export interface MsgUpdatePpaMap {
+  creator: string;
+  consumerDeviceID: string;
+  agreementID: string;
+  agreementActive: boolean;
+  contractID: string;
+  producerDeviceID: string;
+  agreementStartDate: number;
+  agreementEndDate: number;
+}
+
+export interface MsgUpdatePpaMapResponse {}
+
+export interface MsgDeletePpaMap {
+  creator: string;
+  consumerDeviceID: string;
+  agreementID: string;
+  agreementActive: boolean;
+  contractID: string;
+}
+
+export interface MsgDeletePpaMapResponse {}
+
+export interface MsgCreateBillingcycles {
+  creator: string;
+  cycleID: number;
+  start: number;
+  end: number;
+  whin: number;
+  whout: number;
+  moneyin: number;
+  moneyout: number;
+  curency: string;
+}
+
+export interface MsgCreateBillingcyclesResponse {}
+
+export interface MsgUpdateBillingcycles {
+  creator: string;
+  cycleID: number;
+  start: number;
+  end: number;
+  whin: number;
+  whout: number;
+  moneyin: number;
+  moneyout: number;
+  curency: string;
+}
+
+export interface MsgUpdateBillingcyclesResponse {}
+
+export interface MsgDeleteBillingcycles {
+  creator: string;
+  cycleID: number;
+}
+
+export interface MsgDeleteBillingcyclesResponse {}
+
+export interface MsgCreateCustomerbillingline {
+  creator: string;
+  customerdeviceID: string;
+  cycleID: number;
+  lineid: number;
+  producerDeviceID: string;
+  billContractID: string;
+  lineWh: number;
+  lineWhPrice: number;
+  curency: string;
+  decremented: number;
+  phase: number;
+}
+
+export interface MsgCreateCustomerbillinglineResponse {}
+
+export interface MsgUpdateCustomerbillingline {
+  creator: string;
+  customerdeviceID: string;
+  cycleID: number;
+  lineid: number;
+  producerDeviceID: string;
+  billContractID: string;
+  lineWh: number;
+  lineWhPrice: number;
+  curency: string;
+  decremented: number;
+  phase: number;
+}
+
+export interface MsgUpdateCustomerbillinglineResponse {}
+
+export interface MsgDeleteCustomerbillingline {
+  creator: string;
+  customerdeviceID: string;
+  cycleID: number;
+  lineid: number;
+}
+
+export interface MsgDeleteCustomerbillinglineResponse {}
+
+export interface MsgCreateCustomerbills {
+  creator: string;
+  billCycleID: number;
+  customerdeviceID: string;
+  billDate: number;
+  billTotalWh: number;
+  billTotalPrice: number;
+  billCurrency: string;
+  billValid: boolean;
+  paid: boolean;
+}
+
+export interface MsgCreateCustomerbillsResponse {}
+
+export interface MsgUpdateCustomerbills {
+  creator: string;
+  billCycleID: number;
+  customerdeviceID: string;
+  billDate: number;
+  billTotalWh: number;
+  billTotalPrice: number;
+  billCurrency: string;
+  billValid: boolean;
+  paid: boolean;
+}
+
+export interface MsgUpdateCustomerbillsResponse {}
+
+export interface MsgDeleteCustomerbills {
+  creator: string;
+  billCycleID: number;
+  customerdeviceID: string;
+}
+
+export interface MsgDeleteCustomerbillsResponse {}
+
+export interface MsgCreateProducerbillingline {
+  creator: string;
+  producerDeviceID: string;
+  cycleID: number;
+  lineid: number;
+  customerdeviceID: string;
+  billContractID: string;
+  lineWh: number;
+  lineWhPrice: number;
+  curency: string;
+  decremented: number;
+  phase: number;
+}
+
+export interface MsgCreateProducerbillinglineResponse {}
+
+export interface MsgUpdateProducerbillingline {
+  creator: string;
+  producerDeviceID: string;
+  cycleID: number;
+  lineid: number;
+  customerdeviceID: string;
+  billContractID: string;
+  lineWh: number;
+  lineWhPrice: number;
+  curency: string;
+  decremented: number;
+  phase: number;
+}
+
+export interface MsgUpdateProducerbillinglineResponse {}
+
+export interface MsgDeleteProducerbillingline {
+  creator: string;
+  producerDeviceID: string;
+  cycleID: number;
+  lineid: number;
+}
+
+export interface MsgDeleteProducerbillinglineResponse {}
+
+export interface MsgCreateProducerbills {
+  creator: string;
+  billCycleID: number;
+  producerdeviceID: string;
+  billDate: number;
+  billTotalWh: number;
+  billTotalPrice: number;
+  billCurrency: string;
+  billValid: boolean;
+  paid: boolean;
+}
+
+export interface MsgCreateProducerbillsResponse {}
+
+export interface MsgUpdateProducerbills {
+  creator: string;
+  billCycleID: number;
+  producerdeviceID: string;
+  billDate: number;
+  billTotalWh: number;
+  billTotalPrice: number;
+  billCurrency: string;
+  billValid: boolean;
+  paid: boolean;
+}
+
+export interface MsgUpdateProducerbillsResponse {}
+
+export interface MsgDeleteProducerbills {
+  creator: string;
+  billCycleID: number;
+  producerdeviceID: string;
+}
+
+export interface MsgDeleteProducerbillsResponse {}
+
 const baseMsgRecord: object = {
   creator: "",
   timestamp: 0,
@@ -2045,6 +2270,4411 @@ export const MsgDeletePowerPurchaseContractResponse = {
   },
 };
 
+const baseMsgCreatePpaMap: object = {
+  creator: "",
+  consumerDeviceID: "",
+  agreementID: "",
+  agreementActive: false,
+  contractID: "",
+  producerDeviceID: "",
+  agreementStartDate: 0,
+  agreementEndDate: 0,
+};
+
+export const MsgCreatePpaMap = {
+  encode(message: MsgCreatePpaMap, writer: Writer = Writer.create()): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.consumerDeviceID !== "") {
+      writer.uint32(18).string(message.consumerDeviceID);
+    }
+    if (message.agreementID !== "") {
+      writer.uint32(26).string(message.agreementID);
+    }
+    if (message.agreementActive === true) {
+      writer.uint32(32).bool(message.agreementActive);
+    }
+    if (message.contractID !== "") {
+      writer.uint32(42).string(message.contractID);
+    }
+    if (message.producerDeviceID !== "") {
+      writer.uint32(50).string(message.producerDeviceID);
+    }
+    if (message.agreementStartDate !== 0) {
+      writer.uint32(56).uint64(message.agreementStartDate);
+    }
+    if (message.agreementEndDate !== 0) {
+      writer.uint32(64).uint64(message.agreementEndDate);
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgCreatePpaMap {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseMsgCreatePpaMap } as MsgCreatePpaMap;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.consumerDeviceID = reader.string();
+          break;
+        case 3:
+          message.agreementID = reader.string();
+          break;
+        case 4:
+          message.agreementActive = reader.bool();
+          break;
+        case 5:
+          message.contractID = reader.string();
+          break;
+        case 6:
+          message.producerDeviceID = reader.string();
+          break;
+        case 7:
+          message.agreementStartDate = longToNumber(reader.uint64() as Long);
+          break;
+        case 8:
+          message.agreementEndDate = longToNumber(reader.uint64() as Long);
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgCreatePpaMap {
+    const message = { ...baseMsgCreatePpaMap } as MsgCreatePpaMap;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (
+      object.consumerDeviceID !== undefined &&
+      object.consumerDeviceID !== null
+    ) {
+      message.consumerDeviceID = String(object.consumerDeviceID);
+    } else {
+      message.consumerDeviceID = "";
+    }
+    if (object.agreementID !== undefined && object.agreementID !== null) {
+      message.agreementID = String(object.agreementID);
+    } else {
+      message.agreementID = "";
+    }
+    if (
+      object.agreementActive !== undefined &&
+      object.agreementActive !== null
+    ) {
+      message.agreementActive = Boolean(object.agreementActive);
+    } else {
+      message.agreementActive = false;
+    }
+    if (object.contractID !== undefined && object.contractID !== null) {
+      message.contractID = String(object.contractID);
+    } else {
+      message.contractID = "";
+    }
+    if (
+      object.producerDeviceID !== undefined &&
+      object.producerDeviceID !== null
+    ) {
+      message.producerDeviceID = String(object.producerDeviceID);
+    } else {
+      message.producerDeviceID = "";
+    }
+    if (
+      object.agreementStartDate !== undefined &&
+      object.agreementStartDate !== null
+    ) {
+      message.agreementStartDate = Number(object.agreementStartDate);
+    } else {
+      message.agreementStartDate = 0;
+    }
+    if (
+      object.agreementEndDate !== undefined &&
+      object.agreementEndDate !== null
+    ) {
+      message.agreementEndDate = Number(object.agreementEndDate);
+    } else {
+      message.agreementEndDate = 0;
+    }
+    return message;
+  },
+
+  toJSON(message: MsgCreatePpaMap): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.consumerDeviceID !== undefined &&
+      (obj.consumerDeviceID = message.consumerDeviceID);
+    message.agreementID !== undefined &&
+      (obj.agreementID = message.agreementID);
+    message.agreementActive !== undefined &&
+      (obj.agreementActive = message.agreementActive);
+    message.contractID !== undefined && (obj.contractID = message.contractID);
+    message.producerDeviceID !== undefined &&
+      (obj.producerDeviceID = message.producerDeviceID);
+    message.agreementStartDate !== undefined &&
+      (obj.agreementStartDate = message.agreementStartDate);
+    message.agreementEndDate !== undefined &&
+      (obj.agreementEndDate = message.agreementEndDate);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<MsgCreatePpaMap>): MsgCreatePpaMap {
+    const message = { ...baseMsgCreatePpaMap } as MsgCreatePpaMap;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (
+      object.consumerDeviceID !== undefined &&
+      object.consumerDeviceID !== null
+    ) {
+      message.consumerDeviceID = object.consumerDeviceID;
+    } else {
+      message.consumerDeviceID = "";
+    }
+    if (object.agreementID !== undefined && object.agreementID !== null) {
+      message.agreementID = object.agreementID;
+    } else {
+      message.agreementID = "";
+    }
+    if (
+      object.agreementActive !== undefined &&
+      object.agreementActive !== null
+    ) {
+      message.agreementActive = object.agreementActive;
+    } else {
+      message.agreementActive = false;
+    }
+    if (object.contractID !== undefined && object.contractID !== null) {
+      message.contractID = object.contractID;
+    } else {
+      message.contractID = "";
+    }
+    if (
+      object.producerDeviceID !== undefined &&
+      object.producerDeviceID !== null
+    ) {
+      message.producerDeviceID = object.producerDeviceID;
+    } else {
+      message.producerDeviceID = "";
+    }
+    if (
+      object.agreementStartDate !== undefined &&
+      object.agreementStartDate !== null
+    ) {
+      message.agreementStartDate = object.agreementStartDate;
+    } else {
+      message.agreementStartDate = 0;
+    }
+    if (
+      object.agreementEndDate !== undefined &&
+      object.agreementEndDate !== null
+    ) {
+      message.agreementEndDate = object.agreementEndDate;
+    } else {
+      message.agreementEndDate = 0;
+    }
+    return message;
+  },
+};
+
+const baseMsgCreatePpaMapResponse: object = {};
+
+export const MsgCreatePpaMapResponse = {
+  encode(_: MsgCreatePpaMapResponse, writer: Writer = Writer.create()): Writer {
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgCreatePpaMapResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgCreatePpaMapResponse,
+    } as MsgCreatePpaMapResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): MsgCreatePpaMapResponse {
+    const message = {
+      ...baseMsgCreatePpaMapResponse,
+    } as MsgCreatePpaMapResponse;
+    return message;
+  },
+
+  toJSON(_: MsgCreatePpaMapResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<MsgCreatePpaMapResponse>
+  ): MsgCreatePpaMapResponse {
+    const message = {
+      ...baseMsgCreatePpaMapResponse,
+    } as MsgCreatePpaMapResponse;
+    return message;
+  },
+};
+
+const baseMsgUpdatePpaMap: object = {
+  creator: "",
+  consumerDeviceID: "",
+  agreementID: "",
+  agreementActive: false,
+  contractID: "",
+  producerDeviceID: "",
+  agreementStartDate: 0,
+  agreementEndDate: 0,
+};
+
+export const MsgUpdatePpaMap = {
+  encode(message: MsgUpdatePpaMap, writer: Writer = Writer.create()): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.consumerDeviceID !== "") {
+      writer.uint32(18).string(message.consumerDeviceID);
+    }
+    if (message.agreementID !== "") {
+      writer.uint32(26).string(message.agreementID);
+    }
+    if (message.agreementActive === true) {
+      writer.uint32(32).bool(message.agreementActive);
+    }
+    if (message.contractID !== "") {
+      writer.uint32(42).string(message.contractID);
+    }
+    if (message.producerDeviceID !== "") {
+      writer.uint32(50).string(message.producerDeviceID);
+    }
+    if (message.agreementStartDate !== 0) {
+      writer.uint32(56).uint64(message.agreementStartDate);
+    }
+    if (message.agreementEndDate !== 0) {
+      writer.uint32(64).uint64(message.agreementEndDate);
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgUpdatePpaMap {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseMsgUpdatePpaMap } as MsgUpdatePpaMap;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.consumerDeviceID = reader.string();
+          break;
+        case 3:
+          message.agreementID = reader.string();
+          break;
+        case 4:
+          message.agreementActive = reader.bool();
+          break;
+        case 5:
+          message.contractID = reader.string();
+          break;
+        case 6:
+          message.producerDeviceID = reader.string();
+          break;
+        case 7:
+          message.agreementStartDate = longToNumber(reader.uint64() as Long);
+          break;
+        case 8:
+          message.agreementEndDate = longToNumber(reader.uint64() as Long);
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgUpdatePpaMap {
+    const message = { ...baseMsgUpdatePpaMap } as MsgUpdatePpaMap;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (
+      object.consumerDeviceID !== undefined &&
+      object.consumerDeviceID !== null
+    ) {
+      message.consumerDeviceID = String(object.consumerDeviceID);
+    } else {
+      message.consumerDeviceID = "";
+    }
+    if (object.agreementID !== undefined && object.agreementID !== null) {
+      message.agreementID = String(object.agreementID);
+    } else {
+      message.agreementID = "";
+    }
+    if (
+      object.agreementActive !== undefined &&
+      object.agreementActive !== null
+    ) {
+      message.agreementActive = Boolean(object.agreementActive);
+    } else {
+      message.agreementActive = false;
+    }
+    if (object.contractID !== undefined && object.contractID !== null) {
+      message.contractID = String(object.contractID);
+    } else {
+      message.contractID = "";
+    }
+    if (
+      object.producerDeviceID !== undefined &&
+      object.producerDeviceID !== null
+    ) {
+      message.producerDeviceID = String(object.producerDeviceID);
+    } else {
+      message.producerDeviceID = "";
+    }
+    if (
+      object.agreementStartDate !== undefined &&
+      object.agreementStartDate !== null
+    ) {
+      message.agreementStartDate = Number(object.agreementStartDate);
+    } else {
+      message.agreementStartDate = 0;
+    }
+    if (
+      object.agreementEndDate !== undefined &&
+      object.agreementEndDate !== null
+    ) {
+      message.agreementEndDate = Number(object.agreementEndDate);
+    } else {
+      message.agreementEndDate = 0;
+    }
+    return message;
+  },
+
+  toJSON(message: MsgUpdatePpaMap): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.consumerDeviceID !== undefined &&
+      (obj.consumerDeviceID = message.consumerDeviceID);
+    message.agreementID !== undefined &&
+      (obj.agreementID = message.agreementID);
+    message.agreementActive !== undefined &&
+      (obj.agreementActive = message.agreementActive);
+    message.contractID !== undefined && (obj.contractID = message.contractID);
+    message.producerDeviceID !== undefined &&
+      (obj.producerDeviceID = message.producerDeviceID);
+    message.agreementStartDate !== undefined &&
+      (obj.agreementStartDate = message.agreementStartDate);
+    message.agreementEndDate !== undefined &&
+      (obj.agreementEndDate = message.agreementEndDate);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<MsgUpdatePpaMap>): MsgUpdatePpaMap {
+    const message = { ...baseMsgUpdatePpaMap } as MsgUpdatePpaMap;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (
+      object.consumerDeviceID !== undefined &&
+      object.consumerDeviceID !== null
+    ) {
+      message.consumerDeviceID = object.consumerDeviceID;
+    } else {
+      message.consumerDeviceID = "";
+    }
+    if (object.agreementID !== undefined && object.agreementID !== null) {
+      message.agreementID = object.agreementID;
+    } else {
+      message.agreementID = "";
+    }
+    if (
+      object.agreementActive !== undefined &&
+      object.agreementActive !== null
+    ) {
+      message.agreementActive = object.agreementActive;
+    } else {
+      message.agreementActive = false;
+    }
+    if (object.contractID !== undefined && object.contractID !== null) {
+      message.contractID = object.contractID;
+    } else {
+      message.contractID = "";
+    }
+    if (
+      object.producerDeviceID !== undefined &&
+      object.producerDeviceID !== null
+    ) {
+      message.producerDeviceID = object.producerDeviceID;
+    } else {
+      message.producerDeviceID = "";
+    }
+    if (
+      object.agreementStartDate !== undefined &&
+      object.agreementStartDate !== null
+    ) {
+      message.agreementStartDate = object.agreementStartDate;
+    } else {
+      message.agreementStartDate = 0;
+    }
+    if (
+      object.agreementEndDate !== undefined &&
+      object.agreementEndDate !== null
+    ) {
+      message.agreementEndDate = object.agreementEndDate;
+    } else {
+      message.agreementEndDate = 0;
+    }
+    return message;
+  },
+};
+
+const baseMsgUpdatePpaMapResponse: object = {};
+
+export const MsgUpdatePpaMapResponse = {
+  encode(_: MsgUpdatePpaMapResponse, writer: Writer = Writer.create()): Writer {
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgUpdatePpaMapResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgUpdatePpaMapResponse,
+    } as MsgUpdatePpaMapResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): MsgUpdatePpaMapResponse {
+    const message = {
+      ...baseMsgUpdatePpaMapResponse,
+    } as MsgUpdatePpaMapResponse;
+    return message;
+  },
+
+  toJSON(_: MsgUpdatePpaMapResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<MsgUpdatePpaMapResponse>
+  ): MsgUpdatePpaMapResponse {
+    const message = {
+      ...baseMsgUpdatePpaMapResponse,
+    } as MsgUpdatePpaMapResponse;
+    return message;
+  },
+};
+
+const baseMsgDeletePpaMap: object = {
+  creator: "",
+  consumerDeviceID: "",
+  agreementID: "",
+  agreementActive: false,
+  contractID: "",
+};
+
+export const MsgDeletePpaMap = {
+  encode(message: MsgDeletePpaMap, writer: Writer = Writer.create()): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.consumerDeviceID !== "") {
+      writer.uint32(18).string(message.consumerDeviceID);
+    }
+    if (message.agreementID !== "") {
+      writer.uint32(26).string(message.agreementID);
+    }
+    if (message.agreementActive === true) {
+      writer.uint32(32).bool(message.agreementActive);
+    }
+    if (message.contractID !== "") {
+      writer.uint32(42).string(message.contractID);
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgDeletePpaMap {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseMsgDeletePpaMap } as MsgDeletePpaMap;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.consumerDeviceID = reader.string();
+          break;
+        case 3:
+          message.agreementID = reader.string();
+          break;
+        case 4:
+          message.agreementActive = reader.bool();
+          break;
+        case 5:
+          message.contractID = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgDeletePpaMap {
+    const message = { ...baseMsgDeletePpaMap } as MsgDeletePpaMap;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (
+      object.consumerDeviceID !== undefined &&
+      object.consumerDeviceID !== null
+    ) {
+      message.consumerDeviceID = String(object.consumerDeviceID);
+    } else {
+      message.consumerDeviceID = "";
+    }
+    if (object.agreementID !== undefined && object.agreementID !== null) {
+      message.agreementID = String(object.agreementID);
+    } else {
+      message.agreementID = "";
+    }
+    if (
+      object.agreementActive !== undefined &&
+      object.agreementActive !== null
+    ) {
+      message.agreementActive = Boolean(object.agreementActive);
+    } else {
+      message.agreementActive = false;
+    }
+    if (object.contractID !== undefined && object.contractID !== null) {
+      message.contractID = String(object.contractID);
+    } else {
+      message.contractID = "";
+    }
+    return message;
+  },
+
+  toJSON(message: MsgDeletePpaMap): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.consumerDeviceID !== undefined &&
+      (obj.consumerDeviceID = message.consumerDeviceID);
+    message.agreementID !== undefined &&
+      (obj.agreementID = message.agreementID);
+    message.agreementActive !== undefined &&
+      (obj.agreementActive = message.agreementActive);
+    message.contractID !== undefined && (obj.contractID = message.contractID);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<MsgDeletePpaMap>): MsgDeletePpaMap {
+    const message = { ...baseMsgDeletePpaMap } as MsgDeletePpaMap;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (
+      object.consumerDeviceID !== undefined &&
+      object.consumerDeviceID !== null
+    ) {
+      message.consumerDeviceID = object.consumerDeviceID;
+    } else {
+      message.consumerDeviceID = "";
+    }
+    if (object.agreementID !== undefined && object.agreementID !== null) {
+      message.agreementID = object.agreementID;
+    } else {
+      message.agreementID = "";
+    }
+    if (
+      object.agreementActive !== undefined &&
+      object.agreementActive !== null
+    ) {
+      message.agreementActive = object.agreementActive;
+    } else {
+      message.agreementActive = false;
+    }
+    if (object.contractID !== undefined && object.contractID !== null) {
+      message.contractID = object.contractID;
+    } else {
+      message.contractID = "";
+    }
+    return message;
+  },
+};
+
+const baseMsgDeletePpaMapResponse: object = {};
+
+export const MsgDeletePpaMapResponse = {
+  encode(_: MsgDeletePpaMapResponse, writer: Writer = Writer.create()): Writer {
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgDeletePpaMapResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgDeletePpaMapResponse,
+    } as MsgDeletePpaMapResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): MsgDeletePpaMapResponse {
+    const message = {
+      ...baseMsgDeletePpaMapResponse,
+    } as MsgDeletePpaMapResponse;
+    return message;
+  },
+
+  toJSON(_: MsgDeletePpaMapResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<MsgDeletePpaMapResponse>
+  ): MsgDeletePpaMapResponse {
+    const message = {
+      ...baseMsgDeletePpaMapResponse,
+    } as MsgDeletePpaMapResponse;
+    return message;
+  },
+};
+
+const baseMsgCreateBillingcycles: object = {
+  creator: "",
+  cycleID: 0,
+  start: 0,
+  end: 0,
+  whin: 0,
+  whout: 0,
+  moneyin: 0,
+  moneyout: 0,
+  curency: "",
+};
+
+export const MsgCreateBillingcycles = {
+  encode(
+    message: MsgCreateBillingcycles,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.cycleID !== 0) {
+      writer.uint32(16).uint64(message.cycleID);
+    }
+    if (message.start !== 0) {
+      writer.uint32(24).uint64(message.start);
+    }
+    if (message.end !== 0) {
+      writer.uint32(32).uint64(message.end);
+    }
+    if (message.whin !== 0) {
+      writer.uint32(40).uint64(message.whin);
+    }
+    if (message.whout !== 0) {
+      writer.uint32(48).uint64(message.whout);
+    }
+    if (message.moneyin !== 0) {
+      writer.uint32(56).uint64(message.moneyin);
+    }
+    if (message.moneyout !== 0) {
+      writer.uint32(64).uint64(message.moneyout);
+    }
+    if (message.curency !== "") {
+      writer.uint32(74).string(message.curency);
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgCreateBillingcycles {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseMsgCreateBillingcycles } as MsgCreateBillingcycles;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.cycleID = longToNumber(reader.uint64() as Long);
+          break;
+        case 3:
+          message.start = longToNumber(reader.uint64() as Long);
+          break;
+        case 4:
+          message.end = longToNumber(reader.uint64() as Long);
+          break;
+        case 5:
+          message.whin = longToNumber(reader.uint64() as Long);
+          break;
+        case 6:
+          message.whout = longToNumber(reader.uint64() as Long);
+          break;
+        case 7:
+          message.moneyin = longToNumber(reader.uint64() as Long);
+          break;
+        case 8:
+          message.moneyout = longToNumber(reader.uint64() as Long);
+          break;
+        case 9:
+          message.curency = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgCreateBillingcycles {
+    const message = { ...baseMsgCreateBillingcycles } as MsgCreateBillingcycles;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (object.cycleID !== undefined && object.cycleID !== null) {
+      message.cycleID = Number(object.cycleID);
+    } else {
+      message.cycleID = 0;
+    }
+    if (object.start !== undefined && object.start !== null) {
+      message.start = Number(object.start);
+    } else {
+      message.start = 0;
+    }
+    if (object.end !== undefined && object.end !== null) {
+      message.end = Number(object.end);
+    } else {
+      message.end = 0;
+    }
+    if (object.whin !== undefined && object.whin !== null) {
+      message.whin = Number(object.whin);
+    } else {
+      message.whin = 0;
+    }
+    if (object.whout !== undefined && object.whout !== null) {
+      message.whout = Number(object.whout);
+    } else {
+      message.whout = 0;
+    }
+    if (object.moneyin !== undefined && object.moneyin !== null) {
+      message.moneyin = Number(object.moneyin);
+    } else {
+      message.moneyin = 0;
+    }
+    if (object.moneyout !== undefined && object.moneyout !== null) {
+      message.moneyout = Number(object.moneyout);
+    } else {
+      message.moneyout = 0;
+    }
+    if (object.curency !== undefined && object.curency !== null) {
+      message.curency = String(object.curency);
+    } else {
+      message.curency = "";
+    }
+    return message;
+  },
+
+  toJSON(message: MsgCreateBillingcycles): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.cycleID !== undefined && (obj.cycleID = message.cycleID);
+    message.start !== undefined && (obj.start = message.start);
+    message.end !== undefined && (obj.end = message.end);
+    message.whin !== undefined && (obj.whin = message.whin);
+    message.whout !== undefined && (obj.whout = message.whout);
+    message.moneyin !== undefined && (obj.moneyin = message.moneyin);
+    message.moneyout !== undefined && (obj.moneyout = message.moneyout);
+    message.curency !== undefined && (obj.curency = message.curency);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<MsgCreateBillingcycles>
+  ): MsgCreateBillingcycles {
+    const message = { ...baseMsgCreateBillingcycles } as MsgCreateBillingcycles;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (object.cycleID !== undefined && object.cycleID !== null) {
+      message.cycleID = object.cycleID;
+    } else {
+      message.cycleID = 0;
+    }
+    if (object.start !== undefined && object.start !== null) {
+      message.start = object.start;
+    } else {
+      message.start = 0;
+    }
+    if (object.end !== undefined && object.end !== null) {
+      message.end = object.end;
+    } else {
+      message.end = 0;
+    }
+    if (object.whin !== undefined && object.whin !== null) {
+      message.whin = object.whin;
+    } else {
+      message.whin = 0;
+    }
+    if (object.whout !== undefined && object.whout !== null) {
+      message.whout = object.whout;
+    } else {
+      message.whout = 0;
+    }
+    if (object.moneyin !== undefined && object.moneyin !== null) {
+      message.moneyin = object.moneyin;
+    } else {
+      message.moneyin = 0;
+    }
+    if (object.moneyout !== undefined && object.moneyout !== null) {
+      message.moneyout = object.moneyout;
+    } else {
+      message.moneyout = 0;
+    }
+    if (object.curency !== undefined && object.curency !== null) {
+      message.curency = object.curency;
+    } else {
+      message.curency = "";
+    }
+    return message;
+  },
+};
+
+const baseMsgCreateBillingcyclesResponse: object = {};
+
+export const MsgCreateBillingcyclesResponse = {
+  encode(
+    _: MsgCreateBillingcyclesResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgCreateBillingcyclesResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgCreateBillingcyclesResponse,
+    } as MsgCreateBillingcyclesResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): MsgCreateBillingcyclesResponse {
+    const message = {
+      ...baseMsgCreateBillingcyclesResponse,
+    } as MsgCreateBillingcyclesResponse;
+    return message;
+  },
+
+  toJSON(_: MsgCreateBillingcyclesResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<MsgCreateBillingcyclesResponse>
+  ): MsgCreateBillingcyclesResponse {
+    const message = {
+      ...baseMsgCreateBillingcyclesResponse,
+    } as MsgCreateBillingcyclesResponse;
+    return message;
+  },
+};
+
+const baseMsgUpdateBillingcycles: object = {
+  creator: "",
+  cycleID: 0,
+  start: 0,
+  end: 0,
+  whin: 0,
+  whout: 0,
+  moneyin: 0,
+  moneyout: 0,
+  curency: "",
+};
+
+export const MsgUpdateBillingcycles = {
+  encode(
+    message: MsgUpdateBillingcycles,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.cycleID !== 0) {
+      writer.uint32(16).uint64(message.cycleID);
+    }
+    if (message.start !== 0) {
+      writer.uint32(24).uint64(message.start);
+    }
+    if (message.end !== 0) {
+      writer.uint32(32).uint64(message.end);
+    }
+    if (message.whin !== 0) {
+      writer.uint32(40).uint64(message.whin);
+    }
+    if (message.whout !== 0) {
+      writer.uint32(48).uint64(message.whout);
+    }
+    if (message.moneyin !== 0) {
+      writer.uint32(56).uint64(message.moneyin);
+    }
+    if (message.moneyout !== 0) {
+      writer.uint32(64).uint64(message.moneyout);
+    }
+    if (message.curency !== "") {
+      writer.uint32(74).string(message.curency);
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgUpdateBillingcycles {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseMsgUpdateBillingcycles } as MsgUpdateBillingcycles;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.cycleID = longToNumber(reader.uint64() as Long);
+          break;
+        case 3:
+          message.start = longToNumber(reader.uint64() as Long);
+          break;
+        case 4:
+          message.end = longToNumber(reader.uint64() as Long);
+          break;
+        case 5:
+          message.whin = longToNumber(reader.uint64() as Long);
+          break;
+        case 6:
+          message.whout = longToNumber(reader.uint64() as Long);
+          break;
+        case 7:
+          message.moneyin = longToNumber(reader.uint64() as Long);
+          break;
+        case 8:
+          message.moneyout = longToNumber(reader.uint64() as Long);
+          break;
+        case 9:
+          message.curency = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgUpdateBillingcycles {
+    const message = { ...baseMsgUpdateBillingcycles } as MsgUpdateBillingcycles;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (object.cycleID !== undefined && object.cycleID !== null) {
+      message.cycleID = Number(object.cycleID);
+    } else {
+      message.cycleID = 0;
+    }
+    if (object.start !== undefined && object.start !== null) {
+      message.start = Number(object.start);
+    } else {
+      message.start = 0;
+    }
+    if (object.end !== undefined && object.end !== null) {
+      message.end = Number(object.end);
+    } else {
+      message.end = 0;
+    }
+    if (object.whin !== undefined && object.whin !== null) {
+      message.whin = Number(object.whin);
+    } else {
+      message.whin = 0;
+    }
+    if (object.whout !== undefined && object.whout !== null) {
+      message.whout = Number(object.whout);
+    } else {
+      message.whout = 0;
+    }
+    if (object.moneyin !== undefined && object.moneyin !== null) {
+      message.moneyin = Number(object.moneyin);
+    } else {
+      message.moneyin = 0;
+    }
+    if (object.moneyout !== undefined && object.moneyout !== null) {
+      message.moneyout = Number(object.moneyout);
+    } else {
+      message.moneyout = 0;
+    }
+    if (object.curency !== undefined && object.curency !== null) {
+      message.curency = String(object.curency);
+    } else {
+      message.curency = "";
+    }
+    return message;
+  },
+
+  toJSON(message: MsgUpdateBillingcycles): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.cycleID !== undefined && (obj.cycleID = message.cycleID);
+    message.start !== undefined && (obj.start = message.start);
+    message.end !== undefined && (obj.end = message.end);
+    message.whin !== undefined && (obj.whin = message.whin);
+    message.whout !== undefined && (obj.whout = message.whout);
+    message.moneyin !== undefined && (obj.moneyin = message.moneyin);
+    message.moneyout !== undefined && (obj.moneyout = message.moneyout);
+    message.curency !== undefined && (obj.curency = message.curency);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<MsgUpdateBillingcycles>
+  ): MsgUpdateBillingcycles {
+    const message = { ...baseMsgUpdateBillingcycles } as MsgUpdateBillingcycles;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (object.cycleID !== undefined && object.cycleID !== null) {
+      message.cycleID = object.cycleID;
+    } else {
+      message.cycleID = 0;
+    }
+    if (object.start !== undefined && object.start !== null) {
+      message.start = object.start;
+    } else {
+      message.start = 0;
+    }
+    if (object.end !== undefined && object.end !== null) {
+      message.end = object.end;
+    } else {
+      message.end = 0;
+    }
+    if (object.whin !== undefined && object.whin !== null) {
+      message.whin = object.whin;
+    } else {
+      message.whin = 0;
+    }
+    if (object.whout !== undefined && object.whout !== null) {
+      message.whout = object.whout;
+    } else {
+      message.whout = 0;
+    }
+    if (object.moneyin !== undefined && object.moneyin !== null) {
+      message.moneyin = object.moneyin;
+    } else {
+      message.moneyin = 0;
+    }
+    if (object.moneyout !== undefined && object.moneyout !== null) {
+      message.moneyout = object.moneyout;
+    } else {
+      message.moneyout = 0;
+    }
+    if (object.curency !== undefined && object.curency !== null) {
+      message.curency = object.curency;
+    } else {
+      message.curency = "";
+    }
+    return message;
+  },
+};
+
+const baseMsgUpdateBillingcyclesResponse: object = {};
+
+export const MsgUpdateBillingcyclesResponse = {
+  encode(
+    _: MsgUpdateBillingcyclesResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgUpdateBillingcyclesResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgUpdateBillingcyclesResponse,
+    } as MsgUpdateBillingcyclesResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): MsgUpdateBillingcyclesResponse {
+    const message = {
+      ...baseMsgUpdateBillingcyclesResponse,
+    } as MsgUpdateBillingcyclesResponse;
+    return message;
+  },
+
+  toJSON(_: MsgUpdateBillingcyclesResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<MsgUpdateBillingcyclesResponse>
+  ): MsgUpdateBillingcyclesResponse {
+    const message = {
+      ...baseMsgUpdateBillingcyclesResponse,
+    } as MsgUpdateBillingcyclesResponse;
+    return message;
+  },
+};
+
+const baseMsgDeleteBillingcycles: object = { creator: "", cycleID: 0 };
+
+export const MsgDeleteBillingcycles = {
+  encode(
+    message: MsgDeleteBillingcycles,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.cycleID !== 0) {
+      writer.uint32(16).uint64(message.cycleID);
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgDeleteBillingcycles {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseMsgDeleteBillingcycles } as MsgDeleteBillingcycles;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.cycleID = longToNumber(reader.uint64() as Long);
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgDeleteBillingcycles {
+    const message = { ...baseMsgDeleteBillingcycles } as MsgDeleteBillingcycles;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (object.cycleID !== undefined && object.cycleID !== null) {
+      message.cycleID = Number(object.cycleID);
+    } else {
+      message.cycleID = 0;
+    }
+    return message;
+  },
+
+  toJSON(message: MsgDeleteBillingcycles): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.cycleID !== undefined && (obj.cycleID = message.cycleID);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<MsgDeleteBillingcycles>
+  ): MsgDeleteBillingcycles {
+    const message = { ...baseMsgDeleteBillingcycles } as MsgDeleteBillingcycles;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (object.cycleID !== undefined && object.cycleID !== null) {
+      message.cycleID = object.cycleID;
+    } else {
+      message.cycleID = 0;
+    }
+    return message;
+  },
+};
+
+const baseMsgDeleteBillingcyclesResponse: object = {};
+
+export const MsgDeleteBillingcyclesResponse = {
+  encode(
+    _: MsgDeleteBillingcyclesResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgDeleteBillingcyclesResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgDeleteBillingcyclesResponse,
+    } as MsgDeleteBillingcyclesResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): MsgDeleteBillingcyclesResponse {
+    const message = {
+      ...baseMsgDeleteBillingcyclesResponse,
+    } as MsgDeleteBillingcyclesResponse;
+    return message;
+  },
+
+  toJSON(_: MsgDeleteBillingcyclesResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<MsgDeleteBillingcyclesResponse>
+  ): MsgDeleteBillingcyclesResponse {
+    const message = {
+      ...baseMsgDeleteBillingcyclesResponse,
+    } as MsgDeleteBillingcyclesResponse;
+    return message;
+  },
+};
+
+const baseMsgCreateCustomerbillingline: object = {
+  creator: "",
+  customerdeviceID: "",
+  cycleID: 0,
+  lineid: 0,
+  producerDeviceID: "",
+  billContractID: "",
+  lineWh: 0,
+  lineWhPrice: 0,
+  curency: "",
+  decremented: 0,
+  phase: 0,
+};
+
+export const MsgCreateCustomerbillingline = {
+  encode(
+    message: MsgCreateCustomerbillingline,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.customerdeviceID !== "") {
+      writer.uint32(18).string(message.customerdeviceID);
+    }
+    if (message.cycleID !== 0) {
+      writer.uint32(24).uint64(message.cycleID);
+    }
+    if (message.lineid !== 0) {
+      writer.uint32(32).uint64(message.lineid);
+    }
+    if (message.producerDeviceID !== "") {
+      writer.uint32(42).string(message.producerDeviceID);
+    }
+    if (message.billContractID !== "") {
+      writer.uint32(50).string(message.billContractID);
+    }
+    if (message.lineWh !== 0) {
+      writer.uint32(56).uint64(message.lineWh);
+    }
+    if (message.lineWhPrice !== 0) {
+      writer.uint32(64).uint64(message.lineWhPrice);
+    }
+    if (message.curency !== "") {
+      writer.uint32(74).string(message.curency);
+    }
+    if (message.decremented !== 0) {
+      writer.uint32(80).uint64(message.decremented);
+    }
+    if (message.phase !== 0) {
+      writer.uint32(88).uint64(message.phase);
+    }
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgCreateCustomerbillingline {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgCreateCustomerbillingline,
+    } as MsgCreateCustomerbillingline;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.customerdeviceID = reader.string();
+          break;
+        case 3:
+          message.cycleID = longToNumber(reader.uint64() as Long);
+          break;
+        case 4:
+          message.lineid = longToNumber(reader.uint64() as Long);
+          break;
+        case 5:
+          message.producerDeviceID = reader.string();
+          break;
+        case 6:
+          message.billContractID = reader.string();
+          break;
+        case 7:
+          message.lineWh = longToNumber(reader.uint64() as Long);
+          break;
+        case 8:
+          message.lineWhPrice = longToNumber(reader.uint64() as Long);
+          break;
+        case 9:
+          message.curency = reader.string();
+          break;
+        case 10:
+          message.decremented = longToNumber(reader.uint64() as Long);
+          break;
+        case 11:
+          message.phase = longToNumber(reader.uint64() as Long);
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgCreateCustomerbillingline {
+    const message = {
+      ...baseMsgCreateCustomerbillingline,
+    } as MsgCreateCustomerbillingline;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (
+      object.customerdeviceID !== undefined &&
+      object.customerdeviceID !== null
+    ) {
+      message.customerdeviceID = String(object.customerdeviceID);
+    } else {
+      message.customerdeviceID = "";
+    }
+    if (object.cycleID !== undefined && object.cycleID !== null) {
+      message.cycleID = Number(object.cycleID);
+    } else {
+      message.cycleID = 0;
+    }
+    if (object.lineid !== undefined && object.lineid !== null) {
+      message.lineid = Number(object.lineid);
+    } else {
+      message.lineid = 0;
+    }
+    if (
+      object.producerDeviceID !== undefined &&
+      object.producerDeviceID !== null
+    ) {
+      message.producerDeviceID = String(object.producerDeviceID);
+    } else {
+      message.producerDeviceID = "";
+    }
+    if (object.billContractID !== undefined && object.billContractID !== null) {
+      message.billContractID = String(object.billContractID);
+    } else {
+      message.billContractID = "";
+    }
+    if (object.lineWh !== undefined && object.lineWh !== null) {
+      message.lineWh = Number(object.lineWh);
+    } else {
+      message.lineWh = 0;
+    }
+    if (object.lineWhPrice !== undefined && object.lineWhPrice !== null) {
+      message.lineWhPrice = Number(object.lineWhPrice);
+    } else {
+      message.lineWhPrice = 0;
+    }
+    if (object.curency !== undefined && object.curency !== null) {
+      message.curency = String(object.curency);
+    } else {
+      message.curency = "";
+    }
+    if (object.decremented !== undefined && object.decremented !== null) {
+      message.decremented = Number(object.decremented);
+    } else {
+      message.decremented = 0;
+    }
+    if (object.phase !== undefined && object.phase !== null) {
+      message.phase = Number(object.phase);
+    } else {
+      message.phase = 0;
+    }
+    return message;
+  },
+
+  toJSON(message: MsgCreateCustomerbillingline): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.customerdeviceID !== undefined &&
+      (obj.customerdeviceID = message.customerdeviceID);
+    message.cycleID !== undefined && (obj.cycleID = message.cycleID);
+    message.lineid !== undefined && (obj.lineid = message.lineid);
+    message.producerDeviceID !== undefined &&
+      (obj.producerDeviceID = message.producerDeviceID);
+    message.billContractID !== undefined &&
+      (obj.billContractID = message.billContractID);
+    message.lineWh !== undefined && (obj.lineWh = message.lineWh);
+    message.lineWhPrice !== undefined &&
+      (obj.lineWhPrice = message.lineWhPrice);
+    message.curency !== undefined && (obj.curency = message.curency);
+    message.decremented !== undefined &&
+      (obj.decremented = message.decremented);
+    message.phase !== undefined && (obj.phase = message.phase);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<MsgCreateCustomerbillingline>
+  ): MsgCreateCustomerbillingline {
+    const message = {
+      ...baseMsgCreateCustomerbillingline,
+    } as MsgCreateCustomerbillingline;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (
+      object.customerdeviceID !== undefined &&
+      object.customerdeviceID !== null
+    ) {
+      message.customerdeviceID = object.customerdeviceID;
+    } else {
+      message.customerdeviceID = "";
+    }
+    if (object.cycleID !== undefined && object.cycleID !== null) {
+      message.cycleID = object.cycleID;
+    } else {
+      message.cycleID = 0;
+    }
+    if (object.lineid !== undefined && object.lineid !== null) {
+      message.lineid = object.lineid;
+    } else {
+      message.lineid = 0;
+    }
+    if (
+      object.producerDeviceID !== undefined &&
+      object.producerDeviceID !== null
+    ) {
+      message.producerDeviceID = object.producerDeviceID;
+    } else {
+      message.producerDeviceID = "";
+    }
+    if (object.billContractID !== undefined && object.billContractID !== null) {
+      message.billContractID = object.billContractID;
+    } else {
+      message.billContractID = "";
+    }
+    if (object.lineWh !== undefined && object.lineWh !== null) {
+      message.lineWh = object.lineWh;
+    } else {
+      message.lineWh = 0;
+    }
+    if (object.lineWhPrice !== undefined && object.lineWhPrice !== null) {
+      message.lineWhPrice = object.lineWhPrice;
+    } else {
+      message.lineWhPrice = 0;
+    }
+    if (object.curency !== undefined && object.curency !== null) {
+      message.curency = object.curency;
+    } else {
+      message.curency = "";
+    }
+    if (object.decremented !== undefined && object.decremented !== null) {
+      message.decremented = object.decremented;
+    } else {
+      message.decremented = 0;
+    }
+    if (object.phase !== undefined && object.phase !== null) {
+      message.phase = object.phase;
+    } else {
+      message.phase = 0;
+    }
+    return message;
+  },
+};
+
+const baseMsgCreateCustomerbillinglineResponse: object = {};
+
+export const MsgCreateCustomerbillinglineResponse = {
+  encode(
+    _: MsgCreateCustomerbillinglineResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgCreateCustomerbillinglineResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgCreateCustomerbillinglineResponse,
+    } as MsgCreateCustomerbillinglineResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): MsgCreateCustomerbillinglineResponse {
+    const message = {
+      ...baseMsgCreateCustomerbillinglineResponse,
+    } as MsgCreateCustomerbillinglineResponse;
+    return message;
+  },
+
+  toJSON(_: MsgCreateCustomerbillinglineResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<MsgCreateCustomerbillinglineResponse>
+  ): MsgCreateCustomerbillinglineResponse {
+    const message = {
+      ...baseMsgCreateCustomerbillinglineResponse,
+    } as MsgCreateCustomerbillinglineResponse;
+    return message;
+  },
+};
+
+const baseMsgUpdateCustomerbillingline: object = {
+  creator: "",
+  customerdeviceID: "",
+  cycleID: 0,
+  lineid: 0,
+  producerDeviceID: "",
+  billContractID: "",
+  lineWh: 0,
+  lineWhPrice: 0,
+  curency: "",
+  decremented: 0,
+  phase: 0,
+};
+
+export const MsgUpdateCustomerbillingline = {
+  encode(
+    message: MsgUpdateCustomerbillingline,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.customerdeviceID !== "") {
+      writer.uint32(18).string(message.customerdeviceID);
+    }
+    if (message.cycleID !== 0) {
+      writer.uint32(24).uint64(message.cycleID);
+    }
+    if (message.lineid !== 0) {
+      writer.uint32(32).uint64(message.lineid);
+    }
+    if (message.producerDeviceID !== "") {
+      writer.uint32(42).string(message.producerDeviceID);
+    }
+    if (message.billContractID !== "") {
+      writer.uint32(50).string(message.billContractID);
+    }
+    if (message.lineWh !== 0) {
+      writer.uint32(56).uint64(message.lineWh);
+    }
+    if (message.lineWhPrice !== 0) {
+      writer.uint32(64).uint64(message.lineWhPrice);
+    }
+    if (message.curency !== "") {
+      writer.uint32(74).string(message.curency);
+    }
+    if (message.decremented !== 0) {
+      writer.uint32(80).uint64(message.decremented);
+    }
+    if (message.phase !== 0) {
+      writer.uint32(88).uint64(message.phase);
+    }
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgUpdateCustomerbillingline {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgUpdateCustomerbillingline,
+    } as MsgUpdateCustomerbillingline;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.customerdeviceID = reader.string();
+          break;
+        case 3:
+          message.cycleID = longToNumber(reader.uint64() as Long);
+          break;
+        case 4:
+          message.lineid = longToNumber(reader.uint64() as Long);
+          break;
+        case 5:
+          message.producerDeviceID = reader.string();
+          break;
+        case 6:
+          message.billContractID = reader.string();
+          break;
+        case 7:
+          message.lineWh = longToNumber(reader.uint64() as Long);
+          break;
+        case 8:
+          message.lineWhPrice = longToNumber(reader.uint64() as Long);
+          break;
+        case 9:
+          message.curency = reader.string();
+          break;
+        case 10:
+          message.decremented = longToNumber(reader.uint64() as Long);
+          break;
+        case 11:
+          message.phase = longToNumber(reader.uint64() as Long);
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgUpdateCustomerbillingline {
+    const message = {
+      ...baseMsgUpdateCustomerbillingline,
+    } as MsgUpdateCustomerbillingline;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (
+      object.customerdeviceID !== undefined &&
+      object.customerdeviceID !== null
+    ) {
+      message.customerdeviceID = String(object.customerdeviceID);
+    } else {
+      message.customerdeviceID = "";
+    }
+    if (object.cycleID !== undefined && object.cycleID !== null) {
+      message.cycleID = Number(object.cycleID);
+    } else {
+      message.cycleID = 0;
+    }
+    if (object.lineid !== undefined && object.lineid !== null) {
+      message.lineid = Number(object.lineid);
+    } else {
+      message.lineid = 0;
+    }
+    if (
+      object.producerDeviceID !== undefined &&
+      object.producerDeviceID !== null
+    ) {
+      message.producerDeviceID = String(object.producerDeviceID);
+    } else {
+      message.producerDeviceID = "";
+    }
+    if (object.billContractID !== undefined && object.billContractID !== null) {
+      message.billContractID = String(object.billContractID);
+    } else {
+      message.billContractID = "";
+    }
+    if (object.lineWh !== undefined && object.lineWh !== null) {
+      message.lineWh = Number(object.lineWh);
+    } else {
+      message.lineWh = 0;
+    }
+    if (object.lineWhPrice !== undefined && object.lineWhPrice !== null) {
+      message.lineWhPrice = Number(object.lineWhPrice);
+    } else {
+      message.lineWhPrice = 0;
+    }
+    if (object.curency !== undefined && object.curency !== null) {
+      message.curency = String(object.curency);
+    } else {
+      message.curency = "";
+    }
+    if (object.decremented !== undefined && object.decremented !== null) {
+      message.decremented = Number(object.decremented);
+    } else {
+      message.decremented = 0;
+    }
+    if (object.phase !== undefined && object.phase !== null) {
+      message.phase = Number(object.phase);
+    } else {
+      message.phase = 0;
+    }
+    return message;
+  },
+
+  toJSON(message: MsgUpdateCustomerbillingline): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.customerdeviceID !== undefined &&
+      (obj.customerdeviceID = message.customerdeviceID);
+    message.cycleID !== undefined && (obj.cycleID = message.cycleID);
+    message.lineid !== undefined && (obj.lineid = message.lineid);
+    message.producerDeviceID !== undefined &&
+      (obj.producerDeviceID = message.producerDeviceID);
+    message.billContractID !== undefined &&
+      (obj.billContractID = message.billContractID);
+    message.lineWh !== undefined && (obj.lineWh = message.lineWh);
+    message.lineWhPrice !== undefined &&
+      (obj.lineWhPrice = message.lineWhPrice);
+    message.curency !== undefined && (obj.curency = message.curency);
+    message.decremented !== undefined &&
+      (obj.decremented = message.decremented);
+    message.phase !== undefined && (obj.phase = message.phase);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<MsgUpdateCustomerbillingline>
+  ): MsgUpdateCustomerbillingline {
+    const message = {
+      ...baseMsgUpdateCustomerbillingline,
+    } as MsgUpdateCustomerbillingline;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (
+      object.customerdeviceID !== undefined &&
+      object.customerdeviceID !== null
+    ) {
+      message.customerdeviceID = object.customerdeviceID;
+    } else {
+      message.customerdeviceID = "";
+    }
+    if (object.cycleID !== undefined && object.cycleID !== null) {
+      message.cycleID = object.cycleID;
+    } else {
+      message.cycleID = 0;
+    }
+    if (object.lineid !== undefined && object.lineid !== null) {
+      message.lineid = object.lineid;
+    } else {
+      message.lineid = 0;
+    }
+    if (
+      object.producerDeviceID !== undefined &&
+      object.producerDeviceID !== null
+    ) {
+      message.producerDeviceID = object.producerDeviceID;
+    } else {
+      message.producerDeviceID = "";
+    }
+    if (object.billContractID !== undefined && object.billContractID !== null) {
+      message.billContractID = object.billContractID;
+    } else {
+      message.billContractID = "";
+    }
+    if (object.lineWh !== undefined && object.lineWh !== null) {
+      message.lineWh = object.lineWh;
+    } else {
+      message.lineWh = 0;
+    }
+    if (object.lineWhPrice !== undefined && object.lineWhPrice !== null) {
+      message.lineWhPrice = object.lineWhPrice;
+    } else {
+      message.lineWhPrice = 0;
+    }
+    if (object.curency !== undefined && object.curency !== null) {
+      message.curency = object.curency;
+    } else {
+      message.curency = "";
+    }
+    if (object.decremented !== undefined && object.decremented !== null) {
+      message.decremented = object.decremented;
+    } else {
+      message.decremented = 0;
+    }
+    if (object.phase !== undefined && object.phase !== null) {
+      message.phase = object.phase;
+    } else {
+      message.phase = 0;
+    }
+    return message;
+  },
+};
+
+const baseMsgUpdateCustomerbillinglineResponse: object = {};
+
+export const MsgUpdateCustomerbillinglineResponse = {
+  encode(
+    _: MsgUpdateCustomerbillinglineResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgUpdateCustomerbillinglineResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgUpdateCustomerbillinglineResponse,
+    } as MsgUpdateCustomerbillinglineResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): MsgUpdateCustomerbillinglineResponse {
+    const message = {
+      ...baseMsgUpdateCustomerbillinglineResponse,
+    } as MsgUpdateCustomerbillinglineResponse;
+    return message;
+  },
+
+  toJSON(_: MsgUpdateCustomerbillinglineResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<MsgUpdateCustomerbillinglineResponse>
+  ): MsgUpdateCustomerbillinglineResponse {
+    const message = {
+      ...baseMsgUpdateCustomerbillinglineResponse,
+    } as MsgUpdateCustomerbillinglineResponse;
+    return message;
+  },
+};
+
+const baseMsgDeleteCustomerbillingline: object = {
+  creator: "",
+  customerdeviceID: "",
+  cycleID: 0,
+  lineid: 0,
+};
+
+export const MsgDeleteCustomerbillingline = {
+  encode(
+    message: MsgDeleteCustomerbillingline,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.customerdeviceID !== "") {
+      writer.uint32(18).string(message.customerdeviceID);
+    }
+    if (message.cycleID !== 0) {
+      writer.uint32(24).uint64(message.cycleID);
+    }
+    if (message.lineid !== 0) {
+      writer.uint32(32).uint64(message.lineid);
+    }
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgDeleteCustomerbillingline {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgDeleteCustomerbillingline,
+    } as MsgDeleteCustomerbillingline;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.customerdeviceID = reader.string();
+          break;
+        case 3:
+          message.cycleID = longToNumber(reader.uint64() as Long);
+          break;
+        case 4:
+          message.lineid = longToNumber(reader.uint64() as Long);
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgDeleteCustomerbillingline {
+    const message = {
+      ...baseMsgDeleteCustomerbillingline,
+    } as MsgDeleteCustomerbillingline;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (
+      object.customerdeviceID !== undefined &&
+      object.customerdeviceID !== null
+    ) {
+      message.customerdeviceID = String(object.customerdeviceID);
+    } else {
+      message.customerdeviceID = "";
+    }
+    if (object.cycleID !== undefined && object.cycleID !== null) {
+      message.cycleID = Number(object.cycleID);
+    } else {
+      message.cycleID = 0;
+    }
+    if (object.lineid !== undefined && object.lineid !== null) {
+      message.lineid = Number(object.lineid);
+    } else {
+      message.lineid = 0;
+    }
+    return message;
+  },
+
+  toJSON(message: MsgDeleteCustomerbillingline): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.customerdeviceID !== undefined &&
+      (obj.customerdeviceID = message.customerdeviceID);
+    message.cycleID !== undefined && (obj.cycleID = message.cycleID);
+    message.lineid !== undefined && (obj.lineid = message.lineid);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<MsgDeleteCustomerbillingline>
+  ): MsgDeleteCustomerbillingline {
+    const message = {
+      ...baseMsgDeleteCustomerbillingline,
+    } as MsgDeleteCustomerbillingline;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (
+      object.customerdeviceID !== undefined &&
+      object.customerdeviceID !== null
+    ) {
+      message.customerdeviceID = object.customerdeviceID;
+    } else {
+      message.customerdeviceID = "";
+    }
+    if (object.cycleID !== undefined && object.cycleID !== null) {
+      message.cycleID = object.cycleID;
+    } else {
+      message.cycleID = 0;
+    }
+    if (object.lineid !== undefined && object.lineid !== null) {
+      message.lineid = object.lineid;
+    } else {
+      message.lineid = 0;
+    }
+    return message;
+  },
+};
+
+const baseMsgDeleteCustomerbillinglineResponse: object = {};
+
+export const MsgDeleteCustomerbillinglineResponse = {
+  encode(
+    _: MsgDeleteCustomerbillinglineResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgDeleteCustomerbillinglineResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgDeleteCustomerbillinglineResponse,
+    } as MsgDeleteCustomerbillinglineResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): MsgDeleteCustomerbillinglineResponse {
+    const message = {
+      ...baseMsgDeleteCustomerbillinglineResponse,
+    } as MsgDeleteCustomerbillinglineResponse;
+    return message;
+  },
+
+  toJSON(_: MsgDeleteCustomerbillinglineResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<MsgDeleteCustomerbillinglineResponse>
+  ): MsgDeleteCustomerbillinglineResponse {
+    const message = {
+      ...baseMsgDeleteCustomerbillinglineResponse,
+    } as MsgDeleteCustomerbillinglineResponse;
+    return message;
+  },
+};
+
+const baseMsgCreateCustomerbills: object = {
+  creator: "",
+  billCycleID: 0,
+  customerdeviceID: "",
+  billDate: 0,
+  billTotalWh: 0,
+  billTotalPrice: 0,
+  billCurrency: "",
+  billValid: false,
+  paid: false,
+};
+
+export const MsgCreateCustomerbills = {
+  encode(
+    message: MsgCreateCustomerbills,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.billCycleID !== 0) {
+      writer.uint32(16).uint64(message.billCycleID);
+    }
+    if (message.customerdeviceID !== "") {
+      writer.uint32(26).string(message.customerdeviceID);
+    }
+    if (message.billDate !== 0) {
+      writer.uint32(32).uint64(message.billDate);
+    }
+    if (message.billTotalWh !== 0) {
+      writer.uint32(40).uint64(message.billTotalWh);
+    }
+    if (message.billTotalPrice !== 0) {
+      writer.uint32(48).uint64(message.billTotalPrice);
+    }
+    if (message.billCurrency !== "") {
+      writer.uint32(58).string(message.billCurrency);
+    }
+    if (message.billValid === true) {
+      writer.uint32(64).bool(message.billValid);
+    }
+    if (message.paid === true) {
+      writer.uint32(72).bool(message.paid);
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgCreateCustomerbills {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseMsgCreateCustomerbills } as MsgCreateCustomerbills;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.billCycleID = longToNumber(reader.uint64() as Long);
+          break;
+        case 3:
+          message.customerdeviceID = reader.string();
+          break;
+        case 4:
+          message.billDate = longToNumber(reader.uint64() as Long);
+          break;
+        case 5:
+          message.billTotalWh = longToNumber(reader.uint64() as Long);
+          break;
+        case 6:
+          message.billTotalPrice = longToNumber(reader.uint64() as Long);
+          break;
+        case 7:
+          message.billCurrency = reader.string();
+          break;
+        case 8:
+          message.billValid = reader.bool();
+          break;
+        case 9:
+          message.paid = reader.bool();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgCreateCustomerbills {
+    const message = { ...baseMsgCreateCustomerbills } as MsgCreateCustomerbills;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (object.billCycleID !== undefined && object.billCycleID !== null) {
+      message.billCycleID = Number(object.billCycleID);
+    } else {
+      message.billCycleID = 0;
+    }
+    if (
+      object.customerdeviceID !== undefined &&
+      object.customerdeviceID !== null
+    ) {
+      message.customerdeviceID = String(object.customerdeviceID);
+    } else {
+      message.customerdeviceID = "";
+    }
+    if (object.billDate !== undefined && object.billDate !== null) {
+      message.billDate = Number(object.billDate);
+    } else {
+      message.billDate = 0;
+    }
+    if (object.billTotalWh !== undefined && object.billTotalWh !== null) {
+      message.billTotalWh = Number(object.billTotalWh);
+    } else {
+      message.billTotalWh = 0;
+    }
+    if (object.billTotalPrice !== undefined && object.billTotalPrice !== null) {
+      message.billTotalPrice = Number(object.billTotalPrice);
+    } else {
+      message.billTotalPrice = 0;
+    }
+    if (object.billCurrency !== undefined && object.billCurrency !== null) {
+      message.billCurrency = String(object.billCurrency);
+    } else {
+      message.billCurrency = "";
+    }
+    if (object.billValid !== undefined && object.billValid !== null) {
+      message.billValid = Boolean(object.billValid);
+    } else {
+      message.billValid = false;
+    }
+    if (object.paid !== undefined && object.paid !== null) {
+      message.paid = Boolean(object.paid);
+    } else {
+      message.paid = false;
+    }
+    return message;
+  },
+
+  toJSON(message: MsgCreateCustomerbills): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.billCycleID !== undefined &&
+      (obj.billCycleID = message.billCycleID);
+    message.customerdeviceID !== undefined &&
+      (obj.customerdeviceID = message.customerdeviceID);
+    message.billDate !== undefined && (obj.billDate = message.billDate);
+    message.billTotalWh !== undefined &&
+      (obj.billTotalWh = message.billTotalWh);
+    message.billTotalPrice !== undefined &&
+      (obj.billTotalPrice = message.billTotalPrice);
+    message.billCurrency !== undefined &&
+      (obj.billCurrency = message.billCurrency);
+    message.billValid !== undefined && (obj.billValid = message.billValid);
+    message.paid !== undefined && (obj.paid = message.paid);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<MsgCreateCustomerbills>
+  ): MsgCreateCustomerbills {
+    const message = { ...baseMsgCreateCustomerbills } as MsgCreateCustomerbills;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (object.billCycleID !== undefined && object.billCycleID !== null) {
+      message.billCycleID = object.billCycleID;
+    } else {
+      message.billCycleID = 0;
+    }
+    if (
+      object.customerdeviceID !== undefined &&
+      object.customerdeviceID !== null
+    ) {
+      message.customerdeviceID = object.customerdeviceID;
+    } else {
+      message.customerdeviceID = "";
+    }
+    if (object.billDate !== undefined && object.billDate !== null) {
+      message.billDate = object.billDate;
+    } else {
+      message.billDate = 0;
+    }
+    if (object.billTotalWh !== undefined && object.billTotalWh !== null) {
+      message.billTotalWh = object.billTotalWh;
+    } else {
+      message.billTotalWh = 0;
+    }
+    if (object.billTotalPrice !== undefined && object.billTotalPrice !== null) {
+      message.billTotalPrice = object.billTotalPrice;
+    } else {
+      message.billTotalPrice = 0;
+    }
+    if (object.billCurrency !== undefined && object.billCurrency !== null) {
+      message.billCurrency = object.billCurrency;
+    } else {
+      message.billCurrency = "";
+    }
+    if (object.billValid !== undefined && object.billValid !== null) {
+      message.billValid = object.billValid;
+    } else {
+      message.billValid = false;
+    }
+    if (object.paid !== undefined && object.paid !== null) {
+      message.paid = object.paid;
+    } else {
+      message.paid = false;
+    }
+    return message;
+  },
+};
+
+const baseMsgCreateCustomerbillsResponse: object = {};
+
+export const MsgCreateCustomerbillsResponse = {
+  encode(
+    _: MsgCreateCustomerbillsResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgCreateCustomerbillsResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgCreateCustomerbillsResponse,
+    } as MsgCreateCustomerbillsResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): MsgCreateCustomerbillsResponse {
+    const message = {
+      ...baseMsgCreateCustomerbillsResponse,
+    } as MsgCreateCustomerbillsResponse;
+    return message;
+  },
+
+  toJSON(_: MsgCreateCustomerbillsResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<MsgCreateCustomerbillsResponse>
+  ): MsgCreateCustomerbillsResponse {
+    const message = {
+      ...baseMsgCreateCustomerbillsResponse,
+    } as MsgCreateCustomerbillsResponse;
+    return message;
+  },
+};
+
+const baseMsgUpdateCustomerbills: object = {
+  creator: "",
+  billCycleID: 0,
+  customerdeviceID: "",
+  billDate: 0,
+  billTotalWh: 0,
+  billTotalPrice: 0,
+  billCurrency: "",
+  billValid: false,
+  paid: false,
+};
+
+export const MsgUpdateCustomerbills = {
+  encode(
+    message: MsgUpdateCustomerbills,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.billCycleID !== 0) {
+      writer.uint32(16).uint64(message.billCycleID);
+    }
+    if (message.customerdeviceID !== "") {
+      writer.uint32(26).string(message.customerdeviceID);
+    }
+    if (message.billDate !== 0) {
+      writer.uint32(32).uint64(message.billDate);
+    }
+    if (message.billTotalWh !== 0) {
+      writer.uint32(40).uint64(message.billTotalWh);
+    }
+    if (message.billTotalPrice !== 0) {
+      writer.uint32(48).uint64(message.billTotalPrice);
+    }
+    if (message.billCurrency !== "") {
+      writer.uint32(58).string(message.billCurrency);
+    }
+    if (message.billValid === true) {
+      writer.uint32(64).bool(message.billValid);
+    }
+    if (message.paid === true) {
+      writer.uint32(72).bool(message.paid);
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgUpdateCustomerbills {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseMsgUpdateCustomerbills } as MsgUpdateCustomerbills;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.billCycleID = longToNumber(reader.uint64() as Long);
+          break;
+        case 3:
+          message.customerdeviceID = reader.string();
+          break;
+        case 4:
+          message.billDate = longToNumber(reader.uint64() as Long);
+          break;
+        case 5:
+          message.billTotalWh = longToNumber(reader.uint64() as Long);
+          break;
+        case 6:
+          message.billTotalPrice = longToNumber(reader.uint64() as Long);
+          break;
+        case 7:
+          message.billCurrency = reader.string();
+          break;
+        case 8:
+          message.billValid = reader.bool();
+          break;
+        case 9:
+          message.paid = reader.bool();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgUpdateCustomerbills {
+    const message = { ...baseMsgUpdateCustomerbills } as MsgUpdateCustomerbills;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (object.billCycleID !== undefined && object.billCycleID !== null) {
+      message.billCycleID = Number(object.billCycleID);
+    } else {
+      message.billCycleID = 0;
+    }
+    if (
+      object.customerdeviceID !== undefined &&
+      object.customerdeviceID !== null
+    ) {
+      message.customerdeviceID = String(object.customerdeviceID);
+    } else {
+      message.customerdeviceID = "";
+    }
+    if (object.billDate !== undefined && object.billDate !== null) {
+      message.billDate = Number(object.billDate);
+    } else {
+      message.billDate = 0;
+    }
+    if (object.billTotalWh !== undefined && object.billTotalWh !== null) {
+      message.billTotalWh = Number(object.billTotalWh);
+    } else {
+      message.billTotalWh = 0;
+    }
+    if (object.billTotalPrice !== undefined && object.billTotalPrice !== null) {
+      message.billTotalPrice = Number(object.billTotalPrice);
+    } else {
+      message.billTotalPrice = 0;
+    }
+    if (object.billCurrency !== undefined && object.billCurrency !== null) {
+      message.billCurrency = String(object.billCurrency);
+    } else {
+      message.billCurrency = "";
+    }
+    if (object.billValid !== undefined && object.billValid !== null) {
+      message.billValid = Boolean(object.billValid);
+    } else {
+      message.billValid = false;
+    }
+    if (object.paid !== undefined && object.paid !== null) {
+      message.paid = Boolean(object.paid);
+    } else {
+      message.paid = false;
+    }
+    return message;
+  },
+
+  toJSON(message: MsgUpdateCustomerbills): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.billCycleID !== undefined &&
+      (obj.billCycleID = message.billCycleID);
+    message.customerdeviceID !== undefined &&
+      (obj.customerdeviceID = message.customerdeviceID);
+    message.billDate !== undefined && (obj.billDate = message.billDate);
+    message.billTotalWh !== undefined &&
+      (obj.billTotalWh = message.billTotalWh);
+    message.billTotalPrice !== undefined &&
+      (obj.billTotalPrice = message.billTotalPrice);
+    message.billCurrency !== undefined &&
+      (obj.billCurrency = message.billCurrency);
+    message.billValid !== undefined && (obj.billValid = message.billValid);
+    message.paid !== undefined && (obj.paid = message.paid);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<MsgUpdateCustomerbills>
+  ): MsgUpdateCustomerbills {
+    const message = { ...baseMsgUpdateCustomerbills } as MsgUpdateCustomerbills;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (object.billCycleID !== undefined && object.billCycleID !== null) {
+      message.billCycleID = object.billCycleID;
+    } else {
+      message.billCycleID = 0;
+    }
+    if (
+      object.customerdeviceID !== undefined &&
+      object.customerdeviceID !== null
+    ) {
+      message.customerdeviceID = object.customerdeviceID;
+    } else {
+      message.customerdeviceID = "";
+    }
+    if (object.billDate !== undefined && object.billDate !== null) {
+      message.billDate = object.billDate;
+    } else {
+      message.billDate = 0;
+    }
+    if (object.billTotalWh !== undefined && object.billTotalWh !== null) {
+      message.billTotalWh = object.billTotalWh;
+    } else {
+      message.billTotalWh = 0;
+    }
+    if (object.billTotalPrice !== undefined && object.billTotalPrice !== null) {
+      message.billTotalPrice = object.billTotalPrice;
+    } else {
+      message.billTotalPrice = 0;
+    }
+    if (object.billCurrency !== undefined && object.billCurrency !== null) {
+      message.billCurrency = object.billCurrency;
+    } else {
+      message.billCurrency = "";
+    }
+    if (object.billValid !== undefined && object.billValid !== null) {
+      message.billValid = object.billValid;
+    } else {
+      message.billValid = false;
+    }
+    if (object.paid !== undefined && object.paid !== null) {
+      message.paid = object.paid;
+    } else {
+      message.paid = false;
+    }
+    return message;
+  },
+};
+
+const baseMsgUpdateCustomerbillsResponse: object = {};
+
+export const MsgUpdateCustomerbillsResponse = {
+  encode(
+    _: MsgUpdateCustomerbillsResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgUpdateCustomerbillsResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgUpdateCustomerbillsResponse,
+    } as MsgUpdateCustomerbillsResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): MsgUpdateCustomerbillsResponse {
+    const message = {
+      ...baseMsgUpdateCustomerbillsResponse,
+    } as MsgUpdateCustomerbillsResponse;
+    return message;
+  },
+
+  toJSON(_: MsgUpdateCustomerbillsResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<MsgUpdateCustomerbillsResponse>
+  ): MsgUpdateCustomerbillsResponse {
+    const message = {
+      ...baseMsgUpdateCustomerbillsResponse,
+    } as MsgUpdateCustomerbillsResponse;
+    return message;
+  },
+};
+
+const baseMsgDeleteCustomerbills: object = {
+  creator: "",
+  billCycleID: 0,
+  customerdeviceID: "",
+};
+
+export const MsgDeleteCustomerbills = {
+  encode(
+    message: MsgDeleteCustomerbills,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.billCycleID !== 0) {
+      writer.uint32(16).uint64(message.billCycleID);
+    }
+    if (message.customerdeviceID !== "") {
+      writer.uint32(26).string(message.customerdeviceID);
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgDeleteCustomerbills {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseMsgDeleteCustomerbills } as MsgDeleteCustomerbills;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.billCycleID = longToNumber(reader.uint64() as Long);
+          break;
+        case 3:
+          message.customerdeviceID = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgDeleteCustomerbills {
+    const message = { ...baseMsgDeleteCustomerbills } as MsgDeleteCustomerbills;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (object.billCycleID !== undefined && object.billCycleID !== null) {
+      message.billCycleID = Number(object.billCycleID);
+    } else {
+      message.billCycleID = 0;
+    }
+    if (
+      object.customerdeviceID !== undefined &&
+      object.customerdeviceID !== null
+    ) {
+      message.customerdeviceID = String(object.customerdeviceID);
+    } else {
+      message.customerdeviceID = "";
+    }
+    return message;
+  },
+
+  toJSON(message: MsgDeleteCustomerbills): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.billCycleID !== undefined &&
+      (obj.billCycleID = message.billCycleID);
+    message.customerdeviceID !== undefined &&
+      (obj.customerdeviceID = message.customerdeviceID);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<MsgDeleteCustomerbills>
+  ): MsgDeleteCustomerbills {
+    const message = { ...baseMsgDeleteCustomerbills } as MsgDeleteCustomerbills;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (object.billCycleID !== undefined && object.billCycleID !== null) {
+      message.billCycleID = object.billCycleID;
+    } else {
+      message.billCycleID = 0;
+    }
+    if (
+      object.customerdeviceID !== undefined &&
+      object.customerdeviceID !== null
+    ) {
+      message.customerdeviceID = object.customerdeviceID;
+    } else {
+      message.customerdeviceID = "";
+    }
+    return message;
+  },
+};
+
+const baseMsgDeleteCustomerbillsResponse: object = {};
+
+export const MsgDeleteCustomerbillsResponse = {
+  encode(
+    _: MsgDeleteCustomerbillsResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgDeleteCustomerbillsResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgDeleteCustomerbillsResponse,
+    } as MsgDeleteCustomerbillsResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): MsgDeleteCustomerbillsResponse {
+    const message = {
+      ...baseMsgDeleteCustomerbillsResponse,
+    } as MsgDeleteCustomerbillsResponse;
+    return message;
+  },
+
+  toJSON(_: MsgDeleteCustomerbillsResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<MsgDeleteCustomerbillsResponse>
+  ): MsgDeleteCustomerbillsResponse {
+    const message = {
+      ...baseMsgDeleteCustomerbillsResponse,
+    } as MsgDeleteCustomerbillsResponse;
+    return message;
+  },
+};
+
+const baseMsgCreateProducerbillingline: object = {
+  creator: "",
+  producerDeviceID: "",
+  cycleID: 0,
+  lineid: 0,
+  customerdeviceID: "",
+  billContractID: "",
+  lineWh: 0,
+  lineWhPrice: 0,
+  curency: "",
+  decremented: 0,
+  phase: 0,
+};
+
+export const MsgCreateProducerbillingline = {
+  encode(
+    message: MsgCreateProducerbillingline,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.producerDeviceID !== "") {
+      writer.uint32(18).string(message.producerDeviceID);
+    }
+    if (message.cycleID !== 0) {
+      writer.uint32(24).uint64(message.cycleID);
+    }
+    if (message.lineid !== 0) {
+      writer.uint32(32).uint64(message.lineid);
+    }
+    if (message.customerdeviceID !== "") {
+      writer.uint32(42).string(message.customerdeviceID);
+    }
+    if (message.billContractID !== "") {
+      writer.uint32(50).string(message.billContractID);
+    }
+    if (message.lineWh !== 0) {
+      writer.uint32(56).uint64(message.lineWh);
+    }
+    if (message.lineWhPrice !== 0) {
+      writer.uint32(64).uint64(message.lineWhPrice);
+    }
+    if (message.curency !== "") {
+      writer.uint32(74).string(message.curency);
+    }
+    if (message.decremented !== 0) {
+      writer.uint32(80).uint64(message.decremented);
+    }
+    if (message.phase !== 0) {
+      writer.uint32(88).uint64(message.phase);
+    }
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgCreateProducerbillingline {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgCreateProducerbillingline,
+    } as MsgCreateProducerbillingline;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.producerDeviceID = reader.string();
+          break;
+        case 3:
+          message.cycleID = longToNumber(reader.uint64() as Long);
+          break;
+        case 4:
+          message.lineid = longToNumber(reader.uint64() as Long);
+          break;
+        case 5:
+          message.customerdeviceID = reader.string();
+          break;
+        case 6:
+          message.billContractID = reader.string();
+          break;
+        case 7:
+          message.lineWh = longToNumber(reader.uint64() as Long);
+          break;
+        case 8:
+          message.lineWhPrice = longToNumber(reader.uint64() as Long);
+          break;
+        case 9:
+          message.curency = reader.string();
+          break;
+        case 10:
+          message.decremented = longToNumber(reader.uint64() as Long);
+          break;
+        case 11:
+          message.phase = longToNumber(reader.uint64() as Long);
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgCreateProducerbillingline {
+    const message = {
+      ...baseMsgCreateProducerbillingline,
+    } as MsgCreateProducerbillingline;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (
+      object.producerDeviceID !== undefined &&
+      object.producerDeviceID !== null
+    ) {
+      message.producerDeviceID = String(object.producerDeviceID);
+    } else {
+      message.producerDeviceID = "";
+    }
+    if (object.cycleID !== undefined && object.cycleID !== null) {
+      message.cycleID = Number(object.cycleID);
+    } else {
+      message.cycleID = 0;
+    }
+    if (object.lineid !== undefined && object.lineid !== null) {
+      message.lineid = Number(object.lineid);
+    } else {
+      message.lineid = 0;
+    }
+    if (
+      object.customerdeviceID !== undefined &&
+      object.customerdeviceID !== null
+    ) {
+      message.customerdeviceID = String(object.customerdeviceID);
+    } else {
+      message.customerdeviceID = "";
+    }
+    if (object.billContractID !== undefined && object.billContractID !== null) {
+      message.billContractID = String(object.billContractID);
+    } else {
+      message.billContractID = "";
+    }
+    if (object.lineWh !== undefined && object.lineWh !== null) {
+      message.lineWh = Number(object.lineWh);
+    } else {
+      message.lineWh = 0;
+    }
+    if (object.lineWhPrice !== undefined && object.lineWhPrice !== null) {
+      message.lineWhPrice = Number(object.lineWhPrice);
+    } else {
+      message.lineWhPrice = 0;
+    }
+    if (object.curency !== undefined && object.curency !== null) {
+      message.curency = String(object.curency);
+    } else {
+      message.curency = "";
+    }
+    if (object.decremented !== undefined && object.decremented !== null) {
+      message.decremented = Number(object.decremented);
+    } else {
+      message.decremented = 0;
+    }
+    if (object.phase !== undefined && object.phase !== null) {
+      message.phase = Number(object.phase);
+    } else {
+      message.phase = 0;
+    }
+    return message;
+  },
+
+  toJSON(message: MsgCreateProducerbillingline): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.producerDeviceID !== undefined &&
+      (obj.producerDeviceID = message.producerDeviceID);
+    message.cycleID !== undefined && (obj.cycleID = message.cycleID);
+    message.lineid !== undefined && (obj.lineid = message.lineid);
+    message.customerdeviceID !== undefined &&
+      (obj.customerdeviceID = message.customerdeviceID);
+    message.billContractID !== undefined &&
+      (obj.billContractID = message.billContractID);
+    message.lineWh !== undefined && (obj.lineWh = message.lineWh);
+    message.lineWhPrice !== undefined &&
+      (obj.lineWhPrice = message.lineWhPrice);
+    message.curency !== undefined && (obj.curency = message.curency);
+    message.decremented !== undefined &&
+      (obj.decremented = message.decremented);
+    message.phase !== undefined && (obj.phase = message.phase);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<MsgCreateProducerbillingline>
+  ): MsgCreateProducerbillingline {
+    const message = {
+      ...baseMsgCreateProducerbillingline,
+    } as MsgCreateProducerbillingline;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (
+      object.producerDeviceID !== undefined &&
+      object.producerDeviceID !== null
+    ) {
+      message.producerDeviceID = object.producerDeviceID;
+    } else {
+      message.producerDeviceID = "";
+    }
+    if (object.cycleID !== undefined && object.cycleID !== null) {
+      message.cycleID = object.cycleID;
+    } else {
+      message.cycleID = 0;
+    }
+    if (object.lineid !== undefined && object.lineid !== null) {
+      message.lineid = object.lineid;
+    } else {
+      message.lineid = 0;
+    }
+    if (
+      object.customerdeviceID !== undefined &&
+      object.customerdeviceID !== null
+    ) {
+      message.customerdeviceID = object.customerdeviceID;
+    } else {
+      message.customerdeviceID = "";
+    }
+    if (object.billContractID !== undefined && object.billContractID !== null) {
+      message.billContractID = object.billContractID;
+    } else {
+      message.billContractID = "";
+    }
+    if (object.lineWh !== undefined && object.lineWh !== null) {
+      message.lineWh = object.lineWh;
+    } else {
+      message.lineWh = 0;
+    }
+    if (object.lineWhPrice !== undefined && object.lineWhPrice !== null) {
+      message.lineWhPrice = object.lineWhPrice;
+    } else {
+      message.lineWhPrice = 0;
+    }
+    if (object.curency !== undefined && object.curency !== null) {
+      message.curency = object.curency;
+    } else {
+      message.curency = "";
+    }
+    if (object.decremented !== undefined && object.decremented !== null) {
+      message.decremented = object.decremented;
+    } else {
+      message.decremented = 0;
+    }
+    if (object.phase !== undefined && object.phase !== null) {
+      message.phase = object.phase;
+    } else {
+      message.phase = 0;
+    }
+    return message;
+  },
+};
+
+const baseMsgCreateProducerbillinglineResponse: object = {};
+
+export const MsgCreateProducerbillinglineResponse = {
+  encode(
+    _: MsgCreateProducerbillinglineResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgCreateProducerbillinglineResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgCreateProducerbillinglineResponse,
+    } as MsgCreateProducerbillinglineResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): MsgCreateProducerbillinglineResponse {
+    const message = {
+      ...baseMsgCreateProducerbillinglineResponse,
+    } as MsgCreateProducerbillinglineResponse;
+    return message;
+  },
+
+  toJSON(_: MsgCreateProducerbillinglineResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<MsgCreateProducerbillinglineResponse>
+  ): MsgCreateProducerbillinglineResponse {
+    const message = {
+      ...baseMsgCreateProducerbillinglineResponse,
+    } as MsgCreateProducerbillinglineResponse;
+    return message;
+  },
+};
+
+const baseMsgUpdateProducerbillingline: object = {
+  creator: "",
+  producerDeviceID: "",
+  cycleID: 0,
+  lineid: 0,
+  customerdeviceID: "",
+  billContractID: "",
+  lineWh: 0,
+  lineWhPrice: 0,
+  curency: "",
+  decremented: 0,
+  phase: 0,
+};
+
+export const MsgUpdateProducerbillingline = {
+  encode(
+    message: MsgUpdateProducerbillingline,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.producerDeviceID !== "") {
+      writer.uint32(18).string(message.producerDeviceID);
+    }
+    if (message.cycleID !== 0) {
+      writer.uint32(24).uint64(message.cycleID);
+    }
+    if (message.lineid !== 0) {
+      writer.uint32(32).uint64(message.lineid);
+    }
+    if (message.customerdeviceID !== "") {
+      writer.uint32(42).string(message.customerdeviceID);
+    }
+    if (message.billContractID !== "") {
+      writer.uint32(50).string(message.billContractID);
+    }
+    if (message.lineWh !== 0) {
+      writer.uint32(56).uint64(message.lineWh);
+    }
+    if (message.lineWhPrice !== 0) {
+      writer.uint32(64).uint64(message.lineWhPrice);
+    }
+    if (message.curency !== "") {
+      writer.uint32(74).string(message.curency);
+    }
+    if (message.decremented !== 0) {
+      writer.uint32(80).uint64(message.decremented);
+    }
+    if (message.phase !== 0) {
+      writer.uint32(88).uint64(message.phase);
+    }
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgUpdateProducerbillingline {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgUpdateProducerbillingline,
+    } as MsgUpdateProducerbillingline;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.producerDeviceID = reader.string();
+          break;
+        case 3:
+          message.cycleID = longToNumber(reader.uint64() as Long);
+          break;
+        case 4:
+          message.lineid = longToNumber(reader.uint64() as Long);
+          break;
+        case 5:
+          message.customerdeviceID = reader.string();
+          break;
+        case 6:
+          message.billContractID = reader.string();
+          break;
+        case 7:
+          message.lineWh = longToNumber(reader.uint64() as Long);
+          break;
+        case 8:
+          message.lineWhPrice = longToNumber(reader.uint64() as Long);
+          break;
+        case 9:
+          message.curency = reader.string();
+          break;
+        case 10:
+          message.decremented = longToNumber(reader.uint64() as Long);
+          break;
+        case 11:
+          message.phase = longToNumber(reader.uint64() as Long);
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgUpdateProducerbillingline {
+    const message = {
+      ...baseMsgUpdateProducerbillingline,
+    } as MsgUpdateProducerbillingline;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (
+      object.producerDeviceID !== undefined &&
+      object.producerDeviceID !== null
+    ) {
+      message.producerDeviceID = String(object.producerDeviceID);
+    } else {
+      message.producerDeviceID = "";
+    }
+    if (object.cycleID !== undefined && object.cycleID !== null) {
+      message.cycleID = Number(object.cycleID);
+    } else {
+      message.cycleID = 0;
+    }
+    if (object.lineid !== undefined && object.lineid !== null) {
+      message.lineid = Number(object.lineid);
+    } else {
+      message.lineid = 0;
+    }
+    if (
+      object.customerdeviceID !== undefined &&
+      object.customerdeviceID !== null
+    ) {
+      message.customerdeviceID = String(object.customerdeviceID);
+    } else {
+      message.customerdeviceID = "";
+    }
+    if (object.billContractID !== undefined && object.billContractID !== null) {
+      message.billContractID = String(object.billContractID);
+    } else {
+      message.billContractID = "";
+    }
+    if (object.lineWh !== undefined && object.lineWh !== null) {
+      message.lineWh = Number(object.lineWh);
+    } else {
+      message.lineWh = 0;
+    }
+    if (object.lineWhPrice !== undefined && object.lineWhPrice !== null) {
+      message.lineWhPrice = Number(object.lineWhPrice);
+    } else {
+      message.lineWhPrice = 0;
+    }
+    if (object.curency !== undefined && object.curency !== null) {
+      message.curency = String(object.curency);
+    } else {
+      message.curency = "";
+    }
+    if (object.decremented !== undefined && object.decremented !== null) {
+      message.decremented = Number(object.decremented);
+    } else {
+      message.decremented = 0;
+    }
+    if (object.phase !== undefined && object.phase !== null) {
+      message.phase = Number(object.phase);
+    } else {
+      message.phase = 0;
+    }
+    return message;
+  },
+
+  toJSON(message: MsgUpdateProducerbillingline): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.producerDeviceID !== undefined &&
+      (obj.producerDeviceID = message.producerDeviceID);
+    message.cycleID !== undefined && (obj.cycleID = message.cycleID);
+    message.lineid !== undefined && (obj.lineid = message.lineid);
+    message.customerdeviceID !== undefined &&
+      (obj.customerdeviceID = message.customerdeviceID);
+    message.billContractID !== undefined &&
+      (obj.billContractID = message.billContractID);
+    message.lineWh !== undefined && (obj.lineWh = message.lineWh);
+    message.lineWhPrice !== undefined &&
+      (obj.lineWhPrice = message.lineWhPrice);
+    message.curency !== undefined && (obj.curency = message.curency);
+    message.decremented !== undefined &&
+      (obj.decremented = message.decremented);
+    message.phase !== undefined && (obj.phase = message.phase);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<MsgUpdateProducerbillingline>
+  ): MsgUpdateProducerbillingline {
+    const message = {
+      ...baseMsgUpdateProducerbillingline,
+    } as MsgUpdateProducerbillingline;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (
+      object.producerDeviceID !== undefined &&
+      object.producerDeviceID !== null
+    ) {
+      message.producerDeviceID = object.producerDeviceID;
+    } else {
+      message.producerDeviceID = "";
+    }
+    if (object.cycleID !== undefined && object.cycleID !== null) {
+      message.cycleID = object.cycleID;
+    } else {
+      message.cycleID = 0;
+    }
+    if (object.lineid !== undefined && object.lineid !== null) {
+      message.lineid = object.lineid;
+    } else {
+      message.lineid = 0;
+    }
+    if (
+      object.customerdeviceID !== undefined &&
+      object.customerdeviceID !== null
+    ) {
+      message.customerdeviceID = object.customerdeviceID;
+    } else {
+      message.customerdeviceID = "";
+    }
+    if (object.billContractID !== undefined && object.billContractID !== null) {
+      message.billContractID = object.billContractID;
+    } else {
+      message.billContractID = "";
+    }
+    if (object.lineWh !== undefined && object.lineWh !== null) {
+      message.lineWh = object.lineWh;
+    } else {
+      message.lineWh = 0;
+    }
+    if (object.lineWhPrice !== undefined && object.lineWhPrice !== null) {
+      message.lineWhPrice = object.lineWhPrice;
+    } else {
+      message.lineWhPrice = 0;
+    }
+    if (object.curency !== undefined && object.curency !== null) {
+      message.curency = object.curency;
+    } else {
+      message.curency = "";
+    }
+    if (object.decremented !== undefined && object.decremented !== null) {
+      message.decremented = object.decremented;
+    } else {
+      message.decremented = 0;
+    }
+    if (object.phase !== undefined && object.phase !== null) {
+      message.phase = object.phase;
+    } else {
+      message.phase = 0;
+    }
+    return message;
+  },
+};
+
+const baseMsgUpdateProducerbillinglineResponse: object = {};
+
+export const MsgUpdateProducerbillinglineResponse = {
+  encode(
+    _: MsgUpdateProducerbillinglineResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgUpdateProducerbillinglineResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgUpdateProducerbillinglineResponse,
+    } as MsgUpdateProducerbillinglineResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): MsgUpdateProducerbillinglineResponse {
+    const message = {
+      ...baseMsgUpdateProducerbillinglineResponse,
+    } as MsgUpdateProducerbillinglineResponse;
+    return message;
+  },
+
+  toJSON(_: MsgUpdateProducerbillinglineResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<MsgUpdateProducerbillinglineResponse>
+  ): MsgUpdateProducerbillinglineResponse {
+    const message = {
+      ...baseMsgUpdateProducerbillinglineResponse,
+    } as MsgUpdateProducerbillinglineResponse;
+    return message;
+  },
+};
+
+const baseMsgDeleteProducerbillingline: object = {
+  creator: "",
+  producerDeviceID: "",
+  cycleID: 0,
+  lineid: 0,
+};
+
+export const MsgDeleteProducerbillingline = {
+  encode(
+    message: MsgDeleteProducerbillingline,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.producerDeviceID !== "") {
+      writer.uint32(18).string(message.producerDeviceID);
+    }
+    if (message.cycleID !== 0) {
+      writer.uint32(24).uint64(message.cycleID);
+    }
+    if (message.lineid !== 0) {
+      writer.uint32(32).uint64(message.lineid);
+    }
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgDeleteProducerbillingline {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgDeleteProducerbillingline,
+    } as MsgDeleteProducerbillingline;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.producerDeviceID = reader.string();
+          break;
+        case 3:
+          message.cycleID = longToNumber(reader.uint64() as Long);
+          break;
+        case 4:
+          message.lineid = longToNumber(reader.uint64() as Long);
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgDeleteProducerbillingline {
+    const message = {
+      ...baseMsgDeleteProducerbillingline,
+    } as MsgDeleteProducerbillingline;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (
+      object.producerDeviceID !== undefined &&
+      object.producerDeviceID !== null
+    ) {
+      message.producerDeviceID = String(object.producerDeviceID);
+    } else {
+      message.producerDeviceID = "";
+    }
+    if (object.cycleID !== undefined && object.cycleID !== null) {
+      message.cycleID = Number(object.cycleID);
+    } else {
+      message.cycleID = 0;
+    }
+    if (object.lineid !== undefined && object.lineid !== null) {
+      message.lineid = Number(object.lineid);
+    } else {
+      message.lineid = 0;
+    }
+    return message;
+  },
+
+  toJSON(message: MsgDeleteProducerbillingline): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.producerDeviceID !== undefined &&
+      (obj.producerDeviceID = message.producerDeviceID);
+    message.cycleID !== undefined && (obj.cycleID = message.cycleID);
+    message.lineid !== undefined && (obj.lineid = message.lineid);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<MsgDeleteProducerbillingline>
+  ): MsgDeleteProducerbillingline {
+    const message = {
+      ...baseMsgDeleteProducerbillingline,
+    } as MsgDeleteProducerbillingline;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (
+      object.producerDeviceID !== undefined &&
+      object.producerDeviceID !== null
+    ) {
+      message.producerDeviceID = object.producerDeviceID;
+    } else {
+      message.producerDeviceID = "";
+    }
+    if (object.cycleID !== undefined && object.cycleID !== null) {
+      message.cycleID = object.cycleID;
+    } else {
+      message.cycleID = 0;
+    }
+    if (object.lineid !== undefined && object.lineid !== null) {
+      message.lineid = object.lineid;
+    } else {
+      message.lineid = 0;
+    }
+    return message;
+  },
+};
+
+const baseMsgDeleteProducerbillinglineResponse: object = {};
+
+export const MsgDeleteProducerbillinglineResponse = {
+  encode(
+    _: MsgDeleteProducerbillinglineResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgDeleteProducerbillinglineResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgDeleteProducerbillinglineResponse,
+    } as MsgDeleteProducerbillinglineResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): MsgDeleteProducerbillinglineResponse {
+    const message = {
+      ...baseMsgDeleteProducerbillinglineResponse,
+    } as MsgDeleteProducerbillinglineResponse;
+    return message;
+  },
+
+  toJSON(_: MsgDeleteProducerbillinglineResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<MsgDeleteProducerbillinglineResponse>
+  ): MsgDeleteProducerbillinglineResponse {
+    const message = {
+      ...baseMsgDeleteProducerbillinglineResponse,
+    } as MsgDeleteProducerbillinglineResponse;
+    return message;
+  },
+};
+
+const baseMsgCreateProducerbills: object = {
+  creator: "",
+  billCycleID: 0,
+  producerdeviceID: "",
+  billDate: 0,
+  billTotalWh: 0,
+  billTotalPrice: 0,
+  billCurrency: "",
+  billValid: false,
+  paid: false,
+};
+
+export const MsgCreateProducerbills = {
+  encode(
+    message: MsgCreateProducerbills,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.billCycleID !== 0) {
+      writer.uint32(16).uint64(message.billCycleID);
+    }
+    if (message.producerdeviceID !== "") {
+      writer.uint32(26).string(message.producerdeviceID);
+    }
+    if (message.billDate !== 0) {
+      writer.uint32(32).uint64(message.billDate);
+    }
+    if (message.billTotalWh !== 0) {
+      writer.uint32(40).uint64(message.billTotalWh);
+    }
+    if (message.billTotalPrice !== 0) {
+      writer.uint32(48).uint64(message.billTotalPrice);
+    }
+    if (message.billCurrency !== "") {
+      writer.uint32(58).string(message.billCurrency);
+    }
+    if (message.billValid === true) {
+      writer.uint32(64).bool(message.billValid);
+    }
+    if (message.paid === true) {
+      writer.uint32(72).bool(message.paid);
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgCreateProducerbills {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseMsgCreateProducerbills } as MsgCreateProducerbills;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.billCycleID = longToNumber(reader.uint64() as Long);
+          break;
+        case 3:
+          message.producerdeviceID = reader.string();
+          break;
+        case 4:
+          message.billDate = longToNumber(reader.uint64() as Long);
+          break;
+        case 5:
+          message.billTotalWh = longToNumber(reader.uint64() as Long);
+          break;
+        case 6:
+          message.billTotalPrice = longToNumber(reader.uint64() as Long);
+          break;
+        case 7:
+          message.billCurrency = reader.string();
+          break;
+        case 8:
+          message.billValid = reader.bool();
+          break;
+        case 9:
+          message.paid = reader.bool();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgCreateProducerbills {
+    const message = { ...baseMsgCreateProducerbills } as MsgCreateProducerbills;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (object.billCycleID !== undefined && object.billCycleID !== null) {
+      message.billCycleID = Number(object.billCycleID);
+    } else {
+      message.billCycleID = 0;
+    }
+    if (
+      object.producerdeviceID !== undefined &&
+      object.producerdeviceID !== null
+    ) {
+      message.producerdeviceID = String(object.producerdeviceID);
+    } else {
+      message.producerdeviceID = "";
+    }
+    if (object.billDate !== undefined && object.billDate !== null) {
+      message.billDate = Number(object.billDate);
+    } else {
+      message.billDate = 0;
+    }
+    if (object.billTotalWh !== undefined && object.billTotalWh !== null) {
+      message.billTotalWh = Number(object.billTotalWh);
+    } else {
+      message.billTotalWh = 0;
+    }
+    if (object.billTotalPrice !== undefined && object.billTotalPrice !== null) {
+      message.billTotalPrice = Number(object.billTotalPrice);
+    } else {
+      message.billTotalPrice = 0;
+    }
+    if (object.billCurrency !== undefined && object.billCurrency !== null) {
+      message.billCurrency = String(object.billCurrency);
+    } else {
+      message.billCurrency = "";
+    }
+    if (object.billValid !== undefined && object.billValid !== null) {
+      message.billValid = Boolean(object.billValid);
+    } else {
+      message.billValid = false;
+    }
+    if (object.paid !== undefined && object.paid !== null) {
+      message.paid = Boolean(object.paid);
+    } else {
+      message.paid = false;
+    }
+    return message;
+  },
+
+  toJSON(message: MsgCreateProducerbills): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.billCycleID !== undefined &&
+      (obj.billCycleID = message.billCycleID);
+    message.producerdeviceID !== undefined &&
+      (obj.producerdeviceID = message.producerdeviceID);
+    message.billDate !== undefined && (obj.billDate = message.billDate);
+    message.billTotalWh !== undefined &&
+      (obj.billTotalWh = message.billTotalWh);
+    message.billTotalPrice !== undefined &&
+      (obj.billTotalPrice = message.billTotalPrice);
+    message.billCurrency !== undefined &&
+      (obj.billCurrency = message.billCurrency);
+    message.billValid !== undefined && (obj.billValid = message.billValid);
+    message.paid !== undefined && (obj.paid = message.paid);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<MsgCreateProducerbills>
+  ): MsgCreateProducerbills {
+    const message = { ...baseMsgCreateProducerbills } as MsgCreateProducerbills;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (object.billCycleID !== undefined && object.billCycleID !== null) {
+      message.billCycleID = object.billCycleID;
+    } else {
+      message.billCycleID = 0;
+    }
+    if (
+      object.producerdeviceID !== undefined &&
+      object.producerdeviceID !== null
+    ) {
+      message.producerdeviceID = object.producerdeviceID;
+    } else {
+      message.producerdeviceID = "";
+    }
+    if (object.billDate !== undefined && object.billDate !== null) {
+      message.billDate = object.billDate;
+    } else {
+      message.billDate = 0;
+    }
+    if (object.billTotalWh !== undefined && object.billTotalWh !== null) {
+      message.billTotalWh = object.billTotalWh;
+    } else {
+      message.billTotalWh = 0;
+    }
+    if (object.billTotalPrice !== undefined && object.billTotalPrice !== null) {
+      message.billTotalPrice = object.billTotalPrice;
+    } else {
+      message.billTotalPrice = 0;
+    }
+    if (object.billCurrency !== undefined && object.billCurrency !== null) {
+      message.billCurrency = object.billCurrency;
+    } else {
+      message.billCurrency = "";
+    }
+    if (object.billValid !== undefined && object.billValid !== null) {
+      message.billValid = object.billValid;
+    } else {
+      message.billValid = false;
+    }
+    if (object.paid !== undefined && object.paid !== null) {
+      message.paid = object.paid;
+    } else {
+      message.paid = false;
+    }
+    return message;
+  },
+};
+
+const baseMsgCreateProducerbillsResponse: object = {};
+
+export const MsgCreateProducerbillsResponse = {
+  encode(
+    _: MsgCreateProducerbillsResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgCreateProducerbillsResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgCreateProducerbillsResponse,
+    } as MsgCreateProducerbillsResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): MsgCreateProducerbillsResponse {
+    const message = {
+      ...baseMsgCreateProducerbillsResponse,
+    } as MsgCreateProducerbillsResponse;
+    return message;
+  },
+
+  toJSON(_: MsgCreateProducerbillsResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<MsgCreateProducerbillsResponse>
+  ): MsgCreateProducerbillsResponse {
+    const message = {
+      ...baseMsgCreateProducerbillsResponse,
+    } as MsgCreateProducerbillsResponse;
+    return message;
+  },
+};
+
+const baseMsgUpdateProducerbills: object = {
+  creator: "",
+  billCycleID: 0,
+  producerdeviceID: "",
+  billDate: 0,
+  billTotalWh: 0,
+  billTotalPrice: 0,
+  billCurrency: "",
+  billValid: false,
+  paid: false,
+};
+
+export const MsgUpdateProducerbills = {
+  encode(
+    message: MsgUpdateProducerbills,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.billCycleID !== 0) {
+      writer.uint32(16).uint64(message.billCycleID);
+    }
+    if (message.producerdeviceID !== "") {
+      writer.uint32(26).string(message.producerdeviceID);
+    }
+    if (message.billDate !== 0) {
+      writer.uint32(32).uint64(message.billDate);
+    }
+    if (message.billTotalWh !== 0) {
+      writer.uint32(40).uint64(message.billTotalWh);
+    }
+    if (message.billTotalPrice !== 0) {
+      writer.uint32(48).uint64(message.billTotalPrice);
+    }
+    if (message.billCurrency !== "") {
+      writer.uint32(58).string(message.billCurrency);
+    }
+    if (message.billValid === true) {
+      writer.uint32(64).bool(message.billValid);
+    }
+    if (message.paid === true) {
+      writer.uint32(72).bool(message.paid);
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgUpdateProducerbills {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseMsgUpdateProducerbills } as MsgUpdateProducerbills;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.billCycleID = longToNumber(reader.uint64() as Long);
+          break;
+        case 3:
+          message.producerdeviceID = reader.string();
+          break;
+        case 4:
+          message.billDate = longToNumber(reader.uint64() as Long);
+          break;
+        case 5:
+          message.billTotalWh = longToNumber(reader.uint64() as Long);
+          break;
+        case 6:
+          message.billTotalPrice = longToNumber(reader.uint64() as Long);
+          break;
+        case 7:
+          message.billCurrency = reader.string();
+          break;
+        case 8:
+          message.billValid = reader.bool();
+          break;
+        case 9:
+          message.paid = reader.bool();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgUpdateProducerbills {
+    const message = { ...baseMsgUpdateProducerbills } as MsgUpdateProducerbills;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (object.billCycleID !== undefined && object.billCycleID !== null) {
+      message.billCycleID = Number(object.billCycleID);
+    } else {
+      message.billCycleID = 0;
+    }
+    if (
+      object.producerdeviceID !== undefined &&
+      object.producerdeviceID !== null
+    ) {
+      message.producerdeviceID = String(object.producerdeviceID);
+    } else {
+      message.producerdeviceID = "";
+    }
+    if (object.billDate !== undefined && object.billDate !== null) {
+      message.billDate = Number(object.billDate);
+    } else {
+      message.billDate = 0;
+    }
+    if (object.billTotalWh !== undefined && object.billTotalWh !== null) {
+      message.billTotalWh = Number(object.billTotalWh);
+    } else {
+      message.billTotalWh = 0;
+    }
+    if (object.billTotalPrice !== undefined && object.billTotalPrice !== null) {
+      message.billTotalPrice = Number(object.billTotalPrice);
+    } else {
+      message.billTotalPrice = 0;
+    }
+    if (object.billCurrency !== undefined && object.billCurrency !== null) {
+      message.billCurrency = String(object.billCurrency);
+    } else {
+      message.billCurrency = "";
+    }
+    if (object.billValid !== undefined && object.billValid !== null) {
+      message.billValid = Boolean(object.billValid);
+    } else {
+      message.billValid = false;
+    }
+    if (object.paid !== undefined && object.paid !== null) {
+      message.paid = Boolean(object.paid);
+    } else {
+      message.paid = false;
+    }
+    return message;
+  },
+
+  toJSON(message: MsgUpdateProducerbills): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.billCycleID !== undefined &&
+      (obj.billCycleID = message.billCycleID);
+    message.producerdeviceID !== undefined &&
+      (obj.producerdeviceID = message.producerdeviceID);
+    message.billDate !== undefined && (obj.billDate = message.billDate);
+    message.billTotalWh !== undefined &&
+      (obj.billTotalWh = message.billTotalWh);
+    message.billTotalPrice !== undefined &&
+      (obj.billTotalPrice = message.billTotalPrice);
+    message.billCurrency !== undefined &&
+      (obj.billCurrency = message.billCurrency);
+    message.billValid !== undefined && (obj.billValid = message.billValid);
+    message.paid !== undefined && (obj.paid = message.paid);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<MsgUpdateProducerbills>
+  ): MsgUpdateProducerbills {
+    const message = { ...baseMsgUpdateProducerbills } as MsgUpdateProducerbills;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (object.billCycleID !== undefined && object.billCycleID !== null) {
+      message.billCycleID = object.billCycleID;
+    } else {
+      message.billCycleID = 0;
+    }
+    if (
+      object.producerdeviceID !== undefined &&
+      object.producerdeviceID !== null
+    ) {
+      message.producerdeviceID = object.producerdeviceID;
+    } else {
+      message.producerdeviceID = "";
+    }
+    if (object.billDate !== undefined && object.billDate !== null) {
+      message.billDate = object.billDate;
+    } else {
+      message.billDate = 0;
+    }
+    if (object.billTotalWh !== undefined && object.billTotalWh !== null) {
+      message.billTotalWh = object.billTotalWh;
+    } else {
+      message.billTotalWh = 0;
+    }
+    if (object.billTotalPrice !== undefined && object.billTotalPrice !== null) {
+      message.billTotalPrice = object.billTotalPrice;
+    } else {
+      message.billTotalPrice = 0;
+    }
+    if (object.billCurrency !== undefined && object.billCurrency !== null) {
+      message.billCurrency = object.billCurrency;
+    } else {
+      message.billCurrency = "";
+    }
+    if (object.billValid !== undefined && object.billValid !== null) {
+      message.billValid = object.billValid;
+    } else {
+      message.billValid = false;
+    }
+    if (object.paid !== undefined && object.paid !== null) {
+      message.paid = object.paid;
+    } else {
+      message.paid = false;
+    }
+    return message;
+  },
+};
+
+const baseMsgUpdateProducerbillsResponse: object = {};
+
+export const MsgUpdateProducerbillsResponse = {
+  encode(
+    _: MsgUpdateProducerbillsResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgUpdateProducerbillsResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgUpdateProducerbillsResponse,
+    } as MsgUpdateProducerbillsResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): MsgUpdateProducerbillsResponse {
+    const message = {
+      ...baseMsgUpdateProducerbillsResponse,
+    } as MsgUpdateProducerbillsResponse;
+    return message;
+  },
+
+  toJSON(_: MsgUpdateProducerbillsResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<MsgUpdateProducerbillsResponse>
+  ): MsgUpdateProducerbillsResponse {
+    const message = {
+      ...baseMsgUpdateProducerbillsResponse,
+    } as MsgUpdateProducerbillsResponse;
+    return message;
+  },
+};
+
+const baseMsgDeleteProducerbills: object = {
+  creator: "",
+  billCycleID: 0,
+  producerdeviceID: "",
+};
+
+export const MsgDeleteProducerbills = {
+  encode(
+    message: MsgDeleteProducerbills,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.billCycleID !== 0) {
+      writer.uint32(16).uint64(message.billCycleID);
+    }
+    if (message.producerdeviceID !== "") {
+      writer.uint32(26).string(message.producerdeviceID);
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgDeleteProducerbills {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseMsgDeleteProducerbills } as MsgDeleteProducerbills;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.billCycleID = longToNumber(reader.uint64() as Long);
+          break;
+        case 3:
+          message.producerdeviceID = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgDeleteProducerbills {
+    const message = { ...baseMsgDeleteProducerbills } as MsgDeleteProducerbills;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (object.billCycleID !== undefined && object.billCycleID !== null) {
+      message.billCycleID = Number(object.billCycleID);
+    } else {
+      message.billCycleID = 0;
+    }
+    if (
+      object.producerdeviceID !== undefined &&
+      object.producerdeviceID !== null
+    ) {
+      message.producerdeviceID = String(object.producerdeviceID);
+    } else {
+      message.producerdeviceID = "";
+    }
+    return message;
+  },
+
+  toJSON(message: MsgDeleteProducerbills): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.billCycleID !== undefined &&
+      (obj.billCycleID = message.billCycleID);
+    message.producerdeviceID !== undefined &&
+      (obj.producerdeviceID = message.producerdeviceID);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<MsgDeleteProducerbills>
+  ): MsgDeleteProducerbills {
+    const message = { ...baseMsgDeleteProducerbills } as MsgDeleteProducerbills;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (object.billCycleID !== undefined && object.billCycleID !== null) {
+      message.billCycleID = object.billCycleID;
+    } else {
+      message.billCycleID = 0;
+    }
+    if (
+      object.producerdeviceID !== undefined &&
+      object.producerdeviceID !== null
+    ) {
+      message.producerdeviceID = object.producerdeviceID;
+    } else {
+      message.producerdeviceID = "";
+    }
+    return message;
+  },
+};
+
+const baseMsgDeleteProducerbillsResponse: object = {};
+
+export const MsgDeleteProducerbillsResponse = {
+  encode(
+    _: MsgDeleteProducerbillsResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgDeleteProducerbillsResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgDeleteProducerbillsResponse,
+    } as MsgDeleteProducerbillsResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): MsgDeleteProducerbillsResponse {
+    const message = {
+      ...baseMsgDeleteProducerbillsResponse,
+    } as MsgDeleteProducerbillsResponse;
+    return message;
+  },
+
+  toJSON(_: MsgDeleteProducerbillsResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<MsgDeleteProducerbillsResponse>
+  ): MsgDeleteProducerbillsResponse {
+    const message = {
+      ...baseMsgDeleteProducerbillsResponse,
+    } as MsgDeleteProducerbillsResponse;
+    return message;
+  },
+};
+
 /** Msg defines the Msg service. */
 export interface Msg {
   Record(request: MsgRecord): Promise<MsgRecordResponse>;
@@ -2055,10 +6685,58 @@ export interface Msg {
   UpdatePowerPurchaseContract(
     request: MsgUpdatePowerPurchaseContract
   ): Promise<MsgUpdatePowerPurchaseContractResponse>;
-  /** this line is used by starport scaffolding # proto/tx/rpc */
   DeletePowerPurchaseContract(
     request: MsgDeletePowerPurchaseContract
   ): Promise<MsgDeletePowerPurchaseContractResponse>;
+  CreatePpaMap(request: MsgCreatePpaMap): Promise<MsgCreatePpaMapResponse>;
+  UpdatePpaMap(request: MsgUpdatePpaMap): Promise<MsgUpdatePpaMapResponse>;
+  DeletePpaMap(request: MsgDeletePpaMap): Promise<MsgDeletePpaMapResponse>;
+  CreateBillingcycles(
+    request: MsgCreateBillingcycles
+  ): Promise<MsgCreateBillingcyclesResponse>;
+  UpdateBillingcycles(
+    request: MsgUpdateBillingcycles
+  ): Promise<MsgUpdateBillingcyclesResponse>;
+  DeleteBillingcycles(
+    request: MsgDeleteBillingcycles
+  ): Promise<MsgDeleteBillingcyclesResponse>;
+  CreateCustomerbillingline(
+    request: MsgCreateCustomerbillingline
+  ): Promise<MsgCreateCustomerbillinglineResponse>;
+  UpdateCustomerbillingline(
+    request: MsgUpdateCustomerbillingline
+  ): Promise<MsgUpdateCustomerbillinglineResponse>;
+  DeleteCustomerbillingline(
+    request: MsgDeleteCustomerbillingline
+  ): Promise<MsgDeleteCustomerbillinglineResponse>;
+  CreateCustomerbills(
+    request: MsgCreateCustomerbills
+  ): Promise<MsgCreateCustomerbillsResponse>;
+  UpdateCustomerbills(
+    request: MsgUpdateCustomerbills
+  ): Promise<MsgUpdateCustomerbillsResponse>;
+  DeleteCustomerbills(
+    request: MsgDeleteCustomerbills
+  ): Promise<MsgDeleteCustomerbillsResponse>;
+  CreateProducerbillingline(
+    request: MsgCreateProducerbillingline
+  ): Promise<MsgCreateProducerbillinglineResponse>;
+  UpdateProducerbillingline(
+    request: MsgUpdateProducerbillingline
+  ): Promise<MsgUpdateProducerbillinglineResponse>;
+  DeleteProducerbillingline(
+    request: MsgDeleteProducerbillingline
+  ): Promise<MsgDeleteProducerbillinglineResponse>;
+  CreateProducerbills(
+    request: MsgCreateProducerbills
+  ): Promise<MsgCreateProducerbillsResponse>;
+  UpdateProducerbills(
+    request: MsgUpdateProducerbills
+  ): Promise<MsgUpdateProducerbillsResponse>;
+  /** this line is used by starport scaffolding # proto/tx/rpc */
+  DeleteProducerbills(
+    request: MsgDeleteProducerbills
+  ): Promise<MsgDeleteProducerbillsResponse>;
 }
 
 export class MsgClientImpl implements Msg {
@@ -2117,6 +6795,240 @@ export class MsgClientImpl implements Msg {
     );
     return promise.then((data) =>
       MsgDeletePowerPurchaseContractResponse.decode(new Reader(data))
+    );
+  }
+
+  CreatePpaMap(request: MsgCreatePpaMap): Promise<MsgCreatePpaMapResponse> {
+    const data = MsgCreatePpaMap.encode(request).finish();
+    const promise = this.rpc.request("electra.meter.Msg", "CreatePpaMap", data);
+    return promise.then((data) =>
+      MsgCreatePpaMapResponse.decode(new Reader(data))
+    );
+  }
+
+  UpdatePpaMap(request: MsgUpdatePpaMap): Promise<MsgUpdatePpaMapResponse> {
+    const data = MsgUpdatePpaMap.encode(request).finish();
+    const promise = this.rpc.request("electra.meter.Msg", "UpdatePpaMap", data);
+    return promise.then((data) =>
+      MsgUpdatePpaMapResponse.decode(new Reader(data))
+    );
+  }
+
+  DeletePpaMap(request: MsgDeletePpaMap): Promise<MsgDeletePpaMapResponse> {
+    const data = MsgDeletePpaMap.encode(request).finish();
+    const promise = this.rpc.request("electra.meter.Msg", "DeletePpaMap", data);
+    return promise.then((data) =>
+      MsgDeletePpaMapResponse.decode(new Reader(data))
+    );
+  }
+
+  CreateBillingcycles(
+    request: MsgCreateBillingcycles
+  ): Promise<MsgCreateBillingcyclesResponse> {
+    const data = MsgCreateBillingcycles.encode(request).finish();
+    const promise = this.rpc.request(
+      "electra.meter.Msg",
+      "CreateBillingcycles",
+      data
+    );
+    return promise.then((data) =>
+      MsgCreateBillingcyclesResponse.decode(new Reader(data))
+    );
+  }
+
+  UpdateBillingcycles(
+    request: MsgUpdateBillingcycles
+  ): Promise<MsgUpdateBillingcyclesResponse> {
+    const data = MsgUpdateBillingcycles.encode(request).finish();
+    const promise = this.rpc.request(
+      "electra.meter.Msg",
+      "UpdateBillingcycles",
+      data
+    );
+    return promise.then((data) =>
+      MsgUpdateBillingcyclesResponse.decode(new Reader(data))
+    );
+  }
+
+  DeleteBillingcycles(
+    request: MsgDeleteBillingcycles
+  ): Promise<MsgDeleteBillingcyclesResponse> {
+    const data = MsgDeleteBillingcycles.encode(request).finish();
+    const promise = this.rpc.request(
+      "electra.meter.Msg",
+      "DeleteBillingcycles",
+      data
+    );
+    return promise.then((data) =>
+      MsgDeleteBillingcyclesResponse.decode(new Reader(data))
+    );
+  }
+
+  CreateCustomerbillingline(
+    request: MsgCreateCustomerbillingline
+  ): Promise<MsgCreateCustomerbillinglineResponse> {
+    const data = MsgCreateCustomerbillingline.encode(request).finish();
+    const promise = this.rpc.request(
+      "electra.meter.Msg",
+      "CreateCustomerbillingline",
+      data
+    );
+    return promise.then((data) =>
+      MsgCreateCustomerbillinglineResponse.decode(new Reader(data))
+    );
+  }
+
+  UpdateCustomerbillingline(
+    request: MsgUpdateCustomerbillingline
+  ): Promise<MsgUpdateCustomerbillinglineResponse> {
+    const data = MsgUpdateCustomerbillingline.encode(request).finish();
+    const promise = this.rpc.request(
+      "electra.meter.Msg",
+      "UpdateCustomerbillingline",
+      data
+    );
+    return promise.then((data) =>
+      MsgUpdateCustomerbillinglineResponse.decode(new Reader(data))
+    );
+  }
+
+  DeleteCustomerbillingline(
+    request: MsgDeleteCustomerbillingline
+  ): Promise<MsgDeleteCustomerbillinglineResponse> {
+    const data = MsgDeleteCustomerbillingline.encode(request).finish();
+    const promise = this.rpc.request(
+      "electra.meter.Msg",
+      "DeleteCustomerbillingline",
+      data
+    );
+    return promise.then((data) =>
+      MsgDeleteCustomerbillinglineResponse.decode(new Reader(data))
+    );
+  }
+
+  CreateCustomerbills(
+    request: MsgCreateCustomerbills
+  ): Promise<MsgCreateCustomerbillsResponse> {
+    const data = MsgCreateCustomerbills.encode(request).finish();
+    const promise = this.rpc.request(
+      "electra.meter.Msg",
+      "CreateCustomerbills",
+      data
+    );
+    return promise.then((data) =>
+      MsgCreateCustomerbillsResponse.decode(new Reader(data))
+    );
+  }
+
+  UpdateCustomerbills(
+    request: MsgUpdateCustomerbills
+  ): Promise<MsgUpdateCustomerbillsResponse> {
+    const data = MsgUpdateCustomerbills.encode(request).finish();
+    const promise = this.rpc.request(
+      "electra.meter.Msg",
+      "UpdateCustomerbills",
+      data
+    );
+    return promise.then((data) =>
+      MsgUpdateCustomerbillsResponse.decode(new Reader(data))
+    );
+  }
+
+  DeleteCustomerbills(
+    request: MsgDeleteCustomerbills
+  ): Promise<MsgDeleteCustomerbillsResponse> {
+    const data = MsgDeleteCustomerbills.encode(request).finish();
+    const promise = this.rpc.request(
+      "electra.meter.Msg",
+      "DeleteCustomerbills",
+      data
+    );
+    return promise.then((data) =>
+      MsgDeleteCustomerbillsResponse.decode(new Reader(data))
+    );
+  }
+
+  CreateProducerbillingline(
+    request: MsgCreateProducerbillingline
+  ): Promise<MsgCreateProducerbillinglineResponse> {
+    const data = MsgCreateProducerbillingline.encode(request).finish();
+    const promise = this.rpc.request(
+      "electra.meter.Msg",
+      "CreateProducerbillingline",
+      data
+    );
+    return promise.then((data) =>
+      MsgCreateProducerbillinglineResponse.decode(new Reader(data))
+    );
+  }
+
+  UpdateProducerbillingline(
+    request: MsgUpdateProducerbillingline
+  ): Promise<MsgUpdateProducerbillinglineResponse> {
+    const data = MsgUpdateProducerbillingline.encode(request).finish();
+    const promise = this.rpc.request(
+      "electra.meter.Msg",
+      "UpdateProducerbillingline",
+      data
+    );
+    return promise.then((data) =>
+      MsgUpdateProducerbillinglineResponse.decode(new Reader(data))
+    );
+  }
+
+  DeleteProducerbillingline(
+    request: MsgDeleteProducerbillingline
+  ): Promise<MsgDeleteProducerbillinglineResponse> {
+    const data = MsgDeleteProducerbillingline.encode(request).finish();
+    const promise = this.rpc.request(
+      "electra.meter.Msg",
+      "DeleteProducerbillingline",
+      data
+    );
+    return promise.then((data) =>
+      MsgDeleteProducerbillinglineResponse.decode(new Reader(data))
+    );
+  }
+
+  CreateProducerbills(
+    request: MsgCreateProducerbills
+  ): Promise<MsgCreateProducerbillsResponse> {
+    const data = MsgCreateProducerbills.encode(request).finish();
+    const promise = this.rpc.request(
+      "electra.meter.Msg",
+      "CreateProducerbills",
+      data
+    );
+    return promise.then((data) =>
+      MsgCreateProducerbillsResponse.decode(new Reader(data))
+    );
+  }
+
+  UpdateProducerbills(
+    request: MsgUpdateProducerbills
+  ): Promise<MsgUpdateProducerbillsResponse> {
+    const data = MsgUpdateProducerbills.encode(request).finish();
+    const promise = this.rpc.request(
+      "electra.meter.Msg",
+      "UpdateProducerbills",
+      data
+    );
+    return promise.then((data) =>
+      MsgUpdateProducerbillsResponse.decode(new Reader(data))
+    );
+  }
+
+  DeleteProducerbills(
+    request: MsgDeleteProducerbills
+  ): Promise<MsgDeleteProducerbillsResponse> {
+    const data = MsgDeleteProducerbills.encode(request).finish();
+    const promise = this.rpc.request(
+      "electra.meter.Msg",
+      "DeleteProducerbills",
+      data
+    );
+    return promise.then((data) =>
+      MsgDeleteProducerbillsResponse.decode(new Reader(data))
     );
   }
 }
