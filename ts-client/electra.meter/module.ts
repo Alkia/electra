@@ -7,10 +7,32 @@ import { msgTypes } from './registry';
 import { IgniteClient } from "../client"
 import { MissingWalletError } from "../helpers"
 import { Api } from "./rest";
+import { MsgRecord } from "./types/meter/tx";
+import { MsgRecord3 } from "./types/meter/tx";
 
 
-export {  };
+export { MsgRecord, MsgRecord3 };
 
+type sendMsgRecordParams = {
+  value: MsgRecord,
+  fee?: StdFee,
+  memo?: string
+};
+
+type sendMsgRecord3Params = {
+  value: MsgRecord3,
+  fee?: StdFee,
+  memo?: string
+};
+
+
+type msgRecordParams = {
+  value: MsgRecord,
+};
+
+type msgRecord3Params = {
+  value: MsgRecord3,
+};
 
 
 export const registry = new Registry(msgTypes);
@@ -30,6 +52,50 @@ export const txClient = ({ signer, prefix, addr }: TxClientOptions = { addr: "ht
 
   return {
 		
+		async sendMsgRecord({ value, fee, memo }: sendMsgRecordParams): Promise<DeliverTxResponse> {
+			if (!signer) {
+					throw new Error('TxClient:sendMsgRecord: Unable to sign Tx. Signer is not present.')
+			}
+			try {			
+				const { address } = (await signer.getAccounts())[0]; 
+				const signingClient = await SigningStargateClient.connectWithSigner(addr,signer,{registry, prefix});
+				let msg = this.msgRecord({ value: MsgRecord.fromPartial(value) })
+				return await signingClient.signAndBroadcast(address, [msg], fee ? fee : defaultFee, memo)
+			} catch (e: any) {
+				throw new Error('TxClient:sendMsgRecord: Could not broadcast Tx: '+ e.message)
+			}
+		},
+		
+		async sendMsgRecord3({ value, fee, memo }: sendMsgRecord3Params): Promise<DeliverTxResponse> {
+			if (!signer) {
+					throw new Error('TxClient:sendMsgRecord3: Unable to sign Tx. Signer is not present.')
+			}
+			try {			
+				const { address } = (await signer.getAccounts())[0]; 
+				const signingClient = await SigningStargateClient.connectWithSigner(addr,signer,{registry, prefix});
+				let msg = this.msgRecord3({ value: MsgRecord3.fromPartial(value) })
+				return await signingClient.signAndBroadcast(address, [msg], fee ? fee : defaultFee, memo)
+			} catch (e: any) {
+				throw new Error('TxClient:sendMsgRecord3: Could not broadcast Tx: '+ e.message)
+			}
+		},
+		
+		
+		msgRecord({ value }: msgRecordParams): EncodeObject {
+			try {
+				return { typeUrl: "/electra.meter.MsgRecord", value: MsgRecord.fromPartial( value ) }  
+			} catch (e: any) {
+				throw new Error('TxClient:MsgRecord: Could not create message: ' + e.message)
+			}
+		},
+		
+		msgRecord3({ value }: msgRecord3Params): EncodeObject {
+			try {
+				return { typeUrl: "/electra.meter.MsgRecord3", value: MsgRecord3.fromPartial( value ) }  
+			} catch (e: any) {
+				throw new Error('TxClient:MsgRecord3: Could not create message: ' + e.message)
+			}
+		},
 		
 	}
 };

@@ -33426,6 +33426,491 @@ paths:
           format: int64
       tags:
         - Query
+  '/electra/meter/listrecordings/{deviceID}/{start}/{end}/{byUnixTime}':
+    get:
+      summary: Queries a list of Listrecordings items.
+      operationId: ElectraMeterListrecordings
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              listrecording:
+                type: string
+              comments:
+                type: string
+              total:
+                type: string
+                format: uint64
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: deviceID
+          in: path
+          required: true
+          type: string
+        - name: start
+          in: path
+          required: true
+          type: string
+          format: uint64
+        - name: end
+          in: path
+          required: true
+          type: string
+          format: uint64
+        - name: byUnixTime
+          in: path
+          required: true
+          type: boolean
+      tags:
+        - Query
+  /electra/meter/meterdirectory:
+    get:
+      summary: Queries a list of Meterdirectory items.
+      operationId: ElectraMeterMeterdirectoryAll
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              meterdirectory:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    deviceID:
+                      type: string
+                    barcodeserial:
+                      type: string
+                    model:
+                      type: string
+                    installationdate:
+                      type: string
+                      format: uint64
+                    address:
+                      type: string
+                    ownerlastname:
+                      type: string
+                    ownerfirstname:
+                      type: string
+                    ownerphone:
+                      type: string
+                    gpsjson:
+                      type: string
+                    active:
+                      type: boolean
+                    triphased:
+                      type: boolean
+                    phasenbmono:
+                      type: string
+                      format: uint64
+              pagination:
+                type: object
+                properties:
+                  next_key:
+                    type: string
+                    format: byte
+                    description: |-
+                      next_key is the key to be passed to PageRequest.key to
+                      query the next page most efficiently. It will be empty if
+                      there are no more results.
+                  total:
+                    type: string
+                    format: uint64
+                    title: >-
+                      total is total number of results available if
+                      PageRequest.count_total
+
+                      was set, its value is undefined otherwise
+                description: >-
+                  PageResponse is to be embedded in gRPC response messages where
+                  the
+
+                  corresponding request message has used PageRequest.
+
+                   message SomeResponse {
+                           repeated Bar results = 1;
+                           PageResponse page = 2;
+                   }
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: pagination.key
+          description: |-
+            key is a value returned in PageResponse.next_key to begin
+            querying the next page most efficiently. Only one of offset or key
+            should be set.
+          in: query
+          required: false
+          type: string
+          format: byte
+        - name: pagination.offset
+          description: >-
+            offset is a numeric offset that can be used when key is unavailable.
+
+            It is less efficient than using key. Only one of offset or key
+            should
+
+            be set.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.limit
+          description: >-
+            limit is the total number of results to be returned in the result
+            page.
+
+            If left empty it will default to a value to be set by each app.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.count_total
+          description: >-
+            count_total is set to true  to indicate that the result set should
+            include
+
+            a count of the total number of items available for pagination in
+            UIs.
+
+            count_total is only respected when offset is used. It is ignored
+            when key
+
+            is set.
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
+          in: query
+          required: false
+          type: boolean
+      tags:
+        - Query
+  '/electra/meter/meterdirectory/{deviceID}/{barcodeserial}':
+    get:
+      summary: Queries a Meterdirectory by index.
+      operationId: ElectraMeterMeterdirectory
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              meterdirectory:
+                type: object
+                properties:
+                  deviceID:
+                    type: string
+                  barcodeserial:
+                    type: string
+                  model:
+                    type: string
+                  installationdate:
+                    type: string
+                    format: uint64
+                  address:
+                    type: string
+                  ownerlastname:
+                    type: string
+                  ownerfirstname:
+                    type: string
+                  ownerphone:
+                    type: string
+                  gpsjson:
+                    type: string
+                  active:
+                    type: boolean
+                  triphased:
+                    type: boolean
+                  phasenbmono:
+                    type: string
+                    format: uint64
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: deviceID
+          in: path
+          required: true
+          type: string
+        - name: barcodeserial
+          in: path
+          required: true
+          type: string
+      tags:
+        - Query
+  /electra/meter/meterreadings:
+    get:
+      summary: Queries a list of Meterreadings items.
+      operationId: ElectraMeterMeterreadingsAll
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              meterreadings:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    deviceID:
+                      type: string
+                    timestamp:
+                      type: string
+                      format: uint64
+                    phase:
+                      type: string
+                      format: uint64
+                    whin:
+                      type: string
+                      format: uint64
+                    whout:
+                      type: string
+                      format: uint64
+                    mvolt:
+                      type: string
+                      format: uint64
+                    mhertz:
+                      type: string
+                      format: uint64
+                    mpf:
+                      type: string
+                      format: uint64
+                    maxmi:
+                      type: string
+                      format: uint64
+              pagination:
+                type: object
+                properties:
+                  next_key:
+                    type: string
+                    format: byte
+                    description: |-
+                      next_key is the key to be passed to PageRequest.key to
+                      query the next page most efficiently. It will be empty if
+                      there are no more results.
+                  total:
+                    type: string
+                    format: uint64
+                    title: >-
+                      total is total number of results available if
+                      PageRequest.count_total
+
+                      was set, its value is undefined otherwise
+                description: >-
+                  PageResponse is to be embedded in gRPC response messages where
+                  the
+
+                  corresponding request message has used PageRequest.
+
+                   message SomeResponse {
+                           repeated Bar results = 1;
+                           PageResponse page = 2;
+                   }
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: pagination.key
+          description: |-
+            key is a value returned in PageResponse.next_key to begin
+            querying the next page most efficiently. Only one of offset or key
+            should be set.
+          in: query
+          required: false
+          type: string
+          format: byte
+        - name: pagination.offset
+          description: >-
+            offset is a numeric offset that can be used when key is unavailable.
+
+            It is less efficient than using key. Only one of offset or key
+            should
+
+            be set.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.limit
+          description: >-
+            limit is the total number of results to be returned in the result
+            page.
+
+            If left empty it will default to a value to be set by each app.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.count_total
+          description: >-
+            count_total is set to true  to indicate that the result set should
+            include
+
+            a count of the total number of items available for pagination in
+            UIs.
+
+            count_total is only respected when offset is used. It is ignored
+            when key
+
+            is set.
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
+          in: query
+          required: false
+          type: boolean
+      tags:
+        - Query
+  '/electra/meter/meterreadings/{deviceID}/{timestamp}':
+    get:
+      summary: Queries a Meterreadings by index.
+      operationId: ElectraMeterMeterreadings
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              meterreadings:
+                type: object
+                properties:
+                  deviceID:
+                    type: string
+                  timestamp:
+                    type: string
+                    format: uint64
+                  phase:
+                    type: string
+                    format: uint64
+                  whin:
+                    type: string
+                    format: uint64
+                  whout:
+                    type: string
+                    format: uint64
+                  mvolt:
+                    type: string
+                    format: uint64
+                  mhertz:
+                    type: string
+                    format: uint64
+                  mpf:
+                    type: string
+                    format: uint64
+                  maxmi:
+                    type: string
+                    format: uint64
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: deviceID
+          in: path
+          required: true
+          type: string
+        - name: timestamp
+          in: path
+          required: true
+          type: string
+          format: uint64
+      tags:
+        - Query
   /electra/meter/params:
     get:
       summary: Parameters queries the parameters of the module.
@@ -68731,6 +69216,68 @@ definitions:
             NOTE: The amount field is an Int which implements the custom method
             signatures required by gogoproto.
     description: Period defines a length of time and amount of coins that will vest.
+  electra.meter.Meterdirectory:
+    type: object
+    properties:
+      deviceID:
+        type: string
+      barcodeserial:
+        type: string
+      model:
+        type: string
+      installationdate:
+        type: string
+        format: uint64
+      address:
+        type: string
+      ownerlastname:
+        type: string
+      ownerfirstname:
+        type: string
+      ownerphone:
+        type: string
+      gpsjson:
+        type: string
+      active:
+        type: boolean
+      triphased:
+        type: boolean
+      phasenbmono:
+        type: string
+        format: uint64
+  electra.meter.Meterreadings:
+    type: object
+    properties:
+      deviceID:
+        type: string
+      timestamp:
+        type: string
+        format: uint64
+      phase:
+        type: string
+        format: uint64
+      whin:
+        type: string
+        format: uint64
+      whout:
+        type: string
+        format: uint64
+      mvolt:
+        type: string
+        format: uint64
+      mhertz:
+        type: string
+        format: uint64
+      mpf:
+        type: string
+        format: uint64
+      maxmi:
+        type: string
+        format: uint64
+  electra.meter.MsgRecord3Response:
+    type: object
+  electra.meter.MsgRecordResponse:
+    type: object
   electra.meter.Params:
     type: object
     properties:
@@ -68744,6 +69291,200 @@ definitions:
       billingAdmin:
         type: string
     description: Params defines the parameters for the module.
+  electra.meter.QueryAllMeterdirectoryResponse:
+    type: object
+    properties:
+      meterdirectory:
+        type: array
+        items:
+          type: object
+          properties:
+            deviceID:
+              type: string
+            barcodeserial:
+              type: string
+            model:
+              type: string
+            installationdate:
+              type: string
+              format: uint64
+            address:
+              type: string
+            ownerlastname:
+              type: string
+            ownerfirstname:
+              type: string
+            ownerphone:
+              type: string
+            gpsjson:
+              type: string
+            active:
+              type: boolean
+            triphased:
+              type: boolean
+            phasenbmono:
+              type: string
+              format: uint64
+      pagination:
+        type: object
+        properties:
+          next_key:
+            type: string
+            format: byte
+            description: |-
+              next_key is the key to be passed to PageRequest.key to
+              query the next page most efficiently. It will be empty if
+              there are no more results.
+          total:
+            type: string
+            format: uint64
+            title: >-
+              total is total number of results available if
+              PageRequest.count_total
+
+              was set, its value is undefined otherwise
+        description: |-
+          PageResponse is to be embedded in gRPC response messages where the
+          corresponding request message has used PageRequest.
+
+           message SomeResponse {
+                   repeated Bar results = 1;
+                   PageResponse page = 2;
+           }
+  electra.meter.QueryAllMeterreadingsResponse:
+    type: object
+    properties:
+      meterreadings:
+        type: array
+        items:
+          type: object
+          properties:
+            deviceID:
+              type: string
+            timestamp:
+              type: string
+              format: uint64
+            phase:
+              type: string
+              format: uint64
+            whin:
+              type: string
+              format: uint64
+            whout:
+              type: string
+              format: uint64
+            mvolt:
+              type: string
+              format: uint64
+            mhertz:
+              type: string
+              format: uint64
+            mpf:
+              type: string
+              format: uint64
+            maxmi:
+              type: string
+              format: uint64
+      pagination:
+        type: object
+        properties:
+          next_key:
+            type: string
+            format: byte
+            description: |-
+              next_key is the key to be passed to PageRequest.key to
+              query the next page most efficiently. It will be empty if
+              there are no more results.
+          total:
+            type: string
+            format: uint64
+            title: >-
+              total is total number of results available if
+              PageRequest.count_total
+
+              was set, its value is undefined otherwise
+        description: |-
+          PageResponse is to be embedded in gRPC response messages where the
+          corresponding request message has used PageRequest.
+
+           message SomeResponse {
+                   repeated Bar results = 1;
+                   PageResponse page = 2;
+           }
+  electra.meter.QueryGetMeterdirectoryResponse:
+    type: object
+    properties:
+      meterdirectory:
+        type: object
+        properties:
+          deviceID:
+            type: string
+          barcodeserial:
+            type: string
+          model:
+            type: string
+          installationdate:
+            type: string
+            format: uint64
+          address:
+            type: string
+          ownerlastname:
+            type: string
+          ownerfirstname:
+            type: string
+          ownerphone:
+            type: string
+          gpsjson:
+            type: string
+          active:
+            type: boolean
+          triphased:
+            type: boolean
+          phasenbmono:
+            type: string
+            format: uint64
+  electra.meter.QueryGetMeterreadingsResponse:
+    type: object
+    properties:
+      meterreadings:
+        type: object
+        properties:
+          deviceID:
+            type: string
+          timestamp:
+            type: string
+            format: uint64
+          phase:
+            type: string
+            format: uint64
+          whin:
+            type: string
+            format: uint64
+          whout:
+            type: string
+            format: uint64
+          mvolt:
+            type: string
+            format: uint64
+          mhertz:
+            type: string
+            format: uint64
+          mpf:
+            type: string
+            format: uint64
+          maxmi:
+            type: string
+            format: uint64
+  electra.meter.QueryListrecordingsResponse:
+    type: object
+    properties:
+      listrecording:
+        type: string
+      comments:
+        type: string
+      total:
+        type: string
+        format: uint64
   electra.meter.QueryParamsResponse:
     type: object
     properties:

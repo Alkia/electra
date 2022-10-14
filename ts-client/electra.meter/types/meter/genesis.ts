@@ -1,13 +1,17 @@
 /* eslint-disable */
 import { Params } from "../meter/params";
+import { Meterreadings } from "../meter/meterreadings";
+import { Meterdirectory } from "../meter/meterdirectory";
 import { Writer, Reader } from "protobufjs/minimal";
 
 export const protobufPackage = "electra.meter";
 
 /** GenesisState defines the meter module's genesis state. */
 export interface GenesisState {
-  /** this line is used by starport scaffolding # genesis/proto/state */
   params: Params | undefined;
+  meterreadingsList: Meterreadings[];
+  /** this line is used by starport scaffolding # genesis/proto/state */
+  meterdirectoryList: Meterdirectory[];
 }
 
 const baseGenesisState: object = {};
@@ -17,6 +21,12 @@ export const GenesisState = {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
+    for (const v of message.meterreadingsList) {
+      Meterreadings.encode(v!, writer.uint32(18).fork()).ldelim();
+    }
+    for (const v of message.meterdirectoryList) {
+      Meterdirectory.encode(v!, writer.uint32(26).fork()).ldelim();
+    }
     return writer;
   },
 
@@ -24,11 +34,23 @@ export const GenesisState = {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseGenesisState } as GenesisState;
+    message.meterreadingsList = [];
+    message.meterdirectoryList = [];
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
           message.params = Params.decode(reader, reader.uint32());
+          break;
+        case 2:
+          message.meterreadingsList.push(
+            Meterreadings.decode(reader, reader.uint32())
+          );
+          break;
+        case 3:
+          message.meterdirectoryList.push(
+            Meterdirectory.decode(reader, reader.uint32())
+          );
           break;
         default:
           reader.skipType(tag & 7);
@@ -40,10 +62,28 @@ export const GenesisState = {
 
   fromJSON(object: any): GenesisState {
     const message = { ...baseGenesisState } as GenesisState;
+    message.meterreadingsList = [];
+    message.meterdirectoryList = [];
     if (object.params !== undefined && object.params !== null) {
       message.params = Params.fromJSON(object.params);
     } else {
       message.params = undefined;
+    }
+    if (
+      object.meterreadingsList !== undefined &&
+      object.meterreadingsList !== null
+    ) {
+      for (const e of object.meterreadingsList) {
+        message.meterreadingsList.push(Meterreadings.fromJSON(e));
+      }
+    }
+    if (
+      object.meterdirectoryList !== undefined &&
+      object.meterdirectoryList !== null
+    ) {
+      for (const e of object.meterdirectoryList) {
+        message.meterdirectoryList.push(Meterdirectory.fromJSON(e));
+      }
     }
     return message;
   },
@@ -52,15 +92,47 @@ export const GenesisState = {
     const obj: any = {};
     message.params !== undefined &&
       (obj.params = message.params ? Params.toJSON(message.params) : undefined);
+    if (message.meterreadingsList) {
+      obj.meterreadingsList = message.meterreadingsList.map((e) =>
+        e ? Meterreadings.toJSON(e) : undefined
+      );
+    } else {
+      obj.meterreadingsList = [];
+    }
+    if (message.meterdirectoryList) {
+      obj.meterdirectoryList = message.meterdirectoryList.map((e) =>
+        e ? Meterdirectory.toJSON(e) : undefined
+      );
+    } else {
+      obj.meterdirectoryList = [];
+    }
     return obj;
   },
 
   fromPartial(object: DeepPartial<GenesisState>): GenesisState {
     const message = { ...baseGenesisState } as GenesisState;
+    message.meterreadingsList = [];
+    message.meterdirectoryList = [];
     if (object.params !== undefined && object.params !== null) {
       message.params = Params.fromPartial(object.params);
     } else {
       message.params = undefined;
+    }
+    if (
+      object.meterreadingsList !== undefined &&
+      object.meterreadingsList !== null
+    ) {
+      for (const e of object.meterreadingsList) {
+        message.meterreadingsList.push(Meterreadings.fromPartial(e));
+      }
+    }
+    if (
+      object.meterdirectoryList !== undefined &&
+      object.meterdirectoryList !== null
+    ) {
+      for (const e of object.meterdirectoryList) {
+        message.meterdirectoryList.push(Meterdirectory.fromPartial(e));
+      }
     }
     return message;
   },
