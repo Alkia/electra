@@ -26,7 +26,7 @@ The grid gateway synchronize the micro-grid and import extra energy as needed. T
 
 ## Get started
 
-**electra** is built using Cosmos SDK and Tendermint and created with [Ignite CLI](https://ignite.com/cli).
+**electra** is built using Cosmos SDK and Tendermint and created with Ignite.
 
 ```
 ignite chain serve
@@ -68,10 +68,3 @@ curl https://get.ignite.com/username/electra@latest! | sudo bash
 ```
 `username/electra` should match the `username` and `repo_name` of the Github repository to which the source code was pushed. Learn more about [the install process](https://github.com/allinbits/starport-installer).
 
-## Learn more
-
-- [Ignite CLI](https://ignite.com/cli)
-- [Tutorials](https://docs.ignite.com/guide)
-- [Ignite CLI docs](https://docs.ignite.com)
-- [Cosmos SDK docs](https://docs.cosmos.network)
-- [Developer Chat](https://discord.gg/ignite)
