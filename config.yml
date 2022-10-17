@@ -49,4 +49,3 @@ genesis:
     staking:
       params:
         bond_denom: "uelectra"
-    meter:
