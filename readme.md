@@ -36,7 +36,7 @@ ignite chain serve
 
 ### Configure
 
-Your blockchain in development can be configured with `config.yml`. To learn more, see the [Ignite CLI docs](https://docs.ignite.com).
+Your blockchain in development can be configured with `config.yml`. 
 
 ### Web Frontend
 
