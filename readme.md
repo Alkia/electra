@@ -36,7 +36,7 @@ ignite chain serve
 
 ### Configure
 
-Your blockchain in development can be configured with `config.yml`. 
+Your Electra blockchain in development can be configured with `config.yml`. 
 
 ### Web Frontend
 
