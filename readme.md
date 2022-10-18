@@ -32,7 +32,7 @@ The grid gateway synchronize the micro-grid and import extra energy as needed. T
 ignite chain serve
 ```
 
-`serve` command installs dependencies, builds, initializes, and starts your blockchain in development.
+`serve` command installs dependencies, builds, initializes, and starts your Electra blockchain in development.
 
 ### Configure
 
