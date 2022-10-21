@@ -1,0 +1,16 @@
+syntax = "proto3";
+package electra.meter;
+
+import "gogoproto/gogo.proto";
+
+option go_package = "electra/x/meter/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (gogoproto.goproto_stringer) = false;
+  
+  uint64 maxBillingIteration = 1 [(gogoproto.moretags) = "yaml:\"max_billing_iteration\""];
+  bool moduleParamBestForCustomer = 2 [(gogoproto.moretags) = "yaml:\"module_param_best_for_customer\""];
+  bool payAutomatically = 3 [(gogoproto.moretags) = "yaml:\"pay_automatically\""];
+  string billingAdmin = 4 [(gogoproto.moretags) = "yaml:\"billing_admin\""];
+}
