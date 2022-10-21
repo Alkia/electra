@@ -4,29 +4,25 @@ import (
 	"context"
 	"time"
 	"fmt"
-    "encoding/json"
-
+	"electra/x/meter/types"
 	"github.com/cosmos/cosmos-sdk/store/prefix"
 	"github.com/cosmos/cosmos-sdk/types/query"
-
-	"electra/x/meter/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
 
-func (k Keeper) Getcustomerbill(goCtx context.Context, req *types.QueryGetcustomerbillRequest) (*types.QueryGetcustomerbillResponse, error) {
+func (k Keeper) Customerbill(goCtx context.Context, req *types.QueryCustomerbillRequest) (*types.QueryCustomerbillResponse, error) {
 	if req == nil {
 		return nil, status.Error(codes.InvalidArgument, "invalid request")
 	}
 	// Performance Management
 	start := time.Now()
-	// DONE: Process the query
 	var customerbillinglines []types.Customerbillingline
 	var nblines uint64 = 0
 	var billTotalWh, billTotalPrice uint64 = 0 ,0 
-	var stDebug,currency string = "","uelectra"
-	
+	var stDebug string = ""
+
 	ctx := sdk.UnwrapSDKContext(goCtx)
 	store := ctx.KVStore(k.storeKey)
 	customerbillinglineStore := prefix.NewStore(store, types.KeyPrefix(types.CustomerbillinglineKeyPrefix))
@@ -35,9 +31,8 @@ func (k Keeper) Getcustomerbill(goCtx context.Context, req *types.QueryGetcustom
 		var customerbillingline types.Customerbillingline
 		if err := k.cdc.Unmarshal(value, &customerbillingline); err != nil {
 			return err
-		}
-		
-		if (req.CustomerdeviceID  == customerbillingline.CustomerDeviceID) && (uint64(customerbillingline.CycleID) == uint64(req.BillCycleID))  {
+		}	
+		if (req.CustomerdeviceID  == customerbillingline.CustomerdeviceID) && (uint64(customerbillingline.CycleID) == uint64(req.BillCycleID))  {
 			customerbillinglines = append(customerbillinglines, customerbillingline)
 			billTotalWh 	+= customerbillingline.LineWh          
 			billTotalPrice 	+= customerbillingline.LineWhPrice 
@@ -49,14 +44,8 @@ func (k Keeper) Getcustomerbill(goCtx context.Context, req *types.QueryGetcustom
 	if err != nil {
 		return nil, status.Error(codes.Internal, err.Error())
 	}
-	// Convert to array of json string
-	var displaybillinglines []string 
-	for _, line := range customerbillinglines {
-		json, _ := json.Marshal(line)
-		displaybillinglines = append(displaybillinglines, string(json))
-	}
 
 	elapsed := time.Since(start)
 	stDebug = fmt.Sprintf("Search took %s", elapsed)
-	return &types.QueryGetcustomerbillResponse{Customerbillinglines: displaybillinglines, BillTotalWh:billTotalWh, BillTotalPrice: billTotalPrice, Currency: currency, Nblines: nblines, Comments: stDebug, Pagination: pageRes}, nil
+	return &types.QueryCustomerbillResponse{Listofbillinglines: customerbillinglines, BillTotalWh: billTotalWh, BillTotalPrice: billTotalPrice, Nblines: nblines, Comments: stDebug, Pagination: pageRes}, nil
 }
