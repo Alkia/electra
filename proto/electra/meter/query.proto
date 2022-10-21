@@ -5,6 +5,8 @@ import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "electra/meter/params.proto";
+import "electra/meter/meterreadings.proto";
+import "electra/meter/meterdirectory.proto";
 // this line is used by starport scaffolding # 1
 
 option go_package = "electra/x/meter/types";
@@ -15,7 +17,32 @@ service Query {
   rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
     option (google.api.http).get = "/electra/meter/params";
   }
-  // this line is used by starport scaffolding # 2
+  // Queries a Meterreadings by index.
+	rpc Meterreadings(QueryGetMeterreadingsRequest) returns (QueryGetMeterreadingsResponse) {
+		option (google.api.http).get = "/electra/meter/meterreadings/{deviceID}/{timestamp}";
+	}
+
+	// Queries a list of Meterreadings items.
+	rpc MeterreadingsAll(QueryAllMeterreadingsRequest) returns (QueryAllMeterreadingsResponse) {
+		option (google.api.http).get = "/electra/meter/meterreadings";
+	}
+
+// Queries a Meterdirectory by index.
+	rpc Meterdirectory(QueryGetMeterdirectoryRequest) returns (QueryGetMeterdirectoryResponse) {
+		option (google.api.http).get = "/electra/meter/meterdirectory/{deviceID}/{barcodeserial}";
+	}
+
+	// Queries a list of Meterdirectory items.
+	rpc MeterdirectoryAll(QueryAllMeterdirectoryRequest) returns (QueryAllMeterdirectoryResponse) {
+		option (google.api.http).get = "/electra/meter/meterdirectory";
+	}
+
+// Queries a list of Listrecordings items.
+	rpc Listrecordings(QueryListrecordingsRequest) returns (QueryListrecordingsResponse) {
+		option (google.api.http).get = "/electra/meter/listrecordings/{deviceID}/{start}/{end}/{byUnixTime}";
+	}
+
+// this line is used by starport scaffolding # 2
 }
 
 // QueryParamsRequest is request type for the Query/Params RPC method.
@@ -25,6 +52,57 @@ message QueryParamsRequest {}
 message QueryParamsResponse {
   // params holds all the parameters of this module.
   Params params = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryGetMeterreadingsRequest {
+	  string deviceID = 1;
+  uint64 timestamp = 2;
+
+}
+
+message QueryGetMeterreadingsResponse {
+	Meterreadings meterreadings = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllMeterreadingsRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllMeterreadingsResponse {
+	repeated Meterreadings meterreadings = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetMeterdirectoryRequest {
+	  string deviceID = 1;
+  string barcodeserial = 2;
+
+}
+
+message QueryGetMeterdirectoryResponse {
+	Meterdirectory meterdirectory = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllMeterdirectoryRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllMeterdirectoryResponse {
+	repeated Meterdirectory meterdirectory = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryListrecordingsRequest {
+  string deviceID = 1;
+  uint64 start = 2;
+  uint64 end = 3;
+  bool byUnixTime = 4;
+}
+
+message QueryListrecordingsResponse {
+  string meterreadings = 1;
+  string comments = 2;
+  uint64 total = 3;
 }
 
 // this line is used by starport scaffolding # 3

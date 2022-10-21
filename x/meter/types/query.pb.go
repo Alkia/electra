@@ -6,7 +6,7 @@ package types
 import (
 	context "context"
 	fmt "fmt"
-	_ "github.com/cosmos/cosmos-sdk/types/query"
+	query "github.com/cosmos/cosmos-sdk/types/query"
 	_ "github.com/gogo/protobuf/gogoproto"
 	grpc1 "github.com/gogo/protobuf/grpc"
 	proto "github.com/gogo/protobuf/proto"
@@ -113,33 +113,587 @@ func (m *QueryParamsResponse) GetParams() Params {
 	return Params{}
 }
 
+type QueryGetMeterreadingsRequest struct {
+	DeviceID  string `protobuf:"bytes,1,opt,name=deviceID,proto3" json:"deviceID,omitempty"`
+	Timestamp uint64 `protobuf:"varint,2,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
+}
+
+func (m *QueryGetMeterreadingsRequest) Reset()         { *m = QueryGetMeterreadingsRequest{} }
+func (m *QueryGetMeterreadingsRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryGetMeterreadingsRequest) ProtoMessage()    {}
+func (*QueryGetMeterreadingsRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_233f661d7643ff7a, []int{2}
+}
+func (m *QueryGetMeterreadingsRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetMeterreadingsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetMeterreadingsRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetMeterreadingsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetMeterreadingsRequest.Merge(m, src)
+}
+func (m *QueryGetMeterreadingsRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetMeterreadingsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetMeterreadingsRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetMeterreadingsRequest proto.InternalMessageInfo
+
+func (m *QueryGetMeterreadingsRequest) GetDeviceID() string {
+	if m != nil {
+		return m.DeviceID
+	}
+	return ""
+}
+
+func (m *QueryGetMeterreadingsRequest) GetTimestamp() uint64 {
+	if m != nil {
+		return m.Timestamp
+	}
+	return 0
+}
+
+type QueryGetMeterreadingsResponse struct {
+	Meterreadings Meterreadings `protobuf:"bytes,1,opt,name=meterreadings,proto3" json:"meterreadings"`
+}
+
+func (m *QueryGetMeterreadingsResponse) Reset()         { *m = QueryGetMeterreadingsResponse{} }
+func (m *QueryGetMeterreadingsResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryGetMeterreadingsResponse) ProtoMessage()    {}
+func (*QueryGetMeterreadingsResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_233f661d7643ff7a, []int{3}
+}
+func (m *QueryGetMeterreadingsResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetMeterreadingsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetMeterreadingsResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetMeterreadingsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetMeterreadingsResponse.Merge(m, src)
+}
+func (m *QueryGetMeterreadingsResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetMeterreadingsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetMeterreadingsResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetMeterreadingsResponse proto.InternalMessageInfo
+
+func (m *QueryGetMeterreadingsResponse) GetMeterreadings() Meterreadings {
+	if m != nil {
+		return m.Meterreadings
+	}
+	return Meterreadings{}
+}
+
+type QueryAllMeterreadingsRequest struct {
+	Pagination *query.PageRequest `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllMeterreadingsRequest) Reset()         { *m = QueryAllMeterreadingsRequest{} }
+func (m *QueryAllMeterreadingsRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryAllMeterreadingsRequest) ProtoMessage()    {}
+func (*QueryAllMeterreadingsRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_233f661d7643ff7a, []int{4}
+}
+func (m *QueryAllMeterreadingsRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllMeterreadingsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllMeterreadingsRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllMeterreadingsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllMeterreadingsRequest.Merge(m, src)
+}
+func (m *QueryAllMeterreadingsRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllMeterreadingsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllMeterreadingsRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllMeterreadingsRequest proto.InternalMessageInfo
+
+func (m *QueryAllMeterreadingsRequest) GetPagination() *query.PageRequest {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
+type QueryAllMeterreadingsResponse struct {
+	Meterreadings []Meterreadings     `protobuf:"bytes,1,rep,name=meterreadings,proto3" json:"meterreadings"`
+	Pagination    *query.PageResponse `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllMeterreadingsResponse) Reset()         { *m = QueryAllMeterreadingsResponse{} }
+func (m *QueryAllMeterreadingsResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryAllMeterreadingsResponse) ProtoMessage()    {}
+func (*QueryAllMeterreadingsResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_233f661d7643ff7a, []int{5}
+}
+func (m *QueryAllMeterreadingsResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllMeterreadingsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllMeterreadingsResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllMeterreadingsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllMeterreadingsResponse.Merge(m, src)
+}
+func (m *QueryAllMeterreadingsResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllMeterreadingsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllMeterreadingsResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllMeterreadingsResponse proto.InternalMessageInfo
+
+func (m *QueryAllMeterreadingsResponse) GetMeterreadings() []Meterreadings {
+	if m != nil {
+		return m.Meterreadings
+	}
+	return nil
+}
+
+func (m *QueryAllMeterreadingsResponse) GetPagination() *query.PageResponse {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
+type QueryGetMeterdirectoryRequest struct {
+	DeviceID      string `protobuf:"bytes,1,opt,name=deviceID,proto3" json:"deviceID,omitempty"`
+	Barcodeserial string `protobuf:"bytes,2,opt,name=barcodeserial,proto3" json:"barcodeserial,omitempty"`
+}
+
+func (m *QueryGetMeterdirectoryRequest) Reset()         { *m = QueryGetMeterdirectoryRequest{} }
+func (m *QueryGetMeterdirectoryRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryGetMeterdirectoryRequest) ProtoMessage()    {}
+func (*QueryGetMeterdirectoryRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_233f661d7643ff7a, []int{6}
+}
+func (m *QueryGetMeterdirectoryRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetMeterdirectoryRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetMeterdirectoryRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetMeterdirectoryRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetMeterdirectoryRequest.Merge(m, src)
+}
+func (m *QueryGetMeterdirectoryRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetMeterdirectoryRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetMeterdirectoryRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetMeterdirectoryRequest proto.InternalMessageInfo
+
+func (m *QueryGetMeterdirectoryRequest) GetDeviceID() string {
+	if m != nil {
+		return m.DeviceID
+	}
+	return ""
+}
+
+func (m *QueryGetMeterdirectoryRequest) GetBarcodeserial() string {
+	if m != nil {
+		return m.Barcodeserial
+	}
+	return ""
+}
+
+type QueryGetMeterdirectoryResponse struct {
+	Meterdirectory Meterdirectory `protobuf:"bytes,1,opt,name=meterdirectory,proto3" json:"meterdirectory"`
+}
+
+func (m *QueryGetMeterdirectoryResponse) Reset()         { *m = QueryGetMeterdirectoryResponse{} }
+func (m *QueryGetMeterdirectoryResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryGetMeterdirectoryResponse) ProtoMessage()    {}
+func (*QueryGetMeterdirectoryResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_233f661d7643ff7a, []int{7}
+}
+func (m *QueryGetMeterdirectoryResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetMeterdirectoryResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetMeterdirectoryResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetMeterdirectoryResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetMeterdirectoryResponse.Merge(m, src)
+}
+func (m *QueryGetMeterdirectoryResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetMeterdirectoryResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetMeterdirectoryResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetMeterdirectoryResponse proto.InternalMessageInfo
+
+func (m *QueryGetMeterdirectoryResponse) GetMeterdirectory() Meterdirectory {
+	if m != nil {
+		return m.Meterdirectory
+	}
+	return Meterdirectory{}
+}
+
+type QueryAllMeterdirectoryRequest struct {
+	Pagination *query.PageRequest `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllMeterdirectoryRequest) Reset()         { *m = QueryAllMeterdirectoryRequest{} }
+func (m *QueryAllMeterdirectoryRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryAllMeterdirectoryRequest) ProtoMessage()    {}
+func (*QueryAllMeterdirectoryRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_233f661d7643ff7a, []int{8}
+}
+func (m *QueryAllMeterdirectoryRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllMeterdirectoryRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllMeterdirectoryRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllMeterdirectoryRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllMeterdirectoryRequest.Merge(m, src)
+}
+func (m *QueryAllMeterdirectoryRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllMeterdirectoryRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllMeterdirectoryRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllMeterdirectoryRequest proto.InternalMessageInfo
+
+func (m *QueryAllMeterdirectoryRequest) GetPagination() *query.PageRequest {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
+type QueryAllMeterdirectoryResponse struct {
+	Meterdirectory []Meterdirectory    `protobuf:"bytes,1,rep,name=meterdirectory,proto3" json:"meterdirectory"`
+	Pagination     *query.PageResponse `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllMeterdirectoryResponse) Reset()         { *m = QueryAllMeterdirectoryResponse{} }
+func (m *QueryAllMeterdirectoryResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryAllMeterdirectoryResponse) ProtoMessage()    {}
+func (*QueryAllMeterdirectoryResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_233f661d7643ff7a, []int{9}
+}
+func (m *QueryAllMeterdirectoryResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllMeterdirectoryResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllMeterdirectoryResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllMeterdirectoryResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllMeterdirectoryResponse.Merge(m, src)
+}
+func (m *QueryAllMeterdirectoryResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllMeterdirectoryResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllMeterdirectoryResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllMeterdirectoryResponse proto.InternalMessageInfo
+
+func (m *QueryAllMeterdirectoryResponse) GetMeterdirectory() []Meterdirectory {
+	if m != nil {
+		return m.Meterdirectory
+	}
+	return nil
+}
+
+func (m *QueryAllMeterdirectoryResponse) GetPagination() *query.PageResponse {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
+type QueryListrecordingsRequest struct {
+	DeviceID   string `protobuf:"bytes,1,opt,name=deviceID,proto3" json:"deviceID,omitempty"`
+	Start      uint64 `protobuf:"varint,2,opt,name=start,proto3" json:"start,omitempty"`
+	End        uint64 `protobuf:"varint,3,opt,name=end,proto3" json:"end,omitempty"`
+	ByUnixTime bool   `protobuf:"varint,4,opt,name=byUnixTime,proto3" json:"byUnixTime,omitempty"`
+}
+
+func (m *QueryListrecordingsRequest) Reset()         { *m = QueryListrecordingsRequest{} }
+func (m *QueryListrecordingsRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryListrecordingsRequest) ProtoMessage()    {}
+func (*QueryListrecordingsRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_233f661d7643ff7a, []int{10}
+}
+func (m *QueryListrecordingsRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryListrecordingsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryListrecordingsRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryListrecordingsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryListrecordingsRequest.Merge(m, src)
+}
+func (m *QueryListrecordingsRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryListrecordingsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryListrecordingsRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryListrecordingsRequest proto.InternalMessageInfo
+
+func (m *QueryListrecordingsRequest) GetDeviceID() string {
+	if m != nil {
+		return m.DeviceID
+	}
+	return ""
+}
+
+func (m *QueryListrecordingsRequest) GetStart() uint64 {
+	if m != nil {
+		return m.Start
+	}
+	return 0
+}
+
+func (m *QueryListrecordingsRequest) GetEnd() uint64 {
+	if m != nil {
+		return m.End
+	}
+	return 0
+}
+
+func (m *QueryListrecordingsRequest) GetByUnixTime() bool {
+	if m != nil {
+		return m.ByUnixTime
+	}
+	return false
+}
+
+type QueryListrecordingsResponse struct {
+	Meterreadings string `protobuf:"bytes,1,opt,name=meterreadings,proto3" json:"meterreadings,omitempty"`
+	Comments      string `protobuf:"bytes,2,opt,name=comments,proto3" json:"comments,omitempty"`
+	Total         uint64 `protobuf:"varint,3,opt,name=total,proto3" json:"total,omitempty"`
+}
+
+func (m *QueryListrecordingsResponse) Reset()         { *m = QueryListrecordingsResponse{} }
+func (m *QueryListrecordingsResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryListrecordingsResponse) ProtoMessage()    {}
+func (*QueryListrecordingsResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_233f661d7643ff7a, []int{11}
+}
+func (m *QueryListrecordingsResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryListrecordingsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryListrecordingsResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryListrecordingsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryListrecordingsResponse.Merge(m, src)
+}
+func (m *QueryListrecordingsResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryListrecordingsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryListrecordingsResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryListrecordingsResponse proto.InternalMessageInfo
+
+func (m *QueryListrecordingsResponse) GetMeterreadings() string {
+	if m != nil {
+		return m.Meterreadings
+	}
+	return ""
+}
+
+func (m *QueryListrecordingsResponse) GetComments() string {
+	if m != nil {
+		return m.Comments
+	}
+	return ""
+}
+
+func (m *QueryListrecordingsResponse) GetTotal() uint64 {
+	if m != nil {
+		return m.Total
+	}
+	return 0
+}
+
 func init() {
 	proto.RegisterType((*QueryParamsRequest)(nil), "electra.meter.QueryParamsRequest")
 	proto.RegisterType((*QueryParamsResponse)(nil), "electra.meter.QueryParamsResponse")
+	proto.RegisterType((*QueryGetMeterreadingsRequest)(nil), "electra.meter.QueryGetMeterreadingsRequest")
+	proto.RegisterType((*QueryGetMeterreadingsResponse)(nil), "electra.meter.QueryGetMeterreadingsResponse")
+	proto.RegisterType((*QueryAllMeterreadingsRequest)(nil), "electra.meter.QueryAllMeterreadingsRequest")
+	proto.RegisterType((*QueryAllMeterreadingsResponse)(nil), "electra.meter.QueryAllMeterreadingsResponse")
+	proto.RegisterType((*QueryGetMeterdirectoryRequest)(nil), "electra.meter.QueryGetMeterdirectoryRequest")
+	proto.RegisterType((*QueryGetMeterdirectoryResponse)(nil), "electra.meter.QueryGetMeterdirectoryResponse")
+	proto.RegisterType((*QueryAllMeterdirectoryRequest)(nil), "electra.meter.QueryAllMeterdirectoryRequest")
+	proto.RegisterType((*QueryAllMeterdirectoryResponse)(nil), "electra.meter.QueryAllMeterdirectoryResponse")
+	proto.RegisterType((*QueryListrecordingsRequest)(nil), "electra.meter.QueryListrecordingsRequest")
+	proto.RegisterType((*QueryListrecordingsResponse)(nil), "electra.meter.QueryListrecordingsResponse")
 }
 
 func init() { proto.RegisterFile("electra/meter/query.proto", fileDescriptor_233f661d7643ff7a) }
 
 var fileDescriptor_233f661d7643ff7a = []byte{
-	// 280 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0xb1, 0x4e, 0xf3, 0x30,
-	0x14, 0x85, 0x93, 0x5f, 0x3f, 0x19, 0x8c, 0x58, 0x4c, 0x23, 0x20, 0x02, 0x03, 0x99, 0x10, 0x43,
-	0xac, 0xb6, 0x6f, 0xd0, 0x91, 0x09, 0x3a, 0xb2, 0x39, 0xd5, 0x55, 0x14, 0xa9, 0xf1, 0x75, 0x6d,
-	0x17, 0xe8, 0xca, 0x13, 0x20, 0xf1, 0x52, 0x1d, 0x2b, 0xb1, 0x30, 0x21, 0x94, 0xf0, 0x20, 0xa8,
-	0xb6, 0x19, 0x02, 0x88, 0xcd, 0xba, 0xe7, 0x3b, 0x47, 0xe7, 0x98, 0x1c, 0xc1, 0x1c, 0x66, 0x56,
-	0x0b, 0xde, 0x80, 0x05, 0xcd, 0x17, 0x4b, 0xd0, 0xab, 0x42, 0x69, 0xb4, 0x48, 0xf7, 0x82, 0x54,
-	0x38, 0x29, 0x1b, 0x54, 0x58, 0xa1, 0x53, 0xf8, 0xf6, 0xe5, 0xa1, 0xec, 0xb8, 0x42, 0xac, 0xe6,
-	0xc0, 0x85, 0xaa, 0xb9, 0x90, 0x12, 0xad, 0xb0, 0x35, 0x4a, 0x13, 0xd4, 0xcb, 0x19, 0x9a, 0x06,
-	0x0d, 0x2f, 0x85, 0x01, 0x9f, 0xcd, 0xef, 0x86, 0x25, 0x58, 0x31, 0xe4, 0x4a, 0x54, 0xb5, 0x74,
-	0x70, 0x60, 0xb3, 0x7e, 0x13, 0x25, 0xb4, 0x68, 0x42, 0x4e, 0x3e, 0x20, 0xf4, 0x66, 0xeb, 0xbe,
-	0x76, 0xc7, 0x29, 0x2c, 0x96, 0x60, 0x6c, 0x7e, 0x45, 0xf6, 0x7b, 0x57, 0xa3, 0x50, 0x1a, 0xa0,
-	0x63, 0x92, 0x78, 0xf3, 0x61, 0x7c, 0x16, 0x5f, 0xec, 0x8e, 0xd2, 0xa2, 0x37, 0xa4, 0xf0, 0xf8,
-	0xe4, 0xff, 0xfa, 0xed, 0x34, 0x9a, 0x06, 0x74, 0x74, 0x4f, 0x76, 0x5c, 0x16, 0x95, 0x24, 0xf1,
-	0x00, 0x3d, 0xff, 0xe6, 0xfb, 0xd9, 0x20, 0xcb, 0xff, 0x42, 0x7c, 0x9d, 0xfc, 0xe4, 0xf1, 0xe5,
-	0xe3, 0xf9, 0xdf, 0x01, 0x4d, 0xf9, 0x6f, 0x03, 0x27, 0x7c, 0xdd, 0xb2, 0x78, 0xd3, 0xb2, 0xf8,
-	0xbd, 0x65, 0xf1, 0x53, 0xc7, 0xa2, 0x4d, 0xc7, 0xa2, 0xd7, 0x8e, 0x45, 0xb7, 0xe9, 0x17, 0xff,
-	0x10, 0x1c, 0x76, 0xa5, 0xc0, 0x94, 0x89, 0xfb, 0x92, 0xf1, 0x67, 0x00, 0x00, 0x00, 0xff, 0xff,
-	0x37, 0x11, 0x52, 0x84, 0xba, 0x01, 0x00, 0x00,
+	// 796 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x96, 0xdf, 0x4e, 0x13, 0x4f,
+	0x14, 0xc7, 0x3b, 0x14, 0xf8, 0xd1, 0xf3, 0x4b, 0x09, 0x8e, 0x10, 0xeb, 0xda, 0x2e, 0xb0, 0x41,
+	0x45, 0xd4, 0x9d, 0x00, 0x31, 0x31, 0x7a, 0x23, 0xf8, 0x07, 0x15, 0x4d, 0xb0, 0xd1, 0xc4, 0x78,
+	0x37, 0x6d, 0xc7, 0xcd, 0x26, 0xbb, 0x3b, 0x65, 0x77, 0x20, 0x10, 0xd2, 0xc4, 0xf8, 0x04, 0x26,
+	0x5c, 0xf8, 0x08, 0x5e, 0x9a, 0x18, 0xe3, 0x85, 0x4f, 0xc0, 0x25, 0x89, 0x37, 0x5e, 0x19, 0x03,
+	0x3e, 0x88, 0xe9, 0xec, 0xb4, 0x30, 0xcb, 0x76, 0x6d, 0x08, 0x37, 0xa4, 0x33, 0xf3, 0x9d, 0x73,
+	0x3e, 0xe7, 0x9c, 0x39, 0x67, 0x81, 0x8b, 0xcc, 0x63, 0x75, 0x11, 0x52, 0xe2, 0x33, 0xc1, 0x42,
+	0xb2, 0xbe, 0xc1, 0xc2, 0x6d, 0xbb, 0x19, 0x72, 0xc1, 0x71, 0x51, 0x1d, 0xd9, 0xf2, 0xc8, 0x18,
+	0x77, 0xb8, 0xc3, 0xe5, 0x09, 0x69, 0xff, 0x8a, 0x45, 0x46, 0xd9, 0xe1, 0xdc, 0xf1, 0x18, 0xa1,
+	0x4d, 0x97, 0xd0, 0x20, 0xe0, 0x82, 0x0a, 0x97, 0x07, 0x91, 0x3a, 0x9d, 0xab, 0xf3, 0xc8, 0xe7,
+	0x11, 0xa9, 0xd1, 0x88, 0xc5, 0xb6, 0xc9, 0xe6, 0x7c, 0x8d, 0x09, 0x3a, 0x4f, 0x9a, 0xd4, 0x71,
+	0x03, 0x29, 0x56, 0x5a, 0x43, 0x27, 0x69, 0xd2, 0x90, 0xfa, 0x1d, 0x3b, 0xd3, 0xfa, 0x99, 0xfc,
+	0x1b, 0x32, 0xda, 0x70, 0x03, 0xa7, 0x23, 0xb1, 0x52, 0x24, 0x0d, 0x37, 0x64, 0x75, 0xc1, 0x3b,
+	0x11, 0x59, 0xe3, 0x80, 0x5f, 0xb4, 0x21, 0xd6, 0xa4, 0xed, 0x2a, 0x5b, 0xdf, 0x60, 0x91, 0xb0,
+	0x9e, 0xc2, 0x79, 0x6d, 0x37, 0x6a, 0xf2, 0x20, 0x62, 0x78, 0x11, 0x86, 0x63, 0x86, 0x12, 0x9a,
+	0x42, 0xb3, 0xff, 0x2f, 0x4c, 0xd8, 0x5a, 0x3e, 0xec, 0x58, 0xbe, 0x3c, 0xb8, 0xf7, 0x6b, 0x32,
+	0x57, 0x55, 0x52, 0xeb, 0x35, 0x94, 0xa5, 0xad, 0x15, 0x26, 0x9e, 0x1f, 0x87, 0x54, 0xbe, 0xb0,
+	0x01, 0x23, 0x0d, 0xb6, 0xe9, 0xd6, 0xd9, 0x93, 0x07, 0xd2, 0x6c, 0xa1, 0xda, 0x5d, 0xe3, 0x32,
+	0x14, 0x84, 0xeb, 0xb3, 0x48, 0x50, 0xbf, 0x59, 0x1a, 0x98, 0x42, 0xb3, 0x83, 0xd5, 0xa3, 0x0d,
+	0xcb, 0x85, 0x4a, 0x0f, 0xcb, 0x8a, 0xf7, 0x31, 0x14, 0xb5, 0xbc, 0x28, 0xec, 0x72, 0x02, 0x5b,
+	0xbb, 0xac, 0xe8, 0xf5, 0x8b, 0xd6, 0x5b, 0x15, 0xc4, 0x92, 0xe7, 0xa5, 0x06, 0xf1, 0x08, 0xe0,
+	0xa8, 0x7a, 0xca, 0xcd, 0x15, 0x3b, 0x2e, 0xb5, 0xdd, 0x2e, 0xb5, 0x1d, 0x3f, 0x23, 0x55, 0x6a,
+	0x7b, 0x8d, 0x3a, 0x4c, 0xdd, 0xad, 0x1e, 0xbb, 0x69, 0x7d, 0x41, 0x2a, 0xa6, 0x93, 0x8e, 0x7a,
+	0xc7, 0x94, 0x3f, 0x55, 0x4c, 0x78, 0x45, 0x63, 0x1e, 0x90, 0xcc, 0x57, 0xff, 0xc9, 0x1c, 0x63,
+	0x68, 0xd0, 0x34, 0x51, 0x87, 0xee, 0x1b, 0xeb, 0xa7, 0xc4, 0x33, 0x50, 0xac, 0xd1, 0xb0, 0xce,
+	0x1b, 0x2c, 0x62, 0xa1, 0x4b, 0x3d, 0x09, 0x52, 0xa8, 0xea, 0x9b, 0x96, 0x0f, 0x66, 0x2f, 0x17,
+	0x2a, 0x2f, 0xab, 0x30, 0xaa, 0x3f, 0x70, 0x55, 0x85, 0x4a, 0x5a, 0x62, 0xba, 0x22, 0x95, 0x99,
+	0xc4, 0x55, 0xcb, 0x49, 0x54, 0xe1, 0x44, 0x44, 0x67, 0x55, 0xef, 0x6f, 0x48, 0x05, 0x96, 0xe2,
+	0x29, 0x23, 0xb0, 0xfc, 0x29, 0x03, 0x3b, 0xbb, 0x9a, 0xbf, 0x43, 0x60, 0x48, 0xf0, 0x67, 0x6e,
+	0x24, 0x42, 0x56, 0xe7, 0x61, 0xdf, 0x4d, 0x3d, 0x0e, 0x43, 0x91, 0xa0, 0xa1, 0x50, 0x0d, 0x1d,
+	0x2f, 0xf0, 0x18, 0xe4, 0x59, 0xd0, 0x28, 0xe5, 0xe5, 0x5e, 0xfb, 0x27, 0x36, 0x01, 0x6a, 0xdb,
+	0xaf, 0x02, 0x77, 0xeb, 0xa5, 0xeb, 0xb3, 0xd2, 0xe0, 0x14, 0x9a, 0x1d, 0xa9, 0x1e, 0xdb, 0xb1,
+	0x36, 0xe0, 0x52, 0x2a, 0x81, 0xca, 0xdb, 0x4c, 0x5a, 0xf3, 0x17, 0x92, 0x4d, 0x60, 0xc0, 0x48,
+	0x9d, 0xfb, 0x3e, 0x0b, 0x44, 0xa4, 0x5e, 0x5e, 0x77, 0xdd, 0x06, 0x15, 0x5c, 0x50, 0x4f, 0x41,
+	0xc5, 0x8b, 0x85, 0xef, 0xff, 0xc1, 0x90, 0xf4, 0x8b, 0x03, 0x18, 0x8e, 0x27, 0x1e, 0x9e, 0x4e,
+	0xd4, 0xe2, 0xe4, 0x48, 0x35, 0xac, 0x2c, 0x49, 0x8c, 0x6c, 0x55, 0xde, 0xff, 0xf8, 0xb3, 0x3b,
+	0x70, 0x01, 0x4f, 0x90, 0xb4, 0xc1, 0x8f, 0x3f, 0x21, 0x28, 0x6a, 0x7d, 0x8d, 0xaf, 0xa7, 0x19,
+	0xed, 0x31, 0x68, 0x8d, 0x1b, 0xfd, 0x89, 0x15, 0xcb, 0x5d, 0xc9, 0x72, 0x0b, 0x2f, 0x92, 0x8c,
+	0x0f, 0x0d, 0xd9, 0xe9, 0x54, 0xb5, 0x45, 0x76, 0xba, 0x83, 0xb9, 0x85, 0x77, 0x11, 0x8c, 0x69,
+	0x66, 0x97, 0x3c, 0x2f, 0x1d, 0xb6, 0xc7, 0x40, 0x4d, 0x87, 0xed, 0x35, 0x14, 0xad, 0x19, 0x09,
+	0x6b, 0xe2, 0x72, 0x16, 0x2c, 0xfe, 0x8c, 0x60, 0x54, 0xef, 0x12, 0x9c, 0x99, 0x93, 0x64, 0xd7,
+	0x1b, 0x37, 0xfb, 0x54, 0x2b, 0xaa, 0x7b, 0x92, 0xea, 0x0e, 0xbe, 0x4d, 0xb2, 0x3e, 0xc4, 0x5a,
+	0x0e, 0xb5, 0xa9, 0xd7, 0xc2, 0x1f, 0x11, 0x9c, 0xd3, 0x8d, 0xb7, 0x13, 0x99, 0x99, 0x9b, 0xfe,
+	0xa0, 0x7b, 0x8e, 0x1b, 0xeb, 0xb2, 0x84, 0x9e, 0xc4, 0x95, 0x4c, 0x68, 0xfc, 0x15, 0xc1, 0xa8,
+	0xde, 0x78, 0xf8, 0x5a, 0x9a, 0xa3, 0xd4, 0xf1, 0x60, 0xcc, 0xf5, 0x23, 0x55, 0x40, 0xab, 0x12,
+	0xe8, 0x21, 0xbe, 0x9f, 0x00, 0xf2, 0x34, 0xb9, 0x96, 0x45, 0x39, 0x51, 0x5a, 0x64, 0x87, 0x05,
+	0x8d, 0x76, 0x4e, 0xbb, 0x23, 0xa3, 0xb5, 0x4c, 0xf6, 0x0e, 0x4c, 0xb4, 0x7f, 0x60, 0xa2, 0xdf,
+	0x07, 0x26, 0xfa, 0x70, 0x68, 0xe6, 0xf6, 0x0f, 0xcd, 0xdc, 0xcf, 0x43, 0x33, 0xf7, 0x66, 0xa2,
+	0x63, 0x7d, 0x4b, 0xd9, 0x17, 0xdb, 0x4d, 0x16, 0xd5, 0x86, 0xe5, 0xbf, 0x49, 0x8b, 0x7f, 0x03,
+	0x00, 0x00, 0xff, 0xff, 0xd4, 0xfd, 0x1a, 0x2f, 0x15, 0x0a, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -156,6 +710,16 @@ const _ = grpc.SupportPackageIsVersion4
 type QueryClient interface {
 	// Parameters queries the parameters of the module.
 	Params(ctx context.Context, in *QueryParamsRequest, opts ...grpc.CallOption) (*QueryParamsResponse, error)
+	// Queries a Meterreadings by index.
+	Meterreadings(ctx context.Context, in *QueryGetMeterreadingsRequest, opts ...grpc.CallOption) (*QueryGetMeterreadingsResponse, error)
+	// Queries a list of Meterreadings items.
+	MeterreadingsAll(ctx context.Context, in *QueryAllMeterreadingsRequest, opts ...grpc.CallOption) (*QueryAllMeterreadingsResponse, error)
+	// Queries a Meterdirectory by index.
+	Meterdirectory(ctx context.Context, in *QueryGetMeterdirectoryRequest, opts ...grpc.CallOption) (*QueryGetMeterdirectoryResponse, error)
+	// Queries a list of Meterdirectory items.
+	MeterdirectoryAll(ctx context.Context, in *QueryAllMeterdirectoryRequest, opts ...grpc.CallOption) (*QueryAllMeterdirectoryResponse, error)
+	// Queries a list of Listrecordings items.
+	Listrecordings(ctx context.Context, in *QueryListrecordingsRequest, opts ...grpc.CallOption) (*QueryListrecordingsResponse, error)
 }
 
 type queryClient struct {
@@ -175,10 +739,65 @@ func (c *queryClient) Params(ctx context.Context, in *QueryParamsRequest, opts .
 	return out, nil
 }
 
+func (c *queryClient) Meterreadings(ctx context.Context, in *QueryGetMeterreadingsRequest, opts ...grpc.CallOption) (*QueryGetMeterreadingsResponse, error) {
+	out := new(QueryGetMeterreadingsResponse)
+	err := c.cc.Invoke(ctx, "/electra.meter.Query/Meterreadings", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) MeterreadingsAll(ctx context.Context, in *QueryAllMeterreadingsRequest, opts ...grpc.CallOption) (*QueryAllMeterreadingsResponse, error) {
+	out := new(QueryAllMeterreadingsResponse)
+	err := c.cc.Invoke(ctx, "/electra.meter.Query/MeterreadingsAll", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) Meterdirectory(ctx context.Context, in *QueryGetMeterdirectoryRequest, opts ...grpc.CallOption) (*QueryGetMeterdirectoryResponse, error) {
+	out := new(QueryGetMeterdirectoryResponse)
+	err := c.cc.Invoke(ctx, "/electra.meter.Query/Meterdirectory", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) MeterdirectoryAll(ctx context.Context, in *QueryAllMeterdirectoryRequest, opts ...grpc.CallOption) (*QueryAllMeterdirectoryResponse, error) {
+	out := new(QueryAllMeterdirectoryResponse)
+	err := c.cc.Invoke(ctx, "/electra.meter.Query/MeterdirectoryAll", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) Listrecordings(ctx context.Context, in *QueryListrecordingsRequest, opts ...grpc.CallOption) (*QueryListrecordingsResponse, error) {
+	out := new(QueryListrecordingsResponse)
+	err := c.cc.Invoke(ctx, "/electra.meter.Query/Listrecordings", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // QueryServer is the server API for Query service.
 type QueryServer interface {
 	// Parameters queries the parameters of the module.
 	Params(context.Context, *QueryParamsRequest) (*QueryParamsResponse, error)
+	// Queries a Meterreadings by index.
+	Meterreadings(context.Context, *QueryGetMeterreadingsRequest) (*QueryGetMeterreadingsResponse, error)
+	// Queries a list of Meterreadings items.
+	MeterreadingsAll(context.Context, *QueryAllMeterreadingsRequest) (*QueryAllMeterreadingsResponse, error)
+	// Queries a Meterdirectory by index.
+	Meterdirectory(context.Context, *QueryGetMeterdirectoryRequest) (*QueryGetMeterdirectoryResponse, error)
+	// Queries a list of Meterdirectory items.
+	MeterdirectoryAll(context.Context, *QueryAllMeterdirectoryRequest) (*QueryAllMeterdirectoryResponse, error)
+	// Queries a list of Listrecordings items.
+	Listrecordings(context.Context, *QueryListrecordingsRequest) (*QueryListrecordingsResponse, error)
 }
 
 // UnimplementedQueryServer can be embedded to have forward compatible implementations.
@@ -187,6 +806,21 @@ type UnimplementedQueryServer struct {
 
 func (*UnimplementedQueryServer) Params(ctx context.Context, req *QueryParamsRequest) (*QueryParamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Params not implemented")
+}
+func (*UnimplementedQueryServer) Meterreadings(ctx context.Context, req *QueryGetMeterreadingsRequest) (*QueryGetMeterreadingsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Meterreadings not implemented")
+}
+func (*UnimplementedQueryServer) MeterreadingsAll(ctx context.Context, req *QueryAllMeterreadingsRequest) (*QueryAllMeterreadingsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MeterreadingsAll not implemented")
+}
+func (*UnimplementedQueryServer) Meterdirectory(ctx context.Context, req *QueryGetMeterdirectoryRequest) (*QueryGetMeterdirectoryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Meterdirectory not implemented")
+}
+func (*UnimplementedQueryServer) MeterdirectoryAll(ctx context.Context, req *QueryAllMeterdirectoryRequest) (*QueryAllMeterdirectoryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MeterdirectoryAll not implemented")
+}
+func (*UnimplementedQueryServer) Listrecordings(ctx context.Context, req *QueryListrecordingsRequest) (*QueryListrecordingsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Listrecordings not implemented")
 }
 
 func RegisterQueryServer(s grpc1.Server, srv QueryServer) {
@@ -211,6 +845,96 @@ func _Query_Params_Handler(srv interface{}, ctx context.Context, dec func(interf
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Query_Meterreadings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetMeterreadingsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).Meterreadings(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/electra.meter.Query/Meterreadings",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).Meterreadings(ctx, req.(*QueryGetMeterreadingsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_MeterreadingsAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllMeterreadingsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).MeterreadingsAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/electra.meter.Query/MeterreadingsAll",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).MeterreadingsAll(ctx, req.(*QueryAllMeterreadingsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_Meterdirectory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetMeterdirectoryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).Meterdirectory(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/electra.meter.Query/Meterdirectory",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).Meterdirectory(ctx, req.(*QueryGetMeterdirectoryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_MeterdirectoryAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllMeterdirectoryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).MeterdirectoryAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/electra.meter.Query/MeterdirectoryAll",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).MeterdirectoryAll(ctx, req.(*QueryAllMeterdirectoryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_Listrecordings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryListrecordingsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).Listrecordings(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/electra.meter.Query/Listrecordings",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).Listrecordings(ctx, req.(*QueryListrecordingsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Query_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "electra.meter.Query",
 	HandlerType: (*QueryServer)(nil),
@@ -218,6 +942,26 @@ var _Query_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Params",
 			Handler:    _Query_Params_Handler,
+		},
+		{
+			MethodName: "Meterreadings",
+			Handler:    _Query_Meterreadings_Handler,
+		},
+		{
+			MethodName: "MeterreadingsAll",
+			Handler:    _Query_MeterreadingsAll_Handler,
+		},
+		{
+			MethodName: "Meterdirectory",
+			Handler:    _Query_Meterdirectory_Handler,
+		},
+		{
+			MethodName: "MeterdirectoryAll",
+			Handler:    _Query_MeterdirectoryAll_Handler,
+		},
+		{
+			MethodName: "Listrecordings",
+			Handler:    _Query_Listrecordings_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -280,6 +1024,404 @@ func (m *QueryParamsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
+func (m *QueryGetMeterreadingsRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetMeterreadingsRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetMeterreadingsRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Timestamp != 0 {
+		i = encodeVarintQuery(dAtA, i, uint64(m.Timestamp))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.DeviceID) > 0 {
+		i -= len(m.DeviceID)
+		copy(dAtA[i:], m.DeviceID)
+		i = encodeVarintQuery(dAtA, i, uint64(len(m.DeviceID)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryGetMeterreadingsResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetMeterreadingsResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetMeterreadingsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	{
+		size, err := m.Meterreadings.MarshalToSizedBuffer(dAtA[:i])
+		if err != nil {
+			return 0, err
+		}
+		i -= size
+		i = encodeVarintQuery(dAtA, i, uint64(size))
+	}
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllMeterreadingsRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllMeterreadingsRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllMeterreadingsRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllMeterreadingsResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllMeterreadingsResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllMeterreadingsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Meterreadings) > 0 {
+		for iNdEx := len(m.Meterreadings) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Meterreadings[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintQuery(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryGetMeterdirectoryRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetMeterdirectoryRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetMeterdirectoryRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Barcodeserial) > 0 {
+		i -= len(m.Barcodeserial)
+		copy(dAtA[i:], m.Barcodeserial)
+		i = encodeVarintQuery(dAtA, i, uint64(len(m.Barcodeserial)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.DeviceID) > 0 {
+		i -= len(m.DeviceID)
+		copy(dAtA[i:], m.DeviceID)
+		i = encodeVarintQuery(dAtA, i, uint64(len(m.DeviceID)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryGetMeterdirectoryResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetMeterdirectoryResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetMeterdirectoryResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	{
+		size, err := m.Meterdirectory.MarshalToSizedBuffer(dAtA[:i])
+		if err != nil {
+			return 0, err
+		}
+		i -= size
+		i = encodeVarintQuery(dAtA, i, uint64(size))
+	}
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllMeterdirectoryRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllMeterdirectoryRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllMeterdirectoryRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllMeterdirectoryResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllMeterdirectoryResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllMeterdirectoryResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Meterdirectory) > 0 {
+		for iNdEx := len(m.Meterdirectory) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Meterdirectory[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintQuery(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryListrecordingsRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryListrecordingsRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryListrecordingsRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.ByUnixTime {
+		i--
+		if m.ByUnixTime {
+			dAtA[i] = 1
+		} else {
+			dAtA[i] = 0
+		}
+		i--
+		dAtA[i] = 0x20
+	}
+	if m.End != 0 {
+		i = encodeVarintQuery(dAtA, i, uint64(m.End))
+		i--
+		dAtA[i] = 0x18
+	}
+	if m.Start != 0 {
+		i = encodeVarintQuery(dAtA, i, uint64(m.Start))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.DeviceID) > 0 {
+		i -= len(m.DeviceID)
+		copy(dAtA[i:], m.DeviceID)
+		i = encodeVarintQuery(dAtA, i, uint64(len(m.DeviceID)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryListrecordingsResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryListrecordingsResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryListrecordingsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Total != 0 {
+		i = encodeVarintQuery(dAtA, i, uint64(m.Total))
+		i--
+		dAtA[i] = 0x18
+	}
+	if len(m.Comments) > 0 {
+		i -= len(m.Comments)
+		copy(dAtA[i:], m.Comments)
+		i = encodeVarintQuery(dAtA, i, uint64(len(m.Comments)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Meterreadings) > 0 {
+		i -= len(m.Meterreadings)
+		copy(dAtA[i:], m.Meterreadings)
+		i = encodeVarintQuery(dAtA, i, uint64(len(m.Meterreadings)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintQuery(dAtA []byte, offset int, v uint64) int {
 	offset -= sovQuery(v)
 	base := offset
@@ -308,6 +1450,167 @@ func (m *QueryParamsResponse) Size() (n int) {
 	_ = l
 	l = m.Params.Size()
 	n += 1 + l + sovQuery(uint64(l))
+	return n
+}
+
+func (m *QueryGetMeterreadingsRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.DeviceID)
+	if l > 0 {
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	if m.Timestamp != 0 {
+		n += 1 + sovQuery(uint64(m.Timestamp))
+	}
+	return n
+}
+
+func (m *QueryGetMeterreadingsResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = m.Meterreadings.Size()
+	n += 1 + l + sovQuery(uint64(l))
+	return n
+}
+
+func (m *QueryAllMeterreadingsRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryAllMeterreadingsResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if len(m.Meterreadings) > 0 {
+		for _, e := range m.Meterreadings {
+			l = e.Size()
+			n += 1 + l + sovQuery(uint64(l))
+		}
+	}
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryGetMeterdirectoryRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.DeviceID)
+	if l > 0 {
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	l = len(m.Barcodeserial)
+	if l > 0 {
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryGetMeterdirectoryResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = m.Meterdirectory.Size()
+	n += 1 + l + sovQuery(uint64(l))
+	return n
+}
+
+func (m *QueryAllMeterdirectoryRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryAllMeterdirectoryResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if len(m.Meterdirectory) > 0 {
+		for _, e := range m.Meterdirectory {
+			l = e.Size()
+			n += 1 + l + sovQuery(uint64(l))
+		}
+	}
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryListrecordingsRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.DeviceID)
+	if l > 0 {
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	if m.Start != 0 {
+		n += 1 + sovQuery(uint64(m.Start))
+	}
+	if m.End != 0 {
+		n += 1 + sovQuery(uint64(m.End))
+	}
+	if m.ByUnixTime {
+		n += 2
+	}
+	return n
+}
+
+func (m *QueryListrecordingsResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Meterreadings)
+	if l > 0 {
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	l = len(m.Comments)
+	if l > 0 {
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	if m.Total != 0 {
+		n += 1 + sovQuery(uint64(m.Total))
+	}
 	return n
 }
 
@@ -429,6 +1732,1072 @@ func (m *QueryParamsResponse) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetMeterreadingsRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetMeterreadingsRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetMeterreadingsRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field DeviceID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.DeviceID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Timestamp", wireType)
+			}
+			m.Timestamp = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Timestamp |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetMeterreadingsResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetMeterreadingsResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetMeterreadingsResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Meterreadings", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if err := m.Meterreadings.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllMeterreadingsRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllMeterreadingsRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllMeterreadingsRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageRequest{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllMeterreadingsResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllMeterreadingsResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllMeterreadingsResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Meterreadings", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Meterreadings = append(m.Meterreadings, Meterreadings{})
+			if err := m.Meterreadings[len(m.Meterreadings)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageResponse{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetMeterdirectoryRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetMeterdirectoryRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetMeterdirectoryRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field DeviceID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.DeviceID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Barcodeserial", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Barcodeserial = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetMeterdirectoryResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetMeterdirectoryResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetMeterdirectoryResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Meterdirectory", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if err := m.Meterdirectory.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllMeterdirectoryRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllMeterdirectoryRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllMeterdirectoryRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageRequest{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllMeterdirectoryResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllMeterdirectoryResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllMeterdirectoryResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Meterdirectory", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Meterdirectory = append(m.Meterdirectory, Meterdirectory{})
+			if err := m.Meterdirectory[len(m.Meterdirectory)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageResponse{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryListrecordingsRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryListrecordingsRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryListrecordingsRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field DeviceID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.DeviceID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Start", wireType)
+			}
+			m.Start = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Start |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field End", wireType)
+			}
+			m.End = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.End |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 4:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ByUnixTime", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.ByUnixTime = bool(v != 0)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryListrecordingsResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryListrecordingsResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryListrecordingsResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Meterreadings", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Meterreadings = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Comments", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Comments = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Total", wireType)
+			}
+			m.Total = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Total |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
 		default:
 			iNdEx = preIndex
 			skippy, err := skipQuery(dAtA[iNdEx:])

@@ -19,12 +19,64 @@ func TestGenesisState_Validate(t *testing.T) {
 			valid:    true,
 		},
 		{
-			desc:     "valid genesis state",
+			desc: "valid genesis state",
 			genState: &types.GenesisState{
 
+				MeterreadingsList: []types.Meterreadings{
+					{
+						DeviceID:  "0",
+						Timestamp: 0,
+					},
+					{
+						DeviceID:  "1",
+						Timestamp: 1,
+					},
+				},
+				MeterdirectoryList: []types.Meterdirectory{
+					{
+						DeviceID:      "0",
+						Barcodeserial: "0",
+					},
+					{
+						DeviceID:      "1",
+						Barcodeserial: "1",
+					},
+				},
 				// this line is used by starport scaffolding # types/genesis/validField
 			},
 			valid: true,
+		},
+		{
+			desc: "duplicated meterreadings",
+			genState: &types.GenesisState{
+				MeterreadingsList: []types.Meterreadings{
+					{
+						DeviceID:  "0",
+						Timestamp: 0,
+					},
+					{
+						DeviceID:  "0",
+						Timestamp: 0,
+					},
+				},
+			},
+			valid: false,
+		},
+		{
+			desc: "duplicated meterdirectory",
+			genState: &types.GenesisState{
+				MeterdirectoryList: []types.Meterdirectory{
+					{
+						DeviceID:      "0",
+						Barcodeserial: "0",
+					},
+					{
+						DeviceID:      "0",
+						Barcodeserial: "0",
+					},
+				},
+			},
+			valid: false,
 		},
 		// this line is used by starport scaffolding # types/genesis/testcase
 	} {
