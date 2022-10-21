@@ -953,6 +953,2534 @@ func (m *MsgDeletePowerPurchaseContractResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MsgDeletePowerPurchaseContractResponse proto.InternalMessageInfo
 
+type MsgCreatePpaMap struct {
+	Creator                  string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	ConsumerDeviceID         string `protobuf:"bytes,2,opt,name=consumerDeviceID,proto3" json:"consumerDeviceID,omitempty"`
+	AgreementID              string `protobuf:"bytes,3,opt,name=agreementID,proto3" json:"agreementID,omitempty"`
+	AgreementActive          bool   `protobuf:"varint,4,opt,name=agreementActive,proto3" json:"agreementActive,omitempty"`
+	ContractID               string `protobuf:"bytes,5,opt,name=contractID,proto3" json:"contractID,omitempty"`
+	ProducerDeviceID         string `protobuf:"bytes,6,opt,name=producerDeviceID,proto3" json:"producerDeviceID,omitempty"`
+	AgreementStartDate       uint64 `protobuf:"varint,7,opt,name=agreementStartDate,proto3" json:"agreementStartDate,omitempty"`
+	AgreementEndDate         uint64 `protobuf:"varint,8,opt,name=agreementEndDate,proto3" json:"agreementEndDate,omitempty"`
+	ContractPreferredPrice   uint64 `protobuf:"varint,9,opt,name=contractPreferredPrice,proto3" json:"contractPreferredPrice,omitempty"`
+	ContractPreferredCurency string `protobuf:"bytes,10,opt,name=contractPreferredCurency,proto3" json:"contractPreferredCurency,omitempty"`
+}
+
+func (m *MsgCreatePpaMap) Reset()         { *m = MsgCreatePpaMap{} }
+func (m *MsgCreatePpaMap) String() string { return proto.CompactTextString(m) }
+func (*MsgCreatePpaMap) ProtoMessage()    {}
+func (*MsgCreatePpaMap) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{10}
+}
+func (m *MsgCreatePpaMap) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgCreatePpaMap) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgCreatePpaMap.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgCreatePpaMap) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgCreatePpaMap.Merge(m, src)
+}
+func (m *MsgCreatePpaMap) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgCreatePpaMap) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgCreatePpaMap.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgCreatePpaMap proto.InternalMessageInfo
+
+func (m *MsgCreatePpaMap) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgCreatePpaMap) GetConsumerDeviceID() string {
+	if m != nil {
+		return m.ConsumerDeviceID
+	}
+	return ""
+}
+
+func (m *MsgCreatePpaMap) GetAgreementID() string {
+	if m != nil {
+		return m.AgreementID
+	}
+	return ""
+}
+
+func (m *MsgCreatePpaMap) GetAgreementActive() bool {
+	if m != nil {
+		return m.AgreementActive
+	}
+	return false
+}
+
+func (m *MsgCreatePpaMap) GetContractID() string {
+	if m != nil {
+		return m.ContractID
+	}
+	return ""
+}
+
+func (m *MsgCreatePpaMap) GetProducerDeviceID() string {
+	if m != nil {
+		return m.ProducerDeviceID
+	}
+	return ""
+}
+
+func (m *MsgCreatePpaMap) GetAgreementStartDate() uint64 {
+	if m != nil {
+		return m.AgreementStartDate
+	}
+	return 0
+}
+
+func (m *MsgCreatePpaMap) GetAgreementEndDate() uint64 {
+	if m != nil {
+		return m.AgreementEndDate
+	}
+	return 0
+}
+
+func (m *MsgCreatePpaMap) GetContractPreferredPrice() uint64 {
+	if m != nil {
+		return m.ContractPreferredPrice
+	}
+	return 0
+}
+
+func (m *MsgCreatePpaMap) GetContractPreferredCurency() string {
+	if m != nil {
+		return m.ContractPreferredCurency
+	}
+	return ""
+}
+
+type MsgCreatePpaMapResponse struct {
+}
+
+func (m *MsgCreatePpaMapResponse) Reset()         { *m = MsgCreatePpaMapResponse{} }
+func (m *MsgCreatePpaMapResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgCreatePpaMapResponse) ProtoMessage()    {}
+func (*MsgCreatePpaMapResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{11}
+}
+func (m *MsgCreatePpaMapResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgCreatePpaMapResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgCreatePpaMapResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgCreatePpaMapResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgCreatePpaMapResponse.Merge(m, src)
+}
+func (m *MsgCreatePpaMapResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgCreatePpaMapResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgCreatePpaMapResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgCreatePpaMapResponse proto.InternalMessageInfo
+
+type MsgUpdatePpaMap struct {
+	Creator                  string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	ConsumerDeviceID         string `protobuf:"bytes,2,opt,name=consumerDeviceID,proto3" json:"consumerDeviceID,omitempty"`
+	AgreementID              string `protobuf:"bytes,3,opt,name=agreementID,proto3" json:"agreementID,omitempty"`
+	AgreementActive          bool   `protobuf:"varint,4,opt,name=agreementActive,proto3" json:"agreementActive,omitempty"`
+	ContractID               string `protobuf:"bytes,5,opt,name=contractID,proto3" json:"contractID,omitempty"`
+	ProducerDeviceID         string `protobuf:"bytes,6,opt,name=producerDeviceID,proto3" json:"producerDeviceID,omitempty"`
+	AgreementStartDate       uint64 `protobuf:"varint,7,opt,name=agreementStartDate,proto3" json:"agreementStartDate,omitempty"`
+	AgreementEndDate         uint64 `protobuf:"varint,8,opt,name=agreementEndDate,proto3" json:"agreementEndDate,omitempty"`
+	ContractPreferredPrice   uint64 `protobuf:"varint,9,opt,name=contractPreferredPrice,proto3" json:"contractPreferredPrice,omitempty"`
+	ContractPreferredCurency string `protobuf:"bytes,10,opt,name=contractPreferredCurency,proto3" json:"contractPreferredCurency,omitempty"`
+}
+
+func (m *MsgUpdatePpaMap) Reset()         { *m = MsgUpdatePpaMap{} }
+func (m *MsgUpdatePpaMap) String() string { return proto.CompactTextString(m) }
+func (*MsgUpdatePpaMap) ProtoMessage()    {}
+func (*MsgUpdatePpaMap) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{12}
+}
+func (m *MsgUpdatePpaMap) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgUpdatePpaMap) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgUpdatePpaMap.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgUpdatePpaMap) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgUpdatePpaMap.Merge(m, src)
+}
+func (m *MsgUpdatePpaMap) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgUpdatePpaMap) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgUpdatePpaMap.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgUpdatePpaMap proto.InternalMessageInfo
+
+func (m *MsgUpdatePpaMap) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgUpdatePpaMap) GetConsumerDeviceID() string {
+	if m != nil {
+		return m.ConsumerDeviceID
+	}
+	return ""
+}
+
+func (m *MsgUpdatePpaMap) GetAgreementID() string {
+	if m != nil {
+		return m.AgreementID
+	}
+	return ""
+}
+
+func (m *MsgUpdatePpaMap) GetAgreementActive() bool {
+	if m != nil {
+		return m.AgreementActive
+	}
+	return false
+}
+
+func (m *MsgUpdatePpaMap) GetContractID() string {
+	if m != nil {
+		return m.ContractID
+	}
+	return ""
+}
+
+func (m *MsgUpdatePpaMap) GetProducerDeviceID() string {
+	if m != nil {
+		return m.ProducerDeviceID
+	}
+	return ""
+}
+
+func (m *MsgUpdatePpaMap) GetAgreementStartDate() uint64 {
+	if m != nil {
+		return m.AgreementStartDate
+	}
+	return 0
+}
+
+func (m *MsgUpdatePpaMap) GetAgreementEndDate() uint64 {
+	if m != nil {
+		return m.AgreementEndDate
+	}
+	return 0
+}
+
+func (m *MsgUpdatePpaMap) GetContractPreferredPrice() uint64 {
+	if m != nil {
+		return m.ContractPreferredPrice
+	}
+	return 0
+}
+
+func (m *MsgUpdatePpaMap) GetContractPreferredCurency() string {
+	if m != nil {
+		return m.ContractPreferredCurency
+	}
+	return ""
+}
+
+type MsgUpdatePpaMapResponse struct {
+}
+
+func (m *MsgUpdatePpaMapResponse) Reset()         { *m = MsgUpdatePpaMapResponse{} }
+func (m *MsgUpdatePpaMapResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgUpdatePpaMapResponse) ProtoMessage()    {}
+func (*MsgUpdatePpaMapResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{13}
+}
+func (m *MsgUpdatePpaMapResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgUpdatePpaMapResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgUpdatePpaMapResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgUpdatePpaMapResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgUpdatePpaMapResponse.Merge(m, src)
+}
+func (m *MsgUpdatePpaMapResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgUpdatePpaMapResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgUpdatePpaMapResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgUpdatePpaMapResponse proto.InternalMessageInfo
+
+type MsgDeletePpaMap struct {
+	Creator          string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	ConsumerDeviceID string `protobuf:"bytes,2,opt,name=consumerDeviceID,proto3" json:"consumerDeviceID,omitempty"`
+	AgreementID      string `protobuf:"bytes,3,opt,name=agreementID,proto3" json:"agreementID,omitempty"`
+	AgreementActive  bool   `protobuf:"varint,4,opt,name=agreementActive,proto3" json:"agreementActive,omitempty"`
+	ContractID       string `protobuf:"bytes,5,opt,name=contractID,proto3" json:"contractID,omitempty"`
+}
+
+func (m *MsgDeletePpaMap) Reset()         { *m = MsgDeletePpaMap{} }
+func (m *MsgDeletePpaMap) String() string { return proto.CompactTextString(m) }
+func (*MsgDeletePpaMap) ProtoMessage()    {}
+func (*MsgDeletePpaMap) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{14}
+}
+func (m *MsgDeletePpaMap) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgDeletePpaMap) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgDeletePpaMap.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgDeletePpaMap) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgDeletePpaMap.Merge(m, src)
+}
+func (m *MsgDeletePpaMap) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgDeletePpaMap) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgDeletePpaMap.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgDeletePpaMap proto.InternalMessageInfo
+
+func (m *MsgDeletePpaMap) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgDeletePpaMap) GetConsumerDeviceID() string {
+	if m != nil {
+		return m.ConsumerDeviceID
+	}
+	return ""
+}
+
+func (m *MsgDeletePpaMap) GetAgreementID() string {
+	if m != nil {
+		return m.AgreementID
+	}
+	return ""
+}
+
+func (m *MsgDeletePpaMap) GetAgreementActive() bool {
+	if m != nil {
+		return m.AgreementActive
+	}
+	return false
+}
+
+func (m *MsgDeletePpaMap) GetContractID() string {
+	if m != nil {
+		return m.ContractID
+	}
+	return ""
+}
+
+type MsgDeletePpaMapResponse struct {
+}
+
+func (m *MsgDeletePpaMapResponse) Reset()         { *m = MsgDeletePpaMapResponse{} }
+func (m *MsgDeletePpaMapResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgDeletePpaMapResponse) ProtoMessage()    {}
+func (*MsgDeletePpaMapResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{15}
+}
+func (m *MsgDeletePpaMapResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgDeletePpaMapResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgDeletePpaMapResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgDeletePpaMapResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgDeletePpaMapResponse.Merge(m, src)
+}
+func (m *MsgDeletePpaMapResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgDeletePpaMapResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgDeletePpaMapResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgDeletePpaMapResponse proto.InternalMessageInfo
+
+type MsgCreateBillingcycles struct {
+	Creator  string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	CycleID  uint64 `protobuf:"varint,2,opt,name=cycleID,proto3" json:"cycleID,omitempty"`
+	Begin    uint64 `protobuf:"varint,3,opt,name=begin,proto3" json:"begin,omitempty"`
+	End      uint64 `protobuf:"varint,4,opt,name=end,proto3" json:"end,omitempty"`
+	Whin     uint64 `protobuf:"varint,5,opt,name=whin,proto3" json:"whin,omitempty"`
+	Whout    uint64 `protobuf:"varint,6,opt,name=whout,proto3" json:"whout,omitempty"`
+	Moneyin  uint64 `protobuf:"varint,7,opt,name=moneyin,proto3" json:"moneyin,omitempty"`
+	Moneyout uint64 `protobuf:"varint,8,opt,name=moneyout,proto3" json:"moneyout,omitempty"`
+	Curency  string `protobuf:"bytes,9,opt,name=curency,proto3" json:"curency,omitempty"`
+}
+
+func (m *MsgCreateBillingcycles) Reset()         { *m = MsgCreateBillingcycles{} }
+func (m *MsgCreateBillingcycles) String() string { return proto.CompactTextString(m) }
+func (*MsgCreateBillingcycles) ProtoMessage()    {}
+func (*MsgCreateBillingcycles) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{16}
+}
+func (m *MsgCreateBillingcycles) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgCreateBillingcycles) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgCreateBillingcycles.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgCreateBillingcycles) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgCreateBillingcycles.Merge(m, src)
+}
+func (m *MsgCreateBillingcycles) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgCreateBillingcycles) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgCreateBillingcycles.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgCreateBillingcycles proto.InternalMessageInfo
+
+func (m *MsgCreateBillingcycles) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgCreateBillingcycles) GetCycleID() uint64 {
+	if m != nil {
+		return m.CycleID
+	}
+	return 0
+}
+
+func (m *MsgCreateBillingcycles) GetBegin() uint64 {
+	if m != nil {
+		return m.Begin
+	}
+	return 0
+}
+
+func (m *MsgCreateBillingcycles) GetEnd() uint64 {
+	if m != nil {
+		return m.End
+	}
+	return 0
+}
+
+func (m *MsgCreateBillingcycles) GetWhin() uint64 {
+	if m != nil {
+		return m.Whin
+	}
+	return 0
+}
+
+func (m *MsgCreateBillingcycles) GetWhout() uint64 {
+	if m != nil {
+		return m.Whout
+	}
+	return 0
+}
+
+func (m *MsgCreateBillingcycles) GetMoneyin() uint64 {
+	if m != nil {
+		return m.Moneyin
+	}
+	return 0
+}
+
+func (m *MsgCreateBillingcycles) GetMoneyout() uint64 {
+	if m != nil {
+		return m.Moneyout
+	}
+	return 0
+}
+
+func (m *MsgCreateBillingcycles) GetCurency() string {
+	if m != nil {
+		return m.Curency
+	}
+	return ""
+}
+
+type MsgCreateBillingcyclesResponse struct {
+}
+
+func (m *MsgCreateBillingcyclesResponse) Reset()         { *m = MsgCreateBillingcyclesResponse{} }
+func (m *MsgCreateBillingcyclesResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgCreateBillingcyclesResponse) ProtoMessage()    {}
+func (*MsgCreateBillingcyclesResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{17}
+}
+func (m *MsgCreateBillingcyclesResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgCreateBillingcyclesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgCreateBillingcyclesResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgCreateBillingcyclesResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgCreateBillingcyclesResponse.Merge(m, src)
+}
+func (m *MsgCreateBillingcyclesResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgCreateBillingcyclesResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgCreateBillingcyclesResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgCreateBillingcyclesResponse proto.InternalMessageInfo
+
+type MsgUpdateBillingcycles struct {
+	Creator  string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	CycleID  uint64 `protobuf:"varint,2,opt,name=cycleID,proto3" json:"cycleID,omitempty"`
+	Begin    uint64 `protobuf:"varint,3,opt,name=begin,proto3" json:"begin,omitempty"`
+	End      uint64 `protobuf:"varint,4,opt,name=end,proto3" json:"end,omitempty"`
+	Whin     uint64 `protobuf:"varint,5,opt,name=whin,proto3" json:"whin,omitempty"`
+	Whout    uint64 `protobuf:"varint,6,opt,name=whout,proto3" json:"whout,omitempty"`
+	Moneyin  uint64 `protobuf:"varint,7,opt,name=moneyin,proto3" json:"moneyin,omitempty"`
+	Moneyout uint64 `protobuf:"varint,8,opt,name=moneyout,proto3" json:"moneyout,omitempty"`
+	Curency  string `protobuf:"bytes,9,opt,name=curency,proto3" json:"curency,omitempty"`
+}
+
+func (m *MsgUpdateBillingcycles) Reset()         { *m = MsgUpdateBillingcycles{} }
+func (m *MsgUpdateBillingcycles) String() string { return proto.CompactTextString(m) }
+func (*MsgUpdateBillingcycles) ProtoMessage()    {}
+func (*MsgUpdateBillingcycles) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{18}
+}
+func (m *MsgUpdateBillingcycles) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgUpdateBillingcycles) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgUpdateBillingcycles.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgUpdateBillingcycles) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgUpdateBillingcycles.Merge(m, src)
+}
+func (m *MsgUpdateBillingcycles) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgUpdateBillingcycles) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgUpdateBillingcycles.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgUpdateBillingcycles proto.InternalMessageInfo
+
+func (m *MsgUpdateBillingcycles) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgUpdateBillingcycles) GetCycleID() uint64 {
+	if m != nil {
+		return m.CycleID
+	}
+	return 0
+}
+
+func (m *MsgUpdateBillingcycles) GetBegin() uint64 {
+	if m != nil {
+		return m.Begin
+	}
+	return 0
+}
+
+func (m *MsgUpdateBillingcycles) GetEnd() uint64 {
+	if m != nil {
+		return m.End
+	}
+	return 0
+}
+
+func (m *MsgUpdateBillingcycles) GetWhin() uint64 {
+	if m != nil {
+		return m.Whin
+	}
+	return 0
+}
+
+func (m *MsgUpdateBillingcycles) GetWhout() uint64 {
+	if m != nil {
+		return m.Whout
+	}
+	return 0
+}
+
+func (m *MsgUpdateBillingcycles) GetMoneyin() uint64 {
+	if m != nil {
+		return m.Moneyin
+	}
+	return 0
+}
+
+func (m *MsgUpdateBillingcycles) GetMoneyout() uint64 {
+	if m != nil {
+		return m.Moneyout
+	}
+	return 0
+}
+
+func (m *MsgUpdateBillingcycles) GetCurency() string {
+	if m != nil {
+		return m.Curency
+	}
+	return ""
+}
+
+type MsgUpdateBillingcyclesResponse struct {
+}
+
+func (m *MsgUpdateBillingcyclesResponse) Reset()         { *m = MsgUpdateBillingcyclesResponse{} }
+func (m *MsgUpdateBillingcyclesResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgUpdateBillingcyclesResponse) ProtoMessage()    {}
+func (*MsgUpdateBillingcyclesResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{19}
+}
+func (m *MsgUpdateBillingcyclesResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgUpdateBillingcyclesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgUpdateBillingcyclesResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgUpdateBillingcyclesResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgUpdateBillingcyclesResponse.Merge(m, src)
+}
+func (m *MsgUpdateBillingcyclesResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgUpdateBillingcyclesResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgUpdateBillingcyclesResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgUpdateBillingcyclesResponse proto.InternalMessageInfo
+
+type MsgDeleteBillingcycles struct {
+	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	CycleID uint64 `protobuf:"varint,2,opt,name=cycleID,proto3" json:"cycleID,omitempty"`
+}
+
+func (m *MsgDeleteBillingcycles) Reset()         { *m = MsgDeleteBillingcycles{} }
+func (m *MsgDeleteBillingcycles) String() string { return proto.CompactTextString(m) }
+func (*MsgDeleteBillingcycles) ProtoMessage()    {}
+func (*MsgDeleteBillingcycles) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{20}
+}
+func (m *MsgDeleteBillingcycles) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgDeleteBillingcycles) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgDeleteBillingcycles.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgDeleteBillingcycles) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgDeleteBillingcycles.Merge(m, src)
+}
+func (m *MsgDeleteBillingcycles) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgDeleteBillingcycles) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgDeleteBillingcycles.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgDeleteBillingcycles proto.InternalMessageInfo
+
+func (m *MsgDeleteBillingcycles) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgDeleteBillingcycles) GetCycleID() uint64 {
+	if m != nil {
+		return m.CycleID
+	}
+	return 0
+}
+
+type MsgDeleteBillingcyclesResponse struct {
+}
+
+func (m *MsgDeleteBillingcyclesResponse) Reset()         { *m = MsgDeleteBillingcyclesResponse{} }
+func (m *MsgDeleteBillingcyclesResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgDeleteBillingcyclesResponse) ProtoMessage()    {}
+func (*MsgDeleteBillingcyclesResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{21}
+}
+func (m *MsgDeleteBillingcyclesResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgDeleteBillingcyclesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgDeleteBillingcyclesResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgDeleteBillingcyclesResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgDeleteBillingcyclesResponse.Merge(m, src)
+}
+func (m *MsgDeleteBillingcyclesResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgDeleteBillingcyclesResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgDeleteBillingcyclesResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgDeleteBillingcyclesResponse proto.InternalMessageInfo
+
+type MsgPrepareBill struct {
+	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	CycleID uint64 `protobuf:"varint,2,opt,name=cycleID,proto3" json:"cycleID,omitempty"`
+	Record  bool   `protobuf:"varint,3,opt,name=record,proto3" json:"record,omitempty"`
+}
+
+func (m *MsgPrepareBill) Reset()         { *m = MsgPrepareBill{} }
+func (m *MsgPrepareBill) String() string { return proto.CompactTextString(m) }
+func (*MsgPrepareBill) ProtoMessage()    {}
+func (*MsgPrepareBill) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{22}
+}
+func (m *MsgPrepareBill) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgPrepareBill) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgPrepareBill.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgPrepareBill) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgPrepareBill.Merge(m, src)
+}
+func (m *MsgPrepareBill) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgPrepareBill) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgPrepareBill.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgPrepareBill proto.InternalMessageInfo
+
+func (m *MsgPrepareBill) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgPrepareBill) GetCycleID() uint64 {
+	if m != nil {
+		return m.CycleID
+	}
+	return 0
+}
+
+func (m *MsgPrepareBill) GetRecord() bool {
+	if m != nil {
+		return m.Record
+	}
+	return false
+}
+
+type MsgPrepareBillResponse struct {
+	JsonCustomerbill string `protobuf:"bytes,1,opt,name=jsonCustomerbill,proto3" json:"jsonCustomerbill,omitempty"`
+	JsonProducerbill string `protobuf:"bytes,2,opt,name=jsonProducerbill,proto3" json:"jsonProducerbill,omitempty"`
+	Comment          string `protobuf:"bytes,3,opt,name=comment,proto3" json:"comment,omitempty"`
+}
+
+func (m *MsgPrepareBillResponse) Reset()         { *m = MsgPrepareBillResponse{} }
+func (m *MsgPrepareBillResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgPrepareBillResponse) ProtoMessage()    {}
+func (*MsgPrepareBillResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{23}
+}
+func (m *MsgPrepareBillResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgPrepareBillResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgPrepareBillResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgPrepareBillResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgPrepareBillResponse.Merge(m, src)
+}
+func (m *MsgPrepareBillResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgPrepareBillResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgPrepareBillResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgPrepareBillResponse proto.InternalMessageInfo
+
+func (m *MsgPrepareBillResponse) GetJsonCustomerbill() string {
+	if m != nil {
+		return m.JsonCustomerbill
+	}
+	return ""
+}
+
+func (m *MsgPrepareBillResponse) GetJsonProducerbill() string {
+	if m != nil {
+		return m.JsonProducerbill
+	}
+	return ""
+}
+
+func (m *MsgPrepareBillResponse) GetComment() string {
+	if m != nil {
+		return m.Comment
+	}
+	return ""
+}
+
+type MsgCreateCustomerbillingline struct {
+	Creator          string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	CustomerDeviceID string `protobuf:"bytes,2,opt,name=customerDeviceID,proto3" json:"customerDeviceID,omitempty"`
+	CycleID          uint64 `protobuf:"varint,3,opt,name=cycleID,proto3" json:"cycleID,omitempty"`
+	Lineid           uint64 `protobuf:"varint,4,opt,name=lineid,proto3" json:"lineid,omitempty"`
+	ProducerDeviceID string `protobuf:"bytes,5,opt,name=producerDeviceID,proto3" json:"producerDeviceID,omitempty"`
+	BillContractID   string `protobuf:"bytes,6,opt,name=billContractID,proto3" json:"billContractID,omitempty"`
+	LineWh           uint64 `protobuf:"varint,7,opt,name=lineWh,proto3" json:"lineWh,omitempty"`
+	LineWhPrice      uint64 `protobuf:"varint,8,opt,name=lineWhPrice,proto3" json:"lineWhPrice,omitempty"`
+	Curency          string `protobuf:"bytes,9,opt,name=curency,proto3" json:"curency,omitempty"`
+	LineWhTotalPrice uint64 `protobuf:"varint,10,opt,name=lineWhTotalPrice,proto3" json:"lineWhTotalPrice,omitempty"`
+	Phase            uint64 `protobuf:"varint,11,opt,name=phase,proto3" json:"phase,omitempty"`
+}
+
+func (m *MsgCreateCustomerbillingline) Reset()         { *m = MsgCreateCustomerbillingline{} }
+func (m *MsgCreateCustomerbillingline) String() string { return proto.CompactTextString(m) }
+func (*MsgCreateCustomerbillingline) ProtoMessage()    {}
+func (*MsgCreateCustomerbillingline) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{24}
+}
+func (m *MsgCreateCustomerbillingline) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgCreateCustomerbillingline) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgCreateCustomerbillingline.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgCreateCustomerbillingline) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgCreateCustomerbillingline.Merge(m, src)
+}
+func (m *MsgCreateCustomerbillingline) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgCreateCustomerbillingline) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgCreateCustomerbillingline.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgCreateCustomerbillingline proto.InternalMessageInfo
+
+func (m *MsgCreateCustomerbillingline) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgCreateCustomerbillingline) GetCustomerDeviceID() string {
+	if m != nil {
+		return m.CustomerDeviceID
+	}
+	return ""
+}
+
+func (m *MsgCreateCustomerbillingline) GetCycleID() uint64 {
+	if m != nil {
+		return m.CycleID
+	}
+	return 0
+}
+
+func (m *MsgCreateCustomerbillingline) GetLineid() uint64 {
+	if m != nil {
+		return m.Lineid
+	}
+	return 0
+}
+
+func (m *MsgCreateCustomerbillingline) GetProducerDeviceID() string {
+	if m != nil {
+		return m.ProducerDeviceID
+	}
+	return ""
+}
+
+func (m *MsgCreateCustomerbillingline) GetBillContractID() string {
+	if m != nil {
+		return m.BillContractID
+	}
+	return ""
+}
+
+func (m *MsgCreateCustomerbillingline) GetLineWh() uint64 {
+	if m != nil {
+		return m.LineWh
+	}
+	return 0
+}
+
+func (m *MsgCreateCustomerbillingline) GetLineWhPrice() uint64 {
+	if m != nil {
+		return m.LineWhPrice
+	}
+	return 0
+}
+
+func (m *MsgCreateCustomerbillingline) GetCurency() string {
+	if m != nil {
+		return m.Curency
+	}
+	return ""
+}
+
+func (m *MsgCreateCustomerbillingline) GetLineWhTotalPrice() uint64 {
+	if m != nil {
+		return m.LineWhTotalPrice
+	}
+	return 0
+}
+
+func (m *MsgCreateCustomerbillingline) GetPhase() uint64 {
+	if m != nil {
+		return m.Phase
+	}
+	return 0
+}
+
+type MsgCreateCustomerbillinglineResponse struct {
+}
+
+func (m *MsgCreateCustomerbillinglineResponse) Reset()         { *m = MsgCreateCustomerbillinglineResponse{} }
+func (m *MsgCreateCustomerbillinglineResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgCreateCustomerbillinglineResponse) ProtoMessage()    {}
+func (*MsgCreateCustomerbillinglineResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{25}
+}
+func (m *MsgCreateCustomerbillinglineResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgCreateCustomerbillinglineResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgCreateCustomerbillinglineResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgCreateCustomerbillinglineResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgCreateCustomerbillinglineResponse.Merge(m, src)
+}
+func (m *MsgCreateCustomerbillinglineResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgCreateCustomerbillinglineResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgCreateCustomerbillinglineResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgCreateCustomerbillinglineResponse proto.InternalMessageInfo
+
+type MsgUpdateCustomerbillingline struct {
+	Creator          string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	CustomerDeviceID string `protobuf:"bytes,2,opt,name=customerDeviceID,proto3" json:"customerDeviceID,omitempty"`
+	CycleID          uint64 `protobuf:"varint,3,opt,name=cycleID,proto3" json:"cycleID,omitempty"`
+	Lineid           uint64 `protobuf:"varint,4,opt,name=lineid,proto3" json:"lineid,omitempty"`
+	ProducerDeviceID string `protobuf:"bytes,5,opt,name=producerDeviceID,proto3" json:"producerDeviceID,omitempty"`
+	BillContractID   string `protobuf:"bytes,6,opt,name=billContractID,proto3" json:"billContractID,omitempty"`
+	LineWh           uint64 `protobuf:"varint,7,opt,name=lineWh,proto3" json:"lineWh,omitempty"`
+	LineWhPrice      uint64 `protobuf:"varint,8,opt,name=lineWhPrice,proto3" json:"lineWhPrice,omitempty"`
+	Curency          string `protobuf:"bytes,9,opt,name=curency,proto3" json:"curency,omitempty"`
+	LineWhTotalPrice uint64 `protobuf:"varint,10,opt,name=lineWhTotalPrice,proto3" json:"lineWhTotalPrice,omitempty"`
+	Phase            uint64 `protobuf:"varint,11,opt,name=phase,proto3" json:"phase,omitempty"`
+}
+
+func (m *MsgUpdateCustomerbillingline) Reset()         { *m = MsgUpdateCustomerbillingline{} }
+func (m *MsgUpdateCustomerbillingline) String() string { return proto.CompactTextString(m) }
+func (*MsgUpdateCustomerbillingline) ProtoMessage()    {}
+func (*MsgUpdateCustomerbillingline) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{26}
+}
+func (m *MsgUpdateCustomerbillingline) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgUpdateCustomerbillingline) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgUpdateCustomerbillingline.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgUpdateCustomerbillingline) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgUpdateCustomerbillingline.Merge(m, src)
+}
+func (m *MsgUpdateCustomerbillingline) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgUpdateCustomerbillingline) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgUpdateCustomerbillingline.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgUpdateCustomerbillingline proto.InternalMessageInfo
+
+func (m *MsgUpdateCustomerbillingline) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgUpdateCustomerbillingline) GetCustomerDeviceID() string {
+	if m != nil {
+		return m.CustomerDeviceID
+	}
+	return ""
+}
+
+func (m *MsgUpdateCustomerbillingline) GetCycleID() uint64 {
+	if m != nil {
+		return m.CycleID
+	}
+	return 0
+}
+
+func (m *MsgUpdateCustomerbillingline) GetLineid() uint64 {
+	if m != nil {
+		return m.Lineid
+	}
+	return 0
+}
+
+func (m *MsgUpdateCustomerbillingline) GetProducerDeviceID() string {
+	if m != nil {
+		return m.ProducerDeviceID
+	}
+	return ""
+}
+
+func (m *MsgUpdateCustomerbillingline) GetBillContractID() string {
+	if m != nil {
+		return m.BillContractID
+	}
+	return ""
+}
+
+func (m *MsgUpdateCustomerbillingline) GetLineWh() uint64 {
+	if m != nil {
+		return m.LineWh
+	}
+	return 0
+}
+
+func (m *MsgUpdateCustomerbillingline) GetLineWhPrice() uint64 {
+	if m != nil {
+		return m.LineWhPrice
+	}
+	return 0
+}
+
+func (m *MsgUpdateCustomerbillingline) GetCurency() string {
+	if m != nil {
+		return m.Curency
+	}
+	return ""
+}
+
+func (m *MsgUpdateCustomerbillingline) GetLineWhTotalPrice() uint64 {
+	if m != nil {
+		return m.LineWhTotalPrice
+	}
+	return 0
+}
+
+func (m *MsgUpdateCustomerbillingline) GetPhase() uint64 {
+	if m != nil {
+		return m.Phase
+	}
+	return 0
+}
+
+type MsgUpdateCustomerbillinglineResponse struct {
+}
+
+func (m *MsgUpdateCustomerbillinglineResponse) Reset()         { *m = MsgUpdateCustomerbillinglineResponse{} }
+func (m *MsgUpdateCustomerbillinglineResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgUpdateCustomerbillinglineResponse) ProtoMessage()    {}
+func (*MsgUpdateCustomerbillinglineResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{27}
+}
+func (m *MsgUpdateCustomerbillinglineResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgUpdateCustomerbillinglineResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgUpdateCustomerbillinglineResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgUpdateCustomerbillinglineResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgUpdateCustomerbillinglineResponse.Merge(m, src)
+}
+func (m *MsgUpdateCustomerbillinglineResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgUpdateCustomerbillinglineResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgUpdateCustomerbillinglineResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgUpdateCustomerbillinglineResponse proto.InternalMessageInfo
+
+type MsgDeleteCustomerbillingline struct {
+	Creator          string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	CustomerDeviceID string `protobuf:"bytes,2,opt,name=customerDeviceID,proto3" json:"customerDeviceID,omitempty"`
+	CycleID          uint64 `protobuf:"varint,3,opt,name=cycleID,proto3" json:"cycleID,omitempty"`
+	Lineid           uint64 `protobuf:"varint,4,opt,name=lineid,proto3" json:"lineid,omitempty"`
+}
+
+func (m *MsgDeleteCustomerbillingline) Reset()         { *m = MsgDeleteCustomerbillingline{} }
+func (m *MsgDeleteCustomerbillingline) String() string { return proto.CompactTextString(m) }
+func (*MsgDeleteCustomerbillingline) ProtoMessage()    {}
+func (*MsgDeleteCustomerbillingline) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{28}
+}
+func (m *MsgDeleteCustomerbillingline) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgDeleteCustomerbillingline) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgDeleteCustomerbillingline.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgDeleteCustomerbillingline) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgDeleteCustomerbillingline.Merge(m, src)
+}
+func (m *MsgDeleteCustomerbillingline) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgDeleteCustomerbillingline) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgDeleteCustomerbillingline.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgDeleteCustomerbillingline proto.InternalMessageInfo
+
+func (m *MsgDeleteCustomerbillingline) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgDeleteCustomerbillingline) GetCustomerDeviceID() string {
+	if m != nil {
+		return m.CustomerDeviceID
+	}
+	return ""
+}
+
+func (m *MsgDeleteCustomerbillingline) GetCycleID() uint64 {
+	if m != nil {
+		return m.CycleID
+	}
+	return 0
+}
+
+func (m *MsgDeleteCustomerbillingline) GetLineid() uint64 {
+	if m != nil {
+		return m.Lineid
+	}
+	return 0
+}
+
+type MsgDeleteCustomerbillinglineResponse struct {
+}
+
+func (m *MsgDeleteCustomerbillinglineResponse) Reset()         { *m = MsgDeleteCustomerbillinglineResponse{} }
+func (m *MsgDeleteCustomerbillinglineResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgDeleteCustomerbillinglineResponse) ProtoMessage()    {}
+func (*MsgDeleteCustomerbillinglineResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{29}
+}
+func (m *MsgDeleteCustomerbillinglineResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgDeleteCustomerbillinglineResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgDeleteCustomerbillinglineResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgDeleteCustomerbillinglineResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgDeleteCustomerbillinglineResponse.Merge(m, src)
+}
+func (m *MsgDeleteCustomerbillinglineResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgDeleteCustomerbillinglineResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgDeleteCustomerbillinglineResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgDeleteCustomerbillinglineResponse proto.InternalMessageInfo
+
+type MsgCreateCustomerbills struct {
+	Creator          string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	BillCycleID      uint64 `protobuf:"varint,2,opt,name=billCycleID,proto3" json:"billCycleID,omitempty"`
+	CustomerdeviceID string `protobuf:"bytes,3,opt,name=customerdeviceID,proto3" json:"customerdeviceID,omitempty"`
+	BillDate         uint64 `protobuf:"varint,4,opt,name=billDate,proto3" json:"billDate,omitempty"`
+	BillTotalWh      uint64 `protobuf:"varint,5,opt,name=billTotalWh,proto3" json:"billTotalWh,omitempty"`
+	BillTotalPrice   uint64 `protobuf:"varint,6,opt,name=billTotalPrice,proto3" json:"billTotalPrice,omitempty"`
+	BillCurrency     string `protobuf:"bytes,7,opt,name=billCurrency,proto3" json:"billCurrency,omitempty"`
+	BillValid        bool   `protobuf:"varint,8,opt,name=billValid,proto3" json:"billValid,omitempty"`
+	Paid             bool   `protobuf:"varint,9,opt,name=paid,proto3" json:"paid,omitempty"`
+}
+
+func (m *MsgCreateCustomerbills) Reset()         { *m = MsgCreateCustomerbills{} }
+func (m *MsgCreateCustomerbills) String() string { return proto.CompactTextString(m) }
+func (*MsgCreateCustomerbills) ProtoMessage()    {}
+func (*MsgCreateCustomerbills) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{30}
+}
+func (m *MsgCreateCustomerbills) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgCreateCustomerbills) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgCreateCustomerbills.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgCreateCustomerbills) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgCreateCustomerbills.Merge(m, src)
+}
+func (m *MsgCreateCustomerbills) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgCreateCustomerbills) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgCreateCustomerbills.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgCreateCustomerbills proto.InternalMessageInfo
+
+func (m *MsgCreateCustomerbills) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgCreateCustomerbills) GetBillCycleID() uint64 {
+	if m != nil {
+		return m.BillCycleID
+	}
+	return 0
+}
+
+func (m *MsgCreateCustomerbills) GetCustomerdeviceID() string {
+	if m != nil {
+		return m.CustomerdeviceID
+	}
+	return ""
+}
+
+func (m *MsgCreateCustomerbills) GetBillDate() uint64 {
+	if m != nil {
+		return m.BillDate
+	}
+	return 0
+}
+
+func (m *MsgCreateCustomerbills) GetBillTotalWh() uint64 {
+	if m != nil {
+		return m.BillTotalWh
+	}
+	return 0
+}
+
+func (m *MsgCreateCustomerbills) GetBillTotalPrice() uint64 {
+	if m != nil {
+		return m.BillTotalPrice
+	}
+	return 0
+}
+
+func (m *MsgCreateCustomerbills) GetBillCurrency() string {
+	if m != nil {
+		return m.BillCurrency
+	}
+	return ""
+}
+
+func (m *MsgCreateCustomerbills) GetBillValid() bool {
+	if m != nil {
+		return m.BillValid
+	}
+	return false
+}
+
+func (m *MsgCreateCustomerbills) GetPaid() bool {
+	if m != nil {
+		return m.Paid
+	}
+	return false
+}
+
+type MsgCreateCustomerbillsResponse struct {
+}
+
+func (m *MsgCreateCustomerbillsResponse) Reset()         { *m = MsgCreateCustomerbillsResponse{} }
+func (m *MsgCreateCustomerbillsResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgCreateCustomerbillsResponse) ProtoMessage()    {}
+func (*MsgCreateCustomerbillsResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{31}
+}
+func (m *MsgCreateCustomerbillsResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgCreateCustomerbillsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgCreateCustomerbillsResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgCreateCustomerbillsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgCreateCustomerbillsResponse.Merge(m, src)
+}
+func (m *MsgCreateCustomerbillsResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgCreateCustomerbillsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgCreateCustomerbillsResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgCreateCustomerbillsResponse proto.InternalMessageInfo
+
+type MsgUpdateCustomerbills struct {
+	Creator          string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	BillCycleID      uint64 `protobuf:"varint,2,opt,name=billCycleID,proto3" json:"billCycleID,omitempty"`
+	CustomerdeviceID string `protobuf:"bytes,3,opt,name=customerdeviceID,proto3" json:"customerdeviceID,omitempty"`
+	BillDate         uint64 `protobuf:"varint,4,opt,name=billDate,proto3" json:"billDate,omitempty"`
+	BillTotalWh      uint64 `protobuf:"varint,5,opt,name=billTotalWh,proto3" json:"billTotalWh,omitempty"`
+	BillTotalPrice   uint64 `protobuf:"varint,6,opt,name=billTotalPrice,proto3" json:"billTotalPrice,omitempty"`
+	BillCurrency     string `protobuf:"bytes,7,opt,name=billCurrency,proto3" json:"billCurrency,omitempty"`
+	BillValid        bool   `protobuf:"varint,8,opt,name=billValid,proto3" json:"billValid,omitempty"`
+	Paid             bool   `protobuf:"varint,9,opt,name=paid,proto3" json:"paid,omitempty"`
+}
+
+func (m *MsgUpdateCustomerbills) Reset()         { *m = MsgUpdateCustomerbills{} }
+func (m *MsgUpdateCustomerbills) String() string { return proto.CompactTextString(m) }
+func (*MsgUpdateCustomerbills) ProtoMessage()    {}
+func (*MsgUpdateCustomerbills) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{32}
+}
+func (m *MsgUpdateCustomerbills) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgUpdateCustomerbills) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgUpdateCustomerbills.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgUpdateCustomerbills) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgUpdateCustomerbills.Merge(m, src)
+}
+func (m *MsgUpdateCustomerbills) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgUpdateCustomerbills) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgUpdateCustomerbills.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgUpdateCustomerbills proto.InternalMessageInfo
+
+func (m *MsgUpdateCustomerbills) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgUpdateCustomerbills) GetBillCycleID() uint64 {
+	if m != nil {
+		return m.BillCycleID
+	}
+	return 0
+}
+
+func (m *MsgUpdateCustomerbills) GetCustomerdeviceID() string {
+	if m != nil {
+		return m.CustomerdeviceID
+	}
+	return ""
+}
+
+func (m *MsgUpdateCustomerbills) GetBillDate() uint64 {
+	if m != nil {
+		return m.BillDate
+	}
+	return 0
+}
+
+func (m *MsgUpdateCustomerbills) GetBillTotalWh() uint64 {
+	if m != nil {
+		return m.BillTotalWh
+	}
+	return 0
+}
+
+func (m *MsgUpdateCustomerbills) GetBillTotalPrice() uint64 {
+	if m != nil {
+		return m.BillTotalPrice
+	}
+	return 0
+}
+
+func (m *MsgUpdateCustomerbills) GetBillCurrency() string {
+	if m != nil {
+		return m.BillCurrency
+	}
+	return ""
+}
+
+func (m *MsgUpdateCustomerbills) GetBillValid() bool {
+	if m != nil {
+		return m.BillValid
+	}
+	return false
+}
+
+func (m *MsgUpdateCustomerbills) GetPaid() bool {
+	if m != nil {
+		return m.Paid
+	}
+	return false
+}
+
+type MsgUpdateCustomerbillsResponse struct {
+}
+
+func (m *MsgUpdateCustomerbillsResponse) Reset()         { *m = MsgUpdateCustomerbillsResponse{} }
+func (m *MsgUpdateCustomerbillsResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgUpdateCustomerbillsResponse) ProtoMessage()    {}
+func (*MsgUpdateCustomerbillsResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{33}
+}
+func (m *MsgUpdateCustomerbillsResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgUpdateCustomerbillsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgUpdateCustomerbillsResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgUpdateCustomerbillsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgUpdateCustomerbillsResponse.Merge(m, src)
+}
+func (m *MsgUpdateCustomerbillsResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgUpdateCustomerbillsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgUpdateCustomerbillsResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgUpdateCustomerbillsResponse proto.InternalMessageInfo
+
+type MsgDeleteCustomerbills struct {
+	Creator          string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	BillCycleID      uint64 `protobuf:"varint,2,opt,name=billCycleID,proto3" json:"billCycleID,omitempty"`
+	CustomerdeviceID string `protobuf:"bytes,3,opt,name=customerdeviceID,proto3" json:"customerdeviceID,omitempty"`
+}
+
+func (m *MsgDeleteCustomerbills) Reset()         { *m = MsgDeleteCustomerbills{} }
+func (m *MsgDeleteCustomerbills) String() string { return proto.CompactTextString(m) }
+func (*MsgDeleteCustomerbills) ProtoMessage()    {}
+func (*MsgDeleteCustomerbills) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{34}
+}
+func (m *MsgDeleteCustomerbills) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgDeleteCustomerbills) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgDeleteCustomerbills.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgDeleteCustomerbills) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgDeleteCustomerbills.Merge(m, src)
+}
+func (m *MsgDeleteCustomerbills) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgDeleteCustomerbills) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgDeleteCustomerbills.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgDeleteCustomerbills proto.InternalMessageInfo
+
+func (m *MsgDeleteCustomerbills) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgDeleteCustomerbills) GetBillCycleID() uint64 {
+	if m != nil {
+		return m.BillCycleID
+	}
+	return 0
+}
+
+func (m *MsgDeleteCustomerbills) GetCustomerdeviceID() string {
+	if m != nil {
+		return m.CustomerdeviceID
+	}
+	return ""
+}
+
+type MsgDeleteCustomerbillsResponse struct {
+}
+
+func (m *MsgDeleteCustomerbillsResponse) Reset()         { *m = MsgDeleteCustomerbillsResponse{} }
+func (m *MsgDeleteCustomerbillsResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgDeleteCustomerbillsResponse) ProtoMessage()    {}
+func (*MsgDeleteCustomerbillsResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{35}
+}
+func (m *MsgDeleteCustomerbillsResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgDeleteCustomerbillsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgDeleteCustomerbillsResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgDeleteCustomerbillsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgDeleteCustomerbillsResponse.Merge(m, src)
+}
+func (m *MsgDeleteCustomerbillsResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgDeleteCustomerbillsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgDeleteCustomerbillsResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgDeleteCustomerbillsResponse proto.InternalMessageInfo
+
+type MsgCreateProducerbillingline struct {
+	Creator          string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	ProducerDeviceID string `protobuf:"bytes,2,opt,name=producerDeviceID,proto3" json:"producerDeviceID,omitempty"`
+	CycleID          uint64 `protobuf:"varint,3,opt,name=cycleID,proto3" json:"cycleID,omitempty"`
+	Lineid           uint64 `protobuf:"varint,4,opt,name=lineid,proto3" json:"lineid,omitempty"`
+	CustomerDeviceID string `protobuf:"bytes,5,opt,name=customerDeviceID,proto3" json:"customerDeviceID,omitempty"`
+	BillContractID   string `protobuf:"bytes,6,opt,name=billContractID,proto3" json:"billContractID,omitempty"`
+	LineWh           uint64 `protobuf:"varint,7,opt,name=lineWh,proto3" json:"lineWh,omitempty"`
+	LineWhPrice      uint64 `protobuf:"varint,8,opt,name=lineWhPrice,proto3" json:"lineWhPrice,omitempty"`
+	Curency          string `protobuf:"bytes,9,opt,name=curency,proto3" json:"curency,omitempty"`
+	LineWhTotalPrice uint64 `protobuf:"varint,10,opt,name=lineWhTotalPrice,proto3" json:"lineWhTotalPrice,omitempty"`
+	Phase            uint64 `protobuf:"varint,11,opt,name=phase,proto3" json:"phase,omitempty"`
+}
+
+func (m *MsgCreateProducerbillingline) Reset()         { *m = MsgCreateProducerbillingline{} }
+func (m *MsgCreateProducerbillingline) String() string { return proto.CompactTextString(m) }
+func (*MsgCreateProducerbillingline) ProtoMessage()    {}
+func (*MsgCreateProducerbillingline) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{36}
+}
+func (m *MsgCreateProducerbillingline) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgCreateProducerbillingline) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgCreateProducerbillingline.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgCreateProducerbillingline) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgCreateProducerbillingline.Merge(m, src)
+}
+func (m *MsgCreateProducerbillingline) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgCreateProducerbillingline) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgCreateProducerbillingline.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgCreateProducerbillingline proto.InternalMessageInfo
+
+func (m *MsgCreateProducerbillingline) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgCreateProducerbillingline) GetProducerDeviceID() string {
+	if m != nil {
+		return m.ProducerDeviceID
+	}
+	return ""
+}
+
+func (m *MsgCreateProducerbillingline) GetCycleID() uint64 {
+	if m != nil {
+		return m.CycleID
+	}
+	return 0
+}
+
+func (m *MsgCreateProducerbillingline) GetLineid() uint64 {
+	if m != nil {
+		return m.Lineid
+	}
+	return 0
+}
+
+func (m *MsgCreateProducerbillingline) GetCustomerDeviceID() string {
+	if m != nil {
+		return m.CustomerDeviceID
+	}
+	return ""
+}
+
+func (m *MsgCreateProducerbillingline) GetBillContractID() string {
+	if m != nil {
+		return m.BillContractID
+	}
+	return ""
+}
+
+func (m *MsgCreateProducerbillingline) GetLineWh() uint64 {
+	if m != nil {
+		return m.LineWh
+	}
+	return 0
+}
+
+func (m *MsgCreateProducerbillingline) GetLineWhPrice() uint64 {
+	if m != nil {
+		return m.LineWhPrice
+	}
+	return 0
+}
+
+func (m *MsgCreateProducerbillingline) GetCurency() string {
+	if m != nil {
+		return m.Curency
+	}
+	return ""
+}
+
+func (m *MsgCreateProducerbillingline) GetLineWhTotalPrice() uint64 {
+	if m != nil {
+		return m.LineWhTotalPrice
+	}
+	return 0
+}
+
+func (m *MsgCreateProducerbillingline) GetPhase() uint64 {
+	if m != nil {
+		return m.Phase
+	}
+	return 0
+}
+
+type MsgCreateProducerbillinglineResponse struct {
+}
+
+func (m *MsgCreateProducerbillinglineResponse) Reset()         { *m = MsgCreateProducerbillinglineResponse{} }
+func (m *MsgCreateProducerbillinglineResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgCreateProducerbillinglineResponse) ProtoMessage()    {}
+func (*MsgCreateProducerbillinglineResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{37}
+}
+func (m *MsgCreateProducerbillinglineResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgCreateProducerbillinglineResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgCreateProducerbillinglineResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgCreateProducerbillinglineResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgCreateProducerbillinglineResponse.Merge(m, src)
+}
+func (m *MsgCreateProducerbillinglineResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgCreateProducerbillinglineResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgCreateProducerbillinglineResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgCreateProducerbillinglineResponse proto.InternalMessageInfo
+
+type MsgUpdateProducerbillingline struct {
+	Creator          string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	ProducerDeviceID string `protobuf:"bytes,2,opt,name=producerDeviceID,proto3" json:"producerDeviceID,omitempty"`
+	CycleID          uint64 `protobuf:"varint,3,opt,name=cycleID,proto3" json:"cycleID,omitempty"`
+	Lineid           uint64 `protobuf:"varint,4,opt,name=lineid,proto3" json:"lineid,omitempty"`
+	CustomerDeviceID string `protobuf:"bytes,5,opt,name=customerDeviceID,proto3" json:"customerDeviceID,omitempty"`
+	BillContractID   string `protobuf:"bytes,6,opt,name=billContractID,proto3" json:"billContractID,omitempty"`
+	LineWh           uint64 `protobuf:"varint,7,opt,name=lineWh,proto3" json:"lineWh,omitempty"`
+	LineWhPrice      uint64 `protobuf:"varint,8,opt,name=lineWhPrice,proto3" json:"lineWhPrice,omitempty"`
+	Curency          string `protobuf:"bytes,9,opt,name=curency,proto3" json:"curency,omitempty"`
+	LineWhTotalPrice uint64 `protobuf:"varint,10,opt,name=lineWhTotalPrice,proto3" json:"lineWhTotalPrice,omitempty"`
+	Phase            uint64 `protobuf:"varint,11,opt,name=phase,proto3" json:"phase,omitempty"`
+}
+
+func (m *MsgUpdateProducerbillingline) Reset()         { *m = MsgUpdateProducerbillingline{} }
+func (m *MsgUpdateProducerbillingline) String() string { return proto.CompactTextString(m) }
+func (*MsgUpdateProducerbillingline) ProtoMessage()    {}
+func (*MsgUpdateProducerbillingline) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{38}
+}
+func (m *MsgUpdateProducerbillingline) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgUpdateProducerbillingline) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgUpdateProducerbillingline.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgUpdateProducerbillingline) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgUpdateProducerbillingline.Merge(m, src)
+}
+func (m *MsgUpdateProducerbillingline) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgUpdateProducerbillingline) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgUpdateProducerbillingline.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgUpdateProducerbillingline proto.InternalMessageInfo
+
+func (m *MsgUpdateProducerbillingline) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgUpdateProducerbillingline) GetProducerDeviceID() string {
+	if m != nil {
+		return m.ProducerDeviceID
+	}
+	return ""
+}
+
+func (m *MsgUpdateProducerbillingline) GetCycleID() uint64 {
+	if m != nil {
+		return m.CycleID
+	}
+	return 0
+}
+
+func (m *MsgUpdateProducerbillingline) GetLineid() uint64 {
+	if m != nil {
+		return m.Lineid
+	}
+	return 0
+}
+
+func (m *MsgUpdateProducerbillingline) GetCustomerDeviceID() string {
+	if m != nil {
+		return m.CustomerDeviceID
+	}
+	return ""
+}
+
+func (m *MsgUpdateProducerbillingline) GetBillContractID() string {
+	if m != nil {
+		return m.BillContractID
+	}
+	return ""
+}
+
+func (m *MsgUpdateProducerbillingline) GetLineWh() uint64 {
+	if m != nil {
+		return m.LineWh
+	}
+	return 0
+}
+
+func (m *MsgUpdateProducerbillingline) GetLineWhPrice() uint64 {
+	if m != nil {
+		return m.LineWhPrice
+	}
+	return 0
+}
+
+func (m *MsgUpdateProducerbillingline) GetCurency() string {
+	if m != nil {
+		return m.Curency
+	}
+	return ""
+}
+
+func (m *MsgUpdateProducerbillingline) GetLineWhTotalPrice() uint64 {
+	if m != nil {
+		return m.LineWhTotalPrice
+	}
+	return 0
+}
+
+func (m *MsgUpdateProducerbillingline) GetPhase() uint64 {
+	if m != nil {
+		return m.Phase
+	}
+	return 0
+}
+
+type MsgUpdateProducerbillinglineResponse struct {
+}
+
+func (m *MsgUpdateProducerbillinglineResponse) Reset()         { *m = MsgUpdateProducerbillinglineResponse{} }
+func (m *MsgUpdateProducerbillinglineResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgUpdateProducerbillinglineResponse) ProtoMessage()    {}
+func (*MsgUpdateProducerbillinglineResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{39}
+}
+func (m *MsgUpdateProducerbillinglineResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgUpdateProducerbillinglineResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgUpdateProducerbillinglineResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgUpdateProducerbillinglineResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgUpdateProducerbillinglineResponse.Merge(m, src)
+}
+func (m *MsgUpdateProducerbillinglineResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgUpdateProducerbillinglineResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgUpdateProducerbillinglineResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgUpdateProducerbillinglineResponse proto.InternalMessageInfo
+
+type MsgDeleteProducerbillingline struct {
+	Creator          string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	ProducerDeviceID string `protobuf:"bytes,2,opt,name=producerDeviceID,proto3" json:"producerDeviceID,omitempty"`
+	CycleID          uint64 `protobuf:"varint,3,opt,name=cycleID,proto3" json:"cycleID,omitempty"`
+	Lineid           uint64 `protobuf:"varint,4,opt,name=lineid,proto3" json:"lineid,omitempty"`
+}
+
+func (m *MsgDeleteProducerbillingline) Reset()         { *m = MsgDeleteProducerbillingline{} }
+func (m *MsgDeleteProducerbillingline) String() string { return proto.CompactTextString(m) }
+func (*MsgDeleteProducerbillingline) ProtoMessage()    {}
+func (*MsgDeleteProducerbillingline) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{40}
+}
+func (m *MsgDeleteProducerbillingline) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgDeleteProducerbillingline) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgDeleteProducerbillingline.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgDeleteProducerbillingline) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgDeleteProducerbillingline.Merge(m, src)
+}
+func (m *MsgDeleteProducerbillingline) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgDeleteProducerbillingline) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgDeleteProducerbillingline.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgDeleteProducerbillingline proto.InternalMessageInfo
+
+func (m *MsgDeleteProducerbillingline) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgDeleteProducerbillingline) GetProducerDeviceID() string {
+	if m != nil {
+		return m.ProducerDeviceID
+	}
+	return ""
+}
+
+func (m *MsgDeleteProducerbillingline) GetCycleID() uint64 {
+	if m != nil {
+		return m.CycleID
+	}
+	return 0
+}
+
+func (m *MsgDeleteProducerbillingline) GetLineid() uint64 {
+	if m != nil {
+		return m.Lineid
+	}
+	return 0
+}
+
+type MsgDeleteProducerbillinglineResponse struct {
+}
+
+func (m *MsgDeleteProducerbillinglineResponse) Reset()         { *m = MsgDeleteProducerbillinglineResponse{} }
+func (m *MsgDeleteProducerbillinglineResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgDeleteProducerbillinglineResponse) ProtoMessage()    {}
+func (*MsgDeleteProducerbillinglineResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{41}
+}
+func (m *MsgDeleteProducerbillinglineResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgDeleteProducerbillinglineResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgDeleteProducerbillinglineResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgDeleteProducerbillinglineResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgDeleteProducerbillinglineResponse.Merge(m, src)
+}
+func (m *MsgDeleteProducerbillinglineResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgDeleteProducerbillinglineResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgDeleteProducerbillinglineResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgDeleteProducerbillinglineResponse proto.InternalMessageInfo
+
+type MsgCreateProducerbills struct {
+	Creator          string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	BillCycleID      uint64 `protobuf:"varint,2,opt,name=billCycleID,proto3" json:"billCycleID,omitempty"`
+	ProducerdeviceID string `protobuf:"bytes,3,opt,name=producerdeviceID,proto3" json:"producerdeviceID,omitempty"`
+	BillDate         uint64 `protobuf:"varint,4,opt,name=billDate,proto3" json:"billDate,omitempty"`
+	BillTotalWh      uint64 `protobuf:"varint,5,opt,name=billTotalWh,proto3" json:"billTotalWh,omitempty"`
+	BillTotalPrice   uint64 `protobuf:"varint,6,opt,name=billTotalPrice,proto3" json:"billTotalPrice,omitempty"`
+	BillCurrency     string `protobuf:"bytes,7,opt,name=billCurrency,proto3" json:"billCurrency,omitempty"`
+	BillValid        bool   `protobuf:"varint,8,opt,name=billValid,proto3" json:"billValid,omitempty"`
+	Paid             bool   `protobuf:"varint,9,opt,name=paid,proto3" json:"paid,omitempty"`
+}
+
+func (m *MsgCreateProducerbills) Reset()         { *m = MsgCreateProducerbills{} }
+func (m *MsgCreateProducerbills) String() string { return proto.CompactTextString(m) }
+func (*MsgCreateProducerbills) ProtoMessage()    {}
+func (*MsgCreateProducerbills) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{42}
+}
+func (m *MsgCreateProducerbills) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgCreateProducerbills) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgCreateProducerbills.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgCreateProducerbills) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgCreateProducerbills.Merge(m, src)
+}
+func (m *MsgCreateProducerbills) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgCreateProducerbills) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgCreateProducerbills.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgCreateProducerbills proto.InternalMessageInfo
+
+func (m *MsgCreateProducerbills) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgCreateProducerbills) GetBillCycleID() uint64 {
+	if m != nil {
+		return m.BillCycleID
+	}
+	return 0
+}
+
+func (m *MsgCreateProducerbills) GetProducerdeviceID() string {
+	if m != nil {
+		return m.ProducerdeviceID
+	}
+	return ""
+}
+
+func (m *MsgCreateProducerbills) GetBillDate() uint64 {
+	if m != nil {
+		return m.BillDate
+	}
+	return 0
+}
+
+func (m *MsgCreateProducerbills) GetBillTotalWh() uint64 {
+	if m != nil {
+		return m.BillTotalWh
+	}
+	return 0
+}
+
+func (m *MsgCreateProducerbills) GetBillTotalPrice() uint64 {
+	if m != nil {
+		return m.BillTotalPrice
+	}
+	return 0
+}
+
+func (m *MsgCreateProducerbills) GetBillCurrency() string {
+	if m != nil {
+		return m.BillCurrency
+	}
+	return ""
+}
+
+func (m *MsgCreateProducerbills) GetBillValid() bool {
+	if m != nil {
+		return m.BillValid
+	}
+	return false
+}
+
+func (m *MsgCreateProducerbills) GetPaid() bool {
+	if m != nil {
+		return m.Paid
+	}
+	return false
+}
+
+type MsgCreateProducerbillsResponse struct {
+}
+
+func (m *MsgCreateProducerbillsResponse) Reset()         { *m = MsgCreateProducerbillsResponse{} }
+func (m *MsgCreateProducerbillsResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgCreateProducerbillsResponse) ProtoMessage()    {}
+func (*MsgCreateProducerbillsResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{43}
+}
+func (m *MsgCreateProducerbillsResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgCreateProducerbillsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgCreateProducerbillsResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgCreateProducerbillsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgCreateProducerbillsResponse.Merge(m, src)
+}
+func (m *MsgCreateProducerbillsResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgCreateProducerbillsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgCreateProducerbillsResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgCreateProducerbillsResponse proto.InternalMessageInfo
+
+type MsgUpdateProducerbills struct {
+	Creator          string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	BillCycleID      uint64 `protobuf:"varint,2,opt,name=billCycleID,proto3" json:"billCycleID,omitempty"`
+	ProducerdeviceID string `protobuf:"bytes,3,opt,name=producerdeviceID,proto3" json:"producerdeviceID,omitempty"`
+	BillDate         uint64 `protobuf:"varint,4,opt,name=billDate,proto3" json:"billDate,omitempty"`
+	BillTotalWh      uint64 `protobuf:"varint,5,opt,name=billTotalWh,proto3" json:"billTotalWh,omitempty"`
+	BillTotalPrice   uint64 `protobuf:"varint,6,opt,name=billTotalPrice,proto3" json:"billTotalPrice,omitempty"`
+	BillCurrency     string `protobuf:"bytes,7,opt,name=billCurrency,proto3" json:"billCurrency,omitempty"`
+	BillValid        bool   `protobuf:"varint,8,opt,name=billValid,proto3" json:"billValid,omitempty"`
+	Paid             bool   `protobuf:"varint,9,opt,name=paid,proto3" json:"paid,omitempty"`
+}
+
+func (m *MsgUpdateProducerbills) Reset()         { *m = MsgUpdateProducerbills{} }
+func (m *MsgUpdateProducerbills) String() string { return proto.CompactTextString(m) }
+func (*MsgUpdateProducerbills) ProtoMessage()    {}
+func (*MsgUpdateProducerbills) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{44}
+}
+func (m *MsgUpdateProducerbills) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgUpdateProducerbills) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgUpdateProducerbills.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgUpdateProducerbills) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgUpdateProducerbills.Merge(m, src)
+}
+func (m *MsgUpdateProducerbills) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgUpdateProducerbills) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgUpdateProducerbills.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgUpdateProducerbills proto.InternalMessageInfo
+
+func (m *MsgUpdateProducerbills) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgUpdateProducerbills) GetBillCycleID() uint64 {
+	if m != nil {
+		return m.BillCycleID
+	}
+	return 0
+}
+
+func (m *MsgUpdateProducerbills) GetProducerdeviceID() string {
+	if m != nil {
+		return m.ProducerdeviceID
+	}
+	return ""
+}
+
+func (m *MsgUpdateProducerbills) GetBillDate() uint64 {
+	if m != nil {
+		return m.BillDate
+	}
+	return 0
+}
+
+func (m *MsgUpdateProducerbills) GetBillTotalWh() uint64 {
+	if m != nil {
+		return m.BillTotalWh
+	}
+	return 0
+}
+
+func (m *MsgUpdateProducerbills) GetBillTotalPrice() uint64 {
+	if m != nil {
+		return m.BillTotalPrice
+	}
+	return 0
+}
+
+func (m *MsgUpdateProducerbills) GetBillCurrency() string {
+	if m != nil {
+		return m.BillCurrency
+	}
+	return ""
+}
+
+func (m *MsgUpdateProducerbills) GetBillValid() bool {
+	if m != nil {
+		return m.BillValid
+	}
+	return false
+}
+
+func (m *MsgUpdateProducerbills) GetPaid() bool {
+	if m != nil {
+		return m.Paid
+	}
+	return false
+}
+
+type MsgUpdateProducerbillsResponse struct {
+}
+
+func (m *MsgUpdateProducerbillsResponse) Reset()         { *m = MsgUpdateProducerbillsResponse{} }
+func (m *MsgUpdateProducerbillsResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgUpdateProducerbillsResponse) ProtoMessage()    {}
+func (*MsgUpdateProducerbillsResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{45}
+}
+func (m *MsgUpdateProducerbillsResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgUpdateProducerbillsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgUpdateProducerbillsResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgUpdateProducerbillsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgUpdateProducerbillsResponse.Merge(m, src)
+}
+func (m *MsgUpdateProducerbillsResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgUpdateProducerbillsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgUpdateProducerbillsResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgUpdateProducerbillsResponse proto.InternalMessageInfo
+
+type MsgDeleteProducerbills struct {
+	Creator          string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	BillCycleID      uint64 `protobuf:"varint,2,opt,name=billCycleID,proto3" json:"billCycleID,omitempty"`
+	ProducerdeviceID string `protobuf:"bytes,3,opt,name=producerdeviceID,proto3" json:"producerdeviceID,omitempty"`
+}
+
+func (m *MsgDeleteProducerbills) Reset()         { *m = MsgDeleteProducerbills{} }
+func (m *MsgDeleteProducerbills) String() string { return proto.CompactTextString(m) }
+func (*MsgDeleteProducerbills) ProtoMessage()    {}
+func (*MsgDeleteProducerbills) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{46}
+}
+func (m *MsgDeleteProducerbills) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgDeleteProducerbills) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgDeleteProducerbills.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgDeleteProducerbills) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgDeleteProducerbills.Merge(m, src)
+}
+func (m *MsgDeleteProducerbills) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgDeleteProducerbills) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgDeleteProducerbills.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgDeleteProducerbills proto.InternalMessageInfo
+
+func (m *MsgDeleteProducerbills) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgDeleteProducerbills) GetBillCycleID() uint64 {
+	if m != nil {
+		return m.BillCycleID
+	}
+	return 0
+}
+
+func (m *MsgDeleteProducerbills) GetProducerdeviceID() string {
+	if m != nil {
+		return m.ProducerdeviceID
+	}
+	return ""
+}
+
+type MsgDeleteProducerbillsResponse struct {
+}
+
+func (m *MsgDeleteProducerbillsResponse) Reset()         { *m = MsgDeleteProducerbillsResponse{} }
+func (m *MsgDeleteProducerbillsResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgDeleteProducerbillsResponse) ProtoMessage()    {}
+func (*MsgDeleteProducerbillsResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{47}
+}
+func (m *MsgDeleteProducerbillsResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgDeleteProducerbillsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgDeleteProducerbillsResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgDeleteProducerbillsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgDeleteProducerbillsResponse.Merge(m, src)
+}
+func (m *MsgDeleteProducerbillsResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgDeleteProducerbillsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgDeleteProducerbillsResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgDeleteProducerbillsResponse proto.InternalMessageInfo
+
 func init() {
 	proto.RegisterType((*MsgRecord)(nil), "electra.meter.MsgRecord")
 	proto.RegisterType((*MsgRecordResponse)(nil), "electra.meter.MsgRecordResponse")
@@ -964,65 +3492,165 @@ func init() {
 	proto.RegisterType((*MsgUpdatePowerPurchaseContractResponse)(nil), "electra.meter.MsgUpdatePowerPurchaseContractResponse")
 	proto.RegisterType((*MsgDeletePowerPurchaseContract)(nil), "electra.meter.MsgDeletePowerPurchaseContract")
 	proto.RegisterType((*MsgDeletePowerPurchaseContractResponse)(nil), "electra.meter.MsgDeletePowerPurchaseContractResponse")
+	proto.RegisterType((*MsgCreatePpaMap)(nil), "electra.meter.MsgCreatePpaMap")
+	proto.RegisterType((*MsgCreatePpaMapResponse)(nil), "electra.meter.MsgCreatePpaMapResponse")
+	proto.RegisterType((*MsgUpdatePpaMap)(nil), "electra.meter.MsgUpdatePpaMap")
+	proto.RegisterType((*MsgUpdatePpaMapResponse)(nil), "electra.meter.MsgUpdatePpaMapResponse")
+	proto.RegisterType((*MsgDeletePpaMap)(nil), "electra.meter.MsgDeletePpaMap")
+	proto.RegisterType((*MsgDeletePpaMapResponse)(nil), "electra.meter.MsgDeletePpaMapResponse")
+	proto.RegisterType((*MsgCreateBillingcycles)(nil), "electra.meter.MsgCreateBillingcycles")
+	proto.RegisterType((*MsgCreateBillingcyclesResponse)(nil), "electra.meter.MsgCreateBillingcyclesResponse")
+	proto.RegisterType((*MsgUpdateBillingcycles)(nil), "electra.meter.MsgUpdateBillingcycles")
+	proto.RegisterType((*MsgUpdateBillingcyclesResponse)(nil), "electra.meter.MsgUpdateBillingcyclesResponse")
+	proto.RegisterType((*MsgDeleteBillingcycles)(nil), "electra.meter.MsgDeleteBillingcycles")
+	proto.RegisterType((*MsgDeleteBillingcyclesResponse)(nil), "electra.meter.MsgDeleteBillingcyclesResponse")
+	proto.RegisterType((*MsgPrepareBill)(nil), "electra.meter.MsgPrepareBill")
+	proto.RegisterType((*MsgPrepareBillResponse)(nil), "electra.meter.MsgPrepareBillResponse")
+	proto.RegisterType((*MsgCreateCustomerbillingline)(nil), "electra.meter.MsgCreateCustomerbillingline")
+	proto.RegisterType((*MsgCreateCustomerbillinglineResponse)(nil), "electra.meter.MsgCreateCustomerbillinglineResponse")
+	proto.RegisterType((*MsgUpdateCustomerbillingline)(nil), "electra.meter.MsgUpdateCustomerbillingline")
+	proto.RegisterType((*MsgUpdateCustomerbillinglineResponse)(nil), "electra.meter.MsgUpdateCustomerbillinglineResponse")
+	proto.RegisterType((*MsgDeleteCustomerbillingline)(nil), "electra.meter.MsgDeleteCustomerbillingline")
+	proto.RegisterType((*MsgDeleteCustomerbillinglineResponse)(nil), "electra.meter.MsgDeleteCustomerbillinglineResponse")
+	proto.RegisterType((*MsgCreateCustomerbills)(nil), "electra.meter.MsgCreateCustomerbills")
+	proto.RegisterType((*MsgCreateCustomerbillsResponse)(nil), "electra.meter.MsgCreateCustomerbillsResponse")
+	proto.RegisterType((*MsgUpdateCustomerbills)(nil), "electra.meter.MsgUpdateCustomerbills")
+	proto.RegisterType((*MsgUpdateCustomerbillsResponse)(nil), "electra.meter.MsgUpdateCustomerbillsResponse")
+	proto.RegisterType((*MsgDeleteCustomerbills)(nil), "electra.meter.MsgDeleteCustomerbills")
+	proto.RegisterType((*MsgDeleteCustomerbillsResponse)(nil), "electra.meter.MsgDeleteCustomerbillsResponse")
+	proto.RegisterType((*MsgCreateProducerbillingline)(nil), "electra.meter.MsgCreateProducerbillingline")
+	proto.RegisterType((*MsgCreateProducerbillinglineResponse)(nil), "electra.meter.MsgCreateProducerbillinglineResponse")
+	proto.RegisterType((*MsgUpdateProducerbillingline)(nil), "electra.meter.MsgUpdateProducerbillingline")
+	proto.RegisterType((*MsgUpdateProducerbillinglineResponse)(nil), "electra.meter.MsgUpdateProducerbillinglineResponse")
+	proto.RegisterType((*MsgDeleteProducerbillingline)(nil), "electra.meter.MsgDeleteProducerbillingline")
+	proto.RegisterType((*MsgDeleteProducerbillinglineResponse)(nil), "electra.meter.MsgDeleteProducerbillinglineResponse")
+	proto.RegisterType((*MsgCreateProducerbills)(nil), "electra.meter.MsgCreateProducerbills")
+	proto.RegisterType((*MsgCreateProducerbillsResponse)(nil), "electra.meter.MsgCreateProducerbillsResponse")
+	proto.RegisterType((*MsgUpdateProducerbills)(nil), "electra.meter.MsgUpdateProducerbills")
+	proto.RegisterType((*MsgUpdateProducerbillsResponse)(nil), "electra.meter.MsgUpdateProducerbillsResponse")
+	proto.RegisterType((*MsgDeleteProducerbills)(nil), "electra.meter.MsgDeleteProducerbills")
+	proto.RegisterType((*MsgDeleteProducerbillsResponse)(nil), "electra.meter.MsgDeleteProducerbillsResponse")
 }
 
 func init() { proto.RegisterFile("electra/meter/tx.proto", fileDescriptor_687c50bdd23ff25e) }
 
 var fileDescriptor_687c50bdd23ff25e = []byte{
-	// 846 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xec, 0x57, 0xcb, 0x6e, 0xc3, 0x44,
-	0x14, 0xad, 0x49, 0x9a, 0xd4, 0x97, 0xa6, 0x8f, 0x49, 0x5b, 0x0d, 0x01, 0xac, 0x12, 0xa1, 0x2a,
-	0xe2, 0x91, 0x12, 0x0f, 0xb0, 0x60, 0x81, 0x54, 0x1a, 0x40, 0x5d, 0x14, 0x45, 0x46, 0x08, 0x89,
-	0x4d, 0x65, 0x9c, 0x69, 0x62, 0x29, 0x8e, 0xad, 0xf1, 0xf4, 0xc5, 0x16, 0x89, 0x35, 0xe2, 0x23,
-	0xf8, 0x16, 0x96, 0x5d, 0xc2, 0x0e, 0xb5, 0x1b, 0x3e, 0x03, 0x79, 0x3c, 0x33, 0x19, 0xd7, 0x89,
-	0x55, 0xc4, 0x02, 0x16, 0xdd, 0xf9, 0x9e, 0x7b, 0x7c, 0x73, 0x4e, 0x7c, 0x8f, 0x35, 0x86, 0x03,
-	0x3a, 0xa3, 0x01, 0x67, 0xfe, 0x71, 0x44, 0x39, 0x65, 0xc7, 0xfc, 0xb6, 0x9f, 0xb0, 0x98, 0xc7,
-	0xa8, 0x25, 0xf1, 0xbe, 0xc0, 0x3b, 0xef, 0x16, 0x69, 0x49, 0x7c, 0x43, 0xd9, 0x45, 0x72, 0xc5,
-	0x82, 0xa9, 0x9f, 0xd2, 0x8b, 0x20, 0x9e, 0x73, 0xe6, 0x07, 0x3c, 0xbf, 0xb7, 0xfb, 0x87, 0x05,
-	0xf6, 0x79, 0x3a, 0xf1, 0x68, 0x10, 0xb3, 0x31, 0xc2, 0xd0, 0x0c, 0x18, 0xf5, 0x79, 0xcc, 0xb0,
-	0x75, 0x68, 0xf5, 0x6c, 0x4f, 0x95, 0xe8, 0x0d, 0xb0, 0x79, 0x18, 0xd1, 0x94, 0xfb, 0x51, 0x82,
-	0x5f, 0x39, 0xb4, 0x7a, 0x75, 0x6f, 0x01, 0xa0, 0x3d, 0x58, 0x4f, 0xb2, 0xe9, 0xb8, 0x26, 0x3a,
-	0x79, 0x81, 0x10, 0xd4, 0x6f, 0xa6, 0xe1, 0x1c, 0xd7, 0x05, 0x28, 0xae, 0x33, 0xe6, 0xcd, 0x34,
-	0xbe, 0xe2, 0x78, 0x3d, 0x67, 0x8a, 0x22, 0x43, 0xa3, 0xeb, 0x78, 0xc6, 0x71, 0x23, 0x47, 0x45,
-	0x81, 0x0e, 0xa0, 0x11, 0x4d, 0x29, 0xe3, 0x3f, 0xe0, 0xa6, 0x80, 0x65, 0x85, 0x76, 0xa0, 0x16,
-	0x25, 0x97, 0x78, 0x43, 0x80, 0xd9, 0xa5, 0xb8, 0xdf, 0xbf, 0x8d, 0x42, 0x6c, 0xcb, 0xfb, 0xb3,
-	0xa2, 0xdb, 0x86, 0x5d, 0x6d, 0xcd, 0xa3, 0x69, 0x12, 0xcf, 0x53, 0xda, 0xfd, 0xab, 0x06, 0xa0,
-	0x51, 0xf2, 0x6f, 0x1c, 0x67, 0x7e, 0x06, 0xca, 0xb1, 0x28, 0x32, 0xc5, 0xc2, 0xd0, 0x40, 0x7a,
-	0x96, 0x95, 0x70, 0x92, 0x59, 0x1a, 0x48, 0xdb, 0xb2, 0xca, 0x7e, 0x3d, 0xf7, 0x34, 0x90, 0xce,
-	0x55, 0x99, 0xfd, 0x77, 0x51, 0x72, 0x39, 0x90, 0xce, 0xc5, 0xb5, 0x98, 0x92, 0x19, 0x1b, 0x48,
-	0xeb, 0xb2, 0x52, 0x5a, 0x5c, 0xe5, 0x5e, 0x14, 0x5a, 0x8b, 0x8b, 0xc1, 0xd0, 0xe2, 0x6a, 0x2d,
-	0x2e, 0x7e, 0xd5, 0xd0, 0xe2, 0x2e, 0xb4, 0xb8, 0x78, 0xd3, 0xd4, 0xe2, 0x4a, 0x2d, 0x2e, 0x6e,
-	0x69, 0x2d, 0xae, 0xd6, 0xe2, 0xe2, 0x2d, 0x43, 0x8b, 0xab, 0xb4, 0x10, 0xbc, 0xbd, 0xd0, 0x42,
-	0xb4, 0x16, 0x82, 0x77, 0x0c, 0x2d, 0x44, 0x6b, 0x21, 0x78, 0xd7, 0xd0, 0x42, 0x16, 0x5a, 0x08,
-	0x46, 0xa6, 0x16, 0x22, 0xb5, 0x10, 0xdc, 0xd6, 0x5a, 0x88, 0xd6, 0x42, 0xf0, 0x9e, 0xa1, 0x85,
-	0x74, 0xf7, 0x00, 0x2d, 0x9e, 0xb4, 0x5e, 0x80, 0x5f, 0x9a, 0xe0, 0x9c, 0xa7, 0x93, 0xd3, 0xec,
-	0x31, 0xd3, 0x51, 0x16, 0x8e, 0x91, 0xcc, 0xc6, 0xa9, 0x8c, 0x46, 0xc5, 0x52, 0x38, 0x00, 0x2a,
-	0x40, 0x67, 0x43, 0xb1, 0x15, 0xb6, 0x67, 0x20, 0xe8, 0x1d, 0xd8, 0x51, 0xd5, 0x90, 0x5e, 0x87,
-	0x01, 0x3d, 0x1b, 0x8a, 0x0d, 0xb1, 0xbd, 0x12, 0x8e, 0xba, 0xb0, 0xa9, 0xb0, 0xaf, 0xfc, 0x88,
-	0x8a, 0x95, 0xb1, 0xbd, 0x02, 0x86, 0x8e, 0x60, 0x4b, 0xd5, 0x27, 0x01, 0x0f, 0xaf, 0xa9, 0x58,
-	0xa0, 0x0d, 0xef, 0x09, 0x8a, 0xde, 0x86, 0x96, 0x42, 0x46, 0x22, 0x88, 0xf9, 0x3a, 0x15, 0x41,
-	0x73, 0xda, 0x17, 0x31, 0x3b, 0x99, 0xcd, 0xc4, 0x7a, 0x19, 0xd3, 0x72, 0x14, 0x7d, 0x00, 0xed,
-	0x22, 0x32, 0x62, 0x61, 0x40, 0xe5, 0xd6, 0x2d, 0x6b, 0xa1, 0x0f, 0x61, 0xbf, 0x08, 0x9f, 0x5e,
-	0x31, 0x3a, 0x0f, 0xee, 0xc4, 0x4a, 0xda, 0xde, 0xf2, 0x26, 0xfa, 0x14, 0x3a, 0xc5, 0x46, 0xee,
-	0x66, 0x44, 0x59, 0x18, 0x8f, 0xc5, 0xda, 0xda, 0x5e, 0x05, 0x03, 0xbd, 0x07, 0xbb, 0xda, 0x20,
-	0xa3, 0x97, 0x94, 0x31, 0x3a, 0x16, 0x5b, 0xbd, 0xe1, 0x95, 0x1b, 0xe8, 0x63, 0x38, 0x28, 0x81,
-	0xb9, 0xb1, 0x7c, 0xdf, 0x57, 0x74, 0xd1, 0x10, 0xde, 0x2c, 0x75, 0x0a, 0x42, 0x5b, 0x42, 0x68,
-	0x35, 0x09, 0x7d, 0x02, 0xb8, 0x44, 0x50, 0x7f, 0xd2, 0x96, 0x18, 0xb0, 0xb2, 0x6f, 0xfa, 0xfc,
-	0x9a, 0xfb, 0x8c, 0x0f, 0x7d, 0x4e, 0x65, 0xc0, 0xca, 0x0d, 0xd4, 0x83, 0x6d, 0x05, 0x7e, 0x3e,
-	0x1f, 0x0b, 0x6e, 0x9e, 0xba, 0xa7, 0x70, 0x36, 0x57, 0xbc, 0xa9, 0x07, 0x1e, 0x8d, 0xfc, 0x70,
-	0x1e, 0xce, 0x27, 0xdf, 0x4e, 0x65, 0x12, 0xcb, 0x0d, 0xcd, 0x76, 0x4d, 0x36, 0x32, 0xd8, 0xee,
-	0x32, 0x36, 0x31, 0xd9, 0x6d, 0x83, 0x6d, 0x36, 0xba, 0x3d, 0x38, 0xaa, 0xce, 0xe4, 0xd3, 0xf8,
-	0x7e, 0x93, 0x8c, 0x5f, 0xe2, 0xfb, 0x12, 0xdf, 0x97, 0xf8, 0xfe, 0x8f, 0xe2, 0x5b, 0x91, 0x49,
-	0x1d, 0xdf, 0x9f, 0x2c, 0x11, 0xdf, 0x21, 0x9d, 0xd1, 0xff, 0x34, 0xbe, 0x52, 0x72, 0x85, 0x0e,
-	0x25, 0xd9, 0xfd, 0xb5, 0x0e, 0xb5, 0xf3, 0x74, 0x82, 0x86, 0xd0, 0x50, 0xc7, 0xe4, 0x7e, 0xe1,
-	0xc4, 0xdd, 0xd7, 0xa7, 0x8c, 0xce, 0xe1, 0xaa, 0x8e, 0x9a, 0x86, 0xbe, 0x84, 0xa6, 0x3a, 0x7b,
-	0xbe, 0xb6, 0x8a, 0x4c, 0x3a, 0x6f, 0xad, 0x6c, 0xe9, 0x41, 0x3f, 0x5a, 0xf0, 0x7a, 0xd5, 0x21,
-	0xe6, 0xfd, 0xf2, 0x88, 0x0a, 0x7a, 0xe7, 0xa3, 0x7f, 0x44, 0x2f, 0xa8, 0xa8, 0x7a, 0x17, 0x2f,
-	0x51, 0x51, 0x41, 0x5f, 0xa6, 0xe2, 0x19, 0x5b, 0x25, 0x54, 0x54, 0xad, 0xd4, 0x12, 0x15, 0x15,
-	0xf4, 0x65, 0x2a, 0x9e, 0xb1, 0x28, 0x9f, 0x1d, 0xff, 0xf6, 0xe0, 0x58, 0xf7, 0x0f, 0x8e, 0xf5,
-	0xe7, 0x83, 0x63, 0xfd, 0xfc, 0xe8, 0xac, 0xdd, 0x3f, 0x3a, 0x6b, 0xbf, 0x3f, 0x3a, 0x6b, 0xdf,
-	0xed, 0xab, 0x4f, 0xb2, 0x5b, 0xf5, 0xed, 0x76, 0x97, 0xd0, 0xf4, 0xfb, 0x86, 0xf8, 0x06, 0x23,
-	0x7f, 0x07, 0x00, 0x00, 0xff, 0xff, 0x16, 0xb7, 0x61, 0x1d, 0xd9, 0x0d, 0x00, 0x00,
+	// 1829 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xec, 0x5a, 0xcb, 0x6f, 0x1b, 0x45,
+	0x18, 0xaf, 0xf3, 0xf6, 0xe4, 0xd1, 0x76, 0x92, 0x86, 0xad, 0xdb, 0x5a, 0xa9, 0x55, 0x87, 0x88,
+	0xd0, 0x94, 0x78, 0x81, 0x03, 0x07, 0xa4, 0x36, 0x01, 0x54, 0x89, 0x20, 0x6b, 0x0b, 0xad, 0x84,
+	0x90, 0xaa, 0xad, 0x3d, 0x75, 0x16, 0xbc, 0x0f, 0xad, 0xd7, 0x6d, 0x83, 0x84, 0x84, 0x84, 0xc4,
+	0x81, 0x13, 0xe2, 0xc0, 0x5f, 0x83, 0xc4, 0x81, 0x0b, 0xc7, 0x8a, 0x13, 0xdc, 0x50, 0x7b, 0xe1,
+	0xc4, 0xdf, 0x80, 0xe6, 0xb9, 0x33, 0xbb, 0x33, 0x63, 0xb7, 0x39, 0xa4, 0x2d, 0xbe, 0xed, 0xf7,
+	0xcd, 0xb7, 0xf3, 0xfd, 0xbe, 0xd7, 0x3c, 0xbe, 0x5d, 0xb0, 0x8e, 0xfa, 0xa8, 0x93, 0xa5, 0xfe,
+	0xb5, 0x10, 0x65, 0x28, 0xbd, 0x96, 0x3d, 0xda, 0x49, 0xd2, 0x38, 0x8b, 0xe1, 0x32, 0xe3, 0xef,
+	0x10, 0x7e, 0x6d, 0x5b, 0x15, 0x4b, 0xe2, 0x87, 0x28, 0xbd, 0x9b, 0x0c, 0xd3, 0xce, 0xa1, 0x3f,
+	0x40, 0x77, 0x3b, 0x71, 0x94, 0xa5, 0x7e, 0x27, 0xa3, 0xef, 0xd6, 0x2e, 0x14, 0x84, 0x13, 0xff,
+	0x6e, 0xe8, 0x27, 0x6c, 0xf0, 0xb2, 0x3a, 0x78, 0x2f, 0xe8, 0xf7, 0x83, 0xa8, 0xd7, 0x39, 0xea,
+	0xf4, 0xd1, 0x80, 0x89, 0xbc, 0xae, 0x8a, 0x74, 0x86, 0x83, 0x2c, 0x0e, 0x51, 0xca, 0x44, 0xfb,
+	0x41, 0x84, 0xf4, 0x73, 0xc9, 0x82, 0x86, 0xb9, 0x92, 0x34, 0xee, 0x0e, 0x3b, 0x63, 0xcc, 0x25,
+	0x0b, 0xb2, 0xb9, 0x1a, 0x7f, 0x55, 0x40, 0xf5, 0x60, 0xd0, 0xf3, 0x50, 0x27, 0x4e, 0xbb, 0xd0,
+	0x01, 0xf3, 0x9d, 0x14, 0xf9, 0x59, 0x9c, 0x3a, 0x95, 0x8d, 0xca, 0x56, 0xd5, 0xe3, 0x24, 0xbc,
+	0x08, 0xaa, 0x59, 0x10, 0xa2, 0x41, 0xe6, 0x87, 0x89, 0x33, 0xb5, 0x51, 0xd9, 0x9a, 0xf1, 0x72,
+	0x06, 0x5c, 0x03, 0xb3, 0x09, 0xf6, 0x9a, 0x33, 0x4d, 0x46, 0x28, 0x01, 0x21, 0x98, 0x79, 0x78,
+	0x18, 0x44, 0xce, 0x0c, 0x61, 0x92, 0x67, 0x2c, 0xf9, 0xf0, 0x30, 0x1e, 0x66, 0xce, 0x2c, 0x95,
+	0x24, 0x04, 0xe6, 0x86, 0x0f, 0xe2, 0x7e, 0xe6, 0xcc, 0x51, 0x2e, 0x21, 0xe0, 0x3a, 0x98, 0x0b,
+	0x0f, 0x51, 0x9a, 0x7d, 0xed, 0xcc, 0x13, 0x36, 0xa3, 0xe0, 0x19, 0x30, 0x1d, 0x26, 0xf7, 0x9d,
+	0x05, 0xc2, 0xc4, 0x8f, 0xe4, 0x7d, 0xff, 0x51, 0x18, 0x38, 0x55, 0xf6, 0x3e, 0x26, 0x1a, 0xab,
+	0xe0, 0xac, 0x30, 0xcd, 0x43, 0x83, 0x24, 0x8e, 0x06, 0xa8, 0xf1, 0xcf, 0x34, 0x00, 0x82, 0xeb,
+	0x1e, 0xc7, 0x62, 0x6c, 0xcf, 0x2e, 0xb7, 0x98, 0x10, 0x18, 0x31, 0x31, 0x68, 0x97, 0xd9, 0xcc,
+	0x28, 0x62, 0x09, 0x36, 0x69, 0x97, 0x99, 0xcd, 0x28, 0xac, 0x9d, 0xda, 0xb4, 0xcb, 0x2c, 0xe7,
+	0x24, 0xf6, 0x5d, 0x98, 0xdc, 0xdf, 0x65, 0x96, 0x93, 0x67, 0x32, 0x0b, 0x36, 0x6c, 0x97, 0x99,
+	0xce, 0x28, 0x8e, 0xa5, 0xc5, 0xad, 0x27, 0x84, 0xc0, 0xd2, 0x72, 0x80, 0x84, 0xa5, 0x25, 0xb0,
+	0xb4, 0x9c, 0x45, 0x09, 0x4b, 0x2b, 0xc7, 0xd2, 0x72, 0x96, 0x64, 0x2c, 0x2d, 0x86, 0xa5, 0xe5,
+	0x2c, 0x0b, 0x2c, 0x2d, 0x81, 0xa5, 0xe5, 0xac, 0x48, 0x58, 0x5a, 0x1c, 0x8b, 0xeb, 0x9c, 0xce,
+	0xb1, 0xb8, 0x02, 0x8b, 0xeb, 0x9c, 0x91, 0xb0, 0xb8, 0x02, 0x8b, 0xeb, 0x9c, 0x95, 0xb0, 0xb8,
+	0x39, 0x16, 0xd7, 0x81, 0x32, 0x16, 0x97, 0x61, 0x71, 0x9d, 0x55, 0x81, 0xc5, 0x15, 0x58, 0x5c,
+	0x67, 0x4d, 0xc2, 0xe2, 0x36, 0xd6, 0x00, 0xcc, 0x23, 0x2d, 0x12, 0xe0, 0xa7, 0x79, 0x50, 0x3f,
+	0x18, 0xf4, 0xf6, 0x70, 0x98, 0x51, 0x1b, 0x17, 0x7d, 0x9b, 0xd5, 0xfc, 0x1e, 0x2b, 0x79, 0x4b,
+	0x52, 0xd4, 0x01, 0xe0, 0x0b, 0xc3, 0xcd, 0x7d, 0x92, 0x15, 0x55, 0x4f, 0xe2, 0xc0, 0x37, 0xc0,
+	0x19, 0x4e, 0xed, 0xa3, 0x07, 0x41, 0x07, 0xdd, 0xdc, 0x27, 0x19, 0x52, 0xf5, 0x4a, 0x7c, 0xd8,
+	0x00, 0x4b, 0x9c, 0xf7, 0x89, 0x1f, 0x22, 0x92, 0x32, 0x55, 0x4f, 0xe1, 0xc1, 0x4d, 0xb0, 0xc2,
+	0xe9, 0xeb, 0x9d, 0x2c, 0x78, 0x80, 0x48, 0x02, 0x2d, 0x78, 0x05, 0x2e, 0xbc, 0x02, 0x96, 0x39,
+	0xa7, 0x4d, 0x0a, 0x91, 0xa6, 0x93, 0xca, 0x94, 0x67, 0xfb, 0x30, 0x4e, 0xaf, 0xf7, 0xfb, 0x24,
+	0xbd, 0xa4, 0xd9, 0x28, 0x17, 0xbe, 0x05, 0x56, 0x55, 0x4e, 0x3b, 0x0d, 0x3a, 0x88, 0x65, 0x9d,
+	0x6e, 0x08, 0xbe, 0x0d, 0xce, 0xa9, 0xec, 0xbd, 0x61, 0x8a, 0xa2, 0xce, 0x11, 0x49, 0xc9, 0xaa,
+	0xa7, 0x1f, 0x84, 0xef, 0x83, 0x9a, 0x3a, 0x40, 0xad, 0x69, 0xa3, 0x34, 0x88, 0xbb, 0x24, 0x6d,
+	0xab, 0x9e, 0x45, 0x02, 0xbe, 0x09, 0xce, 0x0a, 0x03, 0x53, 0x74, 0x1f, 0xa5, 0x29, 0xea, 0x92,
+	0xac, 0x5e, 0xf0, 0xca, 0x03, 0xf0, 0x5d, 0xb0, 0x5e, 0x62, 0x52, 0xc3, 0x68, 0xbe, 0x1b, 0x46,
+	0xe1, 0x3e, 0xb8, 0x54, 0x1a, 0x51, 0x80, 0x2e, 0x13, 0xa0, 0x76, 0x21, 0xf8, 0x1e, 0x70, 0x4a,
+	0x02, 0xdc, 0x49, 0x2b, 0x64, 0x02, 0xe3, 0xb8, 0x6c, 0xe7, 0xad, 0xcc, 0x4f, 0xb3, 0x7d, 0x3f,
+	0x43, 0xac, 0xc0, 0xca, 0x03, 0x70, 0x0b, 0x9c, 0xe6, 0xcc, 0x0f, 0xa2, 0x2e, 0x91, 0xa5, 0x55,
+	0x57, 0x64, 0xe3, 0x79, 0xc9, 0x4a, 0xbd, 0xeb, 0xa1, 0xd0, 0x0f, 0xa2, 0x20, 0xea, 0xdd, 0x39,
+	0x64, 0x95, 0x58, 0x1e, 0x10, 0xd2, 0x2d, 0x59, 0x1a, 0x4a, 0xd2, 0x2d, 0x9d, 0xb4, 0x2b, 0x4b,
+	0xaf, 0x4a, 0xd2, 0xf2, 0x40, 0x63, 0x0b, 0x6c, 0xda, 0x6b, 0xb2, 0x58, 0xbe, 0x9f, 0x25, 0xdd,
+	0x49, 0xf9, 0x4e, 0xca, 0x77, 0x52, 0xbe, 0x2f, 0x50, 0xf9, 0x5a, 0x6a, 0x52, 0x94, 0xef, 0xf7,
+	0x15, 0x52, 0xbe, 0xfb, 0xa8, 0x8f, 0x4e, 0xb4, 0x7c, 0x19, 0x64, 0x0b, 0x0e, 0x01, 0xf9, 0xd7,
+	0x69, 0x70, 0x3a, 0x5f, 0x9c, 0x12, 0xff, 0xc0, 0x4f, 0x2c, 0x18, 0x29, 0x86, 0xc1, 0x30, 0x44,
+	0xa9, 0xc0, 0x30, 0x25, 0x30, 0x28, 0x7c, 0xb8, 0x01, 0x16, 0xfd, 0x5e, 0x8a, 0x50, 0x88, 0xa2,
+	0x4c, 0x40, 0x95, 0x59, 0x38, 0x19, 0x04, 0xc9, 0x56, 0x90, 0x19, 0x52, 0x20, 0x45, 0x76, 0xc1,
+	0x37, 0xb3, 0x3a, 0xdf, 0xf0, 0xf3, 0xbf, 0xc0, 0x35, 0x47, 0x71, 0x15, 0xf9, 0x70, 0x07, 0x40,
+	0x31, 0x7d, 0x9e, 0xb1, 0xf4, 0x28, 0xaa, 0x19, 0xc1, 0x73, 0x0b, 0x2e, 0xcf, 0x59, 0xba, 0xda,
+	0x94, 0xf8, 0x96, 0x32, 0xae, 0x5a, 0xcb, 0xd8, 0x56, 0x80, 0xc0, 0x5e, 0x80, 0x8d, 0xf3, 0xe0,
+	0xb5, 0x42, 0x00, 0x8b, 0xc1, 0x65, 0xa9, 0x3b, 0x09, 0xee, 0xcb, 0x1a, 0x5c, 0x39, 0x80, 0x22,
+	0xb8, 0xbf, 0x55, 0x48, 0x70, 0x59, 0x91, 0xbf, 0xa4, 0xc1, 0x65, 0x06, 0xca, 0x46, 0x08, 0x03,
+	0xff, 0xad, 0x80, 0x75, 0x91, 0xd9, 0x37, 0xe4, 0xb6, 0x83, 0xc5, 0x4e, 0x3c, 0x82, 0x65, 0x98,
+	0x79, 0x33, 0x1e, 0x27, 0xf1, 0xe5, 0xed, 0x1e, 0xea, 0x05, 0x11, 0xbf, 0xd4, 0x12, 0x02, 0x5f,
+	0xb7, 0x51, 0xd4, 0x65, 0x37, 0x5a, 0xfc, 0x28, 0x2e, 0xf6, 0xb3, 0xba, 0x8b, 0xfd, 0x9c, 0x7c,
+	0xb1, 0xc7, 0x17, 0xb9, 0x38, 0x42, 0x47, 0x41, 0xc4, 0x32, 0x8c, 0x93, 0xb0, 0x06, 0x16, 0xc8,
+	0x23, 0x7e, 0x85, 0xa6, 0x93, 0xa0, 0x09, 0x42, 0xe5, 0x00, 0xc2, 0xc9, 0xc6, 0x86, 0x74, 0x77,
+	0x53, 0xec, 0x2d, 0xba, 0x84, 0xe6, 0xc3, 0xff, 0xc7, 0x25, 0x1a, 0x7b, 0x85, 0x4b, 0x3e, 0x26,
+	0x1e, 0xa1, 0x09, 0x74, 0x6c, 0x8f, 0x30, 0x7d, 0x9a, 0xd9, 0x84, 0xbe, 0x2f, 0xc0, 0xca, 0xc1,
+	0xa0, 0xd7, 0x4e, 0x51, 0xe2, 0xa7, 0x44, 0xe4, 0xb9, 0x3c, 0xbf, 0x0e, 0xe6, 0x52, 0x72, 0x75,
+	0x27, 0xae, 0x5f, 0xf0, 0x18, 0xd5, 0xf8, 0x81, 0x06, 0x58, 0x9a, 0x9e, 0x2b, 0xc6, 0x15, 0xfc,
+	0xe5, 0x20, 0x8e, 0xf6, 0xa4, 0x9e, 0x19, 0xd3, 0x57, 0xe2, 0x73, 0xd9, 0xb6, 0xd4, 0x13, 0xe3,
+	0xd5, 0x5e, 0xe4, 0x13, 0x90, 0x71, 0x88, 0x4b, 0x96, 0x55, 0x3a, 0x27, 0x1b, 0xdf, 0x4e, 0x83,
+	0x8b, 0x22, 0x21, 0xf7, 0xca, 0x4d, 0xbd, 0x11, 0xcb, 0x0d, 0x7b, 0xa1, 0xb4, 0xdc, 0x14, 0xf8,
+	0xb2, 0x97, 0xa6, 0x4b, 0x5e, 0xc2, 0x7a, 0x02, 0x9e, 0x8c, 0x8c, 0xd2, 0xee, 0x08, 0xb3, 0x86,
+	0x1d, 0x61, 0x13, 0xac, 0x60, 0xc8, 0x7b, 0xf9, 0x22, 0x44, 0xf7, 0x8e, 0x02, 0x97, 0xeb, 0xba,
+	0x73, 0xc8, 0xfb, 0x71, 0x94, 0xc2, 0x8b, 0x21, 0x7d, 0x92, 0xef, 0x19, 0x32, 0xcb, 0x9c, 0xbd,
+	0x18, 0x27, 0x15, 0xfc, 0x34, 0xce, 0x7c, 0x76, 0x51, 0xa1, 0xfd, 0xaa, 0x12, 0x3f, 0xef, 0x32,
+	0x2e, 0x4a, 0x5d, 0xc6, 0xc6, 0x26, 0xb8, 0x62, 0x8b, 0x80, 0xc8, 0x4a, 0x16, 0x2a, 0x5a, 0x28,
+	0x93, 0x50, 0x9d, 0x5c, 0xa8, 0x8c, 0x11, 0x10, 0xa1, 0xfa, 0xb9, 0x42, 0x42, 0x45, 0xd7, 0x98,
+	0x17, 0x28, 0x54, 0xcc, 0x00, 0x23, 0x2e, 0x61, 0xc0, 0x2f, 0x53, 0xd2, 0xbe, 0x2c, 0x0b, 0xda,
+	0x96, 0xdc, 0x0d, 0xb0, 0x48, 0xa2, 0xa8, 0x2c, 0x87, 0x32, 0x4b, 0x36, 0xae, 0x5b, 0xbc, 0xdf,
+	0x14, 0xf8, 0x78, 0x33, 0xc1, 0xaf, 0x92, 0xe3, 0x1a, 0x35, 0x42, 0xd0, 0x5c, 0x13, 0x89, 0xd7,
+	0x9d, 0x43, 0xb6, 0x67, 0xc9, 0x2c, 0x9e, 0x67, 0x52, 0xa4, 0xe9, 0x1e, 0x56, 0xe0, 0xc2, 0x06,
+	0x58, 0x22, 0x00, 0x87, 0x29, 0x4d, 0x99, 0x79, 0xda, 0x04, 0x91, 0x79, 0xf0, 0x22, 0xa8, 0x62,
+	0xfa, 0xb6, 0xdf, 0x0f, 0xba, 0x24, 0xe3, 0x16, 0xbc, 0x9c, 0x81, 0x37, 0xce, 0xc4, 0x0f, 0xba,
+	0x24, 0xd9, 0x16, 0x3c, 0xf2, 0xac, 0xec, 0xf2, 0x8a, 0xf7, 0x8a, 0x0e, 0x2e, 0xa7, 0xd2, 0xc4,
+	0xc1, 0xe3, 0x3b, 0x58, 0xe3, 0xbd, 0x7c, 0xb5, 0xac, 0x48, 0x87, 0x86, 0x13, 0x71, 0xb0, 0x72,
+	0xd0, 0x30, 0x80, 0x94, 0x77, 0xdf, 0x76, 0xf9, 0x33, 0x98, 0x7d, 0x9d, 0x28, 0x2d, 0xba, 0x53,
+	0x86, 0x45, 0xf7, 0xb9, 0x96, 0xf4, 0xd2, 0x2a, 0x34, 0x6b, 0x58, 0x85, 0x5e, 0x9d, 0xdd, 0x57,
+	0x13, 0x01, 0xfd, 0xee, 0x3b, 0x09, 0xd5, 0x49, 0xef, 0xbe, 0xb6, 0x50, 0x29, 0xbb, 0xef, 0x0b,
+	0x14, 0x2a, 0x65, 0xf7, 0xb5, 0x19, 0xa0, 0xec, 0xbe, 0xb2, 0xe0, 0xb1, 0xd7, 0x2e, 0x6e, 0x44,
+	0x71, 0xed, 0x2a, 0xf2, 0x5f, 0x99, 0xdd, 0x57, 0xf1, 0x9e, 0x7e, 0xf7, 0x9d, 0x38, 0xf8, 0x38,
+	0xbb, 0xaf, 0xde, 0xc1, 0xca, 0xee, 0x7b, 0x22, 0x0e, 0x56, 0x76, 0x5f, 0x2d, 0xc8, 0xd6, 0x1f,
+	0x6b, 0x60, 0xfa, 0x60, 0xd0, 0x83, 0xfb, 0x60, 0x8e, 0xff, 0x3e, 0xb2, 0xa3, 0xfc, 0x61, 0xb3,
+	0x23, 0xbe, 0xbe, 0xd7, 0x36, 0x4c, 0x23, 0xe2, 0xee, 0xfe, 0x11, 0x98, 0xe7, 0xff, 0x64, 0x9c,
+	0x37, 0x09, 0xbb, 0xb5, 0xcb, 0xc6, 0x21, 0x31, 0xd1, 0x77, 0x15, 0x70, 0xc1, 0xf6, 0x71, 0xff,
+	0x6a, 0x79, 0x0a, 0x8b, 0x78, 0xed, 0x9d, 0x67, 0x12, 0x57, 0x50, 0xd8, 0xbe, 0x51, 0x6a, 0x50,
+	0x58, 0xc4, 0x75, 0x28, 0xc6, 0xf8, 0xda, 0x42, 0x50, 0xd8, 0x3e, 0xb5, 0x68, 0x50, 0x58, 0xc4,
+	0x75, 0x28, 0xc6, 0xf8, 0x80, 0x02, 0x6f, 0x83, 0x25, 0xe5, 0xe3, 0x49, 0xdd, 0xe8, 0x52, 0x32,
+	0x5e, 0xdb, 0xb4, 0x8f, 0xcb, 0xf3, 0x2a, 0x7d, 0xfb, 0xba, 0xd1, 0x49, 0xc6, 0x79, 0x75, 0x6d,
+	0x63, 0x3c, 0xaf, 0xd2, 0x32, 0xae, 0x1b, 0xcd, 0x36, 0xce, 0xab, 0xeb, 0xd6, 0xc2, 0xaf, 0xc0,
+	0xaa, 0xae, 0x53, 0xdb, 0x34, 0x99, 0xab, 0x88, 0xd5, 0xae, 0x8e, 0x25, 0x26, 0x2b, 0xd3, 0xf5,
+	0x40, 0x9b, 0x26, 0x1f, 0x8c, 0x54, 0x66, 0xe9, 0x30, 0x62, 0x65, 0xba, 0xf6, 0x62, 0xd3, 0xe4,
+	0x98, 0x91, 0xca, 0x2c, 0xed, 0x45, 0x78, 0x0b, 0x2c, 0xca, 0xbd, 0xc5, 0x4b, 0xe5, 0xb7, 0xa5,
+	0xe1, 0x5a, 0xd3, 0x3a, 0x2c, 0x26, 0xfd, 0x06, 0x9c, 0x37, 0x37, 0xf1, 0xb6, 0x4d, 0xae, 0xd7,
+	0x08, 0xd7, 0xdc, 0x67, 0x10, 0x96, 0xd5, 0x9b, 0x1b, 0x53, 0xdb, 0xa6, 0x60, 0x8c, 0xa9, 0x7e,
+	0x64, 0xc3, 0x05, 0xab, 0x37, 0x37, 0x5b, 0xb6, 0x4d, 0xe1, 0x19, 0x53, 0xfd, 0xc8, 0x76, 0x49,
+	0x5e, 0x18, 0xea, 0x45, 0xb3, 0x39, 0x8e, 0x27, 0x2d, 0x85, 0xa1, 0xbd, 0x34, 0xe6, 0x85, 0x31,
+	0x52, 0x99, 0x46, 0xcc, 0x5c, 0x18, 0x46, 0x65, 0xba, 0x2b, 0x74, 0x73, 0x1c, 0x2f, 0x59, 0x0a,
+	0x43, 0xaf, 0x4c, 0xe4, 0xb0, 0xee, 0xd0, 0x6e, 0xcc, 0x61, 0x8d, 0xb0, 0x39, 0x87, 0x2d, 0xc7,
+	0xee, 0x3c, 0x87, 0xc7, 0x54, 0x6f, 0x14, 0x36, 0xe7, 0xf0, 0x08, 0xf5, 0xe6, 0x2b, 0x8b, 0x31,
+	0x87, 0xc7, 0x54, 0x3f, 0xf2, 0xd2, 0x91, 0xe7, 0xb0, 0x7a, 0x5c, 0x6b, 0x8e, 0xe3, 0x49, 0x4b,
+	0x0e, 0x6b, 0x8f, 0x5e, 0x79, 0x0e, 0x8f, 0x54, 0xa6, 0x11, 0x33, 0xe7, 0xb0, 0x51, 0x99, 0xee,
+	0x20, 0xda, 0x1c, 0xc7, 0x4b, 0x96, 0x1c, 0xd6, 0x2a, 0xbb, 0x71, 0xed, 0xf7, 0x27, 0xf5, 0xca,
+	0xe3, 0x27, 0xf5, 0xca, 0xdf, 0x4f, 0xea, 0x95, 0x1f, 0x9f, 0xd6, 0x4f, 0x3d, 0x7e, 0x5a, 0x3f,
+	0xf5, 0xe7, 0xd3, 0xfa, 0xa9, 0xcf, 0xcf, 0xf1, 0x9f, 0x99, 0x1f, 0xf1, 0xff, 0xba, 0x8f, 0x12,
+	0x34, 0xb8, 0x37, 0x47, 0xfe, 0x63, 0x76, 0xff, 0x0b, 0x00, 0x00, 0xff, 0xff, 0x7f, 0x1a, 0x41,
+	0x09, 0xf5, 0x2d, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1042,6 +3670,25 @@ type MsgClient interface {
 	CreatePowerPurchaseContract(ctx context.Context, in *MsgCreatePowerPurchaseContract, opts ...grpc.CallOption) (*MsgCreatePowerPurchaseContractResponse, error)
 	UpdatePowerPurchaseContract(ctx context.Context, in *MsgUpdatePowerPurchaseContract, opts ...grpc.CallOption) (*MsgUpdatePowerPurchaseContractResponse, error)
 	DeletePowerPurchaseContract(ctx context.Context, in *MsgDeletePowerPurchaseContract, opts ...grpc.CallOption) (*MsgDeletePowerPurchaseContractResponse, error)
+	CreatePpaMap(ctx context.Context, in *MsgCreatePpaMap, opts ...grpc.CallOption) (*MsgCreatePpaMapResponse, error)
+	UpdatePpaMap(ctx context.Context, in *MsgUpdatePpaMap, opts ...grpc.CallOption) (*MsgUpdatePpaMapResponse, error)
+	DeletePpaMap(ctx context.Context, in *MsgDeletePpaMap, opts ...grpc.CallOption) (*MsgDeletePpaMapResponse, error)
+	CreateBillingcycles(ctx context.Context, in *MsgCreateBillingcycles, opts ...grpc.CallOption) (*MsgCreateBillingcyclesResponse, error)
+	UpdateBillingcycles(ctx context.Context, in *MsgUpdateBillingcycles, opts ...grpc.CallOption) (*MsgUpdateBillingcyclesResponse, error)
+	DeleteBillingcycles(ctx context.Context, in *MsgDeleteBillingcycles, opts ...grpc.CallOption) (*MsgDeleteBillingcyclesResponse, error)
+	PrepareBill(ctx context.Context, in *MsgPrepareBill, opts ...grpc.CallOption) (*MsgPrepareBillResponse, error)
+	CreateCustomerbillingline(ctx context.Context, in *MsgCreateCustomerbillingline, opts ...grpc.CallOption) (*MsgCreateCustomerbillinglineResponse, error)
+	UpdateCustomerbillingline(ctx context.Context, in *MsgUpdateCustomerbillingline, opts ...grpc.CallOption) (*MsgUpdateCustomerbillinglineResponse, error)
+	DeleteCustomerbillingline(ctx context.Context, in *MsgDeleteCustomerbillingline, opts ...grpc.CallOption) (*MsgDeleteCustomerbillinglineResponse, error)
+	CreateCustomerbills(ctx context.Context, in *MsgCreateCustomerbills, opts ...grpc.CallOption) (*MsgCreateCustomerbillsResponse, error)
+	UpdateCustomerbills(ctx context.Context, in *MsgUpdateCustomerbills, opts ...grpc.CallOption) (*MsgUpdateCustomerbillsResponse, error)
+	DeleteCustomerbills(ctx context.Context, in *MsgDeleteCustomerbills, opts ...grpc.CallOption) (*MsgDeleteCustomerbillsResponse, error)
+	CreateProducerbillingline(ctx context.Context, in *MsgCreateProducerbillingline, opts ...grpc.CallOption) (*MsgCreateProducerbillinglineResponse, error)
+	UpdateProducerbillingline(ctx context.Context, in *MsgUpdateProducerbillingline, opts ...grpc.CallOption) (*MsgUpdateProducerbillinglineResponse, error)
+	DeleteProducerbillingline(ctx context.Context, in *MsgDeleteProducerbillingline, opts ...grpc.CallOption) (*MsgDeleteProducerbillinglineResponse, error)
+	CreateProducerbills(ctx context.Context, in *MsgCreateProducerbills, opts ...grpc.CallOption) (*MsgCreateProducerbillsResponse, error)
+	UpdateProducerbills(ctx context.Context, in *MsgUpdateProducerbills, opts ...grpc.CallOption) (*MsgUpdateProducerbillsResponse, error)
+	DeleteProducerbills(ctx context.Context, in *MsgDeleteProducerbills, opts ...grpc.CallOption) (*MsgDeleteProducerbillsResponse, error)
 }
 
 type msgClient struct {
@@ -1097,6 +3744,177 @@ func (c *msgClient) DeletePowerPurchaseContract(ctx context.Context, in *MsgDele
 	return out, nil
 }
 
+func (c *msgClient) CreatePpaMap(ctx context.Context, in *MsgCreatePpaMap, opts ...grpc.CallOption) (*MsgCreatePpaMapResponse, error) {
+	out := new(MsgCreatePpaMapResponse)
+	err := c.cc.Invoke(ctx, "/electra.meter.Msg/CreatePpaMap", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) UpdatePpaMap(ctx context.Context, in *MsgUpdatePpaMap, opts ...grpc.CallOption) (*MsgUpdatePpaMapResponse, error) {
+	out := new(MsgUpdatePpaMapResponse)
+	err := c.cc.Invoke(ctx, "/electra.meter.Msg/UpdatePpaMap", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) DeletePpaMap(ctx context.Context, in *MsgDeletePpaMap, opts ...grpc.CallOption) (*MsgDeletePpaMapResponse, error) {
+	out := new(MsgDeletePpaMapResponse)
+	err := c.cc.Invoke(ctx, "/electra.meter.Msg/DeletePpaMap", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) CreateBillingcycles(ctx context.Context, in *MsgCreateBillingcycles, opts ...grpc.CallOption) (*MsgCreateBillingcyclesResponse, error) {
+	out := new(MsgCreateBillingcyclesResponse)
+	err := c.cc.Invoke(ctx, "/electra.meter.Msg/CreateBillingcycles", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) UpdateBillingcycles(ctx context.Context, in *MsgUpdateBillingcycles, opts ...grpc.CallOption) (*MsgUpdateBillingcyclesResponse, error) {
+	out := new(MsgUpdateBillingcyclesResponse)
+	err := c.cc.Invoke(ctx, "/electra.meter.Msg/UpdateBillingcycles", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) DeleteBillingcycles(ctx context.Context, in *MsgDeleteBillingcycles, opts ...grpc.CallOption) (*MsgDeleteBillingcyclesResponse, error) {
+	out := new(MsgDeleteBillingcyclesResponse)
+	err := c.cc.Invoke(ctx, "/electra.meter.Msg/DeleteBillingcycles", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) PrepareBill(ctx context.Context, in *MsgPrepareBill, opts ...grpc.CallOption) (*MsgPrepareBillResponse, error) {
+	out := new(MsgPrepareBillResponse)
+	err := c.cc.Invoke(ctx, "/electra.meter.Msg/PrepareBill", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) CreateCustomerbillingline(ctx context.Context, in *MsgCreateCustomerbillingline, opts ...grpc.CallOption) (*MsgCreateCustomerbillinglineResponse, error) {
+	out := new(MsgCreateCustomerbillinglineResponse)
+	err := c.cc.Invoke(ctx, "/electra.meter.Msg/CreateCustomerbillingline", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) UpdateCustomerbillingline(ctx context.Context, in *MsgUpdateCustomerbillingline, opts ...grpc.CallOption) (*MsgUpdateCustomerbillinglineResponse, error) {
+	out := new(MsgUpdateCustomerbillinglineResponse)
+	err := c.cc.Invoke(ctx, "/electra.meter.Msg/UpdateCustomerbillingline", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) DeleteCustomerbillingline(ctx context.Context, in *MsgDeleteCustomerbillingline, opts ...grpc.CallOption) (*MsgDeleteCustomerbillinglineResponse, error) {
+	out := new(MsgDeleteCustomerbillinglineResponse)
+	err := c.cc.Invoke(ctx, "/electra.meter.Msg/DeleteCustomerbillingline", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) CreateCustomerbills(ctx context.Context, in *MsgCreateCustomerbills, opts ...grpc.CallOption) (*MsgCreateCustomerbillsResponse, error) {
+	out := new(MsgCreateCustomerbillsResponse)
+	err := c.cc.Invoke(ctx, "/electra.meter.Msg/CreateCustomerbills", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) UpdateCustomerbills(ctx context.Context, in *MsgUpdateCustomerbills, opts ...grpc.CallOption) (*MsgUpdateCustomerbillsResponse, error) {
+	out := new(MsgUpdateCustomerbillsResponse)
+	err := c.cc.Invoke(ctx, "/electra.meter.Msg/UpdateCustomerbills", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) DeleteCustomerbills(ctx context.Context, in *MsgDeleteCustomerbills, opts ...grpc.CallOption) (*MsgDeleteCustomerbillsResponse, error) {
+	out := new(MsgDeleteCustomerbillsResponse)
+	err := c.cc.Invoke(ctx, "/electra.meter.Msg/DeleteCustomerbills", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) CreateProducerbillingline(ctx context.Context, in *MsgCreateProducerbillingline, opts ...grpc.CallOption) (*MsgCreateProducerbillinglineResponse, error) {
+	out := new(MsgCreateProducerbillinglineResponse)
+	err := c.cc.Invoke(ctx, "/electra.meter.Msg/CreateProducerbillingline", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) UpdateProducerbillingline(ctx context.Context, in *MsgUpdateProducerbillingline, opts ...grpc.CallOption) (*MsgUpdateProducerbillinglineResponse, error) {
+	out := new(MsgUpdateProducerbillinglineResponse)
+	err := c.cc.Invoke(ctx, "/electra.meter.Msg/UpdateProducerbillingline", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) DeleteProducerbillingline(ctx context.Context, in *MsgDeleteProducerbillingline, opts ...grpc.CallOption) (*MsgDeleteProducerbillinglineResponse, error) {
+	out := new(MsgDeleteProducerbillinglineResponse)
+	err := c.cc.Invoke(ctx, "/electra.meter.Msg/DeleteProducerbillingline", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) CreateProducerbills(ctx context.Context, in *MsgCreateProducerbills, opts ...grpc.CallOption) (*MsgCreateProducerbillsResponse, error) {
+	out := new(MsgCreateProducerbillsResponse)
+	err := c.cc.Invoke(ctx, "/electra.meter.Msg/CreateProducerbills", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) UpdateProducerbills(ctx context.Context, in *MsgUpdateProducerbills, opts ...grpc.CallOption) (*MsgUpdateProducerbillsResponse, error) {
+	out := new(MsgUpdateProducerbillsResponse)
+	err := c.cc.Invoke(ctx, "/electra.meter.Msg/UpdateProducerbills", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) DeleteProducerbills(ctx context.Context, in *MsgDeleteProducerbills, opts ...grpc.CallOption) (*MsgDeleteProducerbillsResponse, error) {
+	out := new(MsgDeleteProducerbillsResponse)
+	err := c.cc.Invoke(ctx, "/electra.meter.Msg/DeleteProducerbills", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MsgServer is the server API for Msg service.
 type MsgServer interface {
 	Record(context.Context, *MsgRecord) (*MsgRecordResponse, error)
@@ -1104,6 +3922,25 @@ type MsgServer interface {
 	CreatePowerPurchaseContract(context.Context, *MsgCreatePowerPurchaseContract) (*MsgCreatePowerPurchaseContractResponse, error)
 	UpdatePowerPurchaseContract(context.Context, *MsgUpdatePowerPurchaseContract) (*MsgUpdatePowerPurchaseContractResponse, error)
 	DeletePowerPurchaseContract(context.Context, *MsgDeletePowerPurchaseContract) (*MsgDeletePowerPurchaseContractResponse, error)
+	CreatePpaMap(context.Context, *MsgCreatePpaMap) (*MsgCreatePpaMapResponse, error)
+	UpdatePpaMap(context.Context, *MsgUpdatePpaMap) (*MsgUpdatePpaMapResponse, error)
+	DeletePpaMap(context.Context, *MsgDeletePpaMap) (*MsgDeletePpaMapResponse, error)
+	CreateBillingcycles(context.Context, *MsgCreateBillingcycles) (*MsgCreateBillingcyclesResponse, error)
+	UpdateBillingcycles(context.Context, *MsgUpdateBillingcycles) (*MsgUpdateBillingcyclesResponse, error)
+	DeleteBillingcycles(context.Context, *MsgDeleteBillingcycles) (*MsgDeleteBillingcyclesResponse, error)
+	PrepareBill(context.Context, *MsgPrepareBill) (*MsgPrepareBillResponse, error)
+	CreateCustomerbillingline(context.Context, *MsgCreateCustomerbillingline) (*MsgCreateCustomerbillinglineResponse, error)
+	UpdateCustomerbillingline(context.Context, *MsgUpdateCustomerbillingline) (*MsgUpdateCustomerbillinglineResponse, error)
+	DeleteCustomerbillingline(context.Context, *MsgDeleteCustomerbillingline) (*MsgDeleteCustomerbillinglineResponse, error)
+	CreateCustomerbills(context.Context, *MsgCreateCustomerbills) (*MsgCreateCustomerbillsResponse, error)
+	UpdateCustomerbills(context.Context, *MsgUpdateCustomerbills) (*MsgUpdateCustomerbillsResponse, error)
+	DeleteCustomerbills(context.Context, *MsgDeleteCustomerbills) (*MsgDeleteCustomerbillsResponse, error)
+	CreateProducerbillingline(context.Context, *MsgCreateProducerbillingline) (*MsgCreateProducerbillinglineResponse, error)
+	UpdateProducerbillingline(context.Context, *MsgUpdateProducerbillingline) (*MsgUpdateProducerbillinglineResponse, error)
+	DeleteProducerbillingline(context.Context, *MsgDeleteProducerbillingline) (*MsgDeleteProducerbillinglineResponse, error)
+	CreateProducerbills(context.Context, *MsgCreateProducerbills) (*MsgCreateProducerbillsResponse, error)
+	UpdateProducerbills(context.Context, *MsgUpdateProducerbills) (*MsgUpdateProducerbillsResponse, error)
+	DeleteProducerbills(context.Context, *MsgDeleteProducerbills) (*MsgDeleteProducerbillsResponse, error)
 }
 
 // UnimplementedMsgServer can be embedded to have forward compatible implementations.
@@ -1124,6 +3961,63 @@ func (*UnimplementedMsgServer) UpdatePowerPurchaseContract(ctx context.Context, 
 }
 func (*UnimplementedMsgServer) DeletePowerPurchaseContract(ctx context.Context, req *MsgDeletePowerPurchaseContract) (*MsgDeletePowerPurchaseContractResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeletePowerPurchaseContract not implemented")
+}
+func (*UnimplementedMsgServer) CreatePpaMap(ctx context.Context, req *MsgCreatePpaMap) (*MsgCreatePpaMapResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreatePpaMap not implemented")
+}
+func (*UnimplementedMsgServer) UpdatePpaMap(ctx context.Context, req *MsgUpdatePpaMap) (*MsgUpdatePpaMapResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePpaMap not implemented")
+}
+func (*UnimplementedMsgServer) DeletePpaMap(ctx context.Context, req *MsgDeletePpaMap) (*MsgDeletePpaMapResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeletePpaMap not implemented")
+}
+func (*UnimplementedMsgServer) CreateBillingcycles(ctx context.Context, req *MsgCreateBillingcycles) (*MsgCreateBillingcyclesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateBillingcycles not implemented")
+}
+func (*UnimplementedMsgServer) UpdateBillingcycles(ctx context.Context, req *MsgUpdateBillingcycles) (*MsgUpdateBillingcyclesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateBillingcycles not implemented")
+}
+func (*UnimplementedMsgServer) DeleteBillingcycles(ctx context.Context, req *MsgDeleteBillingcycles) (*MsgDeleteBillingcyclesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteBillingcycles not implemented")
+}
+func (*UnimplementedMsgServer) PrepareBill(ctx context.Context, req *MsgPrepareBill) (*MsgPrepareBillResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PrepareBill not implemented")
+}
+func (*UnimplementedMsgServer) CreateCustomerbillingline(ctx context.Context, req *MsgCreateCustomerbillingline) (*MsgCreateCustomerbillinglineResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateCustomerbillingline not implemented")
+}
+func (*UnimplementedMsgServer) UpdateCustomerbillingline(ctx context.Context, req *MsgUpdateCustomerbillingline) (*MsgUpdateCustomerbillinglineResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCustomerbillingline not implemented")
+}
+func (*UnimplementedMsgServer) DeleteCustomerbillingline(ctx context.Context, req *MsgDeleteCustomerbillingline) (*MsgDeleteCustomerbillinglineResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteCustomerbillingline not implemented")
+}
+func (*UnimplementedMsgServer) CreateCustomerbills(ctx context.Context, req *MsgCreateCustomerbills) (*MsgCreateCustomerbillsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateCustomerbills not implemented")
+}
+func (*UnimplementedMsgServer) UpdateCustomerbills(ctx context.Context, req *MsgUpdateCustomerbills) (*MsgUpdateCustomerbillsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCustomerbills not implemented")
+}
+func (*UnimplementedMsgServer) DeleteCustomerbills(ctx context.Context, req *MsgDeleteCustomerbills) (*MsgDeleteCustomerbillsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteCustomerbills not implemented")
+}
+func (*UnimplementedMsgServer) CreateProducerbillingline(ctx context.Context, req *MsgCreateProducerbillingline) (*MsgCreateProducerbillinglineResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateProducerbillingline not implemented")
+}
+func (*UnimplementedMsgServer) UpdateProducerbillingline(ctx context.Context, req *MsgUpdateProducerbillingline) (*MsgUpdateProducerbillinglineResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateProducerbillingline not implemented")
+}
+func (*UnimplementedMsgServer) DeleteProducerbillingline(ctx context.Context, req *MsgDeleteProducerbillingline) (*MsgDeleteProducerbillinglineResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteProducerbillingline not implemented")
+}
+func (*UnimplementedMsgServer) CreateProducerbills(ctx context.Context, req *MsgCreateProducerbills) (*MsgCreateProducerbillsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateProducerbills not implemented")
+}
+func (*UnimplementedMsgServer) UpdateProducerbills(ctx context.Context, req *MsgUpdateProducerbills) (*MsgUpdateProducerbillsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateProducerbills not implemented")
+}
+func (*UnimplementedMsgServer) DeleteProducerbills(ctx context.Context, req *MsgDeleteProducerbills) (*MsgDeleteProducerbillsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteProducerbills not implemented")
 }
 
 func RegisterMsgServer(s grpc1.Server, srv MsgServer) {
@@ -1220,6 +4114,348 @@ func _Msg_DeletePowerPurchaseContract_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Msg_CreatePpaMap_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgCreatePpaMap)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).CreatePpaMap(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/electra.meter.Msg/CreatePpaMap",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).CreatePpaMap(ctx, req.(*MsgCreatePpaMap))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_UpdatePpaMap_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgUpdatePpaMap)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).UpdatePpaMap(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/electra.meter.Msg/UpdatePpaMap",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).UpdatePpaMap(ctx, req.(*MsgUpdatePpaMap))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_DeletePpaMap_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgDeletePpaMap)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).DeletePpaMap(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/electra.meter.Msg/DeletePpaMap",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).DeletePpaMap(ctx, req.(*MsgDeletePpaMap))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_CreateBillingcycles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgCreateBillingcycles)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).CreateBillingcycles(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/electra.meter.Msg/CreateBillingcycles",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).CreateBillingcycles(ctx, req.(*MsgCreateBillingcycles))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_UpdateBillingcycles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgUpdateBillingcycles)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).UpdateBillingcycles(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/electra.meter.Msg/UpdateBillingcycles",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).UpdateBillingcycles(ctx, req.(*MsgUpdateBillingcycles))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_DeleteBillingcycles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgDeleteBillingcycles)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).DeleteBillingcycles(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/electra.meter.Msg/DeleteBillingcycles",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).DeleteBillingcycles(ctx, req.(*MsgDeleteBillingcycles))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_PrepareBill_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgPrepareBill)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).PrepareBill(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/electra.meter.Msg/PrepareBill",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).PrepareBill(ctx, req.(*MsgPrepareBill))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_CreateCustomerbillingline_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgCreateCustomerbillingline)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).CreateCustomerbillingline(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/electra.meter.Msg/CreateCustomerbillingline",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).CreateCustomerbillingline(ctx, req.(*MsgCreateCustomerbillingline))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_UpdateCustomerbillingline_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgUpdateCustomerbillingline)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).UpdateCustomerbillingline(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/electra.meter.Msg/UpdateCustomerbillingline",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).UpdateCustomerbillingline(ctx, req.(*MsgUpdateCustomerbillingline))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_DeleteCustomerbillingline_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgDeleteCustomerbillingline)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).DeleteCustomerbillingline(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/electra.meter.Msg/DeleteCustomerbillingline",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).DeleteCustomerbillingline(ctx, req.(*MsgDeleteCustomerbillingline))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_CreateCustomerbills_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgCreateCustomerbills)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).CreateCustomerbills(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/electra.meter.Msg/CreateCustomerbills",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).CreateCustomerbills(ctx, req.(*MsgCreateCustomerbills))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_UpdateCustomerbills_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgUpdateCustomerbills)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).UpdateCustomerbills(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/electra.meter.Msg/UpdateCustomerbills",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).UpdateCustomerbills(ctx, req.(*MsgUpdateCustomerbills))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_DeleteCustomerbills_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgDeleteCustomerbills)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).DeleteCustomerbills(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/electra.meter.Msg/DeleteCustomerbills",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).DeleteCustomerbills(ctx, req.(*MsgDeleteCustomerbills))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_CreateProducerbillingline_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgCreateProducerbillingline)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).CreateProducerbillingline(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/electra.meter.Msg/CreateProducerbillingline",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).CreateProducerbillingline(ctx, req.(*MsgCreateProducerbillingline))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_UpdateProducerbillingline_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgUpdateProducerbillingline)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).UpdateProducerbillingline(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/electra.meter.Msg/UpdateProducerbillingline",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).UpdateProducerbillingline(ctx, req.(*MsgUpdateProducerbillingline))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_DeleteProducerbillingline_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgDeleteProducerbillingline)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).DeleteProducerbillingline(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/electra.meter.Msg/DeleteProducerbillingline",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).DeleteProducerbillingline(ctx, req.(*MsgDeleteProducerbillingline))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_CreateProducerbills_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgCreateProducerbills)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).CreateProducerbills(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/electra.meter.Msg/CreateProducerbills",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).CreateProducerbills(ctx, req.(*MsgCreateProducerbills))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_UpdateProducerbills_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgUpdateProducerbills)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).UpdateProducerbills(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/electra.meter.Msg/UpdateProducerbills",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).UpdateProducerbills(ctx, req.(*MsgUpdateProducerbills))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_DeleteProducerbills_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgDeleteProducerbills)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).DeleteProducerbills(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/electra.meter.Msg/DeleteProducerbills",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).DeleteProducerbills(ctx, req.(*MsgDeleteProducerbills))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Msg_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "electra.meter.Msg",
 	HandlerType: (*MsgServer)(nil),
@@ -1243,6 +4479,82 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeletePowerPurchaseContract",
 			Handler:    _Msg_DeletePowerPurchaseContract_Handler,
+		},
+		{
+			MethodName: "CreatePpaMap",
+			Handler:    _Msg_CreatePpaMap_Handler,
+		},
+		{
+			MethodName: "UpdatePpaMap",
+			Handler:    _Msg_UpdatePpaMap_Handler,
+		},
+		{
+			MethodName: "DeletePpaMap",
+			Handler:    _Msg_DeletePpaMap_Handler,
+		},
+		{
+			MethodName: "CreateBillingcycles",
+			Handler:    _Msg_CreateBillingcycles_Handler,
+		},
+		{
+			MethodName: "UpdateBillingcycles",
+			Handler:    _Msg_UpdateBillingcycles_Handler,
+		},
+		{
+			MethodName: "DeleteBillingcycles",
+			Handler:    _Msg_DeleteBillingcycles_Handler,
+		},
+		{
+			MethodName: "PrepareBill",
+			Handler:    _Msg_PrepareBill_Handler,
+		},
+		{
+			MethodName: "CreateCustomerbillingline",
+			Handler:    _Msg_CreateCustomerbillingline_Handler,
+		},
+		{
+			MethodName: "UpdateCustomerbillingline",
+			Handler:    _Msg_UpdateCustomerbillingline_Handler,
+		},
+		{
+			MethodName: "DeleteCustomerbillingline",
+			Handler:    _Msg_DeleteCustomerbillingline_Handler,
+		},
+		{
+			MethodName: "CreateCustomerbills",
+			Handler:    _Msg_CreateCustomerbills_Handler,
+		},
+		{
+			MethodName: "UpdateCustomerbills",
+			Handler:    _Msg_UpdateCustomerbills_Handler,
+		},
+		{
+			MethodName: "DeleteCustomerbills",
+			Handler:    _Msg_DeleteCustomerbills_Handler,
+		},
+		{
+			MethodName: "CreateProducerbillingline",
+			Handler:    _Msg_CreateProducerbillingline_Handler,
+		},
+		{
+			MethodName: "UpdateProducerbillingline",
+			Handler:    _Msg_UpdateProducerbillingline_Handler,
+		},
+		{
+			MethodName: "DeleteProducerbillingline",
+			Handler:    _Msg_DeleteProducerbillingline_Handler,
+		},
+		{
+			MethodName: "CreateProducerbills",
+			Handler:    _Msg_CreateProducerbills_Handler,
+		},
+		{
+			MethodName: "UpdateProducerbills",
+			Handler:    _Msg_UpdateProducerbills_Handler,
+		},
+		{
+			MethodName: "DeleteProducerbills",
+			Handler:    _Msg_DeleteProducerbills_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -1927,6 +5239,1795 @@ func (m *MsgDeletePowerPurchaseContractResponse) MarshalToSizedBuffer(dAtA []byt
 	return len(dAtA) - i, nil
 }
 
+func (m *MsgCreatePpaMap) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgCreatePpaMap) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgCreatePpaMap) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.ContractPreferredCurency) > 0 {
+		i -= len(m.ContractPreferredCurency)
+		copy(dAtA[i:], m.ContractPreferredCurency)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.ContractPreferredCurency)))
+		i--
+		dAtA[i] = 0x52
+	}
+	if m.ContractPreferredPrice != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.ContractPreferredPrice))
+		i--
+		dAtA[i] = 0x48
+	}
+	if m.AgreementEndDate != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.AgreementEndDate))
+		i--
+		dAtA[i] = 0x40
+	}
+	if m.AgreementStartDate != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.AgreementStartDate))
+		i--
+		dAtA[i] = 0x38
+	}
+	if len(m.ProducerDeviceID) > 0 {
+		i -= len(m.ProducerDeviceID)
+		copy(dAtA[i:], m.ProducerDeviceID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.ProducerDeviceID)))
+		i--
+		dAtA[i] = 0x32
+	}
+	if len(m.ContractID) > 0 {
+		i -= len(m.ContractID)
+		copy(dAtA[i:], m.ContractID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.ContractID)))
+		i--
+		dAtA[i] = 0x2a
+	}
+	if m.AgreementActive {
+		i--
+		if m.AgreementActive {
+			dAtA[i] = 1
+		} else {
+			dAtA[i] = 0
+		}
+		i--
+		dAtA[i] = 0x20
+	}
+	if len(m.AgreementID) > 0 {
+		i -= len(m.AgreementID)
+		copy(dAtA[i:], m.AgreementID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.AgreementID)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if len(m.ConsumerDeviceID) > 0 {
+		i -= len(m.ConsumerDeviceID)
+		copy(dAtA[i:], m.ConsumerDeviceID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.ConsumerDeviceID)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgCreatePpaMapResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgCreatePpaMapResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgCreatePpaMapResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgUpdatePpaMap) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgUpdatePpaMap) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgUpdatePpaMap) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.ContractPreferredCurency) > 0 {
+		i -= len(m.ContractPreferredCurency)
+		copy(dAtA[i:], m.ContractPreferredCurency)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.ContractPreferredCurency)))
+		i--
+		dAtA[i] = 0x52
+	}
+	if m.ContractPreferredPrice != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.ContractPreferredPrice))
+		i--
+		dAtA[i] = 0x48
+	}
+	if m.AgreementEndDate != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.AgreementEndDate))
+		i--
+		dAtA[i] = 0x40
+	}
+	if m.AgreementStartDate != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.AgreementStartDate))
+		i--
+		dAtA[i] = 0x38
+	}
+	if len(m.ProducerDeviceID) > 0 {
+		i -= len(m.ProducerDeviceID)
+		copy(dAtA[i:], m.ProducerDeviceID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.ProducerDeviceID)))
+		i--
+		dAtA[i] = 0x32
+	}
+	if len(m.ContractID) > 0 {
+		i -= len(m.ContractID)
+		copy(dAtA[i:], m.ContractID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.ContractID)))
+		i--
+		dAtA[i] = 0x2a
+	}
+	if m.AgreementActive {
+		i--
+		if m.AgreementActive {
+			dAtA[i] = 1
+		} else {
+			dAtA[i] = 0
+		}
+		i--
+		dAtA[i] = 0x20
+	}
+	if len(m.AgreementID) > 0 {
+		i -= len(m.AgreementID)
+		copy(dAtA[i:], m.AgreementID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.AgreementID)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if len(m.ConsumerDeviceID) > 0 {
+		i -= len(m.ConsumerDeviceID)
+		copy(dAtA[i:], m.ConsumerDeviceID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.ConsumerDeviceID)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgUpdatePpaMapResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgUpdatePpaMapResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgUpdatePpaMapResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgDeletePpaMap) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgDeletePpaMap) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgDeletePpaMap) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.ContractID) > 0 {
+		i -= len(m.ContractID)
+		copy(dAtA[i:], m.ContractID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.ContractID)))
+		i--
+		dAtA[i] = 0x2a
+	}
+	if m.AgreementActive {
+		i--
+		if m.AgreementActive {
+			dAtA[i] = 1
+		} else {
+			dAtA[i] = 0
+		}
+		i--
+		dAtA[i] = 0x20
+	}
+	if len(m.AgreementID) > 0 {
+		i -= len(m.AgreementID)
+		copy(dAtA[i:], m.AgreementID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.AgreementID)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if len(m.ConsumerDeviceID) > 0 {
+		i -= len(m.ConsumerDeviceID)
+		copy(dAtA[i:], m.ConsumerDeviceID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.ConsumerDeviceID)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgDeletePpaMapResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgDeletePpaMapResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgDeletePpaMapResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgCreateBillingcycles) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgCreateBillingcycles) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgCreateBillingcycles) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Curency) > 0 {
+		i -= len(m.Curency)
+		copy(dAtA[i:], m.Curency)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Curency)))
+		i--
+		dAtA[i] = 0x4a
+	}
+	if m.Moneyout != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Moneyout))
+		i--
+		dAtA[i] = 0x40
+	}
+	if m.Moneyin != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Moneyin))
+		i--
+		dAtA[i] = 0x38
+	}
+	if m.Whout != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Whout))
+		i--
+		dAtA[i] = 0x30
+	}
+	if m.Whin != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Whin))
+		i--
+		dAtA[i] = 0x28
+	}
+	if m.End != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.End))
+		i--
+		dAtA[i] = 0x20
+	}
+	if m.Begin != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Begin))
+		i--
+		dAtA[i] = 0x18
+	}
+	if m.CycleID != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.CycleID))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgCreateBillingcyclesResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgCreateBillingcyclesResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgCreateBillingcyclesResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgUpdateBillingcycles) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgUpdateBillingcycles) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgUpdateBillingcycles) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Curency) > 0 {
+		i -= len(m.Curency)
+		copy(dAtA[i:], m.Curency)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Curency)))
+		i--
+		dAtA[i] = 0x4a
+	}
+	if m.Moneyout != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Moneyout))
+		i--
+		dAtA[i] = 0x40
+	}
+	if m.Moneyin != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Moneyin))
+		i--
+		dAtA[i] = 0x38
+	}
+	if m.Whout != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Whout))
+		i--
+		dAtA[i] = 0x30
+	}
+	if m.Whin != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Whin))
+		i--
+		dAtA[i] = 0x28
+	}
+	if m.End != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.End))
+		i--
+		dAtA[i] = 0x20
+	}
+	if m.Begin != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Begin))
+		i--
+		dAtA[i] = 0x18
+	}
+	if m.CycleID != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.CycleID))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgUpdateBillingcyclesResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgUpdateBillingcyclesResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgUpdateBillingcyclesResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgDeleteBillingcycles) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgDeleteBillingcycles) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgDeleteBillingcycles) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.CycleID != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.CycleID))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgDeleteBillingcyclesResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgDeleteBillingcyclesResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgDeleteBillingcyclesResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgPrepareBill) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgPrepareBill) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgPrepareBill) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Record {
+		i--
+		if m.Record {
+			dAtA[i] = 1
+		} else {
+			dAtA[i] = 0
+		}
+		i--
+		dAtA[i] = 0x18
+	}
+	if m.CycleID != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.CycleID))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgPrepareBillResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgPrepareBillResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgPrepareBillResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Comment) > 0 {
+		i -= len(m.Comment)
+		copy(dAtA[i:], m.Comment)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Comment)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if len(m.JsonProducerbill) > 0 {
+		i -= len(m.JsonProducerbill)
+		copy(dAtA[i:], m.JsonProducerbill)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.JsonProducerbill)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.JsonCustomerbill) > 0 {
+		i -= len(m.JsonCustomerbill)
+		copy(dAtA[i:], m.JsonCustomerbill)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.JsonCustomerbill)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgCreateCustomerbillingline) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgCreateCustomerbillingline) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgCreateCustomerbillingline) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Phase != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Phase))
+		i--
+		dAtA[i] = 0x58
+	}
+	if m.LineWhTotalPrice != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.LineWhTotalPrice))
+		i--
+		dAtA[i] = 0x50
+	}
+	if len(m.Curency) > 0 {
+		i -= len(m.Curency)
+		copy(dAtA[i:], m.Curency)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Curency)))
+		i--
+		dAtA[i] = 0x4a
+	}
+	if m.LineWhPrice != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.LineWhPrice))
+		i--
+		dAtA[i] = 0x40
+	}
+	if m.LineWh != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.LineWh))
+		i--
+		dAtA[i] = 0x38
+	}
+	if len(m.BillContractID) > 0 {
+		i -= len(m.BillContractID)
+		copy(dAtA[i:], m.BillContractID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.BillContractID)))
+		i--
+		dAtA[i] = 0x32
+	}
+	if len(m.ProducerDeviceID) > 0 {
+		i -= len(m.ProducerDeviceID)
+		copy(dAtA[i:], m.ProducerDeviceID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.ProducerDeviceID)))
+		i--
+		dAtA[i] = 0x2a
+	}
+	if m.Lineid != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Lineid))
+		i--
+		dAtA[i] = 0x20
+	}
+	if m.CycleID != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.CycleID))
+		i--
+		dAtA[i] = 0x18
+	}
+	if len(m.CustomerDeviceID) > 0 {
+		i -= len(m.CustomerDeviceID)
+		copy(dAtA[i:], m.CustomerDeviceID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.CustomerDeviceID)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgCreateCustomerbillinglineResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgCreateCustomerbillinglineResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgCreateCustomerbillinglineResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgUpdateCustomerbillingline) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgUpdateCustomerbillingline) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgUpdateCustomerbillingline) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Phase != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Phase))
+		i--
+		dAtA[i] = 0x58
+	}
+	if m.LineWhTotalPrice != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.LineWhTotalPrice))
+		i--
+		dAtA[i] = 0x50
+	}
+	if len(m.Curency) > 0 {
+		i -= len(m.Curency)
+		copy(dAtA[i:], m.Curency)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Curency)))
+		i--
+		dAtA[i] = 0x4a
+	}
+	if m.LineWhPrice != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.LineWhPrice))
+		i--
+		dAtA[i] = 0x40
+	}
+	if m.LineWh != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.LineWh))
+		i--
+		dAtA[i] = 0x38
+	}
+	if len(m.BillContractID) > 0 {
+		i -= len(m.BillContractID)
+		copy(dAtA[i:], m.BillContractID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.BillContractID)))
+		i--
+		dAtA[i] = 0x32
+	}
+	if len(m.ProducerDeviceID) > 0 {
+		i -= len(m.ProducerDeviceID)
+		copy(dAtA[i:], m.ProducerDeviceID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.ProducerDeviceID)))
+		i--
+		dAtA[i] = 0x2a
+	}
+	if m.Lineid != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Lineid))
+		i--
+		dAtA[i] = 0x20
+	}
+	if m.CycleID != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.CycleID))
+		i--
+		dAtA[i] = 0x18
+	}
+	if len(m.CustomerDeviceID) > 0 {
+		i -= len(m.CustomerDeviceID)
+		copy(dAtA[i:], m.CustomerDeviceID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.CustomerDeviceID)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgUpdateCustomerbillinglineResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgUpdateCustomerbillinglineResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgUpdateCustomerbillinglineResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgDeleteCustomerbillingline) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgDeleteCustomerbillingline) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgDeleteCustomerbillingline) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Lineid != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Lineid))
+		i--
+		dAtA[i] = 0x20
+	}
+	if m.CycleID != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.CycleID))
+		i--
+		dAtA[i] = 0x18
+	}
+	if len(m.CustomerDeviceID) > 0 {
+		i -= len(m.CustomerDeviceID)
+		copy(dAtA[i:], m.CustomerDeviceID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.CustomerDeviceID)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgDeleteCustomerbillinglineResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgDeleteCustomerbillinglineResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgDeleteCustomerbillinglineResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgCreateCustomerbills) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgCreateCustomerbills) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgCreateCustomerbills) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Paid {
+		i--
+		if m.Paid {
+			dAtA[i] = 1
+		} else {
+			dAtA[i] = 0
+		}
+		i--
+		dAtA[i] = 0x48
+	}
+	if m.BillValid {
+		i--
+		if m.BillValid {
+			dAtA[i] = 1
+		} else {
+			dAtA[i] = 0
+		}
+		i--
+		dAtA[i] = 0x40
+	}
+	if len(m.BillCurrency) > 0 {
+		i -= len(m.BillCurrency)
+		copy(dAtA[i:], m.BillCurrency)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.BillCurrency)))
+		i--
+		dAtA[i] = 0x3a
+	}
+	if m.BillTotalPrice != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.BillTotalPrice))
+		i--
+		dAtA[i] = 0x30
+	}
+	if m.BillTotalWh != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.BillTotalWh))
+		i--
+		dAtA[i] = 0x28
+	}
+	if m.BillDate != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.BillDate))
+		i--
+		dAtA[i] = 0x20
+	}
+	if len(m.CustomerdeviceID) > 0 {
+		i -= len(m.CustomerdeviceID)
+		copy(dAtA[i:], m.CustomerdeviceID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.CustomerdeviceID)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if m.BillCycleID != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.BillCycleID))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgCreateCustomerbillsResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgCreateCustomerbillsResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgCreateCustomerbillsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgUpdateCustomerbills) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgUpdateCustomerbills) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgUpdateCustomerbills) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Paid {
+		i--
+		if m.Paid {
+			dAtA[i] = 1
+		} else {
+			dAtA[i] = 0
+		}
+		i--
+		dAtA[i] = 0x48
+	}
+	if m.BillValid {
+		i--
+		if m.BillValid {
+			dAtA[i] = 1
+		} else {
+			dAtA[i] = 0
+		}
+		i--
+		dAtA[i] = 0x40
+	}
+	if len(m.BillCurrency) > 0 {
+		i -= len(m.BillCurrency)
+		copy(dAtA[i:], m.BillCurrency)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.BillCurrency)))
+		i--
+		dAtA[i] = 0x3a
+	}
+	if m.BillTotalPrice != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.BillTotalPrice))
+		i--
+		dAtA[i] = 0x30
+	}
+	if m.BillTotalWh != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.BillTotalWh))
+		i--
+		dAtA[i] = 0x28
+	}
+	if m.BillDate != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.BillDate))
+		i--
+		dAtA[i] = 0x20
+	}
+	if len(m.CustomerdeviceID) > 0 {
+		i -= len(m.CustomerdeviceID)
+		copy(dAtA[i:], m.CustomerdeviceID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.CustomerdeviceID)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if m.BillCycleID != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.BillCycleID))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgUpdateCustomerbillsResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgUpdateCustomerbillsResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgUpdateCustomerbillsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgDeleteCustomerbills) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgDeleteCustomerbills) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgDeleteCustomerbills) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.CustomerdeviceID) > 0 {
+		i -= len(m.CustomerdeviceID)
+		copy(dAtA[i:], m.CustomerdeviceID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.CustomerdeviceID)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if m.BillCycleID != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.BillCycleID))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgDeleteCustomerbillsResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgDeleteCustomerbillsResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgDeleteCustomerbillsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgCreateProducerbillingline) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgCreateProducerbillingline) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgCreateProducerbillingline) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Phase != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Phase))
+		i--
+		dAtA[i] = 0x58
+	}
+	if m.LineWhTotalPrice != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.LineWhTotalPrice))
+		i--
+		dAtA[i] = 0x50
+	}
+	if len(m.Curency) > 0 {
+		i -= len(m.Curency)
+		copy(dAtA[i:], m.Curency)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Curency)))
+		i--
+		dAtA[i] = 0x4a
+	}
+	if m.LineWhPrice != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.LineWhPrice))
+		i--
+		dAtA[i] = 0x40
+	}
+	if m.LineWh != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.LineWh))
+		i--
+		dAtA[i] = 0x38
+	}
+	if len(m.BillContractID) > 0 {
+		i -= len(m.BillContractID)
+		copy(dAtA[i:], m.BillContractID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.BillContractID)))
+		i--
+		dAtA[i] = 0x32
+	}
+	if len(m.CustomerDeviceID) > 0 {
+		i -= len(m.CustomerDeviceID)
+		copy(dAtA[i:], m.CustomerDeviceID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.CustomerDeviceID)))
+		i--
+		dAtA[i] = 0x2a
+	}
+	if m.Lineid != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Lineid))
+		i--
+		dAtA[i] = 0x20
+	}
+	if m.CycleID != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.CycleID))
+		i--
+		dAtA[i] = 0x18
+	}
+	if len(m.ProducerDeviceID) > 0 {
+		i -= len(m.ProducerDeviceID)
+		copy(dAtA[i:], m.ProducerDeviceID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.ProducerDeviceID)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgCreateProducerbillinglineResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgCreateProducerbillinglineResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgCreateProducerbillinglineResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgUpdateProducerbillingline) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgUpdateProducerbillingline) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgUpdateProducerbillingline) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Phase != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Phase))
+		i--
+		dAtA[i] = 0x58
+	}
+	if m.LineWhTotalPrice != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.LineWhTotalPrice))
+		i--
+		dAtA[i] = 0x50
+	}
+	if len(m.Curency) > 0 {
+		i -= len(m.Curency)
+		copy(dAtA[i:], m.Curency)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Curency)))
+		i--
+		dAtA[i] = 0x4a
+	}
+	if m.LineWhPrice != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.LineWhPrice))
+		i--
+		dAtA[i] = 0x40
+	}
+	if m.LineWh != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.LineWh))
+		i--
+		dAtA[i] = 0x38
+	}
+	if len(m.BillContractID) > 0 {
+		i -= len(m.BillContractID)
+		copy(dAtA[i:], m.BillContractID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.BillContractID)))
+		i--
+		dAtA[i] = 0x32
+	}
+	if len(m.CustomerDeviceID) > 0 {
+		i -= len(m.CustomerDeviceID)
+		copy(dAtA[i:], m.CustomerDeviceID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.CustomerDeviceID)))
+		i--
+		dAtA[i] = 0x2a
+	}
+	if m.Lineid != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Lineid))
+		i--
+		dAtA[i] = 0x20
+	}
+	if m.CycleID != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.CycleID))
+		i--
+		dAtA[i] = 0x18
+	}
+	if len(m.ProducerDeviceID) > 0 {
+		i -= len(m.ProducerDeviceID)
+		copy(dAtA[i:], m.ProducerDeviceID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.ProducerDeviceID)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgUpdateProducerbillinglineResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgUpdateProducerbillinglineResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgUpdateProducerbillinglineResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgDeleteProducerbillingline) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgDeleteProducerbillingline) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgDeleteProducerbillingline) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Lineid != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Lineid))
+		i--
+		dAtA[i] = 0x20
+	}
+	if m.CycleID != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.CycleID))
+		i--
+		dAtA[i] = 0x18
+	}
+	if len(m.ProducerDeviceID) > 0 {
+		i -= len(m.ProducerDeviceID)
+		copy(dAtA[i:], m.ProducerDeviceID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.ProducerDeviceID)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgDeleteProducerbillinglineResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgDeleteProducerbillinglineResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgDeleteProducerbillinglineResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgCreateProducerbills) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgCreateProducerbills) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgCreateProducerbills) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Paid {
+		i--
+		if m.Paid {
+			dAtA[i] = 1
+		} else {
+			dAtA[i] = 0
+		}
+		i--
+		dAtA[i] = 0x48
+	}
+	if m.BillValid {
+		i--
+		if m.BillValid {
+			dAtA[i] = 1
+		} else {
+			dAtA[i] = 0
+		}
+		i--
+		dAtA[i] = 0x40
+	}
+	if len(m.BillCurrency) > 0 {
+		i -= len(m.BillCurrency)
+		copy(dAtA[i:], m.BillCurrency)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.BillCurrency)))
+		i--
+		dAtA[i] = 0x3a
+	}
+	if m.BillTotalPrice != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.BillTotalPrice))
+		i--
+		dAtA[i] = 0x30
+	}
+	if m.BillTotalWh != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.BillTotalWh))
+		i--
+		dAtA[i] = 0x28
+	}
+	if m.BillDate != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.BillDate))
+		i--
+		dAtA[i] = 0x20
+	}
+	if len(m.ProducerdeviceID) > 0 {
+		i -= len(m.ProducerdeviceID)
+		copy(dAtA[i:], m.ProducerdeviceID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.ProducerdeviceID)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if m.BillCycleID != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.BillCycleID))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgCreateProducerbillsResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgCreateProducerbillsResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgCreateProducerbillsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgUpdateProducerbills) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgUpdateProducerbills) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgUpdateProducerbills) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Paid {
+		i--
+		if m.Paid {
+			dAtA[i] = 1
+		} else {
+			dAtA[i] = 0
+		}
+		i--
+		dAtA[i] = 0x48
+	}
+	if m.BillValid {
+		i--
+		if m.BillValid {
+			dAtA[i] = 1
+		} else {
+			dAtA[i] = 0
+		}
+		i--
+		dAtA[i] = 0x40
+	}
+	if len(m.BillCurrency) > 0 {
+		i -= len(m.BillCurrency)
+		copy(dAtA[i:], m.BillCurrency)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.BillCurrency)))
+		i--
+		dAtA[i] = 0x3a
+	}
+	if m.BillTotalPrice != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.BillTotalPrice))
+		i--
+		dAtA[i] = 0x30
+	}
+	if m.BillTotalWh != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.BillTotalWh))
+		i--
+		dAtA[i] = 0x28
+	}
+	if m.BillDate != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.BillDate))
+		i--
+		dAtA[i] = 0x20
+	}
+	if len(m.ProducerdeviceID) > 0 {
+		i -= len(m.ProducerdeviceID)
+		copy(dAtA[i:], m.ProducerdeviceID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.ProducerdeviceID)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if m.BillCycleID != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.BillCycleID))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgUpdateProducerbillsResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgUpdateProducerbillsResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgUpdateProducerbillsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgDeleteProducerbills) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgDeleteProducerbills) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgDeleteProducerbills) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.ProducerdeviceID) > 0 {
+		i -= len(m.ProducerdeviceID)
+		copy(dAtA[i:], m.ProducerdeviceID)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.ProducerdeviceID)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if m.BillCycleID != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.BillCycleID))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgDeleteProducerbillsResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgDeleteProducerbillsResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgDeleteProducerbillsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintTx(dAtA []byte, offset int, v uint64) int {
 	offset -= sovTx(v)
 	base := offset
@@ -2251,6 +7352,848 @@ func (m *MsgDeletePowerPurchaseContract) Size() (n int) {
 }
 
 func (m *MsgDeletePowerPurchaseContractResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgCreatePpaMap) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.ConsumerDeviceID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.AgreementID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.AgreementActive {
+		n += 2
+	}
+	l = len(m.ContractID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.ProducerDeviceID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.AgreementStartDate != 0 {
+		n += 1 + sovTx(uint64(m.AgreementStartDate))
+	}
+	if m.AgreementEndDate != 0 {
+		n += 1 + sovTx(uint64(m.AgreementEndDate))
+	}
+	if m.ContractPreferredPrice != 0 {
+		n += 1 + sovTx(uint64(m.ContractPreferredPrice))
+	}
+	l = len(m.ContractPreferredCurency)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	return n
+}
+
+func (m *MsgCreatePpaMapResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgUpdatePpaMap) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.ConsumerDeviceID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.AgreementID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.AgreementActive {
+		n += 2
+	}
+	l = len(m.ContractID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.ProducerDeviceID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.AgreementStartDate != 0 {
+		n += 1 + sovTx(uint64(m.AgreementStartDate))
+	}
+	if m.AgreementEndDate != 0 {
+		n += 1 + sovTx(uint64(m.AgreementEndDate))
+	}
+	if m.ContractPreferredPrice != 0 {
+		n += 1 + sovTx(uint64(m.ContractPreferredPrice))
+	}
+	l = len(m.ContractPreferredCurency)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	return n
+}
+
+func (m *MsgUpdatePpaMapResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgDeletePpaMap) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.ConsumerDeviceID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.AgreementID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.AgreementActive {
+		n += 2
+	}
+	l = len(m.ContractID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	return n
+}
+
+func (m *MsgDeletePpaMapResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgCreateBillingcycles) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.CycleID != 0 {
+		n += 1 + sovTx(uint64(m.CycleID))
+	}
+	if m.Begin != 0 {
+		n += 1 + sovTx(uint64(m.Begin))
+	}
+	if m.End != 0 {
+		n += 1 + sovTx(uint64(m.End))
+	}
+	if m.Whin != 0 {
+		n += 1 + sovTx(uint64(m.Whin))
+	}
+	if m.Whout != 0 {
+		n += 1 + sovTx(uint64(m.Whout))
+	}
+	if m.Moneyin != 0 {
+		n += 1 + sovTx(uint64(m.Moneyin))
+	}
+	if m.Moneyout != 0 {
+		n += 1 + sovTx(uint64(m.Moneyout))
+	}
+	l = len(m.Curency)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	return n
+}
+
+func (m *MsgCreateBillingcyclesResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgUpdateBillingcycles) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.CycleID != 0 {
+		n += 1 + sovTx(uint64(m.CycleID))
+	}
+	if m.Begin != 0 {
+		n += 1 + sovTx(uint64(m.Begin))
+	}
+	if m.End != 0 {
+		n += 1 + sovTx(uint64(m.End))
+	}
+	if m.Whin != 0 {
+		n += 1 + sovTx(uint64(m.Whin))
+	}
+	if m.Whout != 0 {
+		n += 1 + sovTx(uint64(m.Whout))
+	}
+	if m.Moneyin != 0 {
+		n += 1 + sovTx(uint64(m.Moneyin))
+	}
+	if m.Moneyout != 0 {
+		n += 1 + sovTx(uint64(m.Moneyout))
+	}
+	l = len(m.Curency)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	return n
+}
+
+func (m *MsgUpdateBillingcyclesResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgDeleteBillingcycles) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.CycleID != 0 {
+		n += 1 + sovTx(uint64(m.CycleID))
+	}
+	return n
+}
+
+func (m *MsgDeleteBillingcyclesResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgPrepareBill) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.CycleID != 0 {
+		n += 1 + sovTx(uint64(m.CycleID))
+	}
+	if m.Record {
+		n += 2
+	}
+	return n
+}
+
+func (m *MsgPrepareBillResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.JsonCustomerbill)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.JsonProducerbill)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Comment)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	return n
+}
+
+func (m *MsgCreateCustomerbillingline) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.CustomerDeviceID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.CycleID != 0 {
+		n += 1 + sovTx(uint64(m.CycleID))
+	}
+	if m.Lineid != 0 {
+		n += 1 + sovTx(uint64(m.Lineid))
+	}
+	l = len(m.ProducerDeviceID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.BillContractID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.LineWh != 0 {
+		n += 1 + sovTx(uint64(m.LineWh))
+	}
+	if m.LineWhPrice != 0 {
+		n += 1 + sovTx(uint64(m.LineWhPrice))
+	}
+	l = len(m.Curency)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.LineWhTotalPrice != 0 {
+		n += 1 + sovTx(uint64(m.LineWhTotalPrice))
+	}
+	if m.Phase != 0 {
+		n += 1 + sovTx(uint64(m.Phase))
+	}
+	return n
+}
+
+func (m *MsgCreateCustomerbillinglineResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgUpdateCustomerbillingline) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.CustomerDeviceID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.CycleID != 0 {
+		n += 1 + sovTx(uint64(m.CycleID))
+	}
+	if m.Lineid != 0 {
+		n += 1 + sovTx(uint64(m.Lineid))
+	}
+	l = len(m.ProducerDeviceID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.BillContractID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.LineWh != 0 {
+		n += 1 + sovTx(uint64(m.LineWh))
+	}
+	if m.LineWhPrice != 0 {
+		n += 1 + sovTx(uint64(m.LineWhPrice))
+	}
+	l = len(m.Curency)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.LineWhTotalPrice != 0 {
+		n += 1 + sovTx(uint64(m.LineWhTotalPrice))
+	}
+	if m.Phase != 0 {
+		n += 1 + sovTx(uint64(m.Phase))
+	}
+	return n
+}
+
+func (m *MsgUpdateCustomerbillinglineResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgDeleteCustomerbillingline) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.CustomerDeviceID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.CycleID != 0 {
+		n += 1 + sovTx(uint64(m.CycleID))
+	}
+	if m.Lineid != 0 {
+		n += 1 + sovTx(uint64(m.Lineid))
+	}
+	return n
+}
+
+func (m *MsgDeleteCustomerbillinglineResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgCreateCustomerbills) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.BillCycleID != 0 {
+		n += 1 + sovTx(uint64(m.BillCycleID))
+	}
+	l = len(m.CustomerdeviceID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.BillDate != 0 {
+		n += 1 + sovTx(uint64(m.BillDate))
+	}
+	if m.BillTotalWh != 0 {
+		n += 1 + sovTx(uint64(m.BillTotalWh))
+	}
+	if m.BillTotalPrice != 0 {
+		n += 1 + sovTx(uint64(m.BillTotalPrice))
+	}
+	l = len(m.BillCurrency)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.BillValid {
+		n += 2
+	}
+	if m.Paid {
+		n += 2
+	}
+	return n
+}
+
+func (m *MsgCreateCustomerbillsResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgUpdateCustomerbills) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.BillCycleID != 0 {
+		n += 1 + sovTx(uint64(m.BillCycleID))
+	}
+	l = len(m.CustomerdeviceID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.BillDate != 0 {
+		n += 1 + sovTx(uint64(m.BillDate))
+	}
+	if m.BillTotalWh != 0 {
+		n += 1 + sovTx(uint64(m.BillTotalWh))
+	}
+	if m.BillTotalPrice != 0 {
+		n += 1 + sovTx(uint64(m.BillTotalPrice))
+	}
+	l = len(m.BillCurrency)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.BillValid {
+		n += 2
+	}
+	if m.Paid {
+		n += 2
+	}
+	return n
+}
+
+func (m *MsgUpdateCustomerbillsResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgDeleteCustomerbills) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.BillCycleID != 0 {
+		n += 1 + sovTx(uint64(m.BillCycleID))
+	}
+	l = len(m.CustomerdeviceID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	return n
+}
+
+func (m *MsgDeleteCustomerbillsResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgCreateProducerbillingline) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.ProducerDeviceID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.CycleID != 0 {
+		n += 1 + sovTx(uint64(m.CycleID))
+	}
+	if m.Lineid != 0 {
+		n += 1 + sovTx(uint64(m.Lineid))
+	}
+	l = len(m.CustomerDeviceID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.BillContractID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.LineWh != 0 {
+		n += 1 + sovTx(uint64(m.LineWh))
+	}
+	if m.LineWhPrice != 0 {
+		n += 1 + sovTx(uint64(m.LineWhPrice))
+	}
+	l = len(m.Curency)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.LineWhTotalPrice != 0 {
+		n += 1 + sovTx(uint64(m.LineWhTotalPrice))
+	}
+	if m.Phase != 0 {
+		n += 1 + sovTx(uint64(m.Phase))
+	}
+	return n
+}
+
+func (m *MsgCreateProducerbillinglineResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgUpdateProducerbillingline) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.ProducerDeviceID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.CycleID != 0 {
+		n += 1 + sovTx(uint64(m.CycleID))
+	}
+	if m.Lineid != 0 {
+		n += 1 + sovTx(uint64(m.Lineid))
+	}
+	l = len(m.CustomerDeviceID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.BillContractID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.LineWh != 0 {
+		n += 1 + sovTx(uint64(m.LineWh))
+	}
+	if m.LineWhPrice != 0 {
+		n += 1 + sovTx(uint64(m.LineWhPrice))
+	}
+	l = len(m.Curency)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.LineWhTotalPrice != 0 {
+		n += 1 + sovTx(uint64(m.LineWhTotalPrice))
+	}
+	if m.Phase != 0 {
+		n += 1 + sovTx(uint64(m.Phase))
+	}
+	return n
+}
+
+func (m *MsgUpdateProducerbillinglineResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgDeleteProducerbillingline) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.ProducerDeviceID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.CycleID != 0 {
+		n += 1 + sovTx(uint64(m.CycleID))
+	}
+	if m.Lineid != 0 {
+		n += 1 + sovTx(uint64(m.Lineid))
+	}
+	return n
+}
+
+func (m *MsgDeleteProducerbillinglineResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgCreateProducerbills) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.BillCycleID != 0 {
+		n += 1 + sovTx(uint64(m.BillCycleID))
+	}
+	l = len(m.ProducerdeviceID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.BillDate != 0 {
+		n += 1 + sovTx(uint64(m.BillDate))
+	}
+	if m.BillTotalWh != 0 {
+		n += 1 + sovTx(uint64(m.BillTotalWh))
+	}
+	if m.BillTotalPrice != 0 {
+		n += 1 + sovTx(uint64(m.BillTotalPrice))
+	}
+	l = len(m.BillCurrency)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.BillValid {
+		n += 2
+	}
+	if m.Paid {
+		n += 2
+	}
+	return n
+}
+
+func (m *MsgCreateProducerbillsResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgUpdateProducerbills) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.BillCycleID != 0 {
+		n += 1 + sovTx(uint64(m.BillCycleID))
+	}
+	l = len(m.ProducerdeviceID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.BillDate != 0 {
+		n += 1 + sovTx(uint64(m.BillDate))
+	}
+	if m.BillTotalWh != 0 {
+		n += 1 + sovTx(uint64(m.BillTotalWh))
+	}
+	if m.BillTotalPrice != 0 {
+		n += 1 + sovTx(uint64(m.BillTotalPrice))
+	}
+	l = len(m.BillCurrency)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.BillValid {
+		n += 2
+	}
+	if m.Paid {
+		n += 2
+	}
+	return n
+}
+
+func (m *MsgUpdateProducerbillsResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgDeleteProducerbills) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.BillCycleID != 0 {
+		n += 1 + sovTx(uint64(m.BillCycleID))
+	}
+	l = len(m.ProducerdeviceID)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	return n
+}
+
+func (m *MsgDeleteProducerbillsResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -4351,6 +10294,5518 @@ func (m *MsgDeletePowerPurchaseContractResponse) Unmarshal(dAtA []byte) error {
 		}
 		if fieldNum <= 0 {
 			return fmt.Errorf("proto: MsgDeletePowerPurchaseContractResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgCreatePpaMap) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgCreatePpaMap: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgCreatePpaMap: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ConsumerDeviceID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ConsumerDeviceID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field AgreementID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.AgreementID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 4:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field AgreementActive", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.AgreementActive = bool(v != 0)
+		case 5:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ContractID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ContractID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 6:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ProducerDeviceID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ProducerDeviceID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 7:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field AgreementStartDate", wireType)
+			}
+			m.AgreementStartDate = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.AgreementStartDate |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 8:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field AgreementEndDate", wireType)
+			}
+			m.AgreementEndDate = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.AgreementEndDate |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 9:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ContractPreferredPrice", wireType)
+			}
+			m.ContractPreferredPrice = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.ContractPreferredPrice |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 10:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ContractPreferredCurency", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ContractPreferredCurency = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgCreatePpaMapResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgCreatePpaMapResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgCreatePpaMapResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgUpdatePpaMap) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgUpdatePpaMap: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgUpdatePpaMap: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ConsumerDeviceID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ConsumerDeviceID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field AgreementID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.AgreementID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 4:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field AgreementActive", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.AgreementActive = bool(v != 0)
+		case 5:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ContractID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ContractID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 6:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ProducerDeviceID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ProducerDeviceID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 7:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field AgreementStartDate", wireType)
+			}
+			m.AgreementStartDate = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.AgreementStartDate |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 8:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field AgreementEndDate", wireType)
+			}
+			m.AgreementEndDate = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.AgreementEndDate |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 9:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ContractPreferredPrice", wireType)
+			}
+			m.ContractPreferredPrice = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.ContractPreferredPrice |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 10:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ContractPreferredCurency", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ContractPreferredCurency = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgUpdatePpaMapResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgUpdatePpaMapResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgUpdatePpaMapResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgDeletePpaMap) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgDeletePpaMap: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgDeletePpaMap: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ConsumerDeviceID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ConsumerDeviceID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field AgreementID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.AgreementID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 4:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field AgreementActive", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.AgreementActive = bool(v != 0)
+		case 5:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ContractID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ContractID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgDeletePpaMapResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgDeletePpaMapResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgDeletePpaMapResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgCreateBillingcycles) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgCreateBillingcycles: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgCreateBillingcycles: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CycleID", wireType)
+			}
+			m.CycleID = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.CycleID |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Begin", wireType)
+			}
+			m.Begin = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Begin |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 4:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field End", wireType)
+			}
+			m.End = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.End |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 5:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Whin", wireType)
+			}
+			m.Whin = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Whin |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 6:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Whout", wireType)
+			}
+			m.Whout = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Whout |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 7:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Moneyin", wireType)
+			}
+			m.Moneyin = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Moneyin |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 8:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Moneyout", wireType)
+			}
+			m.Moneyout = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Moneyout |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 9:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Curency", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Curency = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgCreateBillingcyclesResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgCreateBillingcyclesResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgCreateBillingcyclesResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgUpdateBillingcycles) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgUpdateBillingcycles: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgUpdateBillingcycles: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CycleID", wireType)
+			}
+			m.CycleID = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.CycleID |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Begin", wireType)
+			}
+			m.Begin = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Begin |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 4:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field End", wireType)
+			}
+			m.End = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.End |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 5:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Whin", wireType)
+			}
+			m.Whin = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Whin |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 6:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Whout", wireType)
+			}
+			m.Whout = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Whout |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 7:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Moneyin", wireType)
+			}
+			m.Moneyin = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Moneyin |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 8:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Moneyout", wireType)
+			}
+			m.Moneyout = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Moneyout |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 9:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Curency", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Curency = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgUpdateBillingcyclesResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgUpdateBillingcyclesResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgUpdateBillingcyclesResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgDeleteBillingcycles) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgDeleteBillingcycles: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgDeleteBillingcycles: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CycleID", wireType)
+			}
+			m.CycleID = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.CycleID |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgDeleteBillingcyclesResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgDeleteBillingcyclesResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgDeleteBillingcyclesResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgPrepareBill) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgPrepareBill: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgPrepareBill: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CycleID", wireType)
+			}
+			m.CycleID = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.CycleID |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Record", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.Record = bool(v != 0)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgPrepareBillResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgPrepareBillResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgPrepareBillResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field JsonCustomerbill", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.JsonCustomerbill = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field JsonProducerbill", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.JsonProducerbill = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Comment", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Comment = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgCreateCustomerbillingline) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgCreateCustomerbillingline: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgCreateCustomerbillingline: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CustomerDeviceID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.CustomerDeviceID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CycleID", wireType)
+			}
+			m.CycleID = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.CycleID |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 4:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Lineid", wireType)
+			}
+			m.Lineid = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Lineid |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 5:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ProducerDeviceID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ProducerDeviceID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 6:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillContractID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.BillContractID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 7:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field LineWh", wireType)
+			}
+			m.LineWh = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.LineWh |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 8:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field LineWhPrice", wireType)
+			}
+			m.LineWhPrice = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.LineWhPrice |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 9:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Curency", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Curency = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 10:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field LineWhTotalPrice", wireType)
+			}
+			m.LineWhTotalPrice = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.LineWhTotalPrice |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 11:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Phase", wireType)
+			}
+			m.Phase = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Phase |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgCreateCustomerbillinglineResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgCreateCustomerbillinglineResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgCreateCustomerbillinglineResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgUpdateCustomerbillingline) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgUpdateCustomerbillingline: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgUpdateCustomerbillingline: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CustomerDeviceID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.CustomerDeviceID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CycleID", wireType)
+			}
+			m.CycleID = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.CycleID |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 4:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Lineid", wireType)
+			}
+			m.Lineid = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Lineid |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 5:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ProducerDeviceID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ProducerDeviceID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 6:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillContractID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.BillContractID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 7:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field LineWh", wireType)
+			}
+			m.LineWh = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.LineWh |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 8:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field LineWhPrice", wireType)
+			}
+			m.LineWhPrice = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.LineWhPrice |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 9:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Curency", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Curency = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 10:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field LineWhTotalPrice", wireType)
+			}
+			m.LineWhTotalPrice = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.LineWhTotalPrice |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 11:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Phase", wireType)
+			}
+			m.Phase = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Phase |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgUpdateCustomerbillinglineResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgUpdateCustomerbillinglineResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgUpdateCustomerbillinglineResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgDeleteCustomerbillingline) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgDeleteCustomerbillingline: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgDeleteCustomerbillingline: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CustomerDeviceID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.CustomerDeviceID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CycleID", wireType)
+			}
+			m.CycleID = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.CycleID |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 4:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Lineid", wireType)
+			}
+			m.Lineid = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Lineid |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgDeleteCustomerbillinglineResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgDeleteCustomerbillinglineResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgDeleteCustomerbillinglineResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgCreateCustomerbills) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgCreateCustomerbills: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgCreateCustomerbills: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillCycleID", wireType)
+			}
+			m.BillCycleID = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.BillCycleID |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CustomerdeviceID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.CustomerdeviceID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 4:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillDate", wireType)
+			}
+			m.BillDate = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.BillDate |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 5:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillTotalWh", wireType)
+			}
+			m.BillTotalWh = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.BillTotalWh |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 6:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillTotalPrice", wireType)
+			}
+			m.BillTotalPrice = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.BillTotalPrice |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 7:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillCurrency", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.BillCurrency = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 8:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillValid", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.BillValid = bool(v != 0)
+		case 9:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Paid", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.Paid = bool(v != 0)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgCreateCustomerbillsResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgCreateCustomerbillsResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgCreateCustomerbillsResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgUpdateCustomerbills) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgUpdateCustomerbills: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgUpdateCustomerbills: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillCycleID", wireType)
+			}
+			m.BillCycleID = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.BillCycleID |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CustomerdeviceID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.CustomerdeviceID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 4:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillDate", wireType)
+			}
+			m.BillDate = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.BillDate |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 5:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillTotalWh", wireType)
+			}
+			m.BillTotalWh = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.BillTotalWh |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 6:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillTotalPrice", wireType)
+			}
+			m.BillTotalPrice = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.BillTotalPrice |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 7:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillCurrency", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.BillCurrency = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 8:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillValid", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.BillValid = bool(v != 0)
+		case 9:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Paid", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.Paid = bool(v != 0)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgUpdateCustomerbillsResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgUpdateCustomerbillsResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgUpdateCustomerbillsResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgDeleteCustomerbills) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgDeleteCustomerbills: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgDeleteCustomerbills: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillCycleID", wireType)
+			}
+			m.BillCycleID = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.BillCycleID |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CustomerdeviceID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.CustomerdeviceID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgDeleteCustomerbillsResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgDeleteCustomerbillsResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgDeleteCustomerbillsResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgCreateProducerbillingline) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgCreateProducerbillingline: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgCreateProducerbillingline: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ProducerDeviceID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ProducerDeviceID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CycleID", wireType)
+			}
+			m.CycleID = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.CycleID |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 4:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Lineid", wireType)
+			}
+			m.Lineid = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Lineid |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 5:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CustomerDeviceID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.CustomerDeviceID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 6:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillContractID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.BillContractID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 7:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field LineWh", wireType)
+			}
+			m.LineWh = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.LineWh |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 8:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field LineWhPrice", wireType)
+			}
+			m.LineWhPrice = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.LineWhPrice |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 9:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Curency", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Curency = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 10:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field LineWhTotalPrice", wireType)
+			}
+			m.LineWhTotalPrice = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.LineWhTotalPrice |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 11:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Phase", wireType)
+			}
+			m.Phase = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Phase |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgCreateProducerbillinglineResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgCreateProducerbillinglineResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgCreateProducerbillinglineResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgUpdateProducerbillingline) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgUpdateProducerbillingline: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgUpdateProducerbillingline: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ProducerDeviceID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ProducerDeviceID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CycleID", wireType)
+			}
+			m.CycleID = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.CycleID |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 4:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Lineid", wireType)
+			}
+			m.Lineid = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Lineid |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 5:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CustomerDeviceID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.CustomerDeviceID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 6:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillContractID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.BillContractID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 7:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field LineWh", wireType)
+			}
+			m.LineWh = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.LineWh |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 8:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field LineWhPrice", wireType)
+			}
+			m.LineWhPrice = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.LineWhPrice |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 9:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Curency", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Curency = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 10:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field LineWhTotalPrice", wireType)
+			}
+			m.LineWhTotalPrice = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.LineWhTotalPrice |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 11:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Phase", wireType)
+			}
+			m.Phase = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Phase |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgUpdateProducerbillinglineResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgUpdateProducerbillinglineResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgUpdateProducerbillinglineResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgDeleteProducerbillingline) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgDeleteProducerbillingline: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgDeleteProducerbillingline: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ProducerDeviceID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ProducerDeviceID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CycleID", wireType)
+			}
+			m.CycleID = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.CycleID |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 4:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Lineid", wireType)
+			}
+			m.Lineid = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Lineid |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgDeleteProducerbillinglineResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgDeleteProducerbillinglineResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgDeleteProducerbillinglineResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgCreateProducerbills) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgCreateProducerbills: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgCreateProducerbills: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillCycleID", wireType)
+			}
+			m.BillCycleID = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.BillCycleID |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ProducerdeviceID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ProducerdeviceID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 4:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillDate", wireType)
+			}
+			m.BillDate = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.BillDate |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 5:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillTotalWh", wireType)
+			}
+			m.BillTotalWh = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.BillTotalWh |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 6:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillTotalPrice", wireType)
+			}
+			m.BillTotalPrice = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.BillTotalPrice |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 7:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillCurrency", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.BillCurrency = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 8:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillValid", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.BillValid = bool(v != 0)
+		case 9:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Paid", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.Paid = bool(v != 0)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgCreateProducerbillsResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgCreateProducerbillsResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgCreateProducerbillsResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgUpdateProducerbills) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgUpdateProducerbills: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgUpdateProducerbills: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillCycleID", wireType)
+			}
+			m.BillCycleID = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.BillCycleID |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ProducerdeviceID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ProducerdeviceID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 4:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillDate", wireType)
+			}
+			m.BillDate = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.BillDate |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 5:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillTotalWh", wireType)
+			}
+			m.BillTotalWh = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.BillTotalWh |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 6:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillTotalPrice", wireType)
+			}
+			m.BillTotalPrice = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.BillTotalPrice |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 7:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillCurrency", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.BillCurrency = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 8:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillValid", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.BillValid = bool(v != 0)
+		case 9:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Paid", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.Paid = bool(v != 0)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgUpdateProducerbillsResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgUpdateProducerbillsResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgUpdateProducerbillsResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgDeleteProducerbills) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgDeleteProducerbills: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgDeleteProducerbills: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BillCycleID", wireType)
+			}
+			m.BillCycleID = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.BillCycleID |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ProducerdeviceID", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ProducerdeviceID = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgDeleteProducerbillsResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgDeleteProducerbillsResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgDeleteProducerbillsResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		default:

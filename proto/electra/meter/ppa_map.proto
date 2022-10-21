@@ -1,0 +1,18 @@
+syntax = "proto3";
+package electra.meter;
+
+option go_package = "electra/x/meter/types";
+
+message PpaMap {
+  string consumerDeviceID = 1; 
+  string agreementID = 2; 
+  bool agreementActive = 3; 
+  string contractID = 4; 
+  string producerDeviceID = 5; 
+  uint64 agreementStartDate = 6; 
+  uint64 agreementEndDate = 7; 
+  uint64 contractPreferredPrice = 8; 
+  string contractPreferredCurency = 9; 
+  string creator = 10;
+}
+

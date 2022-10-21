@@ -9,6 +9,76 @@
  * ---------------------------------------------------------------
  */
 
+export interface MeterBillingcycles {
+  /** @format uint64 */
+  cycleID?: string;
+
+  /** @format uint64 */
+  begin?: string;
+
+  /** @format uint64 */
+  end?: string;
+
+  /** @format uint64 */
+  whin?: string;
+
+  /** @format uint64 */
+  whout?: string;
+
+  /** @format uint64 */
+  moneyin?: string;
+
+  /** @format uint64 */
+  moneyout?: string;
+  curency?: string;
+  creator?: string;
+}
+
+export interface MeterCustomerbillingline {
+  customerDeviceID?: string;
+
+  /** @format uint64 */
+  cycleID?: string;
+
+  /** @format uint64 */
+  lineid?: string;
+  producerDeviceID?: string;
+  billContractID?: string;
+
+  /** @format uint64 */
+  lineWh?: string;
+
+  /** @format uint64 */
+  lineWhPrice?: string;
+  curency?: string;
+
+  /** @format uint64 */
+  lineWhTotalPrice?: string;
+
+  /** @format uint64 */
+  phase?: string;
+  creator?: string;
+}
+
+export interface MeterCustomerbills {
+  /** @format uint64 */
+  billCycleID?: string;
+  customerdeviceID?: string;
+
+  /** @format uint64 */
+  billDate?: string;
+
+  /** @format uint64 */
+  billTotalWh?: string;
+
+  /** @format uint64 */
+  billTotalPrice?: string;
+  billCurrency?: string;
+  billValid?: boolean;
+  paid?: boolean;
+  creator?: string;
+}
+
 export interface MeterMeterdirectory {
   deviceID?: string;
   barcodeserial?: string;
@@ -56,15 +126,57 @@ export interface MeterMeterreadings {
   maxmi?: string;
 }
 
+export type MeterMsgCreateBillingcyclesResponse = object;
+
+export type MeterMsgCreateCustomerbillinglineResponse = object;
+
+export type MeterMsgCreateCustomerbillsResponse = object;
+
 export type MeterMsgCreatePowerPurchaseContractResponse = object;
 
+export type MeterMsgCreatePpaMapResponse = object;
+
+export type MeterMsgCreateProducerbillinglineResponse = object;
+
+export type MeterMsgCreateProducerbillsResponse = object;
+
+export type MeterMsgDeleteBillingcyclesResponse = object;
+
+export type MeterMsgDeleteCustomerbillinglineResponse = object;
+
+export type MeterMsgDeleteCustomerbillsResponse = object;
+
 export type MeterMsgDeletePowerPurchaseContractResponse = object;
+
+export type MeterMsgDeletePpaMapResponse = object;
+
+export type MeterMsgDeleteProducerbillinglineResponse = object;
+
+export type MeterMsgDeleteProducerbillsResponse = object;
+
+export interface MeterMsgPrepareBillResponse {
+  jsonCustomerbill?: string;
+  jsonProducerbill?: string;
+  comment?: string;
+}
 
 export type MeterMsgRecord3Response = object;
 
 export type MeterMsgRecordResponse = object;
 
+export type MeterMsgUpdateBillingcyclesResponse = object;
+
+export type MeterMsgUpdateCustomerbillinglineResponse = object;
+
+export type MeterMsgUpdateCustomerbillsResponse = object;
+
 export type MeterMsgUpdatePowerPurchaseContractResponse = object;
+
+export type MeterMsgUpdatePpaMapResponse = object;
+
+export type MeterMsgUpdateProducerbillinglineResponse = object;
+
+export type MeterMsgUpdateProducerbillsResponse = object;
 
 /**
  * Params defines the parameters for the module.
@@ -115,6 +227,115 @@ export interface MeterPowerPurchaseContract {
   creator?: string;
 }
 
+export interface MeterPpaMap {
+  consumerDeviceID?: string;
+  agreementID?: string;
+  agreementActive?: boolean;
+  contractID?: string;
+  producerDeviceID?: string;
+
+  /** @format uint64 */
+  agreementStartDate?: string;
+
+  /** @format uint64 */
+  agreementEndDate?: string;
+
+  /** @format uint64 */
+  contractPreferredPrice?: string;
+  contractPreferredCurency?: string;
+  creator?: string;
+}
+
+export interface MeterProducerbillingline {
+  producerDeviceID?: string;
+
+  /** @format uint64 */
+  cycleID?: string;
+
+  /** @format uint64 */
+  lineid?: string;
+  customerDeviceID?: string;
+  billContractID?: string;
+
+  /** @format uint64 */
+  lineWh?: string;
+
+  /** @format uint64 */
+  lineWhPrice?: string;
+  curency?: string;
+
+  /** @format uint64 */
+  lineWhTotalPrice?: string;
+
+  /** @format uint64 */
+  phase?: string;
+  creator?: string;
+}
+
+export interface MeterProducerbills {
+  /** @format uint64 */
+  billCycleID?: string;
+  producerdeviceID?: string;
+
+  /** @format uint64 */
+  billDate?: string;
+
+  /** @format uint64 */
+  billTotalWh?: string;
+
+  /** @format uint64 */
+  billTotalPrice?: string;
+  billCurrency?: string;
+  billValid?: boolean;
+  paid?: boolean;
+  creator?: string;
+}
+
+export interface MeterQueryAllBillingcyclesResponse {
+  billingcycles?: MeterBillingcycles[];
+
+  /**
+   * PageResponse is to be embedded in gRPC response messages where the
+   * corresponding request message has used PageRequest.
+   *
+   *  message SomeResponse {
+   *          repeated Bar results = 1;
+   *          PageResponse page = 2;
+   *  }
+   */
+  pagination?: V1Beta1PageResponse;
+}
+
+export interface MeterQueryAllCustomerbillinglineResponse {
+  customerbillingline?: MeterCustomerbillingline[];
+
+  /**
+   * PageResponse is to be embedded in gRPC response messages where the
+   * corresponding request message has used PageRequest.
+   *
+   *  message SomeResponse {
+   *          repeated Bar results = 1;
+   *          PageResponse page = 2;
+   *  }
+   */
+  pagination?: V1Beta1PageResponse;
+}
+
+export interface MeterQueryAllCustomerbillsResponse {
+  customerbills?: MeterCustomerbills[];
+
+  /**
+   * PageResponse is to be embedded in gRPC response messages where the
+   * corresponding request message has used PageRequest.
+   *
+   *  message SomeResponse {
+   *          repeated Bar results = 1;
+   *          PageResponse page = 2;
+   *  }
+   */
+  pagination?: V1Beta1PageResponse;
+}
+
 export interface MeterQueryAllMeterdirectoryResponse {
   meterdirectory?: MeterMeterdirectory[];
 
@@ -160,6 +381,87 @@ export interface MeterQueryAllPowerPurchaseContractResponse {
   pagination?: V1Beta1PageResponse;
 }
 
+export interface MeterQueryAllPpaMapResponse {
+  ppaMap?: MeterPpaMap[];
+
+  /**
+   * PageResponse is to be embedded in gRPC response messages where the
+   * corresponding request message has used PageRequest.
+   *
+   *  message SomeResponse {
+   *          repeated Bar results = 1;
+   *          PageResponse page = 2;
+   *  }
+   */
+  pagination?: V1Beta1PageResponse;
+}
+
+export interface MeterQueryAllProducerbillinglineResponse {
+  producerbillingline?: MeterProducerbillingline[];
+
+  /**
+   * PageResponse is to be embedded in gRPC response messages where the
+   * corresponding request message has used PageRequest.
+   *
+   *  message SomeResponse {
+   *          repeated Bar results = 1;
+   *          PageResponse page = 2;
+   *  }
+   */
+  pagination?: V1Beta1PageResponse;
+}
+
+export interface MeterQueryAllProducerbillsResponse {
+  producerbills?: MeterProducerbills[];
+
+  /**
+   * PageResponse is to be embedded in gRPC response messages where the
+   * corresponding request message has used PageRequest.
+   *
+   *  message SomeResponse {
+   *          repeated Bar results = 1;
+   *          PageResponse page = 2;
+   *  }
+   */
+  pagination?: V1Beta1PageResponse;
+}
+
+export interface MeterQueryCurrentcycleIDResponse {
+  /** @format uint64 */
+  cycleID?: string;
+
+  /** @format uint64 */
+  begin?: string;
+
+  /** @format uint64 */
+  end?: string;
+
+  /** @format uint64 */
+  whin?: string;
+
+  /** @format uint64 */
+  whout?: string;
+
+  /** @format uint64 */
+  moneyin?: string;
+
+  /** @format uint64 */
+  moneyout?: string;
+  curency?: string;
+}
+
+export interface MeterQueryGetBillingcyclesResponse {
+  billingcycles?: MeterBillingcycles;
+}
+
+export interface MeterQueryGetCustomerbillinglineResponse {
+  customerbillingline?: MeterCustomerbillingline;
+}
+
+export interface MeterQueryGetCustomerbillsResponse {
+  customerbills?: MeterCustomerbills;
+}
+
 export interface MeterQueryGetMeterdirectoryResponse {
   meterdirectory?: MeterMeterdirectory;
 }
@@ -170,6 +472,48 @@ export interface MeterQueryGetMeterreadingsResponse {
 
 export interface MeterQueryGetPowerPurchaseContractResponse {
   powerPurchaseContract?: MeterPowerPurchaseContract;
+}
+
+export interface MeterQueryGetPpaMapResponse {
+  ppaMap?: MeterPpaMap;
+}
+
+export interface MeterQueryGetProducerbillinglineResponse {
+  producerbillingline?: MeterProducerbillingline;
+}
+
+export interface MeterQueryGetProducerbillsResponse {
+  producerbills?: MeterProducerbills;
+}
+
+export interface MeterQueryGetcustomerbillResponse {
+  customerbillinglines?: string;
+
+  /** @format uint64 */
+  billTotalWh?: string;
+
+  /** @format uint64 */
+  billTotalPrice?: string;
+  currency?: string;
+
+  /** @format uint64 */
+  nblines?: string;
+  comments?: string;
+}
+
+export interface MeterQueryGetproducerbillResponse {
+  producerbillinglines?: string;
+
+  /** @format uint64 */
+  billTotalWh?: string;
+
+  /** @format uint64 */
+  billTotalPrice?: string;
+  curency?: string;
+
+  /** @format uint64 */
+  nblines?: string;
+  comments?: string;
 }
 
 export interface MeterQueryListrecordingsResponse {
@@ -392,10 +736,184 @@ export class HttpClient<SecurityDataType = unknown> {
 }
 
 /**
- * @title electra/meter/genesis.proto
+ * @title electra/meter/billingcycles.proto
  * @version version not set
  */
 export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDataType> {
+  /**
+   * No description
+   *
+   * @tags Query
+   * @name QueryBillingcyclesAll
+   * @summary Queries a list of Billingcycles items.
+   * @request GET:/electra/meter/billingcycles
+   */
+  queryBillingcyclesAll = (
+    query?: {
+      "pagination.key"?: string;
+      "pagination.offset"?: string;
+      "pagination.limit"?: string;
+      "pagination.count_total"?: boolean;
+      "pagination.reverse"?: boolean;
+    },
+    params: RequestParams = {},
+  ) =>
+    this.request<MeterQueryAllBillingcyclesResponse, RpcStatus>({
+      path: `/electra/meter/billingcycles`,
+      method: "GET",
+      query: query,
+      format: "json",
+      ...params,
+    });
+
+  /**
+   * No description
+   *
+   * @tags Query
+   * @name QueryBillingcycles
+   * @summary Queries a Billingcycles by index.
+   * @request GET:/electra/meter/billingcycles/{cycleID}
+   */
+  queryBillingcycles = (cycleId: string, params: RequestParams = {}) =>
+    this.request<MeterQueryGetBillingcyclesResponse, RpcStatus>({
+      path: `/electra/meter/billingcycles/${cycleId}`,
+      method: "GET",
+      format: "json",
+      ...params,
+    });
+
+  /**
+   * No description
+   *
+   * @tags Query
+   * @name QueryCurrentcycleId
+   * @summary Queries a list of CurrentcycleID items.
+   * @request GET:/electra/meter/currentcycle_id
+   */
+  queryCurrentcycleId = (params: RequestParams = {}) =>
+    this.request<MeterQueryCurrentcycleIDResponse, RpcStatus>({
+      path: `/electra/meter/currentcycle_id`,
+      method: "GET",
+      format: "json",
+      ...params,
+    });
+
+  /**
+   * No description
+   *
+   * @tags Query
+   * @name QueryCustomerbillinglineAll
+   * @summary Queries a list of Customerbillingline items.
+   * @request GET:/electra/meter/customerbillingline
+   */
+  queryCustomerbillinglineAll = (
+    query?: {
+      "pagination.key"?: string;
+      "pagination.offset"?: string;
+      "pagination.limit"?: string;
+      "pagination.count_total"?: boolean;
+      "pagination.reverse"?: boolean;
+    },
+    params: RequestParams = {},
+  ) =>
+    this.request<MeterQueryAllCustomerbillinglineResponse, RpcStatus>({
+      path: `/electra/meter/customerbillingline`,
+      method: "GET",
+      query: query,
+      format: "json",
+      ...params,
+    });
+
+  /**
+   * No description
+   *
+   * @tags Query
+   * @name QueryCustomerbillingline
+   * @summary Queries a Customerbillingline by index.
+   * @request GET:/electra/meter/customerbillingline/{customerDeviceID}/{cycleID}/{lineid}
+   */
+  queryCustomerbillingline = (customerDeviceId: string, cycleId: string, lineid: string, params: RequestParams = {}) =>
+    this.request<MeterQueryGetCustomerbillinglineResponse, RpcStatus>({
+      path: `/electra/meter/customerbillingline/${customerDeviceId}/${cycleId}/${lineid}`,
+      method: "GET",
+      format: "json",
+      ...params,
+    });
+
+  /**
+   * No description
+   *
+   * @tags Query
+   * @name QueryCustomerbillsAll
+   * @summary Queries a list of Customerbills items.
+   * @request GET:/electra/meter/customerbills
+   */
+  queryCustomerbillsAll = (
+    query?: {
+      "pagination.key"?: string;
+      "pagination.offset"?: string;
+      "pagination.limit"?: string;
+      "pagination.count_total"?: boolean;
+      "pagination.reverse"?: boolean;
+    },
+    params: RequestParams = {},
+  ) =>
+    this.request<MeterQueryAllCustomerbillsResponse, RpcStatus>({
+      path: `/electra/meter/customerbills`,
+      method: "GET",
+      query: query,
+      format: "json",
+      ...params,
+    });
+
+  /**
+   * No description
+   *
+   * @tags Query
+   * @name QueryCustomerbills
+   * @summary Queries a Customerbills by index.
+   * @request GET:/electra/meter/customerbills/{billCycleID}/{customerdeviceID}
+   */
+  queryCustomerbills = (billCycleId: string, customerdeviceId: string, params: RequestParams = {}) =>
+    this.request<MeterQueryGetCustomerbillsResponse, RpcStatus>({
+      path: `/electra/meter/customerbills/${billCycleId}/${customerdeviceId}`,
+      method: "GET",
+      format: "json",
+      ...params,
+    });
+
+  /**
+   * No description
+   *
+   * @tags Query
+   * @name QueryGetcustomerbill
+   * @summary Queries a list of Getcustomerbill items.
+   * @request GET:/electra/meter/getcustomerbill/{customerdeviceID}/{billCycleID}
+   */
+  queryGetcustomerbill = (customerdeviceId: string, billCycleId: string, params: RequestParams = {}) =>
+    this.request<MeterQueryGetcustomerbillResponse, RpcStatus>({
+      path: `/electra/meter/getcustomerbill/${customerdeviceId}/${billCycleId}`,
+      method: "GET",
+      format: "json",
+      ...params,
+    });
+
+  /**
+   * No description
+   *
+   * @tags Query
+   * @name QueryGetproducerbill
+   * @summary Queries a list of Getproducerbill items.
+   * @request GET:/electra/meter/getproducerbill/{producerdeviceID}/{billCycleID}
+   */
+  queryGetproducerbill = (producerdeviceId: string, billCycleId: string, params: RequestParams = {}) =>
+    this.request<MeterQueryGetproducerbillResponse, RpcStatus>({
+      path: `/electra/meter/getproducerbill/${producerdeviceId}/${billCycleId}`,
+      method: "GET",
+      format: "json",
+      ...params,
+    });
+
   /**
    * No description
    *
@@ -555,6 +1073,138 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
   queryPowerPurchaseContract = (contractId: string, contractDeviceId: string, params: RequestParams = {}) =>
     this.request<MeterQueryGetPowerPurchaseContractResponse, RpcStatus>({
       path: `/electra/meter/power_purchase_contract/${contractId}/${contractDeviceId}`,
+      method: "GET",
+      format: "json",
+      ...params,
+    });
+
+  /**
+   * No description
+   *
+   * @tags Query
+   * @name QueryPpaMapAll
+   * @summary Queries a list of PpaMap items.
+   * @request GET:/electra/meter/ppa_map
+   */
+  queryPpaMapAll = (
+    query?: {
+      "pagination.key"?: string;
+      "pagination.offset"?: string;
+      "pagination.limit"?: string;
+      "pagination.count_total"?: boolean;
+      "pagination.reverse"?: boolean;
+    },
+    params: RequestParams = {},
+  ) =>
+    this.request<MeterQueryAllPpaMapResponse, RpcStatus>({
+      path: `/electra/meter/ppa_map`,
+      method: "GET",
+      query: query,
+      format: "json",
+      ...params,
+    });
+
+  /**
+   * No description
+   *
+   * @tags Query
+   * @name QueryPpaMap
+   * @summary Queries a PpaMap by index.
+   * @request GET:/electra/meter/ppa_map/{consumerDeviceID}/{agreementID}/{agreementActive}/{contractID}
+   */
+  queryPpaMap = (
+    consumerDeviceId: string,
+    agreementId: string,
+    agreementActive: boolean,
+    contractId: string,
+    params: RequestParams = {},
+  ) =>
+    this.request<MeterQueryGetPpaMapResponse, RpcStatus>({
+      path: `/electra/meter/ppa_map/${consumerDeviceId}/${agreementId}/${agreementActive}/${contractId}`,
+      method: "GET",
+      format: "json",
+      ...params,
+    });
+
+  /**
+   * No description
+   *
+   * @tags Query
+   * @name QueryProducerbillinglineAll
+   * @summary Queries a list of Producerbillingline items.
+   * @request GET:/electra/meter/producerbillingline
+   */
+  queryProducerbillinglineAll = (
+    query?: {
+      "pagination.key"?: string;
+      "pagination.offset"?: string;
+      "pagination.limit"?: string;
+      "pagination.count_total"?: boolean;
+      "pagination.reverse"?: boolean;
+    },
+    params: RequestParams = {},
+  ) =>
+    this.request<MeterQueryAllProducerbillinglineResponse, RpcStatus>({
+      path: `/electra/meter/producerbillingline`,
+      method: "GET",
+      query: query,
+      format: "json",
+      ...params,
+    });
+
+  /**
+   * No description
+   *
+   * @tags Query
+   * @name QueryProducerbillingline
+   * @summary Queries a Producerbillingline by index.
+   * @request GET:/electra/meter/producerbillingline/{producerDeviceID}/{cycleID}/{lineid}
+   */
+  queryProducerbillingline = (producerDeviceId: string, cycleId: string, lineid: string, params: RequestParams = {}) =>
+    this.request<MeterQueryGetProducerbillinglineResponse, RpcStatus>({
+      path: `/electra/meter/producerbillingline/${producerDeviceId}/${cycleId}/${lineid}`,
+      method: "GET",
+      format: "json",
+      ...params,
+    });
+
+  /**
+   * No description
+   *
+   * @tags Query
+   * @name QueryProducerbillsAll
+   * @summary Queries a list of Producerbills items.
+   * @request GET:/electra/meter/producerbills
+   */
+  queryProducerbillsAll = (
+    query?: {
+      "pagination.key"?: string;
+      "pagination.offset"?: string;
+      "pagination.limit"?: string;
+      "pagination.count_total"?: boolean;
+      "pagination.reverse"?: boolean;
+    },
+    params: RequestParams = {},
+  ) =>
+    this.request<MeterQueryAllProducerbillsResponse, RpcStatus>({
+      path: `/electra/meter/producerbills`,
+      method: "GET",
+      query: query,
+      format: "json",
+      ...params,
+    });
+
+  /**
+   * No description
+   *
+   * @tags Query
+   * @name QueryProducerbills
+   * @summary Queries a Producerbills by index.
+   * @request GET:/electra/meter/producerbills/{billCycleID}/{producerdeviceID}
+   */
+  queryProducerbills = (billCycleId: string, producerdeviceId: string, params: RequestParams = {}) =>
+    this.request<MeterQueryGetProducerbillsResponse, RpcStatus>({
+      path: `/electra/meter/producerbills/${billCycleId}/${producerdeviceId}`,
       method: "GET",
       format: "json",
       ...params,
