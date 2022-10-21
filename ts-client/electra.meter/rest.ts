@@ -487,7 +487,7 @@ export interface MeterQueryGetProducerbillsResponse {
 }
 
 export interface MeterQueryGetcustomerbillResponse {
-  customerbillinglines?: string;
+  customerbillinglines?: string[];
 
   /** @format uint64 */
   billTotalWh?: string;
@@ -499,10 +499,21 @@ export interface MeterQueryGetcustomerbillResponse {
   /** @format uint64 */
   nblines?: string;
   comments?: string;
+
+  /**
+   * PageResponse is to be embedded in gRPC response messages where the
+   * corresponding request message has used PageRequest.
+   *
+   *  message SomeResponse {
+   *          repeated Bar results = 1;
+   *          PageResponse page = 2;
+   *  }
+   */
+  pagination?: V1Beta1PageResponse;
 }
 
 export interface MeterQueryGetproducerbillResponse {
-  producerbillinglines?: string;
+  producerbillinglines?: string[];
 
   /** @format uint64 */
   billTotalWh?: string;
@@ -514,14 +525,36 @@ export interface MeterQueryGetproducerbillResponse {
   /** @format uint64 */
   nblines?: string;
   comments?: string;
+
+  /**
+   * PageResponse is to be embedded in gRPC response messages where the
+   * corresponding request message has used PageRequest.
+   *
+   *  message SomeResponse {
+   *          repeated Bar results = 1;
+   *          PageResponse page = 2;
+   *  }
+   */
+  pagination?: V1Beta1PageResponse;
 }
 
 export interface MeterQueryListrecordingsResponse {
-  meterreadings?: string;
+  meterreadings?: string[];
   comments?: string;
 
   /** @format uint64 */
   total?: string;
+
+  /**
+   * PageResponse is to be embedded in gRPC response messages where the
+   * corresponding request message has used PageRequest.
+   *
+   *  message SomeResponse {
+   *          repeated Bar results = 1;
+   *          PageResponse page = 2;
+   *  }
+   */
+  pagination?: V1Beta1PageResponse;
 }
 
 /**
@@ -890,10 +923,22 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
    * @summary Queries a list of Getcustomerbill items.
    * @request GET:/electra/meter/getcustomerbill/{customerdeviceID}/{billCycleID}
    */
-  queryGetcustomerbill = (customerdeviceId: string, billCycleId: string, params: RequestParams = {}) =>
+  queryGetcustomerbill = (
+    customerdeviceId: string,
+    billCycleId: string,
+    query?: {
+      "pagination.key"?: string;
+      "pagination.offset"?: string;
+      "pagination.limit"?: string;
+      "pagination.count_total"?: boolean;
+      "pagination.reverse"?: boolean;
+    },
+    params: RequestParams = {},
+  ) =>
     this.request<MeterQueryGetcustomerbillResponse, RpcStatus>({
       path: `/electra/meter/getcustomerbill/${customerdeviceId}/${billCycleId}`,
       method: "GET",
+      query: query,
       format: "json",
       ...params,
     });
@@ -906,10 +951,22 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
    * @summary Queries a list of Getproducerbill items.
    * @request GET:/electra/meter/getproducerbill/{producerdeviceID}/{billCycleID}
    */
-  queryGetproducerbill = (producerdeviceId: string, billCycleId: string, params: RequestParams = {}) =>
+  queryGetproducerbill = (
+    producerdeviceId: string,
+    billCycleId: string,
+    query?: {
+      "pagination.key"?: string;
+      "pagination.offset"?: string;
+      "pagination.limit"?: string;
+      "pagination.count_total"?: boolean;
+      "pagination.reverse"?: boolean;
+    },
+    params: RequestParams = {},
+  ) =>
     this.request<MeterQueryGetproducerbillResponse, RpcStatus>({
       path: `/electra/meter/getproducerbill/${producerdeviceId}/${billCycleId}`,
       method: "GET",
+      query: query,
       format: "json",
       ...params,
     });
@@ -927,11 +984,19 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
     start: string,
     end: string,
     byUnixTime: boolean,
+    query?: {
+      "pagination.key"?: string;
+      "pagination.offset"?: string;
+      "pagination.limit"?: string;
+      "pagination.count_total"?: boolean;
+      "pagination.reverse"?: boolean;
+    },
     params: RequestParams = {},
   ) =>
     this.request<MeterQueryListrecordingsResponse, RpcStatus>({
       path: `/electra/meter/listrecordings/${deviceId}/${start}/${end}/${byUnixTime}`,
       method: "GET",
+      query: query,
       format: "json",
       ...params,
     });

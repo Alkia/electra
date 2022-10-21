@@ -110,7 +110,6 @@ cp ./scripts/custo/meter/query.proto ./proto/electra/meter/
 cp ./scripts/custo/meter/grpc_query_listrecordings.go ./x/meter/keeper/
 # coding power_purchase_contract #################################################################################
 cp ./scripts/custo/meter/msg_server_power_purchase_contract.go ./x/meter/keeper/
-# cp ./electra01/scripts/custo/meter/msg_server_power_purchase_contract.go ./x/meter/keeper/ 
 # Add electra logo ###############################################################################################
 cp ./scripts/custo/vue/SpNavbar.vue ./vue/node_modules/@starport/vue/src/components/SpNavbar/
 #
@@ -119,6 +118,7 @@ cp ./scripts/custo/meter/grpc_query_getproducerbill.go ./x/meter/keeper/
 # Cycle ID management ############################################################################################
 cp ./scripts/custo/meter/grpc_query_currentcycle_id.go ./x/meter/keeper/
 cp ./scripts/custo/meter/a_tools.go                    ./x/meter/keeper/
+# Bill Preparation ###############################################################################################
 cp ./scripts/custo/meter/msg_server_prepare_bill.go    ./x/meter/keeper/     
 ##################################################################################################################
 git add .
@@ -137,7 +137,7 @@ git commit -am "Customize the code in meter module"
 ##################################################################################################################
 # END any new scaffolding here to not overwrite existing proto changes query.proto and tx.proto
 ##################################################################################################################
-git tag v0.1.2
+git tag v0.1.3
 end=`date +%s`
 echo Execution time was `expr $end - $start` seconds.
 #git push --set-upstream origin master --force
