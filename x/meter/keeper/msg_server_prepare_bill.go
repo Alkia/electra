@@ -15,7 +15,7 @@ import (
 //  OUTPUT : string jsonBill = 1; string comment = 2;
 //
 func (k msgServer) PrepareBill(goCtx context.Context, msg *types.MsgPrepareBill) (*types.MsgPrepareBillResponse, error) {			
-	customerbill, customerbillinglines, producerbill, producerbillinglines, commentPrepare, err := k.makePrepareBill(goCtx, msg.CycleID)
+	customerbill, customerbillinglines, producerbillinglines, commentPrepare, err := k.makePrepareBill(goCtx, msg.CycleID)
 	var comment string
 	if err != nil {
         fmt.Printf("Error: %s", err.Error())
@@ -30,7 +30,7 @@ func (k msgServer) PrepareBill(goCtx context.Context, msg *types.MsgPrepareBill)
     }
 
 	if (msg.Record == true) {					// Record the bill on the chain
-		commentRecord, _ := k.recordAllPreparedBills(goCtx, customerbill, customerbillinglines, producerbill, producerbillinglines)
+		commentRecord, _ := k.recordAllPreparedBills(goCtx, customerbill, customerbillinglines, producerbillinglines)
 		comment += commentRecord
 	
 	}

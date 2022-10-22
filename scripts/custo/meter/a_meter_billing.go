@@ -6,7 +6,7 @@ package keeper
 import (
 	"context"
 	"fmt"
-	//"encoding/json"
+	"encoding/json"
 	"time"
 	"math"
 
@@ -230,8 +230,8 @@ func decrementPpcRemainingWh(ppcMap map[string]types.PowerPurchaseContract, devi
 // Function tested in /lab/test
 // Build the bill for a specific user customerdeviceID
 func buildBill(ppaMap map[string]types.PpaMap, ppcMap map[string]types.PowerPurchaseContract, customerDeviceID string, consumedWh uint64, currency string, consumerBillLines []types.Customerbillingline, producerBillLines []types.Producerbillingline, customerbill types.Customerbills, producerbill types.Producerbills, phase uint64, cycleID uint64, moduleParamBestForCustomer bool)(cBillingline []types.Customerbillingline, pBillLines []types.Producerbillingline, cbill  types.Customerbills, pbill types.Producerbills, err error){
-	//	func buildBill(ppaMap map[string]types.PpaMap, ppcMap map[string]types.PowerPurchaseContract, customerDeviceID string, consumedWh uint64, currency string, consumerBillLines []types.Customerbillingline, producerBillLines []types.Producerbillingline, phase uint64, moduleParamBestForCustomer bool)(cbill []types.Customerbillingline, pBillLines []types.Producerbillingline, err error){
 		const maxBillingIteration = 16 	
+		var comment string = ""
 		var loopcount int = 0
 		var lineID, remainsToDecrement, decremented uint64 = 0, 0, 0						// Iteration variable for energy calculation reinitialized at 0	
 		var thisCustomerbill types.Customerbills = customerbill 				// Get the current bill for customer customerDeviceID
@@ -240,65 +240,45 @@ func buildBill(ppaMap map[string]types.PpaMap, ppcMap map[string]types.PowerPurc
 			loopcount++
 			lineID++
 			decremented = 0
-			fmt.Printf("Iteration #%d", loopcount) 
-			fmt.Println(" ") 													// Debug_Trace
-			aPrice, aSellerID, aWhAvailableForCustomer,  aContractID, _ := smallestAvailablePriceForAll(ppcMap, currency, phase, consumedWh)	// Debug_Trace
-			//fmt.Printf(" * best common price is %d | required=%d avail=%d | remaining=%d completted=%b | from producer %s  ", aPrice, consumedWh, aWhAvailableForCustomer, aRemaining , aTriedAll, aSellerID) 
-			//fmt.Println(" ")
-			pPrice, pSellerID, pWhAvailableForCustomer,  pContractID, _ := smallestAvailablePricePreferred(ppaMap, ppcMap, customerDeviceID, currency, phase, consumedWh)	// Debug_Trace
-			//fmt.Printf(" * best preferred price %d | asked=%d avail=%d | remaining=%d completted=%b | from producer %s ", pPrice, consumedWh, pWhAvailableForCustomer, pRemaining, pTriedAllPreferred, pSellerID ) 
-			//fmt.Println(" ")
-			fmt.Printf(">> required=%d | aPrice %d aWhAvailable %d | pPrice %d, pWhAvailable %d |", consumedWh, aPrice , aWhAvailableForCustomer, pPrice , pWhAvailableForCustomer)	
-			fmt.Println(" ")
+			comment += fmt.Sprintf("=> buildBill Iteration #%d\n", loopcount) 													// Debug_Trace
+			aPrice, aSellerID, aWhAvailableForCustomer,  aContractID, _ := smallestAvailablePriceForAll(ppcMap, currency, phase, consumedWh)
+			pPrice, pSellerID, pWhAvailableForCustomer,  pContractID, _ := smallestAvailablePricePreferred(ppaMap, ppcMap, customerDeviceID, currency, phase, consumedWh)	
+			comment += fmt.Sprintf(">> buildBill required=%d | aPrice %d aWhAvailable %d | pPrice %d, pWhAvailable %d |\n", consumedWh, aPrice , aWhAvailableForCustomer, pPrice , pWhAvailableForCustomer)	
 			if ((pWhAvailableForCustomer == 0) && (aWhAvailableForCustomer ==0)) {			
 					// Throw error
-					stErr := "No remaining WH in any active contract"		
-					fmt.Println("======================================================")
-					fmt.Println(stErr)
-					fmt.Println("======================================================")
-					//err = errors.New(stErr)
-					//log.Println(err)
+					stErr := "No remaining WH in any active contract\n"		
+					comment += fmt.Sprintf(stErr)	//err = errors.New(stErr) //log.Println(err)
 				}  else {
 					// Write the billing lines // Settle both consumer and producer billLines   
 					switch (moduleParamBestForCustomer){
 						case true:  {
 							if (aPrice > pPrice) && (pWhAvailableForCustomer > 1) {
 								// Choose the pPrice
-								// DEBUG 
 								before:=ppcMap[pSellerID].Phase1RemainingWh	
 								// DEBUG fmt.Printf("  *** Choose the pPrice | before %d seller:%s\n", before, pSellerID)
-								remainsToDecrement, decremented, _ = decrementPpcRemainingWh(ppcMap, pSellerID, phase, consumedWh)	
-								// DEBUG  
+								remainsToDecrement, decremented, _ = decrementPpcRemainingWh(ppcMap, pSellerID, phase, consumedWh)									// DEBUG  
 								after:=ppcMap[pSellerID].Phase1RemainingWh	
-								// DEBUG fmt.Printf("  *** Choose the pPrice | after %d seller:%s\n", after, pSellerID)
-								// DEBUG 
-								fmt.Printf(">> BestForCust=%t > Choose pPrice | before:%dWh after:%dWh remainsToDecrement:%d decremented:%d from seller having %d %s\n", moduleParamBestForCustomer, before, after, remainsToDecrement, decremented, pWhAvailableForCustomer, pSellerID)			
-								//setCustomerbillingline(lineid uint64, cycleid uint64, lineWh uint64, lineWhPrice uint64, customerDeviceID string, producerID string, billContractID string, curency string, decremented uint64, phase uint64)														//
-								consumerBillLines = append(consumerBillLines, setCustomerbillingline(lineID, cycleID, pWhAvailableForCustomer, pPrice,  customerDeviceID, pSellerID,pContractID, currency, decremented, phase))		//
-								thisCustomerbill.BillTotalPrice += pPrice * decremented 																							//
-								thisCustomerbill.BillTotalWh += decremented 																										//
+								// DEBUG fmt.Printf("  *** Choose the pPrice | after %d seller:%s\n", after, pSellerID)								// DEBUG 
+								comment += fmt.Sprintf(">> buildBill | BestForCust=%t > Choose pPrice | before:%dWh after:%dWh remainsToDecrement:%d decremented:%d from seller having %d %s\n", moduleParamBestForCustomer, before, after, remainsToDecrement, decremented, pWhAvailableForCustomer, pSellerID)	
+								consumerBillLines = append(consumerBillLines, setCustomerbillingline(lineID, cycleID, pWhAvailableForCustomer, pPrice,  customerDeviceID, pSellerID,pContractID, currency, decremented, phase))	
+								thisCustomerbill.BillTotalPrice += pPrice * decremented 		
+								thisCustomerbill.BillTotalWh += decremented 	
 								producerBillLines = append(producerBillLines, setProducerbillingline(lineID, cycleID, pWhAvailableForCustomer, pPrice, customerDeviceID, pSellerID,  pContractID, currency, decremented, phase)) 				// Add to the producer line
 								} else {
 								if ( aWhAvailableForCustomer > 1) {	// Select the best price for the customer what ever it covers only a fraction of the WH consumed
 								// Choose the aPrice	
-								// DEBUG 
 								before:=ppcMap[aSellerID].Phase1RemainingWh	
 								remainsToDecrement, decremented,  _ = decrementPpcRemainingWh(ppcMap, aSellerID, phase, consumedWh) 			
-								// DEBUG 
 								after:=ppcMap[aSellerID].Phase1RemainingWh	
-								// DEBUG 
-								fmt.Printf(">> BestForCust=%t > Choose aPrice | before:%dWh after:%dWh remainsToDecrement:%d decremented:%d seller having:%d at price:%d from contract:%s seller%s\n",moduleParamBestForCustomer, before, after, remainsToDecrement, decremented, aWhAvailableForCustomer,  aPrice,  aContractID,  aSellerID)	
-								// setCustomerbillingline(lineid uint64, cycleid uint64, lineWh uint64, lineWhPrice uint64, customerDeviceID string, producerID string, billContractID string, curency string, decremented uint64, phase uint64)												//
+								comment += fmt.Sprintf(">> buildBill BestForCust=%t > Choose aPrice | before:%dWh after:%dWh remainsToDecrement:%d decremented:%d seller having:%d at price:%d from contract:%s seller%s\n",moduleParamBestForCustomer, before, after, remainsToDecrement, decremented, aWhAvailableForCustomer,  aPrice,  aContractID,  aSellerID)	
 								consumerBillLines = append(consumerBillLines, setCustomerbillingline(lineID, cycleID, aWhAvailableForCustomer, aPrice, customerDeviceID, aSellerID, aContractID, currency, decremented, phase)) 	//
-								thisCustomerbill.BillTotalPrice += aPrice * decremented 																							//
-								thisCustomerbill.BillTotalWh += decremented 																									//
+								thisCustomerbill.BillTotalPrice += aPrice * decremented 	
+								thisCustomerbill.BillTotalWh += decremented 	
 								producerBillLines = append(producerBillLines, setProducerbillingline(lineID, cycleID, aWhAvailableForCustomer, aPrice, customerDeviceID, aSellerID, aContractID, currency, decremented, phase)) 				//
 								} else { 		// Throw error
-									stErr := fmt.Sprintf(" >> ERROR No remaining WH in any active contract for consumer %s phase &d cycleid:\n", customerDeviceID ,phase)		
-									fmt.Println("======================================================")
-									fmt.Println(stErr)
-									//err = errors.New(stErr)											// Throw error
-									//log.Println(err)												// Log error	
+									comment += fmt.Sprintf(" >> ERROR No remaining WH in any active contract for consumer %s phase &d cycleid:\n", customerDeviceID ,phase)		
+									comment += fmt.Sprintf("======================================================\n")
+	
 								}	
 							}
 						}
@@ -322,29 +302,37 @@ func buildBill(ppaMap map[string]types.PpaMap, ppcMap map[string]types.PowerPurc
 			}
 			consumedWh = remainsToDecrement					
 		}
+		writelog(comment)
 		// Return the function values  Update the total amount of the customerbill and the producerbill
 		return consumerBillLines, producerBillLines, thisCustomerbill, producerbill, nil
 	}
 	
 
 
-func (k msgServer) makePrepareBill(goCtx context.Context, CycleID uint64)(Customerbills []types.Customerbillingline, Producerbills []types.Producerbillingline, comment string, err error){
+func (k msgServer) makePrepareBill(goCtx context.Context, CycleID uint64)(Customerbill map[string]types.Customerbills, Customerbillinglines []types.Customerbillingline, Producerbillinglines []types.Producerbillingline, comment string, err error){
 		// Constants
 		const moduleParamBestForCustomer = true 													// Select the best price for the customer or for the producer
 		const maxBillingIteration = 16 																//
-			//phase := uint64(1) 																			// In next versions would have to loop the 3 phases
-			//currency := "uelectra"																		// TO DO: Set as module parameter for each chain
-			// Local variables	
-			//var currentbillCycleID uint64 = CycleID													// For test purposes only
-			//var currentbillID uint64 = CycleID														// For test purposes only
+		const currency = "uelectra"																		// TO DO: Set as module parameter for each chain
+		// Performance Management
+		start := time.Now()				
+		// Local variables	
+		var billCounter uint64 = 0
+		var customerBillLines []types.Customerbillingline
+		// cBillingline []types.Customerbillingline, pBillLines []types.Producerbillingline, cbill  types.Customerbills, pbill types.Producerbills
+		var producerBillLines []types.Producerbillingline
+		var customerbill map[string]types.Customerbills	= make(map[string]types.Customerbills)	
+		var currentbillCycleID uint64 = CycleID	
+		var consumedWh uint64 = 0	
+		var ppcMap = make(map[string]types.PowerPurchaseContract)
+		var ppaMap = make(map[string]types.PpaMap) 	
 			//var remainsToDecrement, decremented uint64
 			//var consumedWh uint64 = 0	
-		// Performance Management
-		start := time.Now()
+
 		// CycleID definitions
 		PreviousCycleID := CycleID
 		PreviousCycleID--								// Decrement the current cycle ID to get the previous
-		writelog("")
+		
 		comment += fmt.Sprintf("CycleID: %d  Previous CycleID: %d\n", CycleID, PreviousCycleID)
 		ctx := sdk.UnwrapSDKContext(goCtx)
 		var ppcList []types.PowerPurchaseContract = k.GetAllPowerPurchaseContract(ctx)  	// from x/meter/keeper/power_purchase_contract.go
@@ -359,13 +347,11 @@ func (k msgServer) makePrepareBill(goCtx context.Context, CycleID uint64)(Custom
 			for _, element := range ppaList{
 				comment += fmt.Sprintf("ppa: %s Con:%s Prd:%s CID:%s\n",element.AgreementID, element.ConsumerDeviceID, element.ProducerDeviceID, element.ContractID)
 			}
-			writelog(comment)
-			comment = ""
 		
 		previousCycleConsumeInMap, previousCycleProduceOutMap, currentConsumeInMap, currentProduceOutMap, _ := k.loadMeterReadingValues(ctx, CycleID)
 
-		/* Audit */
-		comment += "============= previousProsumerMap ================\n"
+		/* Audit data load */
+		comment += "============= currentConsumeInMap ================\n"
 		for key, element := range currentConsumeInMap{
 			comment += fmt.Sprintf("currentConsumeInMap: %s IN:%d\n",key,element.whphase1)
 		}
@@ -381,18 +367,81 @@ func (k msgServer) makePrepareBill(goCtx context.Context, CycleID uint64)(Custom
 		for key, element := range previousCycleProduceOutMap{
 			comment += fmt.Sprintf("previousCycleProduceOutMap: %s OUT:%d\n",key,element.whphase1)
 		}
-		// Browse the current list of customers
-		billCounter :=0
-		for consumerID, _ := range currentConsumeInMap {
-			billCounter++
-			var consumed meterReading // Set the WH consumed value per phase
-			consumed.whphase1	 = currentConsumeInMap[consumerID].whphase1 - previousCycleConsumeInMap[consumerID].whphase1
-			consumed.whphase2 	 = currentConsumeInMap[consumerID].whphase2 - previousCycleConsumeInMap[consumerID].whphase2
-			consumed.whphase3	 = currentConsumeInMap[consumerID].whphase3 - previousCycleConsumeInMap[consumerID].whphase3
+		for customerDeviceID, _ := range currentConsumeInMap {
+			comment += fmt.Sprintf("Customer %s consumed.whphase1= %d\n", customerDeviceID, currentConsumeInMap[customerDeviceID].whphase1 - previousCycleConsumeInMap[customerDeviceID].whphase1)
 		}
-
-		elapsed := time.Since(start)
-		comment += fmt.Sprintf("Search took %s\n", elapsed)
+		comment += "============= Consumer Consumption ================\n"
+		for customerDeviceID, _ := range currentConsumeInMap {
+			comment += fmt.Sprintf("Customer %s consumed.whphase1= %d\n", customerDeviceID, currentConsumeInMap[customerDeviceID].whphase1 - previousCycleConsumeInMap[customerDeviceID].whphase1)
+		}
+		comment += "============= Producer Production ================\n"
+		for producerDeviceID, _ := range currentProduceOutMap {
+			comment += fmt.Sprintf("Customer %s consumed.whphase1= %d\n", producerDeviceID, currentProduceOutMap[producerDeviceID].whphase1 - previousCycleProduceOutMap[producerDeviceID].whphase1)
+		}
 		writelog(comment)
-	return Customerbills, Producerbills, comment, err
+		comment = ""
+	// makePrepareBill | Step 1: Create for each customer his bill and the the related producer billing line
+	for customerDeviceID, _ := range currentConsumeInMap {		// makePrepareBill Polls the current list of customers
+		billCounter++
+		var consumed meterReading // Get the amount of WH consumed & Set the WH consumed value per phase 
+		consumed.whphase1	 = currentConsumeInMap[customerDeviceID].whphase1 - previousCycleConsumeInMap[customerDeviceID].whphase1
+		consumed.whphase2 	 = currentConsumeInMap[customerDeviceID].whphase2 - previousCycleConsumeInMap[customerDeviceID].whphase2
+		consumed.whphase3	 = currentConsumeInMap[customerDeviceID].whphase3 - previousCycleConsumeInMap[customerDeviceID].whphase3									
+		var thisCustomerBill types.Customerbills  = customerbill[customerDeviceID]
+		var thisProducerBill types.Producerbills  // = producerbill[producerDeviceID]
+
+		thisCustomerBill = customerbill[customerDeviceID]
+		thisCustomerBill.BillCycleID = currentbillCycleID 
+		thisCustomerBill.BillDate = uint64(time.Now().Unix()) 
+		thisCustomerBill.BillCurrency = customerDeviceID 
+		thisCustomerBill.CustomerdeviceID = customerDeviceID
+		thisCustomerBill.Paid = false
+		for phase := uint64(1); phase < uint64(2); phase++ { // Add a For loop for phase1 / phase2 / phase3 
+			switch (phase){																			
+				case 1: consumedWh = consumed.whphase1
+				case 2: consumedWh = consumed.whphase2
+				case 3: consumedWh = consumed.whphase3
+			}
+			customerRequestedWh := consumedWh			// Keep the value to compare against
+			comment += fmt.Sprintf(">> buildBill #%d phase %d ===  WH consumed (to be billed now): %d curremcy: %s id: %s\n", billCounter, phase, consumedWh, currency, customerDeviceID)
+			customerBillLines, producerBillLines, thisCustomerBill, thisProducerBill, _ = buildBill(ppaMap, ppcMap, customerDeviceID, consumedWh, currency, customerBillLines, producerBillLines, thisCustomerBill, thisProducerBill, phase, currentbillCycleID, moduleParamBestForCustomer)
+			// Check bill validity | Valid only IF all the requested ennergy has been invoiced
+			if (thisCustomerBill.BillTotalWh == customerRequestedWh){		
+				thisCustomerBill.BillValid = true		 
+			} else {									// Bill Uncompleted
+				thisCustomerBill.BillValid = false		 	
+				stErr := fmt.Sprintf(">>> buildBill ERROR Invoice valid:%t Consumer:%s billTotalWh=%d  Requested=%d Phase=%d\n", thisCustomerBill.BillValid, customerDeviceID, thisCustomerBill.BillTotalWh, customerRequestedWh, phase, currentbillCycleID)
+				comment += stErr					//writelog(stErr) // Log error
+			}
+			customerbill[customerDeviceID] = thisCustomerBill	// Record the bill
+			comment += fmt.Sprintf(">>>> Invoice valid:%t Consumer:%s billTotalWh=%d  Requested=%d Phase=%d\n", thisCustomerBill.BillValid, customerDeviceID, thisCustomerBill.BillTotalWh, customerRequestedWh, phase)
+			// Update both consumer and producer WH values
+			comment += fmt.Sprintln(">>>> consumerbill:", customerbill[customerDeviceID])
+			comment += "\n"
+		 }
+	}
+	comment += "### Output customerbill ###################\n"
+	jsonStr, _ := json.MarshalIndent(customerbill, "", " ")
+	comment += fmt.Sprintf("%+s\n",jsonStr) 
+	comment += "### Output customerBillLines ###################\n"
+	jsonStr, _ = json.MarshalIndent(customerBillLines, "", " ")
+	comment += fmt.Sprintf("%+s\n",jsonStr) 
+	comment += "### Output producerBillLines ###################\n"
+	jsonStr, _ = json.MarshalIndent(producerBillLines, "", " ")
+	comment += fmt.Sprintf("%+s\n",jsonStr) 
+	elapsed := time.Since(start)
+	comment += fmt.Sprintf("makePrepareBill Cycle:%d took %s @ %s\n", CycleID, elapsed,time.Now())
+	writelog(comment)
+	return customerbill, customerBillLines, producerBillLines, comment, err
+}
+
+func (k msgServer) recordAllPreparedBills(goCtx context.Context, Customerbill map[string]types.Customerbills, Customerbillinglines []types.Customerbillingline, Producerbillinglines []types.Producerbillingline)( string,  error){
+	// Performance Management
+	start := time.Now()	
+	comment := "### START recordAllPreparedBills ########################\n"
+	// TO DO
+	elapsed := time.Since(start)
+	comment += fmt.Sprintf("End recordAllPreparedBills took %s @ %s ###############\n", elapsed,time.Now())
+	writelog(comment)
+return comment, nil
 }
