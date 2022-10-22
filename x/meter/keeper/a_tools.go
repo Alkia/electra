@@ -32,7 +32,7 @@ func show(m reflect.Value) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  func writelog(line string) {
  // If the file doesn't exist, create it or append to the file
- file, err := os.OpenFile("trace.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+ file, err := os.OpenFile("billing.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
  defer file.Close() 
  if err != nil {
 	 log.Fatal(err)

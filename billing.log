@@ -1,0 +1,99 @@
+2022/10/22 20:46:54 === Start Logging === TDG-L0286 | 2022-10-22 20:46:54.81047422 +0700 +07 m=+126.975497943
+2022/10/22 20:46:54 CycleID: 78  Previous CycleID: 77
+============= PPC ================
+PPC: 315952fd-49bb-4a57-b2d8-226180431452 contract-name-1
+PPC: bea079c9-6a65-41eb-8951-3b7fdf67d276 contract-new-name-1
+PPC: d78d6f5f-acf3-4efb-ad52-d435983cbf40 contract-name-1
+PPC: f863b4b4-1c4c-4963-872a-5c0175e612d2 contract-name-1
+PPC: prod10000-1c4c-4963-872a-5c0175e612d2 contract-prod-1
+PPC: prod20000-2222-4963-872a-5c0175e612d2 contract-prod-2
+============= PPA ================
+
+2022/10/22 20:46:54 ============= previousProsumerMap ================
+currentConsumeInMap: electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7 IN:2200
+currentConsumeInMap: electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz IN:6500
+currentConsumeInMap: electra16n5tnkck6rcg7gxmalc057daputvac5pzjeal9 IN:1500
+currentConsumeInMap: electra19mhfyxz7532gumtyw5zrq00qv23mqtc4plgfzy IN:7700
+currentConsumeInMap: electra1krkk5xtp8s7lk9xf2az70txle50zfzga7dah87 IN:3300
+============= currentProduceOutMap ================
+currentProduceOutMap: electra16p7dd9wp76kmxckus64un7udt59kvprfd0tw8v OUT:38000
+currentProduceOutMap: electra1rf56um69dum7em0kx9xen794x8gm49vxstkjwy OUT:39000
+============= previousCycleConsumeInMap ================
+previousCycleConsumeInMap: electra16n5tnkck6rcg7gxmalc057daputvac5pzjeal9 IN:1000
+previousCycleConsumeInMap: electra19mhfyxz7532gumtyw5zrq00qv23mqtc4plgfzy IN:6200
+previousCycleConsumeInMap: electra1krkk5xtp8s7lk9xf2az70txle50zfzga7dah87 IN:2200
+previousCycleConsumeInMap: electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7 IN:2200
+previousCycleConsumeInMap: electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz IN:5200
+============= previousCycleProduceOutMap ================
+previousCycleProduceOutMap: electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7 OUT:2000
+previousCycleProduceOutMap: electra16p7dd9wp76kmxckus64un7udt59kvprfd0tw8v OUT:28000
+previousCycleProduceOutMap: electra1rf56um69dum7em0kx9xen794x8gm49vxstkjwy OUT:29000
+
+2022/10/22 20:46:54 === START #1 phase ===  WH consumed (to be billed now): 1 curremcy: %!s(uint64=0) id: uelectra
+%!(EXTRA string=electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7)  >> Invoice valid:true Consumer:electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7 billTotalWh=0  Requested=0 Phase=1
+  >> consumerbill: {78 electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7 1666446414 0 0 uelectra true false }
+
+2022/10/22 20:46:54 === Start Logging === TDG-L0286 | 2022-10-22 20:46:54.810725489 +0700 +07 m=+126.975749211
+2022/10/22 20:46:54 !!!ERROR Invoice valid:false Consumer:electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz billTotalWh=0  Requested=1300 Phase=1
+%!(EXTRA uint64=78)
+2022/10/22 20:46:54 === START #2 phase ===  WH consumed (to be billed now): 1 curremcy: %!s(uint64=1300) id: uelectra
+%!(EXTRA string=electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz)  >> Invoice valid:false Consumer:electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz billTotalWh=0  Requested=1300 Phase=1
+  >> consumerbill: {78 electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz 1666446414 0 0 uelectra false false }
+
+2022/10/22 20:46:54 === Start Logging === TDG-L0286 | 2022-10-22 20:46:54.810783404 +0700 +07 m=+126.975807128
+2022/10/22 20:46:54 !!!ERROR Invoice valid:false Consumer:electra16n5tnkck6rcg7gxmalc057daputvac5pzjeal9 billTotalWh=0  Requested=500 Phase=1
+%!(EXTRA uint64=78)
+2022/10/22 20:46:54 === START #3 phase ===  WH consumed (to be billed now): 1 curremcy: %!s(uint64=500) id: uelectra
+%!(EXTRA string=electra16n5tnkck6rcg7gxmalc057daputvac5pzjeal9)  >> Invoice valid:false Consumer:electra16n5tnkck6rcg7gxmalc057daputvac5pzjeal9 billTotalWh=0  Requested=500 Phase=1
+  >> consumerbill: {78 electra16n5tnkck6rcg7gxmalc057daputvac5pzjeal9 1666446414 0 0 uelectra false false }
+
+2022/10/22 20:46:54 === Start Logging === TDG-L0286 | 2022-10-22 20:46:54.810801185 +0700 +07 m=+126.975824910
+2022/10/22 20:46:54 !!!ERROR Invoice valid:false Consumer:electra19mhfyxz7532gumtyw5zrq00qv23mqtc4plgfzy billTotalWh=0  Requested=1500 Phase=1
+%!(EXTRA uint64=78)
+2022/10/22 20:46:54 === START #4 phase ===  WH consumed (to be billed now): 1 curremcy: %!s(uint64=1500) id: uelectra
+%!(EXTRA string=electra19mhfyxz7532gumtyw5zrq00qv23mqtc4plgfzy)  >> Invoice valid:false Consumer:electra19mhfyxz7532gumtyw5zrq00qv23mqtc4plgfzy billTotalWh=0  Requested=1500 Phase=1
+  >> consumerbill: {78 electra19mhfyxz7532gumtyw5zrq00qv23mqtc4plgfzy 1666446414 0 0 uelectra false false }
+
+2022/10/22 20:46:54 === Start Logging === TDG-L0286 | 2022-10-22 20:46:54.810823603 +0700 +07 m=+126.975847329
+2022/10/22 20:46:54 !!!ERROR Invoice valid:false Consumer:electra1krkk5xtp8s7lk9xf2az70txle50zfzga7dah87 billTotalWh=0  Requested=1100 Phase=1
+%!(EXTRA uint64=78)
+2022/10/22 20:46:54 === START #5 phase ===  WH consumed (to be billed now): 1 curremcy: %!s(uint64=1100) id: uelectra
+%!(EXTRA string=electra1krkk5xtp8s7lk9xf2az70txle50zfzga7dah87)  >> Invoice valid:false Consumer:electra1krkk5xtp8s7lk9xf2az70txle50zfzga7dah87 billTotalWh=0  Requested=1100 Phase=1
+  >> consumerbill: {78 electra1krkk5xtp8s7lk9xf2az70txle50zfzga7dah87 1666446414 0 0 uelectra false false }
+
+2022/10/22 20:46:54 === Start Logging === TDG-L0286 | 2022-10-22 20:46:54.810841869 +0700 +07 m=+126.975865594
+2022/10/22 20:46:54 ### Output ###################
+ >>>  {
+ "electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7": {
+  "billCycleID": 78,
+  "customerdeviceID": "electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7",
+  "billDate": 1666446414,
+  "billCurrency": "uelectra",
+  "billValid": true
+ },
+ "electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz": {
+  "billCycleID": 78,
+  "customerdeviceID": "electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz",
+  "billDate": 1666446414,
+  "billCurrency": "uelectra"
+ },
+ "electra16n5tnkck6rcg7gxmalc057daputvac5pzjeal9": {
+  "billCycleID": 78,
+  "customerdeviceID": "electra16n5tnkck6rcg7gxmalc057daputvac5pzjeal9",
+  "billDate": 1666446414,
+  "billCurrency": "uelectra"
+ },
+ "electra19mhfyxz7532gumtyw5zrq00qv23mqtc4plgfzy": {
+  "billCycleID": 78,
+  "customerdeviceID": "electra19mhfyxz7532gumtyw5zrq00qv23mqtc4plgfzy",
+  "billDate": 1666446414,
+  "billCurrency": "uelectra"
+ },
+ "electra1krkk5xtp8s7lk9xf2az70txle50zfzga7dah87": {
+  "billCycleID": 78,
+  "customerdeviceID": "electra1krkk5xtp8s7lk9xf2az70txle50zfzga7dah87",
+  "billDate": 1666446414,
+  "billCurrency": "uelectra"
+ }
+}makePrepareBill Cycle:681885 took %!s(uint64=78) @ 2022-10-22 20:46:54.811059662 +0700 +07 m=+126.976083384
+
