@@ -51,7 +51,7 @@ git commit -am "scaffold electra powerPurchaseContract message"
 ignite scaffold map ppaMap producerDeviceID:string agreementStartDate:uint agreementEndDate:uint contractPreferredPrice:uint contractPreferredCurency:string --index consumerDeviceID:string,agreementID:string,agreementActive:bool,contractID:string --module meter -y
 ##################################################################################################################
 # Billing Cycle
-ignite scaffold map billingcycles begin:uint end:uint whin:uint whout:uint moneyin:uint moneyout:uint curency:string  --index cycleID:uint --module meter -y		 
+ignite scaffold map billingcycles begin:uint end:uint whin:uint whout:uint moneyin:uint moneyout:uint curency:string valid:bool paid:bool  --index cycleID:uint --module meter -y		 
 ignite scaffold query currentcycleID --response cycleID:uint,begin:uint,end:uint,whin:uint,whout:uint,moneyin:uint,moneyout:uint,curency:string  --module meter --desc "Get the current cycleID:uint" -y
 #ignite scaffold message incrementcycleID --response cycleID:uint  --module meter --desc "Increment the current cycleID:uint" -y
 ##################################################################################################################
@@ -119,7 +119,9 @@ cp ./scripts/custo/meter/grpc_query_getproducerbill.go ./x/meter/keeper/
 cp ./scripts/custo/meter/grpc_query_currentcycle_id.go ./x/meter/keeper/
 cp ./scripts/custo/meter/a_tools.go                    ./x/meter/keeper/
 # Bill Preparation ###############################################################################################
-cp ./scripts/custo/meter/msg_server_prepare_bill.go    ./x/meter/keeper/     
+cp ./scripts/custo/meter/msg_server_prepare_bill.go    ./x/meter/keeper/    
+cp ./scripts/custo/meter/a_meter_billing.go            ./x/meter/keeper/
+cp ./scripts/custo/meter/a_tools.go                    ./x/meter/keeper/
 ##################################################################################################################
 git add .
 git commit -am "Customize the code in meter module"
