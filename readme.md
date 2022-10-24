@@ -40,7 +40,16 @@ ignite chain serve
 
 Your Electra blockchain in development can be configured with `config.yml`. 
 
+## Test from CLI 
 
+To check the current cycle ID your Electra chain reached, run the following command:
+```
+electrad query meter currentcycle-id
+```
+To prepare a bill:
+```
+electrad tx meter prepare-bill [cycle-id] [record]
+```
 ## Release
 
 To release a new version of your Electra blockchain, create and push a new tag with `v` prefix. A new draft release with the configured targets will be created.
