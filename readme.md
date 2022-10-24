@@ -55,8 +55,8 @@ electrad tx meter prepare-bill [cycle-id] [record]
 To release a new version of your Electra blockchain, create and push a new tag with `v` prefix. A new draft release with the configured targets will be created.
 
 ```
-git tag v0.1.3
-git push origin v0.1.3
+git tag v0.1.5
+git push origin v0.1.5
 ```
 
 After a draft release is created, make your final changes from the release page and publish it.
@@ -83,6 +83,8 @@ npm run serve
 ```
 
 The frontend app is built using the `@starport/vue` and `@starport/vuex` packages.
+
+## Implementing the blockachain meter
 
 ## Learn more
 - [Alkia IT Services Co., Ltd.](https://alkia.net)
