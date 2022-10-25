@@ -1,0 +1,21 @@
+syntax = "proto3";
+package electra.meter;
+
+option go_package = "electra/x/meter/types";
+
+message Meterdirectory {
+  string deviceID = 1; 
+  string barcodeserial = 2; 
+  string model = 3; 
+  uint64 installationdate = 4; 
+  string address = 5; 
+  string ownerlastname = 6; 
+  string ownerfirstname = 7; 
+  string ownerphone = 8; 
+  string gpsjson = 9; 
+  bool active = 10; 
+  bool triphased = 11; 
+  uint64 phasenbmono = 12; 
+  
+}
+

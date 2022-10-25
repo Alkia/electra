@@ -1,0 +1,18 @@
+syntax = "proto3";
+package electra.meter;
+
+option go_package = "electra/x/meter/types";
+
+message Meterreadings {
+  string deviceID = 1; 
+  uint64 timestamp = 2; 
+  uint64 phase = 3; 
+  uint64 whin = 4; 
+  uint64 whout = 5; 
+  uint64 mvolt = 6; 
+  uint64 mhertz = 7; 
+  uint64 mpf = 8; 
+  uint64 maxmi = 9; 
+  
+}
+
