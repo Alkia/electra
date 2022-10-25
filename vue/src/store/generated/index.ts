@@ -1,8 +1,10 @@
 // THIS FILE IS GENERATED AUTOMATICALLY. DO NOT MODIFY.
 
+import ElectraMeter from './electra.meter'
 
 
 export default { 
+  ElectraMeter: load(ElectraMeter, 'electra.meter'),
   
 }
 
