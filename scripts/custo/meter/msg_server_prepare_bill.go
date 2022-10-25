@@ -6,8 +6,9 @@ package keeper
 import (
 	"context"
 	"fmt"
-	"encoding/json"
+	"time"
 	"electra/x/meter/types"
+	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 
 //  INPUT : string creator = 1; uint64 cycleID = 2;  bool record = 3;
@@ -15,25 +16,28 @@ import (
 //  OUTPUT : string jsonBill = 1; string comment = 2;
 //
 func (k msgServer) PrepareBill(goCtx context.Context, msg *types.MsgPrepareBill) (*types.MsgPrepareBillResponse, error) {			
-	customerbill, customerbillinglines, producerbillinglines, commentPrepare, err := k.makePrepareBill(goCtx, msg.CycleID)
-	var comment string
-	if err != nil {
-        fmt.Printf("Error: %s", err.Error())
-    }
-	jsonBill1, err := json.Marshal(customerbillinglines)
-	if err != nil {
-        fmt.Printf("Error: %s", err.Error())
-    }
-	jsonBill2, err := json.Marshal(producerbillinglines)
-	if err != nil {
-        fmt.Printf("Error: %s", err.Error())
-    }
+	// Performance Management
+	start 	:= time.Now()	
+	// Variables
+	ctx 	:= sdk.UnwrapSDKContext(goCtx)
+	var comment string = ""
+	var ppcList []types.PowerPurchaseContract = k.GetAllPowerPurchaseContract(ctx)  	// from x/meter/keeper/power_purchase_contract.go
+	var ppaList []types.PpaMap = k.GetAllPpaMap(ctx)   	// from x/meter/keeper/ppa_map.go GetAllPpaMap returns all ppaMap  func (k Keeper) GetAllPpaMap(ctx sdk.Context) (list []types.PpaMap)
+	var ppcMap = ppcList2ppcMap(ppcList) 				// includes make(map[string]types.PowerPurchaseContract)
+	var ppaMap = ppaList2ppaMap(ppaList)				// make(map[string]types.PpaMap)
+	comment	+= fmt.Sprintf("\n### BEGIN ### PrepareBill ### ppcList: %+v\n======\nppaMap: %+v\n======\n", ppcList, ppaMap)
+	// Load values
+	previousCycleConsumeInMap, previousCycleProduceOutMap, currentCycleConsumeInMap, currentCycleProduceOutMap, _ := k.loadMeterReadingValues(ctx, msg.CycleID)
+	// Prepare the bills
+	customerbill, customerbillinglines, producerbillinglines, commentPrepare, err := makePrepareBill(ppcMap, ppaMap, msg.CycleID, previousCycleConsumeInMap, previousCycleProduceOutMap, currentCycleConsumeInMap, currentCycleProduceOutMap)
 
-	if (msg.Record == true) {					// Record the bill on the chain
+	if (msg.Record == true) {							// Record the bill on the chain
 		commentRecord, _ := k.recordAllPreparedBills(goCtx, customerbill, customerbillinglines, producerbillinglines)
 		comment += commentRecord
-	
 	}
-	comment += " |  k.makePrepareBill : " + commentPrepare  // Concatenabe both comments
-	return &types.MsgPrepareBillResponse{JsonCustomerbill: string(jsonBill1),JsonProducerbill: string(jsonBill2), Comment: comment}, nil
+
+	elapsed	:= time.Since(start)
+	comment	+= fmt.Sprintf("\n### END ### PrepareBill All took %s @ %s ###\n", elapsed,time.Now())
+	fmt.Printf(comment)
+	return &types.MsgPrepareBillResponse{JsonCustomerbill: "",JsonProducerbill: commentPrepare, Comment: comment}, err
 }
