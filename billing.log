@@ -1,0 +1,22 @@
+2022/10/25 21:21:55 CycleID: 78  Previous CycleID: 77
+============= PPC ================
+PPC: 80cb63e8-daaf-401b-bdf9-41bc0f502406 contract-name-1
+PPC: bea079c9-6a65-41eb-8951-3b7fdf67d276 contract-new-name-1
+PPC: c30ebe72-cb29-437b-9fe2-19a2b27ea69b contract-name-1
+PPC: f863b4b4-1c4c-4963-872a-5c0175e612d2 contract-name-1
+PPC: prod10000-1c4c-4963-872a-5c0175e612d2 contract-prod-1
+PPC: prod20000-2222-4963-872a-5c0175e612d2 contract-prod-2
+============= PPA ================
+============= currentConsumeInMap ================
+============= currentProduceOutMap ================
+============= previousCycleConsumeInMap ================
+============= previousCycleProduceOutMap ================
+
+2022/10/25 21:21:55 ### Output customerbill ###################
+{}
+### Output customerBillLines ###################
+null
+### Output producerBillLines ###################
+null
+makePrepareBill Cycle:78 took 1.126474ms @ 2022-10-25 21:21:55.373954925 +0700 +07 m=+119.430402280
+
