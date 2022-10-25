@@ -3,6 +3,7 @@ package electra.meter;
 
 option go_package = "electra/x/meter/types";
 
+
 message Producerbills {
   uint64 billCycleID = 1; 
   string producerDeviceID = 2; 

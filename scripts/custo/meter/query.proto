@@ -96,12 +96,12 @@ service Query {
 
 // Queries a list of Getcustomerbill items.
 	rpc Getcustomerbill(QueryGetcustomerbillRequest) returns (QueryGetcustomerbillResponse) {
-		option (google.api.http).get = "/electra/meter/getcustomerbill/{customerdeviceID}/{billCycleID}";
+		option (google.api.http).get = "/electra/meter/getcustomerbill/{customerDeviceID}/{billCycleID}";
 	}
 
 // Queries a Customerbills by index.
 	rpc Customerbills(QueryGetCustomerbillsRequest) returns (QueryGetCustomerbillsResponse) {
-		option (google.api.http).get = "/electra/meter/customerbills/{billCycleID}/{customerdeviceID}";
+		option (google.api.http).get = "/electra/meter/customerbills/{billCycleID}/{customerDeviceID}";
 	}
 
 	// Queries a list of Customerbills items.
@@ -121,12 +121,12 @@ service Query {
 
 // Queries a list of Getproducerbill items.
 	rpc Getproducerbill(QueryGetproducerbillRequest) returns (QueryGetproducerbillResponse) {
-		option (google.api.http).get = "/electra/meter/getproducerbill/{producerdeviceID}/{billCycleID}";
+		option (google.api.http).get = "/electra/meter/getproducerbill/{producerDeviceID}/{billCycleID}";
 	}
 
 // Queries a Producerbills by index.
 	rpc Producerbills(QueryGetProducerbillsRequest) returns (QueryGetProducerbillsResponse) {
-		option (google.api.http).get = "/electra/meter/producerbills/{billCycleID}/{producerdeviceID}";
+		option (google.api.http).get = "/electra/meter/producerbills/{billCycleID}/{producerDeviceID}";
 	}
 
 	// Queries a list of Producerbills items.
@@ -292,7 +292,7 @@ message QueryAllCustomerbillinglineResponse {
 }
 
 message QueryGetcustomerbillRequest {
-  string customerdeviceID = 1;
+  string customerDeviceID = 1;
   uint64 billCycleID = 2;
   cosmos.base.query.v1beta1.PageRequest pagination = 3;
 }
@@ -309,7 +309,7 @@ message QueryGetcustomerbillResponse {
 
 message QueryGetCustomerbillsRequest {
 	  uint64 billCycleID = 1;
-  string customerdeviceID = 2;
+  string customerDeviceID = 2;
 
 }
 
@@ -347,7 +347,7 @@ message QueryAllProducerbillinglineResponse {
 }
 
 message QueryGetproducerbillRequest {
-  string producerdeviceID = 1;
+  string producerDeviceID = 1;
   uint64 billCycleID = 2;
   cosmos.base.query.v1beta1.PageRequest pagination = 3;
 }
@@ -364,7 +364,7 @@ message QueryGetproducerbillResponse {
 
 message QueryGetProducerbillsRequest {
 	  uint64 billCycleID = 1;
-  string producerdeviceID = 2;
+  string producerDeviceID = 2;
 }
 
 message QueryGetProducerbillsResponse {

@@ -383,7 +383,7 @@ func (k msgServer) makePrepareBill(goCtx context.Context, CycleID uint64)(Custom
 		thisCustomerBill.BillCycleID = currentbillCycleID 
 		thisCustomerBill.BillDate = uint64(time.Now().Unix()) 
 		thisCustomerBill.BillCurrency = customerDeviceID 
-		thisCustomerBill.CustomerdeviceID = customerDeviceID
+		thisCustomerBill.CustomerDeviceID = customerDeviceID
 		thisCustomerBill.Paid = false
 		for phase := uint64(1); phase < uint64(2); phase++ { // Add a For loop for phase1 / phase2 / phase3 
 			switch (phase){																			

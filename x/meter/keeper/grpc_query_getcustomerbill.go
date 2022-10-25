@@ -37,7 +37,7 @@ func (k Keeper) Getcustomerbill(goCtx context.Context, req *types.QueryGetcustom
 			return err
 		}
 		
-		if (req.CustomerdeviceID  == customerbillingline.CustomerDeviceID) && (uint64(customerbillingline.CycleID) == uint64(req.BillCycleID))  {
+		if (req.CustomerDeviceID  == customerbillingline.CustomerDeviceID) && (uint64(customerbillingline.CycleID) == uint64(req.BillCycleID))  {
 			customerbillinglines = append(customerbillinglines, customerbillingline)
 			billTotalWh 	+= customerbillingline.LineWh          
 			billTotalPrice 	+= customerbillingline.LineWhPrice 

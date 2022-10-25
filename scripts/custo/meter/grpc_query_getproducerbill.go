@@ -37,7 +37,7 @@ func (k Keeper) Getproducerbill(goCtx context.Context, req *types.QueryGetproduc
 			return err
 		}
 
-		if (req.ProducerdeviceID  == producerbillingline.CustomerDeviceID) && (uint64(producerbillingline.CycleID) == uint64(req.BillCycleID))  {
+		if (req.ProducerDeviceID  == producerbillingline.CustomerDeviceID) && (uint64(producerbillingline.CycleID) == uint64(req.BillCycleID))  {
 			producerbillinglines = append(producerbillinglines, producerbillingline)
 			billTotalWh 	+= producerbillingline.LineWh          
 			billTotalPrice 	+= producerbillingline.LineWhPrice 
