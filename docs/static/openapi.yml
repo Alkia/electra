@@ -33432,6 +33432,817 @@ paths:
           format: int64
       tags:
         - Query
+  /electra/meter/billingcycles:
+    get:
+      summary: Queries a list of Billingcycles items.
+      operationId: ElectraMeterBillingcyclesAll
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              billingcycles:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    cycleID:
+                      type: string
+                      format: uint64
+                    begin:
+                      type: string
+                      format: uint64
+                    end:
+                      type: string
+                      format: uint64
+                    whin:
+                      type: string
+                      format: uint64
+                    whout:
+                      type: string
+                      format: uint64
+                    moneyin:
+                      type: string
+                      format: uint64
+                    moneyout:
+                      type: string
+                      format: uint64
+                    curency:
+                      type: string
+                    valid:
+                      type: boolean
+                    paid:
+                      type: boolean
+                    creator:
+                      type: string
+              pagination:
+                type: object
+                properties:
+                  next_key:
+                    type: string
+                    format: byte
+                    description: |-
+                      next_key is the key to be passed to PageRequest.key to
+                      query the next page most efficiently. It will be empty if
+                      there are no more results.
+                  total:
+                    type: string
+                    format: uint64
+                    title: >-
+                      total is total number of results available if
+                      PageRequest.count_total
+
+                      was set, its value is undefined otherwise
+                description: >-
+                  PageResponse is to be embedded in gRPC response messages where
+                  the
+
+                  corresponding request message has used PageRequest.
+
+                   message SomeResponse {
+                           repeated Bar results = 1;
+                           PageResponse page = 2;
+                   }
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: pagination.key
+          description: |-
+            key is a value returned in PageResponse.next_key to begin
+            querying the next page most efficiently. Only one of offset or key
+            should be set.
+          in: query
+          required: false
+          type: string
+          format: byte
+        - name: pagination.offset
+          description: >-
+            offset is a numeric offset that can be used when key is unavailable.
+
+            It is less efficient than using key. Only one of offset or key
+            should
+
+            be set.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.limit
+          description: >-
+            limit is the total number of results to be returned in the result
+            page.
+
+            If left empty it will default to a value to be set by each app.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.count_total
+          description: >-
+            count_total is set to true  to indicate that the result set should
+            include
+
+            a count of the total number of items available for pagination in
+            UIs.
+
+            count_total is only respected when offset is used. It is ignored
+            when key
+
+            is set.
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
+          in: query
+          required: false
+          type: boolean
+      tags:
+        - Query
+  /electra/meter/billingcycles/{cycleID}:
+    get:
+      summary: Queries a Billingcycles by index.
+      operationId: ElectraMeterBillingcycles
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              billingcycles:
+                type: object
+                properties:
+                  cycleID:
+                    type: string
+                    format: uint64
+                  begin:
+                    type: string
+                    format: uint64
+                  end:
+                    type: string
+                    format: uint64
+                  whin:
+                    type: string
+                    format: uint64
+                  whout:
+                    type: string
+                    format: uint64
+                  moneyin:
+                    type: string
+                    format: uint64
+                  moneyout:
+                    type: string
+                    format: uint64
+                  curency:
+                    type: string
+                  valid:
+                    type: boolean
+                  paid:
+                    type: boolean
+                  creator:
+                    type: string
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: cycleID
+          in: path
+          required: true
+          type: string
+          format: uint64
+      tags:
+        - Query
+  /electra/meter/currentcycle_id:
+    get:
+      summary: Queries a list of CurrentcycleID items.
+      operationId: ElectraMeterCurrentcycleID
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              cycleID:
+                type: string
+                format: uint64
+              begin:
+                type: string
+                format: uint64
+              end:
+                type: string
+                format: uint64
+              whin:
+                type: string
+                format: uint64
+              whout:
+                type: string
+                format: uint64
+              moneyin:
+                type: string
+                format: uint64
+              moneyout:
+                type: string
+                format: uint64
+              curency:
+                type: string
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      tags:
+        - Query
+  /electra/meter/customerbillingline:
+    get:
+      summary: Queries a list of Customerbillingline items.
+      operationId: ElectraMeterCustomerbillinglineAll
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              customerbillingline:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    customerDeviceID:
+                      type: string
+                    cycleID:
+                      type: string
+                      format: uint64
+                    lineid:
+                      type: string
+                      format: uint64
+                    producerDeviceID:
+                      type: string
+                    billContractID:
+                      type: string
+                    lineWh:
+                      type: string
+                      format: uint64
+                    lineWhPrice:
+                      type: string
+                      format: uint64
+                    curency:
+                      type: string
+                    lineWhTotalPrice:
+                      type: string
+                      format: uint64
+                    phase:
+                      type: string
+                      format: uint64
+                    creator:
+                      type: string
+              pagination:
+                type: object
+                properties:
+                  next_key:
+                    type: string
+                    format: byte
+                    description: |-
+                      next_key is the key to be passed to PageRequest.key to
+                      query the next page most efficiently. It will be empty if
+                      there are no more results.
+                  total:
+                    type: string
+                    format: uint64
+                    title: >-
+                      total is total number of results available if
+                      PageRequest.count_total
+
+                      was set, its value is undefined otherwise
+                description: >-
+                  PageResponse is to be embedded in gRPC response messages where
+                  the
+
+                  corresponding request message has used PageRequest.
+
+                   message SomeResponse {
+                           repeated Bar results = 1;
+                           PageResponse page = 2;
+                   }
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: pagination.key
+          description: |-
+            key is a value returned in PageResponse.next_key to begin
+            querying the next page most efficiently. Only one of offset or key
+            should be set.
+          in: query
+          required: false
+          type: string
+          format: byte
+        - name: pagination.offset
+          description: >-
+            offset is a numeric offset that can be used when key is unavailable.
+
+            It is less efficient than using key. Only one of offset or key
+            should
+
+            be set.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.limit
+          description: >-
+            limit is the total number of results to be returned in the result
+            page.
+
+            If left empty it will default to a value to be set by each app.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.count_total
+          description: >-
+            count_total is set to true  to indicate that the result set should
+            include
+
+            a count of the total number of items available for pagination in
+            UIs.
+
+            count_total is only respected when offset is used. It is ignored
+            when key
+
+            is set.
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
+          in: query
+          required: false
+          type: boolean
+      tags:
+        - Query
+  /electra/meter/customerbillingline/{customerDeviceID}/{cycleID}/{lineid}:
+    get:
+      summary: Queries a Customerbillingline by index.
+      operationId: ElectraMeterCustomerbillingline
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              customerbillingline:
+                type: object
+                properties:
+                  customerDeviceID:
+                    type: string
+                  cycleID:
+                    type: string
+                    format: uint64
+                  lineid:
+                    type: string
+                    format: uint64
+                  producerDeviceID:
+                    type: string
+                  billContractID:
+                    type: string
+                  lineWh:
+                    type: string
+                    format: uint64
+                  lineWhPrice:
+                    type: string
+                    format: uint64
+                  curency:
+                    type: string
+                  lineWhTotalPrice:
+                    type: string
+                    format: uint64
+                  phase:
+                    type: string
+                    format: uint64
+                  creator:
+                    type: string
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: customerDeviceID
+          in: path
+          required: true
+          type: string
+        - name: cycleID
+          in: path
+          required: true
+          type: string
+          format: uint64
+        - name: lineid
+          in: path
+          required: true
+          type: string
+          format: uint64
+      tags:
+        - Query
+  /electra/meter/customerbills:
+    get:
+      summary: Queries a list of Customerbills items.
+      operationId: ElectraMeterCustomerbillsAll
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              customerbills:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    billCycleID:
+                      type: string
+                      format: uint64
+                    customerDeviceID:
+                      type: string
+                    billDate:
+                      type: string
+                      format: uint64
+                    billTotalWh:
+                      type: string
+                      format: uint64
+                    billTotalPrice:
+                      type: string
+                      format: uint64
+                    billCurrency:
+                      type: string
+                    billValid:
+                      type: boolean
+                    paid:
+                      type: boolean
+                    creator:
+                      type: string
+              pagination:
+                type: object
+                properties:
+                  next_key:
+                    type: string
+                    format: byte
+                    description: |-
+                      next_key is the key to be passed to PageRequest.key to
+                      query the next page most efficiently. It will be empty if
+                      there are no more results.
+                  total:
+                    type: string
+                    format: uint64
+                    title: >-
+                      total is total number of results available if
+                      PageRequest.count_total
+
+                      was set, its value is undefined otherwise
+                description: >-
+                  PageResponse is to be embedded in gRPC response messages where
+                  the
+
+                  corresponding request message has used PageRequest.
+
+                   message SomeResponse {
+                           repeated Bar results = 1;
+                           PageResponse page = 2;
+                   }
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: pagination.key
+          description: |-
+            key is a value returned in PageResponse.next_key to begin
+            querying the next page most efficiently. Only one of offset or key
+            should be set.
+          in: query
+          required: false
+          type: string
+          format: byte
+        - name: pagination.offset
+          description: >-
+            offset is a numeric offset that can be used when key is unavailable.
+
+            It is less efficient than using key. Only one of offset or key
+            should
+
+            be set.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.limit
+          description: >-
+            limit is the total number of results to be returned in the result
+            page.
+
+            If left empty it will default to a value to be set by each app.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.count_total
+          description: >-
+            count_total is set to true  to indicate that the result set should
+            include
+
+            a count of the total number of items available for pagination in
+            UIs.
+
+            count_total is only respected when offset is used. It is ignored
+            when key
+
+            is set.
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
+          in: query
+          required: false
+          type: boolean
+      tags:
+        - Query
+  /electra/meter/customerbills/{billCycleID}/{customerDeviceID}:
+    get:
+      summary: Queries a Customerbills by index.
+      operationId: ElectraMeterCustomerbills
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              customerbills:
+                type: object
+                properties:
+                  billCycleID:
+                    type: string
+                    format: uint64
+                  customerDeviceID:
+                    type: string
+                  billDate:
+                    type: string
+                    format: uint64
+                  billTotalWh:
+                    type: string
+                    format: uint64
+                  billTotalPrice:
+                    type: string
+                    format: uint64
+                  billCurrency:
+                    type: string
+                  billValid:
+                    type: boolean
+                  paid:
+                    type: boolean
+                  creator:
+                    type: string
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: billCycleID
+          in: path
+          required: true
+          type: string
+          format: uint64
+        - name: customerDeviceID
+          in: path
+          required: true
+          type: string
+      tags:
+        - Query
+  /electra/meter/getcustomerbill/{customerDeviceID}/{billCycleID}:
+    get:
+      summary: Queries a list of Getcustomerbill items.
+      operationId: ElectraMeterGetcustomerbill
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              customerbillinglines:
+                type: string
+              billTotalWh:
+                type: string
+                format: uint64
+              billTotalPrice:
+                type: string
+                format: uint64
+              currency:
+                type: string
+              nblines:
+                type: string
+                format: uint64
+              comments:
+                type: string
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: customerDeviceID
+          in: path
+          required: true
+          type: string
+        - name: billCycleID
+          in: path
+          required: true
+          type: string
+          format: uint64
+      tags:
+        - Query
+  /electra/meter/getproducerbill/{producerDeviceID}/{billCycleID}:
+    get:
+      summary: Queries a list of Getproducerbill items.
+      operationId: ElectraMeterGetproducerbill
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              producerbillinglines:
+                type: string
+              billTotalWh:
+                type: string
+                format: uint64
+              billTotalPrice:
+                type: string
+                format: uint64
+              curency:
+                type: string
+              nblines:
+                type: string
+                format: uint64
+              comments:
+                type: string
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: producerDeviceID
+          in: path
+          required: true
+          type: string
+        - name: billCycleID
+          in: path
+          required: true
+          type: string
+          format: uint64
+      tags:
+        - Query
   /electra/meter/listrecordings/{deviceID}/{start}/{end}/{byUnixTime}:
     get:
       summary: Queries a list of Listrecordings items.
@@ -34212,6 +35023,653 @@ paths:
           required: true
           type: string
         - name: contractDeviceID
+          in: path
+          required: true
+          type: string
+      tags:
+        - Query
+  /electra/meter/ppa_map:
+    get:
+      summary: Queries a list of PpaMap items.
+      operationId: ElectraMeterPpaMapAll
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              ppaMap:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    consumerDeviceID:
+                      type: string
+                    agreementID:
+                      type: string
+                    agreementActive:
+                      type: boolean
+                    contractID:
+                      type: string
+                    producerDeviceID:
+                      type: string
+                    agreementStartDate:
+                      type: string
+                      format: uint64
+                    agreementEndDate:
+                      type: string
+                      format: uint64
+                    contractPreferredPrice:
+                      type: string
+                      format: uint64
+                    contractPreferredCurency:
+                      type: string
+                    creator:
+                      type: string
+              pagination:
+                type: object
+                properties:
+                  next_key:
+                    type: string
+                    format: byte
+                    description: |-
+                      next_key is the key to be passed to PageRequest.key to
+                      query the next page most efficiently. It will be empty if
+                      there are no more results.
+                  total:
+                    type: string
+                    format: uint64
+                    title: >-
+                      total is total number of results available if
+                      PageRequest.count_total
+
+                      was set, its value is undefined otherwise
+                description: >-
+                  PageResponse is to be embedded in gRPC response messages where
+                  the
+
+                  corresponding request message has used PageRequest.
+
+                   message SomeResponse {
+                           repeated Bar results = 1;
+                           PageResponse page = 2;
+                   }
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: pagination.key
+          description: |-
+            key is a value returned in PageResponse.next_key to begin
+            querying the next page most efficiently. Only one of offset or key
+            should be set.
+          in: query
+          required: false
+          type: string
+          format: byte
+        - name: pagination.offset
+          description: >-
+            offset is a numeric offset that can be used when key is unavailable.
+
+            It is less efficient than using key. Only one of offset or key
+            should
+
+            be set.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.limit
+          description: >-
+            limit is the total number of results to be returned in the result
+            page.
+
+            If left empty it will default to a value to be set by each app.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.count_total
+          description: >-
+            count_total is set to true  to indicate that the result set should
+            include
+
+            a count of the total number of items available for pagination in
+            UIs.
+
+            count_total is only respected when offset is used. It is ignored
+            when key
+
+            is set.
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
+          in: query
+          required: false
+          type: boolean
+      tags:
+        - Query
+  /electra/meter/ppa_map/{consumerDeviceID}/{agreementID}/{agreementActive}/{contractID}:
+    get:
+      summary: Queries a PpaMap by index.
+      operationId: ElectraMeterPpaMap
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              ppaMap:
+                type: object
+                properties:
+                  consumerDeviceID:
+                    type: string
+                  agreementID:
+                    type: string
+                  agreementActive:
+                    type: boolean
+                  contractID:
+                    type: string
+                  producerDeviceID:
+                    type: string
+                  agreementStartDate:
+                    type: string
+                    format: uint64
+                  agreementEndDate:
+                    type: string
+                    format: uint64
+                  contractPreferredPrice:
+                    type: string
+                    format: uint64
+                  contractPreferredCurency:
+                    type: string
+                  creator:
+                    type: string
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: consumerDeviceID
+          in: path
+          required: true
+          type: string
+        - name: agreementID
+          in: path
+          required: true
+          type: string
+        - name: agreementActive
+          in: path
+          required: true
+          type: boolean
+        - name: contractID
+          in: path
+          required: true
+          type: string
+      tags:
+        - Query
+  /electra/meter/producerbillingline:
+    get:
+      summary: Queries a list of Producerbillingline items.
+      operationId: ElectraMeterProducerbillinglineAll
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              producerbillingline:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    producerDeviceID:
+                      type: string
+                    cycleID:
+                      type: string
+                      format: uint64
+                    lineid:
+                      type: string
+                      format: uint64
+                    customerDeviceID:
+                      type: string
+                    billContractID:
+                      type: string
+                    lineWh:
+                      type: string
+                      format: uint64
+                    lineWhPrice:
+                      type: string
+                      format: uint64
+                    curency:
+                      type: string
+                    lineWhTotalPrice:
+                      type: string
+                      format: uint64
+                    phase:
+                      type: string
+                      format: uint64
+                    creator:
+                      type: string
+              pagination:
+                type: object
+                properties:
+                  next_key:
+                    type: string
+                    format: byte
+                    description: |-
+                      next_key is the key to be passed to PageRequest.key to
+                      query the next page most efficiently. It will be empty if
+                      there are no more results.
+                  total:
+                    type: string
+                    format: uint64
+                    title: >-
+                      total is total number of results available if
+                      PageRequest.count_total
+
+                      was set, its value is undefined otherwise
+                description: >-
+                  PageResponse is to be embedded in gRPC response messages where
+                  the
+
+                  corresponding request message has used PageRequest.
+
+                   message SomeResponse {
+                           repeated Bar results = 1;
+                           PageResponse page = 2;
+                   }
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: pagination.key
+          description: |-
+            key is a value returned in PageResponse.next_key to begin
+            querying the next page most efficiently. Only one of offset or key
+            should be set.
+          in: query
+          required: false
+          type: string
+          format: byte
+        - name: pagination.offset
+          description: >-
+            offset is a numeric offset that can be used when key is unavailable.
+
+            It is less efficient than using key. Only one of offset or key
+            should
+
+            be set.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.limit
+          description: >-
+            limit is the total number of results to be returned in the result
+            page.
+
+            If left empty it will default to a value to be set by each app.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.count_total
+          description: >-
+            count_total is set to true  to indicate that the result set should
+            include
+
+            a count of the total number of items available for pagination in
+            UIs.
+
+            count_total is only respected when offset is used. It is ignored
+            when key
+
+            is set.
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
+          in: query
+          required: false
+          type: boolean
+      tags:
+        - Query
+  /electra/meter/producerbillingline/{producerDeviceID}/{cycleID}/{lineid}:
+    get:
+      summary: Queries a Producerbillingline by index.
+      operationId: ElectraMeterProducerbillingline
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              producerbillingline:
+                type: object
+                properties:
+                  producerDeviceID:
+                    type: string
+                  cycleID:
+                    type: string
+                    format: uint64
+                  lineid:
+                    type: string
+                    format: uint64
+                  customerDeviceID:
+                    type: string
+                  billContractID:
+                    type: string
+                  lineWh:
+                    type: string
+                    format: uint64
+                  lineWhPrice:
+                    type: string
+                    format: uint64
+                  curency:
+                    type: string
+                  lineWhTotalPrice:
+                    type: string
+                    format: uint64
+                  phase:
+                    type: string
+                    format: uint64
+                  creator:
+                    type: string
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: producerDeviceID
+          in: path
+          required: true
+          type: string
+        - name: cycleID
+          in: path
+          required: true
+          type: string
+          format: uint64
+        - name: lineid
+          in: path
+          required: true
+          type: string
+          format: uint64
+      tags:
+        - Query
+  /electra/meter/producerbills:
+    get:
+      summary: Queries a list of Producerbills items.
+      operationId: ElectraMeterProducerbillsAll
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              producerbills:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    billCycleID:
+                      type: string
+                      format: uint64
+                    producerDeviceID:
+                      type: string
+                    billDate:
+                      type: string
+                      format: uint64
+                    billTotalWh:
+                      type: string
+                      format: uint64
+                    billTotalPrice:
+                      type: string
+                      format: uint64
+                    billCurrency:
+                      type: string
+                    billValid:
+                      type: boolean
+                    paid:
+                      type: boolean
+                    creator:
+                      type: string
+              pagination:
+                type: object
+                properties:
+                  next_key:
+                    type: string
+                    format: byte
+                    description: |-
+                      next_key is the key to be passed to PageRequest.key to
+                      query the next page most efficiently. It will be empty if
+                      there are no more results.
+                  total:
+                    type: string
+                    format: uint64
+                    title: >-
+                      total is total number of results available if
+                      PageRequest.count_total
+
+                      was set, its value is undefined otherwise
+                description: >-
+                  PageResponse is to be embedded in gRPC response messages where
+                  the
+
+                  corresponding request message has used PageRequest.
+
+                   message SomeResponse {
+                           repeated Bar results = 1;
+                           PageResponse page = 2;
+                   }
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: pagination.key
+          description: |-
+            key is a value returned in PageResponse.next_key to begin
+            querying the next page most efficiently. Only one of offset or key
+            should be set.
+          in: query
+          required: false
+          type: string
+          format: byte
+        - name: pagination.offset
+          description: >-
+            offset is a numeric offset that can be used when key is unavailable.
+
+            It is less efficient than using key. Only one of offset or key
+            should
+
+            be set.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.limit
+          description: >-
+            limit is the total number of results to be returned in the result
+            page.
+
+            If left empty it will default to a value to be set by each app.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.count_total
+          description: >-
+            count_total is set to true  to indicate that the result set should
+            include
+
+            a count of the total number of items available for pagination in
+            UIs.
+
+            count_total is only respected when offset is used. It is ignored
+            when key
+
+            is set.
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
+          in: query
+          required: false
+          type: boolean
+      tags:
+        - Query
+  /electra/meter/producerbills/{billCycleID}/{producerDeviceID}:
+    get:
+      summary: Queries a Producerbills by index.
+      operationId: ElectraMeterProducerbills
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              producerbills:
+                type: object
+                properties:
+                  billCycleID:
+                    type: string
+                    format: uint64
+                  producerDeviceID:
+                    type: string
+                  billDate:
+                    type: string
+                    format: uint64
+                  billTotalWh:
+                    type: string
+                    format: uint64
+                  billTotalPrice:
+                    type: string
+                    format: uint64
+                  billCurrency:
+                    type: string
+                  billValid:
+                    type: boolean
+                  paid:
+                    type: boolean
+                  creator:
+                    type: string
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: billCycleID
+          in: path
+          required: true
+          type: string
+          format: uint64
+        - name: producerDeviceID
           in: path
           required: true
           type: string
@@ -69523,6 +70981,94 @@ definitions:
             NOTE: The amount field is an Int which implements the custom method
             signatures required by gogoproto.
     description: Period defines a length of time and amount of coins that will vest.
+  electra.meter.Billingcycles:
+    type: object
+    properties:
+      cycleID:
+        type: string
+        format: uint64
+      begin:
+        type: string
+        format: uint64
+      end:
+        type: string
+        format: uint64
+      whin:
+        type: string
+        format: uint64
+      whout:
+        type: string
+        format: uint64
+      moneyin:
+        type: string
+        format: uint64
+      moneyout:
+        type: string
+        format: uint64
+      curency:
+        type: string
+      valid:
+        type: boolean
+      paid:
+        type: boolean
+      creator:
+        type: string
+  electra.meter.Customerbillingline:
+    type: object
+    properties:
+      customerDeviceID:
+        type: string
+      cycleID:
+        type: string
+        format: uint64
+      lineid:
+        type: string
+        format: uint64
+      producerDeviceID:
+        type: string
+      billContractID:
+        type: string
+      lineWh:
+        type: string
+        format: uint64
+      lineWhPrice:
+        type: string
+        format: uint64
+      curency:
+        type: string
+      lineWhTotalPrice:
+        type: string
+        format: uint64
+      phase:
+        type: string
+        format: uint64
+      creator:
+        type: string
+  electra.meter.Customerbills:
+    type: object
+    properties:
+      billCycleID:
+        type: string
+        format: uint64
+      customerDeviceID:
+        type: string
+      billDate:
+        type: string
+        format: uint64
+      billTotalWh:
+        type: string
+        format: uint64
+      billTotalPrice:
+        type: string
+        format: uint64
+      billCurrency:
+        type: string
+      billValid:
+        type: boolean
+      paid:
+        type: boolean
+      creator:
+        type: string
   electra.meter.Meterdirectory:
     type: object
     properties:
@@ -69581,15 +71127,60 @@ definitions:
       maxmi:
         type: string
         format: uint64
+  electra.meter.MsgCreateBillingcyclesResponse:
+    type: object
+  electra.meter.MsgCreateCustomerbillinglineResponse:
+    type: object
+  electra.meter.MsgCreateCustomerbillsResponse:
+    type: object
   electra.meter.MsgCreatePowerPurchaseContractResponse:
+    type: object
+  electra.meter.MsgCreatePpaMapResponse:
+    type: object
+  electra.meter.MsgCreateProducerbillinglineResponse:
+    type: object
+  electra.meter.MsgCreateProducerbillsResponse:
+    type: object
+  electra.meter.MsgDeleteBillingcyclesResponse:
+    type: object
+  electra.meter.MsgDeleteCustomerbillinglineResponse:
+    type: object
+  electra.meter.MsgDeleteCustomerbillsResponse:
     type: object
   electra.meter.MsgDeletePowerPurchaseContractResponse:
     type: object
+  electra.meter.MsgDeletePpaMapResponse:
+    type: object
+  electra.meter.MsgDeleteProducerbillinglineResponse:
+    type: object
+  electra.meter.MsgDeleteProducerbillsResponse:
+    type: object
+  electra.meter.MsgPrepareBillResponse:
+    type: object
+    properties:
+      jsonCustomerbill:
+        type: string
+      jsonProducerbill:
+        type: string
+      comment:
+        type: string
   electra.meter.MsgRecord3Response:
     type: object
   electra.meter.MsgRecordResponse:
     type: object
+  electra.meter.MsgUpdateBillingcyclesResponse:
+    type: object
+  electra.meter.MsgUpdateCustomerbillinglineResponse:
+    type: object
+  electra.meter.MsgUpdateCustomerbillsResponse:
+    type: object
   electra.meter.MsgUpdatePowerPurchaseContractResponse:
+    type: object
+  electra.meter.MsgUpdatePpaMapResponse:
+    type: object
+  electra.meter.MsgUpdateProducerbillinglineResponse:
+    type: object
+  electra.meter.MsgUpdateProducerbillsResponse:
     type: object
   electra.meter.Params:
     type: object
@@ -69653,6 +71244,269 @@ definitions:
         format: uint64
       creator:
         type: string
+  electra.meter.PpaMap:
+    type: object
+    properties:
+      consumerDeviceID:
+        type: string
+      agreementID:
+        type: string
+      agreementActive:
+        type: boolean
+      contractID:
+        type: string
+      producerDeviceID:
+        type: string
+      agreementStartDate:
+        type: string
+        format: uint64
+      agreementEndDate:
+        type: string
+        format: uint64
+      contractPreferredPrice:
+        type: string
+        format: uint64
+      contractPreferredCurency:
+        type: string
+      creator:
+        type: string
+  electra.meter.Producerbillingline:
+    type: object
+    properties:
+      producerDeviceID:
+        type: string
+      cycleID:
+        type: string
+        format: uint64
+      lineid:
+        type: string
+        format: uint64
+      customerDeviceID:
+        type: string
+      billContractID:
+        type: string
+      lineWh:
+        type: string
+        format: uint64
+      lineWhPrice:
+        type: string
+        format: uint64
+      curency:
+        type: string
+      lineWhTotalPrice:
+        type: string
+        format: uint64
+      phase:
+        type: string
+        format: uint64
+      creator:
+        type: string
+  electra.meter.Producerbills:
+    type: object
+    properties:
+      billCycleID:
+        type: string
+        format: uint64
+      producerDeviceID:
+        type: string
+      billDate:
+        type: string
+        format: uint64
+      billTotalWh:
+        type: string
+        format: uint64
+      billTotalPrice:
+        type: string
+        format: uint64
+      billCurrency:
+        type: string
+      billValid:
+        type: boolean
+      paid:
+        type: boolean
+      creator:
+        type: string
+  electra.meter.QueryAllBillingcyclesResponse:
+    type: object
+    properties:
+      billingcycles:
+        type: array
+        items:
+          type: object
+          properties:
+            cycleID:
+              type: string
+              format: uint64
+            begin:
+              type: string
+              format: uint64
+            end:
+              type: string
+              format: uint64
+            whin:
+              type: string
+              format: uint64
+            whout:
+              type: string
+              format: uint64
+            moneyin:
+              type: string
+              format: uint64
+            moneyout:
+              type: string
+              format: uint64
+            curency:
+              type: string
+            valid:
+              type: boolean
+            paid:
+              type: boolean
+            creator:
+              type: string
+      pagination:
+        type: object
+        properties:
+          next_key:
+            type: string
+            format: byte
+            description: |-
+              next_key is the key to be passed to PageRequest.key to
+              query the next page most efficiently. It will be empty if
+              there are no more results.
+          total:
+            type: string
+            format: uint64
+            title: >-
+              total is total number of results available if
+              PageRequest.count_total
+
+              was set, its value is undefined otherwise
+        description: |-
+          PageResponse is to be embedded in gRPC response messages where the
+          corresponding request message has used PageRequest.
+
+           message SomeResponse {
+                   repeated Bar results = 1;
+                   PageResponse page = 2;
+           }
+  electra.meter.QueryAllCustomerbillinglineResponse:
+    type: object
+    properties:
+      customerbillingline:
+        type: array
+        items:
+          type: object
+          properties:
+            customerDeviceID:
+              type: string
+            cycleID:
+              type: string
+              format: uint64
+            lineid:
+              type: string
+              format: uint64
+            producerDeviceID:
+              type: string
+            billContractID:
+              type: string
+            lineWh:
+              type: string
+              format: uint64
+            lineWhPrice:
+              type: string
+              format: uint64
+            curency:
+              type: string
+            lineWhTotalPrice:
+              type: string
+              format: uint64
+            phase:
+              type: string
+              format: uint64
+            creator:
+              type: string
+      pagination:
+        type: object
+        properties:
+          next_key:
+            type: string
+            format: byte
+            description: |-
+              next_key is the key to be passed to PageRequest.key to
+              query the next page most efficiently. It will be empty if
+              there are no more results.
+          total:
+            type: string
+            format: uint64
+            title: >-
+              total is total number of results available if
+              PageRequest.count_total
+
+              was set, its value is undefined otherwise
+        description: |-
+          PageResponse is to be embedded in gRPC response messages where the
+          corresponding request message has used PageRequest.
+
+           message SomeResponse {
+                   repeated Bar results = 1;
+                   PageResponse page = 2;
+           }
+  electra.meter.QueryAllCustomerbillsResponse:
+    type: object
+    properties:
+      customerbills:
+        type: array
+        items:
+          type: object
+          properties:
+            billCycleID:
+              type: string
+              format: uint64
+            customerDeviceID:
+              type: string
+            billDate:
+              type: string
+              format: uint64
+            billTotalWh:
+              type: string
+              format: uint64
+            billTotalPrice:
+              type: string
+              format: uint64
+            billCurrency:
+              type: string
+            billValid:
+              type: boolean
+            paid:
+              type: boolean
+            creator:
+              type: string
+      pagination:
+        type: object
+        properties:
+          next_key:
+            type: string
+            format: byte
+            description: |-
+              next_key is the key to be passed to PageRequest.key to
+              query the next page most efficiently. It will be empty if
+              there are no more results.
+          total:
+            type: string
+            format: uint64
+            title: >-
+              total is total number of results available if
+              PageRequest.count_total
+
+              was set, its value is undefined otherwise
+        description: |-
+          PageResponse is to be embedded in gRPC response messages where the
+          corresponding request message has used PageRequest.
+
+           message SomeResponse {
+                   repeated Bar results = 1;
+                   PageResponse page = 2;
+           }
   electra.meter.QueryAllMeterdirectoryResponse:
     type: object
     properties:
@@ -69853,6 +71707,304 @@ definitions:
                    repeated Bar results = 1;
                    PageResponse page = 2;
            }
+  electra.meter.QueryAllPpaMapResponse:
+    type: object
+    properties:
+      ppaMap:
+        type: array
+        items:
+          type: object
+          properties:
+            consumerDeviceID:
+              type: string
+            agreementID:
+              type: string
+            agreementActive:
+              type: boolean
+            contractID:
+              type: string
+            producerDeviceID:
+              type: string
+            agreementStartDate:
+              type: string
+              format: uint64
+            agreementEndDate:
+              type: string
+              format: uint64
+            contractPreferredPrice:
+              type: string
+              format: uint64
+            contractPreferredCurency:
+              type: string
+            creator:
+              type: string
+      pagination:
+        type: object
+        properties:
+          next_key:
+            type: string
+            format: byte
+            description: |-
+              next_key is the key to be passed to PageRequest.key to
+              query the next page most efficiently. It will be empty if
+              there are no more results.
+          total:
+            type: string
+            format: uint64
+            title: >-
+              total is total number of results available if
+              PageRequest.count_total
+
+              was set, its value is undefined otherwise
+        description: |-
+          PageResponse is to be embedded in gRPC response messages where the
+          corresponding request message has used PageRequest.
+
+           message SomeResponse {
+                   repeated Bar results = 1;
+                   PageResponse page = 2;
+           }
+  electra.meter.QueryAllProducerbillinglineResponse:
+    type: object
+    properties:
+      producerbillingline:
+        type: array
+        items:
+          type: object
+          properties:
+            producerDeviceID:
+              type: string
+            cycleID:
+              type: string
+              format: uint64
+            lineid:
+              type: string
+              format: uint64
+            customerDeviceID:
+              type: string
+            billContractID:
+              type: string
+            lineWh:
+              type: string
+              format: uint64
+            lineWhPrice:
+              type: string
+              format: uint64
+            curency:
+              type: string
+            lineWhTotalPrice:
+              type: string
+              format: uint64
+            phase:
+              type: string
+              format: uint64
+            creator:
+              type: string
+      pagination:
+        type: object
+        properties:
+          next_key:
+            type: string
+            format: byte
+            description: |-
+              next_key is the key to be passed to PageRequest.key to
+              query the next page most efficiently. It will be empty if
+              there are no more results.
+          total:
+            type: string
+            format: uint64
+            title: >-
+              total is total number of results available if
+              PageRequest.count_total
+
+              was set, its value is undefined otherwise
+        description: |-
+          PageResponse is to be embedded in gRPC response messages where the
+          corresponding request message has used PageRequest.
+
+           message SomeResponse {
+                   repeated Bar results = 1;
+                   PageResponse page = 2;
+           }
+  electra.meter.QueryAllProducerbillsResponse:
+    type: object
+    properties:
+      producerbills:
+        type: array
+        items:
+          type: object
+          properties:
+            billCycleID:
+              type: string
+              format: uint64
+            producerDeviceID:
+              type: string
+            billDate:
+              type: string
+              format: uint64
+            billTotalWh:
+              type: string
+              format: uint64
+            billTotalPrice:
+              type: string
+              format: uint64
+            billCurrency:
+              type: string
+            billValid:
+              type: boolean
+            paid:
+              type: boolean
+            creator:
+              type: string
+      pagination:
+        type: object
+        properties:
+          next_key:
+            type: string
+            format: byte
+            description: |-
+              next_key is the key to be passed to PageRequest.key to
+              query the next page most efficiently. It will be empty if
+              there are no more results.
+          total:
+            type: string
+            format: uint64
+            title: >-
+              total is total number of results available if
+              PageRequest.count_total
+
+              was set, its value is undefined otherwise
+        description: |-
+          PageResponse is to be embedded in gRPC response messages where the
+          corresponding request message has used PageRequest.
+
+           message SomeResponse {
+                   repeated Bar results = 1;
+                   PageResponse page = 2;
+           }
+  electra.meter.QueryCurrentcycleIDResponse:
+    type: object
+    properties:
+      cycleID:
+        type: string
+        format: uint64
+      begin:
+        type: string
+        format: uint64
+      end:
+        type: string
+        format: uint64
+      whin:
+        type: string
+        format: uint64
+      whout:
+        type: string
+        format: uint64
+      moneyin:
+        type: string
+        format: uint64
+      moneyout:
+        type: string
+        format: uint64
+      curency:
+        type: string
+  electra.meter.QueryGetBillingcyclesResponse:
+    type: object
+    properties:
+      billingcycles:
+        type: object
+        properties:
+          cycleID:
+            type: string
+            format: uint64
+          begin:
+            type: string
+            format: uint64
+          end:
+            type: string
+            format: uint64
+          whin:
+            type: string
+            format: uint64
+          whout:
+            type: string
+            format: uint64
+          moneyin:
+            type: string
+            format: uint64
+          moneyout:
+            type: string
+            format: uint64
+          curency:
+            type: string
+          valid:
+            type: boolean
+          paid:
+            type: boolean
+          creator:
+            type: string
+  electra.meter.QueryGetCustomerbillinglineResponse:
+    type: object
+    properties:
+      customerbillingline:
+        type: object
+        properties:
+          customerDeviceID:
+            type: string
+          cycleID:
+            type: string
+            format: uint64
+          lineid:
+            type: string
+            format: uint64
+          producerDeviceID:
+            type: string
+          billContractID:
+            type: string
+          lineWh:
+            type: string
+            format: uint64
+          lineWhPrice:
+            type: string
+            format: uint64
+          curency:
+            type: string
+          lineWhTotalPrice:
+            type: string
+            format: uint64
+          phase:
+            type: string
+            format: uint64
+          creator:
+            type: string
+  electra.meter.QueryGetCustomerbillsResponse:
+    type: object
+    properties:
+      customerbills:
+        type: object
+        properties:
+          billCycleID:
+            type: string
+            format: uint64
+          customerDeviceID:
+            type: string
+          billDate:
+            type: string
+            format: uint64
+          billTotalWh:
+            type: string
+            format: uint64
+          billTotalPrice:
+            type: string
+            format: uint64
+          billCurrency:
+            type: string
+          billValid:
+            type: boolean
+          paid:
+            type: boolean
+          creator:
+            type: string
   electra.meter.QueryGetMeterdirectoryResponse:
     type: object
     properties:
@@ -69969,6 +72121,133 @@ definitions:
             format: uint64
           creator:
             type: string
+  electra.meter.QueryGetPpaMapResponse:
+    type: object
+    properties:
+      ppaMap:
+        type: object
+        properties:
+          consumerDeviceID:
+            type: string
+          agreementID:
+            type: string
+          agreementActive:
+            type: boolean
+          contractID:
+            type: string
+          producerDeviceID:
+            type: string
+          agreementStartDate:
+            type: string
+            format: uint64
+          agreementEndDate:
+            type: string
+            format: uint64
+          contractPreferredPrice:
+            type: string
+            format: uint64
+          contractPreferredCurency:
+            type: string
+          creator:
+            type: string
+  electra.meter.QueryGetProducerbillinglineResponse:
+    type: object
+    properties:
+      producerbillingline:
+        type: object
+        properties:
+          producerDeviceID:
+            type: string
+          cycleID:
+            type: string
+            format: uint64
+          lineid:
+            type: string
+            format: uint64
+          customerDeviceID:
+            type: string
+          billContractID:
+            type: string
+          lineWh:
+            type: string
+            format: uint64
+          lineWhPrice:
+            type: string
+            format: uint64
+          curency:
+            type: string
+          lineWhTotalPrice:
+            type: string
+            format: uint64
+          phase:
+            type: string
+            format: uint64
+          creator:
+            type: string
+  electra.meter.QueryGetProducerbillsResponse:
+    type: object
+    properties:
+      producerbills:
+        type: object
+        properties:
+          billCycleID:
+            type: string
+            format: uint64
+          producerDeviceID:
+            type: string
+          billDate:
+            type: string
+            format: uint64
+          billTotalWh:
+            type: string
+            format: uint64
+          billTotalPrice:
+            type: string
+            format: uint64
+          billCurrency:
+            type: string
+          billValid:
+            type: boolean
+          paid:
+            type: boolean
+          creator:
+            type: string
+  electra.meter.QueryGetcustomerbillResponse:
+    type: object
+    properties:
+      customerbillinglines:
+        type: string
+      billTotalWh:
+        type: string
+        format: uint64
+      billTotalPrice:
+        type: string
+        format: uint64
+      currency:
+        type: string
+      nblines:
+        type: string
+        format: uint64
+      comments:
+        type: string
+  electra.meter.QueryGetproducerbillResponse:
+    type: object
+    properties:
+      producerbillinglines:
+        type: string
+      billTotalWh:
+        type: string
+        format: uint64
+      billTotalPrice:
+        type: string
+        format: uint64
+      curency:
+        type: string
+      nblines:
+        type: string
+        format: uint64
+      comments:
+        type: string
   electra.meter.QueryListrecordingsResponse:
     type: object
     properties:
