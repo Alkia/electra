@@ -1,22 +1,36 @@
-2022/10/25 21:21:55 CycleID: 78  Previous CycleID: 77
+2022/10/25 21:37:29 CycleID: 78  Previous CycleID: 77
 ============= PPC ================
+PPC: 0d7ff64d-2b3e-4350-ab4b-b9bc29eb22cc contract-name-1
+PPC: 7e310fe9-e3b5-41d4-912c-aa9061711e6c contract-name-1
 PPC: 80cb63e8-daaf-401b-bdf9-41bc0f502406 contract-name-1
+PPC: 9896234b-1c02-4a3b-ba52-baf43f8e4371 contract-name-1
 PPC: bea079c9-6a65-41eb-8951-3b7fdf67d276 contract-new-name-1
 PPC: c30ebe72-cb29-437b-9fe2-19a2b27ea69b contract-name-1
+PPC: ec3cc4fc-f5d8-4414-bac6-f47c009472c5 contract-name-1
 PPC: f863b4b4-1c4c-4963-872a-5c0175e612d2 contract-name-1
 PPC: prod10000-1c4c-4963-872a-5c0175e612d2 contract-prod-1
 PPC: prod20000-2222-4963-872a-5c0175e612d2 contract-prod-2
 ============= PPA ================
+ppa:  Con:electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7 Prd:electra1rf56um69dum7em0kx9xen794x8gm49vxstkjwy CID:f863b4b4-1c4c-4963-872a-5c0175e612d2
+ppa: test1-prod1 Con:electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7 Prd:electra16p7dd9wp76kmxckus64un7udt59kvprfd0tw8v CID:prod10000-1c4c-4963-872a-5c0175e612d2
+ppa: test1-prod2 Con:electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7 Prd:electra1rf56um69dum7em0kx9xen794x8gm49vxstkjwy CID:prod20000-2222-4963-872a-5c0175e612d2
+ppa:  Con:electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz Prd:electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7 CID:f863b4b4-1c4c-4963-872a-5c0175e612d2 
+ppa:  Con:electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz Prd:electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7 CID:f863b4b4-1c4c-4963-872a-5c0175e612d2
+ppa:  Con:electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz Prd:electra16p7dd9wp76kmxckus64un7udt59kvprfd0tw8v CID:prod10000-1c4c-4963-872a-5c0175e612d2
+ppa: test2-prod1 Con:electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz Prd:electra16p7dd9wp76kmxckus64un7udt59kvprfd0tw8v CID:prod10000-1c4c-4963-872a-5c0175e612d2
+ppa: test2-prod2 Con:electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz Prd:electra1rf56um69dum7em0kx9xen794x8gm49vxstkjwy CID:prod20000-2222-4963-872a-5c0175e612d2
+ppa: test3-prod1 Con:electra19mhfyxz7532gumtyw5zrq00qv23mqtc4plgfzy Prd:electra16p7dd9wp76kmxckus64un7udt59kvprfd0tw8v CID:prod10000-1c4c-4963-872a-5c0175e612d2
+ppa: test3-prod2 Con:electra19mhfyxz7532gumtyw5zrq00qv23mqtc4plgfzy Prd:electra1rf56um69dum7em0kx9xen794x8gm49vxstkjwy CID:prod20000-2222-4963-872a-5c0175e612d2
 ============= currentConsumeInMap ================
 ============= currentProduceOutMap ================
 ============= previousCycleConsumeInMap ================
 ============= previousCycleProduceOutMap ================
 
-2022/10/25 21:21:55 ### Output customerbill ###################
+2022/10/25 21:37:29 ### Output customerbill ###################
 {}
 ### Output customerBillLines ###################
 null
 ### Output producerBillLines ###################
 null
-makePrepareBill Cycle:78 took 1.126474ms @ 2022-10-25 21:21:55.373954925 +0700 +07 m=+119.430402280
+makePrepareBill Cycle:78 took 1.996127ms @ 2022-10-25 21:37:29.166604537 +0700 +07 m=+1053.223051885
 

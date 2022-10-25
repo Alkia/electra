@@ -29,41 +29,41 @@ electrad query meter list-ppa-map --count-total
 # subscribe to PPC:
 # [contract-id] f863b4b4-1c4c-4963-872a-5c0175e612d2 
 # [producer-device-id] "electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7"
-electrad tx meter create-ppa-map "electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz" "" true "f863b4b4-1c4c-4963-872a-5c0175e612d2" "electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7" 1665712168 1777777777  --from test2 -y  | grep "raw_log: 'failed"
+electrad tx meter create-ppa-map "electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz" "" true "f863b4b4-1c4c-4963-872a-5c0175e612d2" "electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7" 1665712168 1777777777 1400 "uelectra" --from test2 -y  | grep "raw_log: 'failed"
 # Expected result failed as test1 is not an admin | raw_log: 'failed to execute message; message index: 0: index already set: invalid
 
 electrad query meter list-ppa-map --count-total
 # expected total: "1"
 
 # "test3" with address "electra19mhfyxz7532gumtyw5zrq00qv23mqtc4plgfzy"
-electrad tx meter create-ppa-map "electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz" "" true "f863b4b4-1c4c-4963-872a-5c0175e612d2 " "electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7" 1665712168 1777777777    --from test3 -y  | grep "raw_log: 'failed"
+electrad tx meter create-ppa-map "electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz" "" true "f863b4b4-1c4c-4963-872a-5c0175e612d2 " "electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7" 1665712168 1777777777  1600 "uelectra"  --from test3 -y  | grep "raw_log: 'failed"
 
 electrad query meter list-ppa-map --count-total
 # expected total: "2"
 
 # "test1" with address "electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7"
-electrad tx meter create-ppa-map "electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7" "" true "f863b4b4-1c4c-4963-872a-5c0175e612d2" "electra1rf56um69dum7em0kx9xen794x8gm49vxstkjwy" 1665712168 1777777777  --from test1 -y   | grep "raw_log: 'failed"
+electrad tx meter create-ppa-map "electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7" "" true "f863b4b4-1c4c-4963-872a-5c0175e612d2" "electra1rf56um69dum7em0kx9xen794x8gm49vxstkjwy" 1665712168 1777777777 1800 "uelectra" --from test1 -y   | grep "raw_log: 'failed"
 
 # "test1" with address "electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7"
 # contractDeviceID: electra1rf56um69dum7em0kx9xen794x8gm49vxstkjwy
 #  contractID: prod20000-2222-4963-872a-5c0175e612d2
-electrad tx meter create-ppa-map "electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7" "test1-prod1" true "prod10000-1c4c-4963-872a-5c0175e612d2" "electra16p7dd9wp76kmxckus64un7udt59kvprfd0tw8v" 1665712168 1777777777  --from test1 -y   | grep "raw_log: 'failed"
-electrad tx meter create-ppa-map "electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7" "test1-prod2" true "prod20000-2222-4963-872a-5c0175e612d2" "electra1rf56um69dum7em0kx9xen794x8gm49vxstkjwy" 1665712168 1777777777  --from test1 -y   | grep "raw_log: 'failed"
+electrad tx meter create-ppa-map "electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7" "test1-prod1" true "prod10000-1c4c-4963-872a-5c0175e612d2" "electra16p7dd9wp76kmxckus64un7udt59kvprfd0tw8v" 1665712168 1777777777 2100 "uelectra"  --from test1 -y   | grep "raw_log: 'failed"
+electrad tx meter create-ppa-map "electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7" "test1-prod2" true "prod20000-2222-4963-872a-5c0175e612d2" "electra1rf56um69dum7em0kx9xen794x8gm49vxstkjwy" 1665712168 1777777777 1500 "uelectra" --from test1 -y   | grep "raw_log: 'failed"
 
 # "test1" with address "electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7"
 #  contractDeviceID: electra16p7dd9wp76kmxckus64un7udt59kvprfd0tw8v
 #  contractID: prod10000-1c4c-4963-872a-5c0175e612d2
-electrad tx meter create-ppa-map "electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz" "" true "prod10000-1c4c-4963-872a-5c0175e612d2" "electra16p7dd9wp76kmxckus64un7udt59kvprfd0tw8v" 1665712168 1777777777  --from test1 -y   | grep "raw_log: 'failed"
+electrad tx meter create-ppa-map "electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz" "" true "prod10000-1c4c-4963-872a-5c0175e612d2" "electra16p7dd9wp76kmxckus64un7udt59kvprfd0tw8v" 1665712168 1777777777 2400 "uelectra" --from test1 -y   | grep "raw_log: 'failed"
 echo "Expected failure"
 # Expected failure 
 
 # "test2" with address "electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz" 
-electrad tx meter create-ppa-map "electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz" "test2-prod1" true "prod10000-1c4c-4963-872a-5c0175e612d2" "electra16p7dd9wp76kmxckus64un7udt59kvprfd0tw8v" 1665712168 1777777777  --from test2 -y   | grep "raw_log: 'failed"
-electrad tx meter create-ppa-map "electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz" "test2-prod2" true "prod20000-2222-4963-872a-5c0175e612d2" "electra1rf56um69dum7em0kx9xen794x8gm49vxstkjwy" 1665712168 1777777777  --from test1 -y   | grep "raw_log: 'failed"
+electrad tx meter create-ppa-map "electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz" "test2-prod1" true "prod10000-1c4c-4963-872a-5c0175e612d2" "electra16p7dd9wp76kmxckus64un7udt59kvprfd0tw8v" 1665712168 1777777777 1300 "uelectra" --from test2 -y   | grep "raw_log: 'failed"
+electrad tx meter create-ppa-map "electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz" "test2-prod2" true "prod20000-2222-4963-872a-5c0175e612d2" "electra1rf56um69dum7em0kx9xen794x8gm49vxstkjwy" 1665712168 1777777777 2200 "uelectra" --from test1 -y   | grep "raw_log: 'failed"
 
 # "test3" with address "electra19mhfyxz7532gumtyw5zrq00qv23mqtc4plgfzy"
-electrad tx meter create-ppa-map "electra19mhfyxz7532gumtyw5zrq00qv23mqtc4plgfzy" "test3-prod1" true "prod10000-1c4c-4963-872a-5c0175e612d2" "electra16p7dd9wp76kmxckus64un7udt59kvprfd0tw8v" 1665712168 1777777777  --from test1 -y   | grep "raw_log: 'failed"
-electrad tx meter create-ppa-map "electra19mhfyxz7532gumtyw5zrq00qv23mqtc4plgfzy" "test3-prod2" true "prod20000-2222-4963-872a-5c0175e612d2" "electra1rf56um69dum7em0kx9xen794x8gm49vxstkjwy" 1665712168 1777777777  --from test1 -y   | grep "raw_log: 'failed"
+electrad tx meter create-ppa-map "electra19mhfyxz7532gumtyw5zrq00qv23mqtc4plgfzy" "test3-prod1" true "prod10000-1c4c-4963-872a-5c0175e612d2" "electra16p7dd9wp76kmxckus64un7udt59kvprfd0tw8v" 1665712168 1777777777 1700 "uelectra" --from test1 -y   | grep "raw_log: 'failed"
+electrad tx meter create-ppa-map "electra19mhfyxz7532gumtyw5zrq00qv23mqtc4plgfzy" "test3-prod2" true "prod20000-2222-4963-872a-5c0175e612d2" "electra1rf56um69dum7em0kx9xen794x8gm49vxstkjwy" 1665712168 1777777777 1900 "uelectra" --from test1 -y   | grep "raw_log: 'failed"
 
 
 electrad query meter list-ppa-map --count-total
