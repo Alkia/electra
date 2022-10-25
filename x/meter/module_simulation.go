@@ -32,6 +32,18 @@ const (
 	// TODO: Determine the simulation weight value
 	defaultWeightMsgRecord3 int = 100
 
+	opWeightMsgCreatePowerPurchaseContract = "op_weight_msg_power_purchase_contract"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgCreatePowerPurchaseContract int = 100
+
+	opWeightMsgUpdatePowerPurchaseContract = "op_weight_msg_power_purchase_contract"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgUpdatePowerPurchaseContract int = 100
+
+	opWeightMsgDeletePowerPurchaseContract = "op_weight_msg_power_purchase_contract"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgDeletePowerPurchaseContract int = 100
+
 	// this line is used by starport scaffolding # simapp/module/const
 )
 
@@ -43,6 +55,18 @@ func (AppModule) GenerateGenesisState(simState *module.SimulationState) {
 	}
 	meterGenesis := types.GenesisState{
 		Params: types.DefaultParams(),
+		PowerPurchaseContractList: []types.PowerPurchaseContract{
+			{
+				Creator:          sample.AccAddress(),
+				ContractID:       "0",
+				ContractDeviceID: "0",
+			},
+			{
+				Creator:          sample.AccAddress(),
+				ContractID:       "1",
+				ContractDeviceID: "1",
+			},
+		},
 		// this line is used by starport scaffolding # simapp/module/genesisState
 	}
 	simState.GenState[types.ModuleName] = simState.Cdc.MustMarshalJSON(&meterGenesis)
@@ -99,6 +123,39 @@ func (am AppModule) WeightedOperations(simState module.SimulationState) []simtyp
 	operations = append(operations, simulation.NewWeightedOperation(
 		weightMsgRecord3,
 		metersimulation.SimulateMsgRecord3(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
+	var weightMsgCreatePowerPurchaseContract int
+	simState.AppParams.GetOrGenerate(simState.Cdc, opWeightMsgCreatePowerPurchaseContract, &weightMsgCreatePowerPurchaseContract, nil,
+		func(_ *rand.Rand) {
+			weightMsgCreatePowerPurchaseContract = defaultWeightMsgCreatePowerPurchaseContract
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgCreatePowerPurchaseContract,
+		metersimulation.SimulateMsgCreatePowerPurchaseContract(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
+	var weightMsgUpdatePowerPurchaseContract int
+	simState.AppParams.GetOrGenerate(simState.Cdc, opWeightMsgUpdatePowerPurchaseContract, &weightMsgUpdatePowerPurchaseContract, nil,
+		func(_ *rand.Rand) {
+			weightMsgUpdatePowerPurchaseContract = defaultWeightMsgUpdatePowerPurchaseContract
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgUpdatePowerPurchaseContract,
+		metersimulation.SimulateMsgUpdatePowerPurchaseContract(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
+	var weightMsgDeletePowerPurchaseContract int
+	simState.AppParams.GetOrGenerate(simState.Cdc, opWeightMsgDeletePowerPurchaseContract, &weightMsgDeletePowerPurchaseContract, nil,
+		func(_ *rand.Rand) {
+			weightMsgDeletePowerPurchaseContract = defaultWeightMsgDeletePowerPurchaseContract
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgDeletePowerPurchaseContract,
+		metersimulation.SimulateMsgDeletePowerPurchaseContract(am.accountKeeper, am.bankKeeper, am.keeper),
 	))
 
 	// this line is used by starport scaffolding # simapp/module/operation

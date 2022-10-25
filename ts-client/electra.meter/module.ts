@@ -7,17 +7,14 @@ import { msgTypes } from './registry';
 import { IgniteClient } from "../client"
 import { MissingWalletError } from "../helpers"
 import { Api } from "./rest";
-import { MsgRecord3 } from "./types/electra/meter/tx";
 import { MsgRecord } from "./types/electra/meter/tx";
+import { MsgUpdatePowerPurchaseContract } from "./types/electra/meter/tx";
+import { MsgRecord3 } from "./types/electra/meter/tx";
+import { MsgDeletePowerPurchaseContract } from "./types/electra/meter/tx";
+import { MsgCreatePowerPurchaseContract } from "./types/electra/meter/tx";
 
 
-export { MsgRecord3, MsgRecord };
-
-type sendMsgRecord3Params = {
-  value: MsgRecord3,
-  fee?: StdFee,
-  memo?: string
-};
+export { MsgRecord, MsgUpdatePowerPurchaseContract, MsgRecord3, MsgDeletePowerPurchaseContract, MsgCreatePowerPurchaseContract };
 
 type sendMsgRecordParams = {
   value: MsgRecord,
@@ -25,13 +22,49 @@ type sendMsgRecordParams = {
   memo?: string
 };
 
+type sendMsgUpdatePowerPurchaseContractParams = {
+  value: MsgUpdatePowerPurchaseContract,
+  fee?: StdFee,
+  memo?: string
+};
+
+type sendMsgRecord3Params = {
+  value: MsgRecord3,
+  fee?: StdFee,
+  memo?: string
+};
+
+type sendMsgDeletePowerPurchaseContractParams = {
+  value: MsgDeletePowerPurchaseContract,
+  fee?: StdFee,
+  memo?: string
+};
+
+type sendMsgCreatePowerPurchaseContractParams = {
+  value: MsgCreatePowerPurchaseContract,
+  fee?: StdFee,
+  memo?: string
+};
+
+
+type msgRecordParams = {
+  value: MsgRecord,
+};
+
+type msgUpdatePowerPurchaseContractParams = {
+  value: MsgUpdatePowerPurchaseContract,
+};
 
 type msgRecord3Params = {
   value: MsgRecord3,
 };
 
-type msgRecordParams = {
-  value: MsgRecord,
+type msgDeletePowerPurchaseContractParams = {
+  value: MsgDeletePowerPurchaseContract,
+};
+
+type msgCreatePowerPurchaseContractParams = {
+  value: MsgCreatePowerPurchaseContract,
 };
 
 
@@ -52,20 +85,6 @@ export const txClient = ({ signer, prefix, addr }: TxClientOptions = { addr: "ht
 
   return {
 		
-		async sendMsgRecord3({ value, fee, memo }: sendMsgRecord3Params): Promise<DeliverTxResponse> {
-			if (!signer) {
-					throw new Error('TxClient:sendMsgRecord3: Unable to sign Tx. Signer is not present.')
-			}
-			try {			
-				const { address } = (await signer.getAccounts())[0]; 
-				const signingClient = await SigningStargateClient.connectWithSigner(addr,signer,{registry, prefix});
-				let msg = this.msgRecord3({ value: MsgRecord3.fromPartial(value) })
-				return await signingClient.signAndBroadcast(address, [msg], fee ? fee : defaultFee, memo)
-			} catch (e: any) {
-				throw new Error('TxClient:sendMsgRecord3: Could not broadcast Tx: '+ e.message)
-			}
-		},
-		
 		async sendMsgRecord({ value, fee, memo }: sendMsgRecordParams): Promise<DeliverTxResponse> {
 			if (!signer) {
 					throw new Error('TxClient:sendMsgRecord: Unable to sign Tx. Signer is not present.')
@@ -80,6 +99,78 @@ export const txClient = ({ signer, prefix, addr }: TxClientOptions = { addr: "ht
 			}
 		},
 		
+		async sendMsgUpdatePowerPurchaseContract({ value, fee, memo }: sendMsgUpdatePowerPurchaseContractParams): Promise<DeliverTxResponse> {
+			if (!signer) {
+					throw new Error('TxClient:sendMsgUpdatePowerPurchaseContract: Unable to sign Tx. Signer is not present.')
+			}
+			try {			
+				const { address } = (await signer.getAccounts())[0]; 
+				const signingClient = await SigningStargateClient.connectWithSigner(addr,signer,{registry, prefix});
+				let msg = this.msgUpdatePowerPurchaseContract({ value: MsgUpdatePowerPurchaseContract.fromPartial(value) })
+				return await signingClient.signAndBroadcast(address, [msg], fee ? fee : defaultFee, memo)
+			} catch (e: any) {
+				throw new Error('TxClient:sendMsgUpdatePowerPurchaseContract: Could not broadcast Tx: '+ e.message)
+			}
+		},
+		
+		async sendMsgRecord3({ value, fee, memo }: sendMsgRecord3Params): Promise<DeliverTxResponse> {
+			if (!signer) {
+					throw new Error('TxClient:sendMsgRecord3: Unable to sign Tx. Signer is not present.')
+			}
+			try {			
+				const { address } = (await signer.getAccounts())[0]; 
+				const signingClient = await SigningStargateClient.connectWithSigner(addr,signer,{registry, prefix});
+				let msg = this.msgRecord3({ value: MsgRecord3.fromPartial(value) })
+				return await signingClient.signAndBroadcast(address, [msg], fee ? fee : defaultFee, memo)
+			} catch (e: any) {
+				throw new Error('TxClient:sendMsgRecord3: Could not broadcast Tx: '+ e.message)
+			}
+		},
+		
+		async sendMsgDeletePowerPurchaseContract({ value, fee, memo }: sendMsgDeletePowerPurchaseContractParams): Promise<DeliverTxResponse> {
+			if (!signer) {
+					throw new Error('TxClient:sendMsgDeletePowerPurchaseContract: Unable to sign Tx. Signer is not present.')
+			}
+			try {			
+				const { address } = (await signer.getAccounts())[0]; 
+				const signingClient = await SigningStargateClient.connectWithSigner(addr,signer,{registry, prefix});
+				let msg = this.msgDeletePowerPurchaseContract({ value: MsgDeletePowerPurchaseContract.fromPartial(value) })
+				return await signingClient.signAndBroadcast(address, [msg], fee ? fee : defaultFee, memo)
+			} catch (e: any) {
+				throw new Error('TxClient:sendMsgDeletePowerPurchaseContract: Could not broadcast Tx: '+ e.message)
+			}
+		},
+		
+		async sendMsgCreatePowerPurchaseContract({ value, fee, memo }: sendMsgCreatePowerPurchaseContractParams): Promise<DeliverTxResponse> {
+			if (!signer) {
+					throw new Error('TxClient:sendMsgCreatePowerPurchaseContract: Unable to sign Tx. Signer is not present.')
+			}
+			try {			
+				const { address } = (await signer.getAccounts())[0]; 
+				const signingClient = await SigningStargateClient.connectWithSigner(addr,signer,{registry, prefix});
+				let msg = this.msgCreatePowerPurchaseContract({ value: MsgCreatePowerPurchaseContract.fromPartial(value) })
+				return await signingClient.signAndBroadcast(address, [msg], fee ? fee : defaultFee, memo)
+			} catch (e: any) {
+				throw new Error('TxClient:sendMsgCreatePowerPurchaseContract: Could not broadcast Tx: '+ e.message)
+			}
+		},
+		
+		
+		msgRecord({ value }: msgRecordParams): EncodeObject {
+			try {
+				return { typeUrl: "/electra.meter.MsgRecord", value: MsgRecord.fromPartial( value ) }  
+			} catch (e: any) {
+				throw new Error('TxClient:MsgRecord: Could not create message: ' + e.message)
+			}
+		},
+		
+		msgUpdatePowerPurchaseContract({ value }: msgUpdatePowerPurchaseContractParams): EncodeObject {
+			try {
+				return { typeUrl: "/electra.meter.MsgUpdatePowerPurchaseContract", value: MsgUpdatePowerPurchaseContract.fromPartial( value ) }  
+			} catch (e: any) {
+				throw new Error('TxClient:MsgUpdatePowerPurchaseContract: Could not create message: ' + e.message)
+			}
+		},
 		
 		msgRecord3({ value }: msgRecord3Params): EncodeObject {
 			try {
@@ -89,11 +180,19 @@ export const txClient = ({ signer, prefix, addr }: TxClientOptions = { addr: "ht
 			}
 		},
 		
-		msgRecord({ value }: msgRecordParams): EncodeObject {
+		msgDeletePowerPurchaseContract({ value }: msgDeletePowerPurchaseContractParams): EncodeObject {
 			try {
-				return { typeUrl: "/electra.meter.MsgRecord", value: MsgRecord.fromPartial( value ) }  
+				return { typeUrl: "/electra.meter.MsgDeletePowerPurchaseContract", value: MsgDeletePowerPurchaseContract.fromPartial( value ) }  
 			} catch (e: any) {
-				throw new Error('TxClient:MsgRecord: Could not create message: ' + e.message)
+				throw new Error('TxClient:MsgDeletePowerPurchaseContract: Could not create message: ' + e.message)
+			}
+		},
+		
+		msgCreatePowerPurchaseContract({ value }: msgCreatePowerPurchaseContractParams): EncodeObject {
+			try {
+				return { typeUrl: "/electra.meter.MsgCreatePowerPurchaseContract", value: MsgCreatePowerPurchaseContract.fromPartial( value ) }  
+			} catch (e: any) {
+				throw new Error('TxClient:MsgCreatePowerPurchaseContract: Could not create message: ' + e.message)
 			}
 		},
 		

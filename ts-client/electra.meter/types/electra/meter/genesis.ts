@@ -3,6 +3,7 @@ import _m0 from "protobufjs/minimal";
 import { Meterdirectory } from "./meterdirectory";
 import { Meterreadings } from "./meterreadings";
 import { Params } from "./params";
+import { PowerPurchaseContract } from "./power_purchase_contract";
 
 export const protobufPackage = "electra.meter";
 
@@ -10,12 +11,13 @@ export const protobufPackage = "electra.meter";
 export interface GenesisState {
   params: Params | undefined;
   meterreadingsList: Meterreadings[];
-  /** this line is used by starport scaffolding # genesis/proto/state */
   meterdirectoryList: Meterdirectory[];
+  /** this line is used by starport scaffolding # genesis/proto/state */
+  powerPurchaseContractList: PowerPurchaseContract[];
 }
 
 function createBaseGenesisState(): GenesisState {
-  return { params: undefined, meterreadingsList: [], meterdirectoryList: [] };
+  return { params: undefined, meterreadingsList: [], meterdirectoryList: [], powerPurchaseContractList: [] };
 }
 
 export const GenesisState = {
@@ -28,6 +30,9 @@ export const GenesisState = {
     }
     for (const v of message.meterdirectoryList) {
       Meterdirectory.encode(v!, writer.uint32(26).fork()).ldelim();
+    }
+    for (const v of message.powerPurchaseContractList) {
+      PowerPurchaseContract.encode(v!, writer.uint32(34).fork()).ldelim();
     }
     return writer;
   },
@@ -48,6 +53,9 @@ export const GenesisState = {
         case 3:
           message.meterdirectoryList.push(Meterdirectory.decode(reader, reader.uint32()));
           break;
+        case 4:
+          message.powerPurchaseContractList.push(PowerPurchaseContract.decode(reader, reader.uint32()));
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -65,6 +73,9 @@ export const GenesisState = {
       meterdirectoryList: Array.isArray(object?.meterdirectoryList)
         ? object.meterdirectoryList.map((e: any) => Meterdirectory.fromJSON(e))
         : [],
+      powerPurchaseContractList: Array.isArray(object?.powerPurchaseContractList)
+        ? object.powerPurchaseContractList.map((e: any) => PowerPurchaseContract.fromJSON(e))
+        : [],
     };
   },
 
@@ -81,6 +92,13 @@ export const GenesisState = {
     } else {
       obj.meterdirectoryList = [];
     }
+    if (message.powerPurchaseContractList) {
+      obj.powerPurchaseContractList = message.powerPurchaseContractList.map((e) =>
+        e ? PowerPurchaseContract.toJSON(e) : undefined
+      );
+    } else {
+      obj.powerPurchaseContractList = [];
+    }
     return obj;
   },
 
@@ -91,6 +109,8 @@ export const GenesisState = {
       : undefined;
     message.meterreadingsList = object.meterreadingsList?.map((e) => Meterreadings.fromPartial(e)) || [];
     message.meterdirectoryList = object.meterdirectoryList?.map((e) => Meterdirectory.fromPartial(e)) || [];
+    message.powerPurchaseContractList =
+      object.powerPurchaseContractList?.map((e) => PowerPurchaseContract.fromPartial(e)) || [];
     return message;
   },
 };

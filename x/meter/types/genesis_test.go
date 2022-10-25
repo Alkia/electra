@@ -42,6 +42,16 @@ func TestGenesisState_Validate(t *testing.T) {
 						Barcodeserial: "1",
 					},
 				},
+				PowerPurchaseContractList: []types.PowerPurchaseContract{
+					{
+						ContractID:       "0",
+						ContractDeviceID: "0",
+					},
+					{
+						ContractID:       "1",
+						ContractDeviceID: "1",
+					},
+				},
 				// this line is used by starport scaffolding # types/genesis/validField
 			},
 			valid: true,
@@ -73,6 +83,22 @@ func TestGenesisState_Validate(t *testing.T) {
 					{
 						DeviceID:      "0",
 						Barcodeserial: "0",
+					},
+				},
+			},
+			valid: false,
+		},
+		{
+			desc: "duplicated powerPurchaseContract",
+			genState: &types.GenesisState{
+				PowerPurchaseContractList: []types.PowerPurchaseContract{
+					{
+						ContractID:       "0",
+						ContractDeviceID: "0",
+					},
+					{
+						ContractID:       "0",
+						ContractDeviceID: "0",
 					},
 				},
 			},

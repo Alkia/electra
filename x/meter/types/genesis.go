@@ -10,8 +10,9 @@ const DefaultIndex uint64 = 1
 // DefaultGenesis returns the default genesis state
 func DefaultGenesis() *GenesisState {
 	return &GenesisState{
-		MeterreadingsList:  []Meterreadings{},
-		MeterdirectoryList: []Meterdirectory{},
+		MeterreadingsList:         []Meterreadings{},
+		MeterdirectoryList:        []Meterdirectory{},
+		PowerPurchaseContractList: []PowerPurchaseContract{},
 		// this line is used by starport scaffolding # genesis/types/default
 		Params: DefaultParams(),
 	}
@@ -39,6 +40,16 @@ func (gs GenesisState) Validate() error {
 			return fmt.Errorf("duplicated index for meterdirectory")
 		}
 		meterdirectoryIndexMap[index] = struct{}{}
+	}
+	// Check for duplicated index in powerPurchaseContract
+	powerPurchaseContractIndexMap := make(map[string]struct{})
+
+	for _, elem := range gs.PowerPurchaseContractList {
+		index := string(PowerPurchaseContractKey(elem.ContractID, elem.ContractDeviceID))
+		if _, ok := powerPurchaseContractIndexMap[index]; ok {
+			return fmt.Errorf("duplicated index for powerPurchaseContract")
+		}
+		powerPurchaseContractIndexMap[index] = struct{}{}
 	}
 	// this line is used by starport scaffolding # genesis/types/validate
 
