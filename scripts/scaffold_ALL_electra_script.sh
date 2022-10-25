@@ -1,11 +1,12 @@
 #!/bin/bash
 DESTINATION="/home/alkia/electra"
 SOURCE__DIR="/home/alkia/electra01"
+BACKUP__DIR="/home/alkia/tmp"
 # cp electra01/scripts/scaffold_ALL_electra_script.sh .
 ##################################################################################################################
 start=`date +%s`
 cp $DESTINATION/scripts $SOURCE__DIR -r
-cp $DESTINATION/scripts tmp -r
+cp $DESTINATION/scripts $BACKUP__DIR -r
 sudo rm $DESTINATION -r
 rm .electra -r
 rm .ignite/local-chains/electra -r
