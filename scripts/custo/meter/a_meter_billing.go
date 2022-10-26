@@ -96,28 +96,34 @@ func setProducerbillingline(lineid uint64, cycleid uint64, lineWh uint64, lineWh
 
 // Get Meter Readings from the blockchain // Follow only once the chain to reduce load 
 func (k Keeper) loadMeterReadingValues(ctx sdk.Context, cycleID uint64)(map[string]meterReading, map[string]meterReading, map[string]meterReading, map[string]meterReading, error) {   
+	// Performance Management
+	start 	:= time.Now()	
 	// Local Variables
 	var	previousConsumerMap	map[string]meterReading = make(map[string]meterReading)
 	var previousProducerMap	map[string]meterReading = make(map[string]meterReading)
 	var currentConsumerMap	map[string]meterReading = make(map[string]meterReading)
 	var currentProducerMap  map[string]meterReading = make(map[string]meterReading)
+	var i int = 0
 	// Find the cycle start and end timestamps
 	theCycle, _ := k.GetBillingcycles(ctx, cycleID)
 		currenttimebegin := theCycle.Begin
 		currenttimeend   := theCycle.End
+	comment := fmt.Sprintf("# BEGIN  loadMeterReadingValues cycleID:%d Timebegin:%d Timeend:%d ###################################", cycleID, currenttimebegin, currenttimeend)
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.MeterreadingsKeyPrefix))
 	iterator := sdk.KVStorePrefixIterator(store, []byte{})
 	defer iterator.Close()
 	for ; iterator.Valid(); iterator.Next() {
 		var val types.Meterreadings								// The original format on the block chain
 		var mrInn meterReading = currentConsumerMap[val.DeviceID]  // To save memory usage we use this type that is far more compact
-		var mrOUT meterReading = currentProducerMap[val.DeviceID]  // To save memory usage we use this type that is far more compact		
+		var mrOUT meterReading = currentProducerMap[val.DeviceID]  // To save memory usage we use this type that is far more compact	
+		i++
 		k.cdc.MustUnmarshal(iterator.Value(), &val)
+		comment	+= fmt.Sprintf("\n\t#%d %s val.Timestamp:%d previous:%t current:%t future:%t ",i,resolvName(val.DeviceID),val.Timestamp,(val.Timestamp < currenttimebegin), ((val.Timestamp >= currenttimebegin) && (val.Timestamp <= currenttimeend)),(val.Timestamp > currenttimeend))
 		if ((val.Timestamp < currenttimebegin)) { // More safe than ((val.Timestamp <= prevtimeend))
 			switch val.Phase {
 				case 1: {							// Previous Cycles
-					if (mrInn.whphase1 < val.Whin)   { mrInn.whphase1 = val.Whin  ; previousConsumerMap[val.DeviceID] = mrInn } // values can come in disorder so we upgrade only if it is bigger
-					if (mrOUT.whphase1 < val.Whout)  { mrOUT.whphase1 = val.Whout ; previousProducerMap[val.DeviceID] = mrOUT } // values can come in disorder so we upgrade only if it is bigger
+					if (mrInn.whphase1 < val.Whin)   { mrInn.whphase1 = val.Whin  ; previousConsumerMap[val.DeviceID] = mrInn; comment += fmt.Sprintf(" previous Consum ") } // values can come in disorder so we upgrade only if it is bigger
+					if (mrOUT.whphase1 < val.Whout)  { mrOUT.whphase1 = val.Whout ; previousProducerMap[val.DeviceID] = mrOUT; comment += fmt.Sprintf(" previous Produc ") } // values can come in disorder so we upgrade only if it is bigger
 				} 
 				case 2: {
 					if (mrInn.whphase2 < val.Whin)   { mrInn.whphase2 = val.Whin  ; previousConsumerMap[val.DeviceID] = mrInn } // values can come in disorder so we upgrade only if it is bigger
@@ -132,8 +138,8 @@ func (k Keeper) loadMeterReadingValues(ctx sdk.Context, cycleID uint64)(map[stri
 			if ((val.Timestamp >= currenttimebegin) && (val.Timestamp <= currenttimeend)) {
 				switch val.Phase {
 				case 1:  {								// Current Cycles
-					if (mrInn.whphase1  < val.Whin)  { mrInn.whphase1 = val.Whin  ; currentConsumerMap[val.DeviceID] = mrInn } // values can come in disorder so we upgrade only if it is bigger
-					if (mrOUT.whphase1 < val.Whout)  { mrOUT.whphase1 = val.Whout ; currentProducerMap[val.DeviceID] = mrOUT } // values can come in disorder so we upgrade only if it is bigger
+					if (mrInn.whphase1  < val.Whin)  { mrInn.whphase1 = val.Whin  ; currentConsumerMap[val.DeviceID] = mrInn; comment += fmt.Sprintf(" current Consum ") } // values can come in disorder so we upgrade only if it is bigger
+					if (mrOUT.whphase1 < val.Whout)  { mrOUT.whphase1 = val.Whout ; currentProducerMap[val.DeviceID] = mrOUT; comment += fmt.Sprintf(" current Produc ") } // values can come in disorder so we upgrade only if it is bigger
 				} 
 				case 2: {
 					if (mrInn.whphase2  < val.Whin)  { mrInn.whphase2 = val.Whin  ; currentConsumerMap[val.DeviceID] = mrInn } // values can come in disorder so we upgrade only if it is bigger
@@ -147,6 +153,11 @@ func (k Keeper) loadMeterReadingValues(ctx sdk.Context, cycleID uint64)(map[stri
 			} 
 		} 
 	}
+	comment	+= fmt.Sprintf("\n\npreviousConsumerMap:%+v\n\npreviousProducerMap:%+v\n\ncurrentConsumerMap:%+v\n\ncurrentProducerMap:%+v\n",previousConsumerMap, previousProducerMap, currentConsumerMap, currentProducerMap)
+	// Performance Management
+	elapsed	:= time.Since(start)
+	comment	+= fmt.Sprintf("\n# END # loadMeterReadingValues  took %s @ %s #############################\n", elapsed,time.Now())
+	writelog(comment)
 	return previousConsumerMap, previousProducerMap, currentConsumerMap, currentProducerMap, nil
 }
 
@@ -400,7 +411,7 @@ func makePrepareBill(ppcMap map[string]types.PowerPurchaseContract,ppaMap map[st
 	// CycleID definitions
 	PreviousCycleID := cycleID
 	PreviousCycleID--								// Decrement the current cycle ID to get the previous
-	comment = fmt.Sprintf("CycleID: %d  Previous CycleID: %d\n", cycleID, PreviousCycleID)
+	comment = fmt.Sprintf("# makePrepareBill # CycleID: %d  Previous CycleID: %d\n", cycleID, PreviousCycleID)
 
 	comment += "=== addCurrentProduction =============================================\n"
 	ppcMap = addCurrentProduction(ppcMap, currentCycleProduceOutMap, previousCycleProduceOutMap)
@@ -413,7 +424,7 @@ for customerDeviceID, _ := range currentCycleConsumeInMap {		// makePrepareBill 
 	thisCustomerBill.BillDate 			= uint64(time.Now().Unix()) 
 	thisCustomerBill.CustomerDeviceID	= customerDeviceID
 	thisCustomerBill.Paid 				= false
-	var consumed meterReading // Get the amount of WH consumed & Set the WH consumed value per phase 
+	var consumed meterReading 			// Get the amount of WH consumed & Set the WH consumed value per phase 
 	consumed.whphase1	 = currentCycleConsumeInMap[customerDeviceID].whphase1 - previousCycleConsumeInMap[customerDeviceID].whphase1
 	consumed.whphase2 	 = currentCycleConsumeInMap[customerDeviceID].whphase2 - previousCycleConsumeInMap[customerDeviceID].whphase2
 	consumed.whphase3	 = currentCycleConsumeInMap[customerDeviceID].whphase3 - previousCycleConsumeInMap[customerDeviceID].whphase3									
@@ -478,36 +489,132 @@ for customerDeviceID, _ := range currentCycleConsumeInMap {		// makePrepareBill 
 			}
 		}
 	}
-	comment += "### Output customerbill ###################\n"
-	jsonStr, _ := json.MarshalIndent(customerbill, "", " ")
-	comment += fmt.Sprintf("%+s\n",jsonStr)
-	comment += "### Output customerBillLines ###################\n"
-	jsonStr, _ = json.MarshalIndent(customerBillLines, "", " ")
-	comment += fmt.Sprintf("%+s\n",jsonStr)
-	comment += "### Output producerBillLines ###################\n"
-	jsonStr, _ = json.MarshalIndent(producerBillLines, "", " ")
-	comment += fmt.Sprintf("%+s\n",jsonStr)
-	elapsed := time.Since(start)
-	comment += fmt.Sprintf("### END ### makePrepareBill Cycle:%d took %s @ %s\n", cycleID, elapsed,time.Now())
+	comment 	+= "### Output customerbill ###################\n"
+	jsonStr, _ 	:= json.MarshalIndent(customerbill, "", " ")
+	comment 	+= fmt.Sprintf("%+s\n",jsonStr)
+	comment 	+= "### Output customerBillLines ###################\n"
+	jsonStr, _ 	= json.MarshalIndent(customerBillLines, "", " ")
+	comment 	+= fmt.Sprintf("%+s\n",jsonStr)
+	comment 	+= "### Output producerBillLines ###################\n"
+	jsonStr, _ 	= json.MarshalIndent(producerBillLines, "", " ")
+	comment 	+= fmt.Sprintf("%+s\n",jsonStr)
+	elapsed 	:= time.Since(start)
+	comment 	+= fmt.Sprintf("### END ### makePrepareBill Cycle:%d took %s @ %s\n", cycleID, elapsed,time.Now())
 	writelog(comment)
 	return customerbill, customerBillLines, producerBillLines, comment, err
 }
 
-func (k msgServer) recordAllPreparedBills(goCtx context.Context, customerBill map[string]types.Customerbills, customerBillingLines []types.Customerbillingline, producerBillingLines []types.Producerbillingline)( string,  error){
+func (k msgServer) recordAllPreparedBills(goCtx context.Context, customerBill map[string]types.Customerbills, customerBillingLines []types.Customerbillingline, producerBillingLines []types.Producerbillingline, executePayment bool)( string,  error){
 	// Performance Management
-	start := time.Now()	
+	start 	:= time.Now()	
+	ctx		:= sdk.UnwrapSDKContext(goCtx)
 	comment := "### START ### recordAllPreparedBills ########################\n"
-	// TO DO
+	//////// customer Bill /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	for _, cbill := range customerBill{
+		// Check if the value already exists
+		_, isFound := k.GetCustomerbills(
+			ctx,
+			cbill.BillCycleID,
+			cbill.CustomerDeviceID,
+		) 
+		if isFound {
+			errmsg := fmt.Sprintf("# recordAllPreparedBills # Error: index already set Cycle:%d Customer:%s\n", cbill.BillCycleID, cbill.CustomerDeviceID )
+			comment += errmsg
+		} else {
+			if (cbill.BillTotalPrice>0) {			
+				// set the specific customerbilling in the store from its index
+				k.SetCustomerbills(
+					ctx,
+					cbill,
+				)
+				comment += fmt.Sprintf("# recordAllPreparedBills # OK customer Bill REGISTERED Cycle:%d Total:%d %s Customer:%s\n", cbill.BillCycleID, cbill.BillTotalPrice, cbill.BillCurrency, resolvName(cbill.CustomerDeviceID) )
+				} else {
+					comment += fmt.Sprintf("# recordAllPreparedBills # WARNING cannot register when price =0 Cycle:%d Total:%d %s Customer:%s\n", cbill.BillCycleID, cbill.BillTotalPrice, cbill.BillCurrency, resolvName(cbill.CustomerDeviceID))
+			}
+		} 
+	}
+	//////// customer billing line /////////////////////////////////////////////////////////////////////////////////////////////////////
+	for _, cbill := range customerBillingLines{
+		// Check if the value already exists
+		_, isFound := k.GetCustomerbillingline(
+			ctx,
+			cbill.CustomerDeviceID,
+			cbill.CycleID,
+			cbill.Lineid,
+		)
+		if isFound {
+			errmsg := fmt.Sprintf("# recordAllPreparedBills # Error: index already set Line:%d Cycle:%d Customer:%s\n", cbill.Lineid, cbill.CycleID, resolvName(cbill.CustomerDeviceID))
+			comment += errmsg
+			// sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, errmsg)
+		} else {
+			if (cbill.LineWhTotalPrice>0) {
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+				// Proceed to the payment
+				// Note: This module uses the SendCoins function of bankKeeper so Add SendCoins to x/meter/types/expected_keepers.go  
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+				if (executePayment == true ) {
+					customer, _ := sdk.AccAddressFromBech32(cbill.CustomerDeviceID)
+					producer, _ := sdk.AccAddressFromBech32(cbill.ProducerDeviceID)
+					amount, err := sdk.ParseCoinsNormalized(string(cbill.LineWhTotalPrice) + cbill.Curency)
+					if err != nil {
+						errmsg  := "Cannot parse coins in invoice amount"
+						comment += errmsg
+						//return nil, sdkerrors.Wrap(types.ErrWrongLoanState, errmsg)
+					} 
+					// send tokens from the customer to the producer
+					err = k.bankKeeper.SendCoins(ctx, customer, producer, amount)
+					if err != nil {
+						errmsg  := "Sendcoin failed to send coins"
+						comment += errmsg
+						//return nil, sdkerrors.Wrap(types.ErrWrongLoanState, "Cannot parse coins in loan amount")
+					} else {
+						// Update the bill with the payment result
+						// cbill.Paid = true
+					}	
+				}
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+				// END payment
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+				//  set the specific billingline in the store from its index
+				k.SetCustomerbillingline(
+					ctx,
+					cbill,
+				)
+				comment += fmt.Sprintf("# recordAllPreparedBills # OK Customer billing line REGISTERED Cycle:%d Line:%d Phase:%d Total:%d %s Customer:%s\n", cbill.CycleID, cbill.Lineid, cbill.Phase, cbill.LineWhTotalPrice, cbill.Curency, resolvName(cbill.CustomerDeviceID))
+				} else {
+					comment += fmt.Sprintf("# recordAllPreparedBills # WARNING price =0 Cycle:%d Line:%d Phase:%d Total:%d %s Customer:%s\n", cbill.CycleID, cbill.Lineid, cbill.Phase, cbill.LineWhTotalPrice, cbill.Curency, resolvName(cbill.CustomerDeviceID))
+			}
+		} 
+	}
+	//////// producer billing line /////////////////////////////////////////////////////////////////////////////////////////////////////
+	for _, cbill := range producerBillingLines{
+		// Check if the value already exists
+		_, isFound := k.GetCustomerbillingline(
+			ctx,
+			cbill.ProducerDeviceID,
+			cbill.CycleID,
+			cbill.Lineid,
+		)
+		if isFound {
+			errmsg := fmt.Sprintf("# recordAllPreparedBills # Error: index already set Line:%d Cycle:%d Producer:%s\n", cbill.Lineid, cbill.CycleID, resolvName(cbill.ProducerDeviceID))
+			comment += errmsg
+			// sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, errmsg)
+		} else {
+			if (cbill.LineWhTotalPrice>0) {
+				//  set the specific customerbillingline in the store from its index
+				k.SetProducerbillingline(
+					ctx,
+					cbill,
+				)
+				comment += fmt.Sprintf("# recordAllPreparedBills # OK Producer billing line REGISTERED Cycle:%d Line:%d Phase:%d Total:%d %s Producer:%s Customer:%s\n", cbill.CycleID, cbill.Lineid, cbill.Phase, cbill.LineWhTotalPrice, cbill.Curency, resolvName(cbill.ProducerDeviceID), resolvName(cbill.CustomerDeviceID))
+				} else {
+					comment += fmt.Sprintf("# recordAllPreparedBills # WARNING price =0 Cycle:%d Line:%d Phase:%d Total:%d Producer:%s %s Customer:%s\n", cbill.CycleID, cbill.Lineid, cbill.Phase, cbill.LineWhTotalPrice, cbill.Curency, resolvName(cbill.ProducerDeviceID), resolvName(cbill.CustomerDeviceID))
+			}
+		} 
+	}
 
-	jsonBill1, err := json.Marshal(customerBillingLines)
-	if err != nil {
-        fmt.Printf("Error: %s", err.Error())
-    }
-	jsonBill2, err := json.Marshal(producerBillingLines)
-	if err != nil {
-        fmt.Printf("Error: %s", err.Error())
-    }
-	fmt.Printf(" customerbillinglines JSon:%s \n producerbillinglines JSon:%s\n",string(jsonBill1),string(jsonBill2))
+	// TO DO: save the bill in Json
+
 	elapsed := time.Since(start)
 	comment += fmt.Sprintf("### END ### recordAllPreparedBills took %s @ %s ###############\n", elapsed,time.Now())
 	writelog(comment)

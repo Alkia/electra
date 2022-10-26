@@ -66,7 +66,7 @@ ignite scaffold query currentcycleID --response cycleID:uint,begin:uint,end:uint
 ##################################################################################################################
 ignite scaffold message prepareBill cycleID:uint record:bool executePayment:bool --response jsonCustomerbill:string,jsonProducerbill:string,comment:string --module meter --desc "Increment the current cycleID:uint" -y
 
-ignite scaffold map customerbillingline producerDeviceID:string billContractID:string lineWh:uint lineWhPrice:uint curency:string lineWhTotalPrice:uint phase:uint --index customerDeviceID:string,cycleID:uint,lineid:uint --module meter -y
+ignite scaffold map customerbillingline producerDeviceID:string billContractID:string lineWh:uint lineWhPrice:uint curency:string lineWhTotalPrice:uint phase:uint --index customerDeviceID:string,cycleID:uint,lineid:uint,paid:bool --module meter -y
 # Display the content of one customer bill
 ##
 ## 
@@ -76,7 +76,7 @@ ignite scaffold map customerbills billDate:uint billTotalWh:uint billTotalPrice:
 # Select the customer bills Beteween a start and end timestamps
 #ignite scaffold query listcustomerbills customerDeviceID:string start:uint end:uint billCycleID:uint paid:bool --response listofbills,total:uint --module meter --desc "List the customer bills from START to END [parameters are interpreted as unix DateTime timestams]" -y
 #
-ignite scaffold map producerbillingline customerDeviceID:string billContractID:string lineWh:uint lineWhPrice:uint curency:string lineWhTotalPrice:uint phase:uint --index producerDeviceID:string,cycleID:uint,lineid:uint --module meter -y
+ignite scaffold map producerbillingline customerDeviceID:string billContractID:string lineWh:uint lineWhPrice:uint curency:string lineWhTotalPrice:uint phase:uint --index producerDeviceID:string,cycleID:uint,lineid:uint,paid:bool --module meter -y
 # Display the content of one producer bill
 ##
 ## 
@@ -123,6 +123,8 @@ cp ./scripts/custo/meter/a_tools.go                    ./x/meter/keeper/
 cp ./scripts/custo/meter/msg_server_prepare_bill.go    ./x/meter/keeper/
 cp ./scripts/custo/meter/a_meter_billing.go            ./x/meter/keeper/
 cp ./scripts/custo/meter/a_tools.go                    ./x/meter/keeper/
+# This module uses the SendCoins function of bankKeeper. We add this SendCoins function to :
+cp ./scripts/custo/meter/expected_keepers.go           ./x/meter/types/
 ##################################################################################################################
 git add .
 git commit -am "Customize the code in meter module"

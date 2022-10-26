@@ -504,7 +504,7 @@ for customerDeviceID, _ := range currentCycleConsumeInMap {		// makePrepareBill 
 	return customerbill, customerBillLines, producerBillLines, comment, err
 }
 
-func (k msgServer) recordAllPreparedBills(goCtx context.Context, customerBill map[string]types.Customerbills, customerBillingLines []types.Customerbillingline, producerBillingLines []types.Producerbillingline)( string,  error){
+func (k msgServer) recordAllPreparedBills(goCtx context.Context, customerBill map[string]types.Customerbills, customerBillingLines []types.Customerbillingline, producerBillingLines []types.Producerbillingline, executePayment bool)( string,  error){
 	// Performance Management
 	start 	:= time.Now()	
 	ctx		:= sdk.UnwrapSDKContext(goCtx)
@@ -521,8 +521,8 @@ func (k msgServer) recordAllPreparedBills(goCtx context.Context, customerBill ma
 			errmsg := fmt.Sprintf("# recordAllPreparedBills # Error: index already set Cycle:%d Customer:%s\n", cbill.BillCycleID, cbill.CustomerDeviceID )
 			comment += errmsg
 		} else {
-			if (cbill.BillTotalPrice>0) {
-				//  set the specific customerbillingline in the store from its index
+			if (cbill.BillTotalPrice>0) {			
+				// set the specific customerbilling in the store from its index
 				k.SetCustomerbills(
 					ctx,
 					cbill,
@@ -548,7 +548,34 @@ func (k msgServer) recordAllPreparedBills(goCtx context.Context, customerBill ma
 			// sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, errmsg)
 		} else {
 			if (cbill.LineWhTotalPrice>0) {
-				//  set the specific customerbillingline in the store from its index
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+				// Proceed to the payment
+				// Note: This module uses the SendCoins function of bankKeeper so Add SendCoins to x/meter/types/expected_keepers.go  
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+				if (executePayment == true ) {
+					customer, _ := sdk.AccAddressFromBech32(cbill.CustomerDeviceID)
+					producer, _ := sdk.AccAddressFromBech32(cbill.ProducerDeviceID)
+					amount, err := sdk.ParseCoinsNormalized(string(cbill.LineWhTotalPrice) + cbill.Curency)
+					if err != nil {
+						errmsg  := "Cannot parse coins in invoice amount"
+						comment += errmsg
+						//return nil, sdkerrors.Wrap(types.ErrWrongLoanState, errmsg)
+					} 
+					// send tokens from the customer to the producer
+					err = k.bankKeeper.SendCoins(ctx, customer, producer, amount)
+					if err != nil {
+						errmsg  := "Sendcoin failed to send coins"
+						comment += errmsg
+						//return nil, sdkerrors.Wrap(types.ErrWrongLoanState, "Cannot parse coins in loan amount")
+					} else {
+						// Update the bill with the payment result
+						// cbill.Paid = true
+					}	
+				}
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+				// END payment
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+				//  set the specific billingline in the store from its index
 				k.SetCustomerbillingline(
 					ctx,
 					cbill,
