@@ -6,7 +6,7 @@
 # Created account "bob" with address "electra1krkk5xtp8s7lk9xf2az70txle50zfzga7dah87" with mnemonic: "address slogan history guitar fringe health coral dish exercise excite utility now thank mosquito soul vacuum doctor squeeze host never dinosaur afford tide tide"
 # Created account "prod1" with address "electra16p7dd9wp76kmxckus64un7udt59kvprfd0tw8v" with mnemonic: "thing lamp dwarf pupil hundred harsh snack review chest pledge people normal pattern shoe cereal drill staff people finger type timber buddy grab rate"
 # Created account "prod2" with address "electra1rf56um69dum7em0kx9xen794x8gm49vxstkjwy"
-
+echo "### PPC : Power Purchase Contracts => Producers Terms & Conditions ####################"
 electrad query meter list-power-purchase-contract --count-total
 # expected total: "0"
 
@@ -36,7 +36,7 @@ electrad query meter list-power-purchase-contract --count-total  | grep "contrac
 
 #update the name 
 electrad tx meter update-power-purchase-contract "bea079c9-6a65-41eb-8951-3b7fdf67d276" "electra19mhfyxz7532gumtyw5zrq00qv23mqtc4plgfzy" "contract-new-name-1" true 1 true 12000 "uelectra" "[contract-for-all-active-period" true 6800 "contract-preferred-active-period" "uelectra" 1665575799 1999999999 0 0 0 --from bob -y  | grep "raw_log: 'failed"
-# Expected failure : failed to execute message; message index: 0: index not set: key not found
+echo "Expected failure : failed to execute message; message index: 0: index not set: key not found "
 # the ContractDeviceID was wrong
 
 electrad tx meter update-power-purchase-contract "bea079c9-6a65-41eb-8951-3b7fdf67d276" "electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7" "contract-new-name-1" true 1 true 12000 "uelectra" "[contract-for-all-active-period" true 6800 "contract-preferred-active-period" "uelectra" 1665575799 1999999999 0 0 0 --from bob -y  | grep "raw_log: 'failed"

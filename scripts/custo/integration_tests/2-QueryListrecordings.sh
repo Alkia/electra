@@ -34,11 +34,11 @@ electrad tx meter record $(date '+%s') 1 1600 0 230000 50000 958 16  --from alic
 sleep 0.5
 electrad tx meter record $(date '+%s') 1 0 5000 230000 50000 0 16  --from test1 -y | grep "raw_log:"
 sleep 0.5
-electrad tx meter record $(date '+%s') 1 1400 0 230000 50000 0 16  --from test2 -y | grep "raw_log:"
+electrad tx meter record $(date '+%s') 1 1400 0 230000 50000  958 16  --from test2 -y | grep "raw_log:"
 sleep 0.5
-electrad tx meter record $(date '+%s') 1 0 7000 230000 50000 0 16  --from test3 -y | grep "raw_log:"
+electrad tx meter record $(date '+%s') 1 0 7000 230000 50000 0 56  --from test3 -y | grep "raw_log:"
 sleep 0.5
-electrad tx meter record $(date '+%s') 1 2000 230000 50000 0 16  --from bob -y | grep "raw_log:"
+electrad tx meter record $(date '+%s') 1 2000 0 230000 50000  958 16  --from bob -y | grep "raw_log:"
 timestamp3=$(date +%s)
 #Count all records from alice
 echo $timestamp0

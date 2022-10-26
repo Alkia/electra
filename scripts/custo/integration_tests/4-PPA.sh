@@ -19,9 +19,9 @@
 #  contractID: prod20000-2222-4963-872a-5c0175e612d2
 #  contractName: contract-prod-2
 #  contractPreferredPrice: "8822"
-
+echo "### PPA : Power Purchase Agreement => Customer subscription to PPC #######################"
 electrad query meter list-ppa-map --count-total
-# expected total: "0"
+echo "expected total: 0"
 
 
 # [consumer-device-id] "test2" with address "electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz" 
@@ -33,7 +33,7 @@ electrad tx meter create-ppa-map "electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz
 # Expected result failed as test1 is not an admin | raw_log: 'failed to execute message; message index: 0: index already set: invalid
 
 electrad query meter list-ppa-map --count-total
-# expected total: "1"
+echo " expected total: 1"
 
 # "test3" with address "electra19mhfyxz7532gumtyw5zrq00qv23mqtc4plgfzy"
 electrad tx meter create-ppa-map "electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz" "" true "f863b4b4-1c4c-4963-872a-5c0175e612d2 " "electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7" 1665712168 1777777777  1600 "uelectra"  --from test3 -y  | grep "raw_log: 'failed"
@@ -72,11 +72,15 @@ electrad query meter list-ppa-map --count-total
 electrad query meter list-ppa-map --count-total | grep "contractID:"
 
 #update the name
-electrad tx meter update-ppa-map "electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz" "agreement-id" true "prod10000-1c4c-4963-872a-5c0175e612d2" "electra16p7dd9wp76kmxckus64un7udt59kvprfd0tw8v" 1665700000 1777788888  --from test2 -y  | grep "raw_log: 'failed"
+electrad tx meter update-ppa-map "electra19mhfyxz7532gumtyw5zrq00qv23mqtc4plgfzy" "test3-prod1" true "prod10000-1c4c-4963-872a-5c0175e612d2" "electra16p7dd9wp76kmxckus64un7udt59kvprfd0tw8v" 1665700000 1777788888 9900 "uelectra" --from test2 -y  | grep "raw_log: 'failed"
+echo "expected failure: 'failed to execute message; message index: 0: incorrect owner: unauthorized'"
+
+electrad tx meter update-ppa-map "electra19mhfyxz7532gumtyw5zrq00qv23mqtc4plgfzy" "test3-prod1" true "prod10000-1c4c-4963-872a-5c0175e612d2" "electra16p7dd9wp76kmxckus64un7udt59kvprfd0tw8v" 1665700000 1777788888 9900 "uelectra" --from test1 -y  | grep "raw_log: 'failed"
+echo "expected failure: 'failed to execute message; message index: 0: incorrect owner: unauthorized'"
 
 electrad query meter list-ppa-map --count-total | grep "contractName:"
 # expected see the new name
 
 electrad tx meter delete-ppa-map "electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz" "agreement-id" true "prod10000-1c4c-4963-872a-5c0175e612d2" --from bob -y   | grep "raw_log: 'failed"
 # expected contractActive: false | We do not delete contracts
-electrad query meter list-ppa-map --count-total | grep "agreementActive:"
+electrad query meter list-ppa-map --count-total | grep -E "total"\|"agreementActive:"
