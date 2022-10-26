@@ -64,7 +64,7 @@ ignite scaffold query currentcycleID --response cycleID:uint,begin:uint,end:uint
 ##################################################################################################################
 # ignite scaffold module billing --dep bank,meter --params defaultCurrency:string,maxBillingIteration:uint,moduleParamBestForCustomer:bool,payAutomatically:bool,billingAdmin:string,billingAdmin2:string,billingAdmin3:string -y
 ##################################################################################################################
-ignite scaffold message prepareBill cycleID:uint record:bool --response jsonCustomerbill:string,jsonProducerbill:string,comment:string --module meter --desc "Increment the current cycleID:uint" -y
+ignite scaffold message prepareBill cycleID:uint record:bool executePayment:bool --response jsonCustomerbill:string,jsonProducerbill:string,comment:string --module meter --desc "Increment the current cycleID:uint" -y
 
 ignite scaffold map customerbillingline producerDeviceID:string billContractID:string lineWh:uint lineWhPrice:uint curency:string lineWhTotalPrice:uint phase:uint --index customerDeviceID:string,cycleID:uint,lineid:uint --module meter -y
 # Display the content of one customer bill
