@@ -23,7 +23,7 @@
 timestamp77=$(date +%s)
 echo $timestamp77
 cycle=77
-echo $cycle
+echo "CycleID:" $cycle
 prod1="electra16p7dd9wp76kmxckus64un7udt59kvprfd0tw8v" 
 prod2="electra1rf56um69dum7em0kx9xen794x8gm49vxstkjwy"
 contractprod1="prod10000-1c4c-4963-872a-5c0175e612d2" 
@@ -32,9 +32,9 @@ test1="electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7"
 test2="electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz" 
 test3="electra19mhfyxz7532gumtyw5zrq00qv23mqtc4plgfzy" 
 # Cycle 77 | From timestamp0 to timestamp1
-electrad tx meter record $(date '+%s') 1 2000 0 230000 50000 958 16  --from alice -y  | grep "raw_log:"
+electrad tx meter record $(date '+%s') 1 3000 0 230000 50000 958 16  --from alice -y  | grep "raw_log:"
 sleep 0.5
-electrad tx meter record $(date '+%s') 1 2200 0 230000 50000 975 17  --from bob -y  | grep "raw_log:"
+electrad tx meter record $(date '+%s') 1 3200 0 230000 50000 975 17  --from bob -y  | grep "raw_log:"
 sleep 0.5
 electrad tx meter record $(date '+%s') 1 0 22000 230000 50000 0 111  --from prod1 -y | grep "raw_log:"
 sleep 0.5
@@ -60,7 +60,7 @@ electrad tx meter record $(date '+%s') 1 0 28000 230000 50000 0 111  --from prod
 sleep 0.5
 electrad tx meter record $(date '+%s') 1 0 29000 230000 50000 0 22  --from prod2 -y | grep "raw_log:"
 timestamp78=$(date +%s)
-echo $timestamp78
+echo "timestamp78:" $timestamp78
 
 #  Prod1 "prod10000-1c4c-4963-872a-5c0175e612d2" "electra16p7dd9wp76kmxckus64un7udt59kvprfd0tw8v"
 #  prod2 "prod20000-2222-4963-872a-5c0175e612d2" "electra1rf56um69dum7em0kx9xen794x8gm49vxstkjwy" 
@@ -71,7 +71,7 @@ electrad query meter list-ppa-map --count-total
 #################################################################################################################################### 
 # electrad tx meter create-billingcycles [cycle-id] [start] [end] [whin] [whout] [moneyin] [moneyout] [curency] [flags]
 
-electrad tx meter create-billingcycles $cycle $timestamp0 $timestamp1 0 0 0 0 "uelectra" --from bob -y | grep "raw_log: 'failed" 
+electrad tx meter create-billingcycles $cycle $timestamp77 $timestamp78 0 0 0 0 "uelectra" true false --from bob -y | grep "raw_log: 'failed" 
 electrad query meter list-billingcycles
 electrad query meter currentcycle-id | grep "cycleID:"
 ####################################################################################################################################
@@ -127,33 +127,32 @@ electrad query meter getcustomerbill electra12lhecv88myvrmgv92syj782dxjfsnjjg3lz
 #################################################################################################################################### 
 # increment the billing cycle
 ((cycle++))
+echo "CycleID:" $cycle
 # Cycle 78 | From timestamp1+1 to timestamp2
-electrad tx meter record $(date '+%s') 1 1300 0 230 50 958 16  --from alice -y  | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 5200 0 230 50 0 16  --from test1 -y | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 2200 0 230 50 0 16  --from test1 -y | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 6200 0 230 50 0 16  --from test2 -y | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 7700 0 230 50 0 16  --from test3 -y | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 3300 0 230 50 0 16  --from bob -y | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 1400 0 230 50 958 16  --from alice -y  | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 0 37000 230 50 0 111  --from prod1 -y | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 0 39000 230 50 0 22  --from prod2 -y | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 1500 0 230 50 958 16  --from alice -y  | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 6500 0 230 50 0 16  --from test2 -y | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 0 38000 230 50 0 111  --from prod1 -y | grep "raw_log:"
-# Increment the cycle
-timestamp2=$(date +%s)
-echo "timestamp2:" $timestamp2
+electrad tx meter record $(date '+%s') 1 3300 0 230000 50000 958 16  --from alice -y  | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 6200 5000 230000 50000 0 16  --from test1 -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 2200 5000 230000 50000 0 16  --from test1 -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 6200 0 230000 50000 0 16  --from test2 -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 7700 7000 230000 50000 0 16  --from test3 -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 3300 0 230000 50000 0 16  --from bob -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 3400 0 230000 50000 958 16  --from alice -y  | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 0 37000 230000 50000 0 111  --from prod1 -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 0 39000 230000 50000 0 22  --from prod2 -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 3500 0 230000 50000 958 16  --from alice -y  | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 6500 0 230000 50000 0 16  --from test2 -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 0 38000 230000 50000 0 111  --from prod1 -y | grep "raw_log:"
+
 ##################################################################################################################
 # electrad query meter getcustomerbill [customerdevice-id] [bill-cycle-id] [flags]
 electrad query meter getcustomerbill $test1 $cycle
@@ -165,14 +164,28 @@ electrad query meter getproducerbill $prod1 $cycle
 electrad query meter getcustomerbill electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7 77 | grep -E "customerdeviceID:"\|"cycleID:"\|"lineid:"
 
 #################################################################################################################################### 
-
 # increment the last second of the previous cycle
-((timestamp1++))  
-electrad tx meter create-billingcycles $cycle $timestamp1 $timestamp2 0 0 0 0 "uelectra" --from bob -y | grep "raw_log: 'failed" 
+((timestamp78++))  
+# Increment the cycle
+timestamp79=$(date +%s)
+echo "timestamp79:" $timestamp79
+electrad tx meter create-billingcycles $cycle $timestamp78 $timestamp79 0 0 0 0 "uelectra"  true false  --from bob -y | grep "raw_log: 'failed" 
 electrad query meter currentcycle-id | grep "cycleID:"
 
 electrad tx meter prepare-bill $cycle false --from bob -y
 electrad query meter list-billingcycles | grep -E "cycleID:"\|"end:"\|"start:"
 electrad query meter list-ppa-map --count-total  | grep "total:"
 electrad query meter list-power-purchase-contract --count-total | grep "total:"
- 
+#################################################################################################################################### 
+ # increment the billing cycle
+((cycle++))
+echo "CycleID:" $cycle
+# increment the last second of the previous cycle
+((timestamp79++))  
+#################################################################################################################################### 
+# Add some test records
+#################################################################################################################################### 
+timestamp80=$(date +%s)
+echo "timestamp80:" $timestamp80
+electrad tx meter create-billingcycles $cycle $timestamp79 $timestamp80 0 0 0 0 "uelectra"  true false  --from bob -y 
+electrad query meter list-billingcycles
