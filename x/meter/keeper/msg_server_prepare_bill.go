@@ -28,6 +28,8 @@ func (k msgServer) PrepareBill(goCtx context.Context, msg *types.MsgPrepareBill)
 	comment	+= fmt.Sprintf("\n### BEGIN ### PrepareBill ### ppcList: %+v\n======\nppaMap: %+v\n======\n", ppcList, ppaMap)
 	// Load values
 	previousCycleConsumeInMap, previousCycleProduceOutMap, currentCycleConsumeInMap, currentCycleProduceOutMap, _ := k.loadMeterReadingValues(ctx, msg.CycleID)
+	comment	+= fmt.Sprintf("\n### PrepareBill ###\npreviousCycleConsumeInMap:%+v\npreviousCycleProduceOutMap:%+v\ncurrentCycleConsumeInMap:%+v\ncurrentCycleProduceOutMap:%+v\n",previousCycleConsumeInMap, previousCycleProduceOutMap, currentCycleConsumeInMap, currentCycleProduceOutMap)
+	writelog(comment)
 	// Prepare the bills
 	customerbill, customerbillinglines, producerbillinglines, commentPrepare, err := makePrepareBill(ppcMap, ppaMap, msg.CycleID, previousCycleConsumeInMap, previousCycleProduceOutMap, currentCycleConsumeInMap, currentCycleProduceOutMap)
 
@@ -35,9 +37,10 @@ func (k msgServer) PrepareBill(goCtx context.Context, msg *types.MsgPrepareBill)
 		commentRecord, _ := k.recordAllPreparedBills(goCtx, customerbill, customerbillinglines, producerbillinglines)
 		comment += commentRecord
 	}
-
+	comment	+= fmt.Sprintf("\n### PrepareBill ###\ncustomerbill:%+v\ncustomerbillinglines:%+v\nproducerbillinglines:%+v\n",customerbill, customerbillinglines, producerbillinglines, commentPrepare)
 	elapsed	:= time.Since(start)
 	comment	+= fmt.Sprintf("\n### END ### PrepareBill All took %s @ %s ###\n", elapsed,time.Now())
 	fmt.Printf(comment)
+	writelog(comment)
 	return &types.MsgPrepareBillResponse{JsonCustomerbill: "",JsonProducerbill: commentPrepare, Comment: comment}, err
 }

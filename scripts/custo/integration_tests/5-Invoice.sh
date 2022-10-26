@@ -20,8 +20,8 @@
 #  contractName: contract-prod-2
 #  contractPreferredPrice: "8822"
 
-timestamp0=$(date +%s)
-echo $timestamp0
+timestamp77=$(date +%s)
+echo $timestamp77
 cycle=77
 echo $cycle
 prod1="electra16p7dd9wp76kmxckus64un7udt59kvprfd0tw8v" 
@@ -32,36 +32,35 @@ test1="electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7"
 test2="electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz" 
 test3="electra19mhfyxz7532gumtyw5zrq00qv23mqtc4plgfzy" 
 # Cycle 77 | From timestamp0 to timestamp1
-electrad tx meter record $(date '+%s') 1 1000 0 230 50 958 16  --from alice -y  | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 1200 0 230 50 975 17  --from bob -y  | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 0 22000 230 50 0 111  --from prod1 -y | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 0 22000 230 50 0 22  --from prod2 -y | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 1200 0 230 50 0 16  --from test1 -y | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 2200 0 230 50 0 16  --from test2 -y | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 3200 0 230 50 0 16  --from test3 -y | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 4200 0 230 50 0 16  --from test1 -y | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 2200 0 230 50 0 16  --from test1 -y | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 5200 0 230 50 0 16  --from test2 -y | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 6200 0 230 50 0 16  --from test3 -y | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 2200 0 230 50 0 16  --from bob -y | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 0 28000 230 50 0 111  --from prod1 -y | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 0 29000 230 50 0 22  --from prod2 -y | grep "raw_log:"
-sleep 1
-timestamp1=$(date +%s)
-echo $timestamp1
+electrad tx meter record $(date '+%s') 1 2000 0 230000 50000 958 16  --from alice -y  | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 2200 0 230000 50000 975 17  --from bob -y  | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 0 22000 230000 50000 0 111  --from prod1 -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 0 22000 230000 50000 0 22  --from prod2 -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 1200 5000 230000 50000 0 16  --from test1 -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 2200 0 230000 50000 0 16  --from test2 -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 3200 7000 230000 50000 0 16  --from test3 -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 4200 5000 230000 50000 0 16  --from test1 -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 5200 5000 230000 50000 0 16  --from test1 -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 5200 0 230000 50000 0 16  --from test2 -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 6200 7000 230000 50000 0 16  --from test3 -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 2200 0 230000 50000 0 16  --from bob -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 0 28000 230000 50000 0 111  --from prod1 -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 0 29000 230000 50000 0 22  --from prod2 -y | grep "raw_log:"
+timestamp78=$(date +%s)
+echo $timestamp78
 
 #  Prod1 "prod10000-1c4c-4963-872a-5c0175e612d2" "electra16p7dd9wp76kmxckus64un7udt59kvprfd0tw8v"
 #  prod2 "prod20000-2222-4963-872a-5c0175e612d2" "electra1rf56um69dum7em0kx9xen794x8gm49vxstkjwy" 

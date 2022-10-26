@@ -96,28 +96,34 @@ func setProducerbillingline(lineid uint64, cycleid uint64, lineWh uint64, lineWh
 
 // Get Meter Readings from the blockchain // Follow only once the chain to reduce load 
 func (k Keeper) loadMeterReadingValues(ctx sdk.Context, cycleID uint64)(map[string]meterReading, map[string]meterReading, map[string]meterReading, map[string]meterReading, error) {   
+	// Performance Management
+	start 	:= time.Now()	
 	// Local Variables
 	var	previousConsumerMap	map[string]meterReading = make(map[string]meterReading)
 	var previousProducerMap	map[string]meterReading = make(map[string]meterReading)
 	var currentConsumerMap	map[string]meterReading = make(map[string]meterReading)
 	var currentProducerMap  map[string]meterReading = make(map[string]meterReading)
+	var i int = 0
 	// Find the cycle start and end timestamps
 	theCycle, _ := k.GetBillingcycles(ctx, cycleID)
 		currenttimebegin := theCycle.Begin
 		currenttimeend   := theCycle.End
+	comment := fmt.Sprintf("# BEGIN  loadMeterReadingValues cycleID:%d Timebegin:%d Timeend:%d ###################################", cycleID, currenttimebegin, currenttimeend)
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.MeterreadingsKeyPrefix))
 	iterator := sdk.KVStorePrefixIterator(store, []byte{})
 	defer iterator.Close()
 	for ; iterator.Valid(); iterator.Next() {
 		var val types.Meterreadings								// The original format on the block chain
 		var mrInn meterReading = currentConsumerMap[val.DeviceID]  // To save memory usage we use this type that is far more compact
-		var mrOUT meterReading = currentProducerMap[val.DeviceID]  // To save memory usage we use this type that is far more compact		
+		var mrOUT meterReading = currentProducerMap[val.DeviceID]  // To save memory usage we use this type that is far more compact	
+		i++
 		k.cdc.MustUnmarshal(iterator.Value(), &val)
+		comment	+= fmt.Sprintf("\n\t#%d %s val.Timestamp:%d previous:%t current:%t future:%t ",i,resolvName(val.DeviceID),val.Timestamp,(val.Timestamp < currenttimebegin), ((val.Timestamp >= currenttimebegin) && (val.Timestamp <= currenttimeend)),(val.Timestamp > currenttimeend))
 		if ((val.Timestamp < currenttimebegin)) { // More safe than ((val.Timestamp <= prevtimeend))
 			switch val.Phase {
 				case 1: {							// Previous Cycles
-					if (mrInn.whphase1 < val.Whin)   { mrInn.whphase1 = val.Whin  ; previousConsumerMap[val.DeviceID] = mrInn } // values can come in disorder so we upgrade only if it is bigger
-					if (mrOUT.whphase1 < val.Whout)  { mrOUT.whphase1 = val.Whout ; previousProducerMap[val.DeviceID] = mrOUT } // values can come in disorder so we upgrade only if it is bigger
+					if (mrInn.whphase1 < val.Whin)   { mrInn.whphase1 = val.Whin  ; previousConsumerMap[val.DeviceID] = mrInn; comment += fmt.Sprintf(" previous Consum ") } // values can come in disorder so we upgrade only if it is bigger
+					if (mrOUT.whphase1 < val.Whout)  { mrOUT.whphase1 = val.Whout ; previousProducerMap[val.DeviceID] = mrOUT; comment += fmt.Sprintf(" previous Produc ") } // values can come in disorder so we upgrade only if it is bigger
 				} 
 				case 2: {
 					if (mrInn.whphase2 < val.Whin)   { mrInn.whphase2 = val.Whin  ; previousConsumerMap[val.DeviceID] = mrInn } // values can come in disorder so we upgrade only if it is bigger
@@ -132,8 +138,8 @@ func (k Keeper) loadMeterReadingValues(ctx sdk.Context, cycleID uint64)(map[stri
 			if ((val.Timestamp >= currenttimebegin) && (val.Timestamp <= currenttimeend)) {
 				switch val.Phase {
 				case 1:  {								// Current Cycles
-					if (mrInn.whphase1  < val.Whin)  { mrInn.whphase1 = val.Whin  ; currentConsumerMap[val.DeviceID] = mrInn } // values can come in disorder so we upgrade only if it is bigger
-					if (mrOUT.whphase1 < val.Whout)  { mrOUT.whphase1 = val.Whout ; currentProducerMap[val.DeviceID] = mrOUT } // values can come in disorder so we upgrade only if it is bigger
+					if (mrInn.whphase1  < val.Whin)  { mrInn.whphase1 = val.Whin  ; currentConsumerMap[val.DeviceID] = mrInn; comment += fmt.Sprintf(" current Consum ") } // values can come in disorder so we upgrade only if it is bigger
+					if (mrOUT.whphase1 < val.Whout)  { mrOUT.whphase1 = val.Whout ; currentProducerMap[val.DeviceID] = mrOUT; comment += fmt.Sprintf(" current Produc ") } // values can come in disorder so we upgrade only if it is bigger
 				} 
 				case 2: {
 					if (mrInn.whphase2  < val.Whin)  { mrInn.whphase2 = val.Whin  ; currentConsumerMap[val.DeviceID] = mrInn } // values can come in disorder so we upgrade only if it is bigger
@@ -147,6 +153,11 @@ func (k Keeper) loadMeterReadingValues(ctx sdk.Context, cycleID uint64)(map[stri
 			} 
 		} 
 	}
+	comment	+= fmt.Sprintf("\n\npreviousConsumerMap:%+v\n\npreviousProducerMap:%+v\n\ncurrentConsumerMap:%+v\n\ncurrentProducerMap:%+v\n",previousConsumerMap, previousProducerMap, currentConsumerMap, currentProducerMap)
+	// Performance Management
+	elapsed	:= time.Since(start)
+	comment	+= fmt.Sprintf("\n# END # loadMeterReadingValues  took %s @ %s #############################\n", elapsed,time.Now())
+	writelog(comment)
 	return previousConsumerMap, previousProducerMap, currentConsumerMap, currentProducerMap, nil
 }
 
@@ -400,7 +411,7 @@ func makePrepareBill(ppcMap map[string]types.PowerPurchaseContract,ppaMap map[st
 	// CycleID definitions
 	PreviousCycleID := cycleID
 	PreviousCycleID--								// Decrement the current cycle ID to get the previous
-	comment = fmt.Sprintf("CycleID: %d  Previous CycleID: %d\n", cycleID, PreviousCycleID)
+	comment = fmt.Sprintf("# makePrepareBill # CycleID: %d  Previous CycleID: %d\n", cycleID, PreviousCycleID)
 
 	comment += "=== addCurrentProduction =============================================\n"
 	ppcMap = addCurrentProduction(ppcMap, currentCycleProduceOutMap, previousCycleProduceOutMap)
@@ -413,7 +424,7 @@ for customerDeviceID, _ := range currentCycleConsumeInMap {		// makePrepareBill 
 	thisCustomerBill.BillDate 			= uint64(time.Now().Unix()) 
 	thisCustomerBill.CustomerDeviceID	= customerDeviceID
 	thisCustomerBill.Paid 				= false
-	var consumed meterReading // Get the amount of WH consumed & Set the WH consumed value per phase 
+	var consumed meterReading 			// Get the amount of WH consumed & Set the WH consumed value per phase 
 	consumed.whphase1	 = currentCycleConsumeInMap[customerDeviceID].whphase1 - previousCycleConsumeInMap[customerDeviceID].whphase1
 	consumed.whphase2 	 = currentCycleConsumeInMap[customerDeviceID].whphase2 - previousCycleConsumeInMap[customerDeviceID].whphase2
 	consumed.whphase3	 = currentCycleConsumeInMap[customerDeviceID].whphase3 - previousCycleConsumeInMap[customerDeviceID].whphase3									
@@ -498,7 +509,7 @@ func (k msgServer) recordAllPreparedBills(goCtx context.Context, customerBill ma
 	start := time.Now()	
 	comment := "### START ### recordAllPreparedBills ########################\n"
 	// TO DO
-
+/*
 	jsonBill1, err := json.Marshal(customerBillingLines)
 	if err != nil {
         fmt.Printf("Error: %s", err.Error())
@@ -508,6 +519,7 @@ func (k msgServer) recordAllPreparedBills(goCtx context.Context, customerBill ma
         fmt.Printf("Error: %s", err.Error())
     }
 	fmt.Printf(" customerbillinglines JSon:%s \n producerbillinglines JSon:%s\n",string(jsonBill1),string(jsonBill2))
+	*/
 	elapsed := time.Since(start)
 	comment += fmt.Sprintf("### END ### recordAllPreparedBills took %s @ %s ###############\n", elapsed,time.Now())
 	writelog(comment)

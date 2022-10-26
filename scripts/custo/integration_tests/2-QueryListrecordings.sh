@@ -6,30 +6,39 @@
 # Created account "bob" with address "electra1krkk5xtp8s7lk9xf2az70txle50zfzga7dah87" with mnemonic: "address slogan history guitar fringe health coral dish exercise excite utility now thank mosquito soul vacuum doctor squeeze host never dinosaur afford tide tide"
 timestamp0=$(date +%s)
 echo $timestamp0
-electrad tx meter record $(date '+%s') 1 1000 0 230 50 958 16  --from alice -y  | grep "raw_log:"
-sleep 2
-electrad tx meter record $(date '+%s') 1 1200 0 230 50 975 17  --from bob -y  | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 0 2200 230 50 0 16  --from test1 -y | grep "raw_log:"
-sleep 1
+electrad tx meter record $(date '+%s') 1 1300 0 230000 50000 958 16  --from alice -y  | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 1500 0 230000 50000 975 17  --from bob -y  | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 0 3200 230000 50000 0 50  --from test1 -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 1200 0 230000 50000 0 16  --from test2 -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 0 6200 230000 50000 0 50  --from test3 -y | grep "raw_log:"
+sleep 0.5
 timestamp1=$(date +%s)
 echo $timestamp1
-electrad tx meter record $(date '+%s') 1 1000 0 230 50 958 16  --from alice -y | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 1200 0 230 50 975 17  --from bob -y | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 1000 0 230 50 958 16  --from alice -y | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 0 3300  230 50 0 16  --from test1 -y | grep "raw_log:"
-sleep 2
+electrad tx meter record $(date '+%s') 1 1400 0 230000 50000 958 16  --from alice -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 1600 0 230000 50000 975 17  --from bob -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 1500 0 230000 50000 958 16  --from alice -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 0 4000  230000 50000 0 16  --from test1 -y | grep "raw_log:"
+sleep 0.5
 timestamp2=$(date +%s)
 echo $timestamp2
-electrad tx meter record $(date '+%s') 1 1200 0 230 50 975 17  --from bob -y | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 1000 0 230 50 958 16  --from alice -y | grep "raw_log:"
-sleep 1
-electrad tx meter record $(date '+%s') 1 0 2000 230 50 0 16  --from test1 -y | grep "raw_log:"
-sleep 1
+electrad tx meter record $(date '+%s') 1 1800 0 230000 50000 975 17  --from bob -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 1600 0 230000 50000 958 16  --from alice -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 0 5000 230000 50000 0 16  --from test1 -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 1400 0 230000 50000 0 16  --from test2 -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 0 7000 230000 50000 0 16  --from test3 -y | grep "raw_log:"
+sleep 0.5
+electrad tx meter record $(date '+%s') 1 2000 230000 50000 0 16  --from bob -y | grep "raw_log:"
 timestamp3=$(date +%s)
 #Count all records from alice
 echo $timestamp0
