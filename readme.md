@@ -90,7 +90,8 @@ The frontend app is built using the `@starport/vue` and `@starport/vuex` package
 The smartmeter specs are under validation before first prototypes start moving to production.
 
 Most Standard IEC energy meters will be upgradable to blockchain meters using the rugged Electra blockchain appliance. The Electra blockchain appliance connects to legacy meters with its infrared data reading cable following IEC 62056 21 standard.
-[More on theIEC 62056 21 standard](https://community.openhab.org/t/reading-power-consumption-of-the-electricity-meter-with-the-ir-interface/94996)
+
+More on the [IEC 62056 21 standard](https://community.openhab.org/t/reading-power-consumption-of-the-electricity-meter-with-the-ir-interface/94996).
 
 ## Learn more
 - [Alkia IT Services Co., Ltd.](https://alkia.net)
