@@ -489,37 +489,105 @@ for customerDeviceID, _ := range currentCycleConsumeInMap {		// makePrepareBill 
 			}
 		}
 	}
-	comment += "### Output customerbill ###################\n"
-	jsonStr, _ := json.MarshalIndent(customerbill, "", " ")
-	comment += fmt.Sprintf("%+s\n",jsonStr)
-	comment += "### Output customerBillLines ###################\n"
-	jsonStr, _ = json.MarshalIndent(customerBillLines, "", " ")
-	comment += fmt.Sprintf("%+s\n",jsonStr)
-	comment += "### Output producerBillLines ###################\n"
-	jsonStr, _ = json.MarshalIndent(producerBillLines, "", " ")
-	comment += fmt.Sprintf("%+s\n",jsonStr)
-	elapsed := time.Since(start)
-	comment += fmt.Sprintf("### END ### makePrepareBill Cycle:%d took %s @ %s\n", cycleID, elapsed,time.Now())
+	comment 	+= "### Output customerbill ###################\n"
+	jsonStr, _ 	:= json.MarshalIndent(customerbill, "", " ")
+	comment 	+= fmt.Sprintf("%+s\n",jsonStr)
+	comment 	+= "### Output customerBillLines ###################\n"
+	jsonStr, _ 	= json.MarshalIndent(customerBillLines, "", " ")
+	comment 	+= fmt.Sprintf("%+s\n",jsonStr)
+	comment 	+= "### Output producerBillLines ###################\n"
+	jsonStr, _ 	= json.MarshalIndent(producerBillLines, "", " ")
+	comment 	+= fmt.Sprintf("%+s\n",jsonStr)
+	elapsed 	:= time.Since(start)
+	comment 	+= fmt.Sprintf("### END ### makePrepareBill Cycle:%d took %s @ %s\n", cycleID, elapsed,time.Now())
 	writelog(comment)
 	return customerbill, customerBillLines, producerBillLines, comment, err
 }
 
 func (k msgServer) recordAllPreparedBills(goCtx context.Context, customerBill map[string]types.Customerbills, customerBillingLines []types.Customerbillingline, producerBillingLines []types.Producerbillingline)( string,  error){
 	// Performance Management
-	start := time.Now()	
+	start 	:= time.Now()	
+	ctx		:= sdk.UnwrapSDKContext(goCtx)
 	comment := "### START ### recordAllPreparedBills ########################\n"
-	// TO DO
-/*
-	jsonBill1, err := json.Marshal(customerBillingLines)
-	if err != nil {
-        fmt.Printf("Error: %s", err.Error())
-    }
-	jsonBill2, err := json.Marshal(producerBillingLines)
-	if err != nil {
-        fmt.Printf("Error: %s", err.Error())
-    }
-	fmt.Printf(" customerbillinglines JSon:%s \n producerbillinglines JSon:%s\n",string(jsonBill1),string(jsonBill2))
-	*/
+	//////// customer Bill /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	for _, cbill := range customerBill{
+		// Check if the value already exists
+		_, isFound := k.GetCustomerbills(
+			ctx,
+			cbill.BillCycleID,
+			cbill.CustomerDeviceID,
+		) 
+		if isFound {
+			errmsg := fmt.Sprintf("# recordAllPreparedBills # Error: index already set Cycle:%d Customer:%s\n", cbill.BillCycleID, cbill.CustomerDeviceID )
+			comment += errmsg
+		} else {
+			if (cbill.BillTotalPrice>0) {
+				//  set the specific customerbillingline in the store from its index
+				k.SetCustomerbills(
+					ctx,
+					cbill,
+				)
+				comment += fmt.Sprintf("# recordAllPreparedBills # OK customer Bill REGISTERED Cycle:%d Total:%d %s Customer:%s\n", cbill.BillCycleID, cbill.BillTotalPrice, cbill.BillCurrency, resolvName(cbill.CustomerDeviceID) )
+				} else {
+					comment += fmt.Sprintf("# recordAllPreparedBills # WARNING cannot register when price =0 Cycle:%d Total:%d %s Customer:%s\n", cbill.BillCycleID, cbill.BillTotalPrice, cbill.BillCurrency, resolvName(cbill.CustomerDeviceID))
+			}
+		} 
+	}
+	//////// customer billing line /////////////////////////////////////////////////////////////////////////////////////////////////////
+	for _, cbill := range customerBillingLines{
+		// Check if the value already exists
+		_, isFound := k.GetCustomerbillingline(
+			ctx,
+			cbill.CustomerDeviceID,
+			cbill.CycleID,
+			cbill.Lineid,
+		)
+		if isFound {
+			errmsg := fmt.Sprintf("# recordAllPreparedBills # Error: index already set Line:%d Cycle:%d Customer:%s\n", cbill.Lineid, cbill.CycleID, resolvName(cbill.CustomerDeviceID))
+			comment += errmsg
+			// sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, errmsg)
+		} else {
+			if (cbill.LineWhTotalPrice>0) {
+				//  set the specific customerbillingline in the store from its index
+				k.SetCustomerbillingline(
+					ctx,
+					cbill,
+				)
+				comment += fmt.Sprintf("# recordAllPreparedBills # OK Customer billing line REGISTERED Cycle:%d Line:%d Phase:%d Total:%d %s Customer:%s\n", cbill.CycleID, cbill.Lineid, cbill.Phase, cbill.LineWhTotalPrice, cbill.Curency, resolvName(cbill.CustomerDeviceID))
+				} else {
+					comment += fmt.Sprintf("# recordAllPreparedBills # WARNING price =0 Cycle:%d Line:%d Phase:%d Total:%d %s Customer:%s\n", cbill.CycleID, cbill.Lineid, cbill.Phase, cbill.LineWhTotalPrice, cbill.Curency, resolvName(cbill.CustomerDeviceID))
+			}
+		} 
+	}
+	//////// producer billing line /////////////////////////////////////////////////////////////////////////////////////////////////////
+	for _, cbill := range producerBillingLines{
+		// Check if the value already exists
+		_, isFound := k.GetCustomerbillingline(
+			ctx,
+			cbill.ProducerDeviceID,
+			cbill.CycleID,
+			cbill.Lineid,
+		)
+		if isFound {
+			errmsg := fmt.Sprintf("# recordAllPreparedBills # Error: index already set Line:%d Cycle:%d Producer:%s\n", cbill.Lineid, cbill.CycleID, resolvName(cbill.ProducerDeviceID))
+			comment += errmsg
+			// sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, errmsg)
+		} else {
+			if (cbill.LineWhTotalPrice>0) {
+				//  set the specific customerbillingline in the store from its index
+				k.SetProducerbillingline(
+					ctx,
+					cbill,
+				)
+				comment += fmt.Sprintf("# recordAllPreparedBills # OK Producer billing line REGISTERED Cycle:%d Line:%d Phase:%d Total:%d %s Producer:%s Customer:%s\n", cbill.CycleID, cbill.Lineid, cbill.Phase, cbill.LineWhTotalPrice, cbill.Curency, resolvName(cbill.ProducerDeviceID), resolvName(cbill.CustomerDeviceID))
+				} else {
+					comment += fmt.Sprintf("# recordAllPreparedBills # WARNING price =0 Cycle:%d Line:%d Phase:%d Total:%d Producer:%s %s Customer:%s\n", cbill.CycleID, cbill.Lineid, cbill.Phase, cbill.LineWhTotalPrice, cbill.Curency, resolvName(cbill.ProducerDeviceID), resolvName(cbill.CustomerDeviceID))
+			}
+		} 
+	}
+
+	// TO DO: save the bill in Json
+
 	elapsed := time.Since(start)
 	comment += fmt.Sprintf("### END ### recordAllPreparedBills took %s @ %s ###############\n", elapsed,time.Now())
 	writelog(comment)
