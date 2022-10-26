@@ -86,6 +86,11 @@ The frontend app is built using the `@starport/vue` and `@starport/vuex` package
 
 ## Implementing the blockachain meter
 ![Electra Logo](/vue/public/ElectraSmartMeter.png "Electra BlockChain Smart Meter")
+
+The smartmeter specs are under validation before first prototypes start moving to production.
+
+Most Standard IEC energy meters will be upgradable to blockchain meters using the rugged Electra blockchain appliance. The Electra blockchain appliance connects to legacy meters with its infrared data reading cable following IEC 62056 21 standard.
+
 ## Learn more
 - [Alkia IT Services Co., Ltd.](https://alkia.net)
 - [Cosmos SDK docs](https://docs.cosmos.network)
