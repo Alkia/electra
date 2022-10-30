@@ -17,7 +17,7 @@
     sudo apt update && sudo apt upgrade -y && \
     sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
     
-## GO 18.7 (one command)
+## Install GO 18.7 (one command)
     wget https://golang.org/dl/go1.18.7.linux-amd64.tar.gz; \
     rm -rv /usr/local/go; \
     tar -C /usr/local -xzf go1.18.7.linux-amd64.tar.gz && \
@@ -28,7 +28,7 @@
     
 ## Build    (27.10.22)
     git clone https://github.com/evmos/evmos
-    cd evmos
+    cd electra
     git checkout v1.0.1
     make install
 `electrad version`
