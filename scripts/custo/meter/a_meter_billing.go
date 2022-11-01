@@ -541,6 +541,7 @@ func (k msgServer) recordAllPreparedBills(goCtx context.Context, customerBill ma
 			cbill.CustomerDeviceID,
 			cbill.CycleID,
 			cbill.Lineid,
+			cbill.Paid,
 		)
 		if isFound {
 			errmsg := fmt.Sprintf("# recordAllPreparedBills # Error: index already set Line:%d Cycle:%d Customer:%s\n", cbill.Lineid, cbill.CycleID, resolvName(cbill.CustomerDeviceID))
@@ -594,6 +595,7 @@ func (k msgServer) recordAllPreparedBills(goCtx context.Context, customerBill ma
 			cbill.ProducerDeviceID,
 			cbill.CycleID,
 			cbill.Lineid,
+			cbill.Paid,
 		)
 		if isFound {
 			errmsg := fmt.Sprintf("# recordAllPreparedBills # Error: index already set Line:%d Cycle:%d Producer:%s\n", cbill.Lineid, cbill.CycleID, resolvName(cbill.ProducerDeviceID))

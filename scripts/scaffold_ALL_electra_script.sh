@@ -169,5 +169,5 @@ echo Execution time was `expr $end - $start` seconds.
 rm ~/scaffold_ALL_electra_script.sh
 
 code .
-# ignite chain serve
+ignite chain serve
 ##################################################################################################################

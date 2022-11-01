@@ -275,7 +275,7 @@ message QueryGetCustomerbillinglineRequest {
 	  string customerDeviceID = 1;
   uint64 cycleID = 2;
   uint64 lineid = 3;
-
+  bool paid = 4;
 }
 
 message QueryGetCustomerbillinglineResponse {
@@ -330,7 +330,7 @@ message QueryGetProducerbillinglineRequest {
 	  string producerDeviceID = 1;
   uint64 cycleID = 2;
   uint64 lineid = 3;
-
+  bool paid = 4;
 }
 
 message QueryGetProducerbillinglineResponse {
