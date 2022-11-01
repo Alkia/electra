@@ -24,7 +24,8 @@
 # SUCH DAMAGE.
 #
 DESTINATION="/home/alkia/electra"
-SOURCE__DIR="/home/alkia/electra01"
+#SOURCE__DIR="/home/alkia/electra01"
+SOURCE__DIR="/home/alkia/projects/electra"
 BACKUP__DIR="/home/alkia/tmp"
 # cp electra01/scripts/scaffold_ALL_electra_script.sh .
 ##################################################################################################################
