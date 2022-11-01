@@ -1,8 +1,36 @@
 accounts:
+  - name: test1
+    coins: ["20000token", "200000000stake", "200000000000uelectra"]
+    mnemonic: slogan wreck armor floor change female industry smart daughter spawn today
+    system shop pigeon game olive always dish camp response can perfect salon stone
+  - name: test2
+    coins: ["20000token", "200000000stake", "200000000000uelectra"]
+    mnemonic: boil silk digital carry photo explain kitchen wall unusual garlic suspect
+    leave accident discover banana catch margin reward gap asset raccoon anchor leisure
+    ostrich    
+  - name: test3
+    coins: ["20000token", "200000000stake", "200000000000uelectra"]    
+    mnemonic: bounce duty afraid make item occur curious mention stamp lava inspire
+    shock wall hungry culture apart harsh icon burden glide cabbage deal during charge
   - name: alice
-    coins: ["20000token", "200000000stake"]
+    coins: ["20000token", "200000000stake", "200000000000uelectra"]
+    mnemonic: satisfy dirt consider electric apart coin later recall enhance pizza dust
+    way shop erosion innocent actor member double always budget rival congress person
+    uncle
   - name: bob
-    coins: ["10000token", "100000000stake"]
+    coins: ["10000token", "100000000stake", "200000000000uelectra"]
+    mnemonic: address slogan history guitar fringe health coral dish exercise excite
+    utility now thank mosquito soul vacuum doctor squeeze host never dinosaur afford
+    tide tide
+  - name: prod1
+    coins: ["10000token", "100000000stake", "200000000000uelectra"]
+    mnemonic: thing lamp dwarf pupil hundred harsh snack review chest pledge people
+    normal pattern shoe cereal drill staff people finger type timber buddy grab rate
+  - name: prod2
+  coins: ["10000token", "100000000stake", "200000000000uelectra"]
+    mnemonic: invest theme among elbow weekend couple erode oyster stand enjoy series
+    collect ripple fringe actual muscle idle vast heavy brass donkey minimum envelope
+    capable    
 validator:
   name: alice
   staked: "100000000stake"
@@ -13,4 +41,4 @@ client:
     path: "vue/src/store"
 faucet:
   name: bob
-  coins: ["5token", "100000stake"]
+  coins: ["5token", "100000stake", "20000000uelectra"]
