@@ -61,6 +61,21 @@ git push origin v0.1.5
 
 After a draft release is created, make your final changes from the release page and publish it.
 
+#### Code review format
+Opening a pull request (PR) will automatically create Summary and Test plan fields in the description. In the summary, add a high-level summary of what the change entails. For pull requests that scaffold ignite code, include the ignite scaffold commands run.
+###### Summary
+Add summary of the pull request here (*E.g. This pull request adds XYZ feature to the x/ABC module and associated unit tests.*)
+###### Unit tests
+
+To run unit tests for the whole project, execute:
+`make unit-test`
+To run unit tests for a particular module (e.g. the meter module), execute:
+`make unit-test path=meter`
+To run unit tests for a particular package (e.g. the meter module), execute:
+`make unit-test path=meter/types`
+To inspect unit test coverage, execute:
+`make test-cover`
+
 ### Install
 
 To install the latest version of your Electra blockchain node's binary, execute the following command on your machine:
@@ -109,3 +124,17 @@ As far as the law allows, this software comes as is, without any warranty or con
 https://docs.tendermint.com/master/tendermint-core/validators.html
 https://hub.cosmos.network/master/validators/overview.html
 
+## Attribution
+
+Electra is proud to be an open-source project, and we welcome all other projects to use our repo. We use modules from the cosmos-sdk and other open source projects.
+
+We have ourselves used the following modules from fellow Cosmos projects. Huge thank you to these projects!
+
+We use the following modules from [Osmosis](https://github.com/osmosis-labs/osmosis) provided  under [this License](https://github.com/osmosis-labs/osmosis/blob/main/LICENSE):
+```
+x/epochs
+x/mint
+```
+We use the following module (marketed as public infra) from [Quicksilver](https://github.com/ingenuity-build/quicksilver) provided under [this License](https://github.com/ingenuity-build/quicksilver/blob/main/LICENSE): 
+```
+x/interchainqueries

@@ -31,6 +31,7 @@ accounts:
 - name: bob
   coins:
   - 1000000000000uelectra
+  - 25000ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9
   mnemonic: address slogan history guitar fringe health coral dish exercise excite
     utility now thank mosquito soul vacuum doctor squeeze host never dinosaur afford
     tide tide
