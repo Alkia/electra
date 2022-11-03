@@ -832,19 +832,6 @@ export default {
 		},
 		
 		
-		async sendMsgDeleteProducerbillingline({ rootGetters }, { value, fee = [], memo = '' }) {
-			try {
-				const client=await initClient(rootGetters)
-				const result = await client.ElectraMeter.tx.sendMsgDeleteProducerbillingline({ value, fee: {amount: fee, gas: "200000"}, memo })
-				return result
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgDeleteProducerbillingline:Init Could not initialize signing client. Wallet is required.')
-				}else{
-					throw new Error('TxClient:MsgDeleteProducerbillingline:Send Could not broadcast Tx: '+ e.message)
-				}
-			}
-		},
 		async sendMsgUpdatePpaMap({ rootGetters }, { value, fee = [], memo = '' }) {
 			try {
 				const client=await initClient(rootGetters)
@@ -855,110 +842,6 @@ export default {
 					throw new Error('TxClient:MsgUpdatePpaMap:Init Could not initialize signing client. Wallet is required.')
 				}else{
 					throw new Error('TxClient:MsgUpdatePpaMap:Send Could not broadcast Tx: '+ e.message)
-				}
-			}
-		},
-		async sendMsgUpdateBillingcycles({ rootGetters }, { value, fee = [], memo = '' }) {
-			try {
-				const client=await initClient(rootGetters)
-				const result = await client.ElectraMeter.tx.sendMsgUpdateBillingcycles({ value, fee: {amount: fee, gas: "200000"}, memo })
-				return result
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgUpdateBillingcycles:Init Could not initialize signing client. Wallet is required.')
-				}else{
-					throw new Error('TxClient:MsgUpdateBillingcycles:Send Could not broadcast Tx: '+ e.message)
-				}
-			}
-		},
-		async sendMsgUpdatePowerPurchaseContract({ rootGetters }, { value, fee = [], memo = '' }) {
-			try {
-				const client=await initClient(rootGetters)
-				const result = await client.ElectraMeter.tx.sendMsgUpdatePowerPurchaseContract({ value, fee: {amount: fee, gas: "200000"}, memo })
-				return result
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgUpdatePowerPurchaseContract:Init Could not initialize signing client. Wallet is required.')
-				}else{
-					throw new Error('TxClient:MsgUpdatePowerPurchaseContract:Send Could not broadcast Tx: '+ e.message)
-				}
-			}
-		},
-		async sendMsgCreatePowerPurchaseContract({ rootGetters }, { value, fee = [], memo = '' }) {
-			try {
-				const client=await initClient(rootGetters)
-				const result = await client.ElectraMeter.tx.sendMsgCreatePowerPurchaseContract({ value, fee: {amount: fee, gas: "200000"}, memo })
-				return result
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgCreatePowerPurchaseContract:Init Could not initialize signing client. Wallet is required.')
-				}else{
-					throw new Error('TxClient:MsgCreatePowerPurchaseContract:Send Could not broadcast Tx: '+ e.message)
-				}
-			}
-		},
-		async sendMsgCreateBillingcycles({ rootGetters }, { value, fee = [], memo = '' }) {
-			try {
-				const client=await initClient(rootGetters)
-				const result = await client.ElectraMeter.tx.sendMsgCreateBillingcycles({ value, fee: {amount: fee, gas: "200000"}, memo })
-				return result
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgCreateBillingcycles:Init Could not initialize signing client. Wallet is required.')
-				}else{
-					throw new Error('TxClient:MsgCreateBillingcycles:Send Could not broadcast Tx: '+ e.message)
-				}
-			}
-		},
-		async sendMsgRecord3({ rootGetters }, { value, fee = [], memo = '' }) {
-			try {
-				const client=await initClient(rootGetters)
-				const result = await client.ElectraMeter.tx.sendMsgRecord3({ value, fee: {amount: fee, gas: "200000"}, memo })
-				return result
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgRecord3:Init Could not initialize signing client. Wallet is required.')
-				}else{
-					throw new Error('TxClient:MsgRecord3:Send Could not broadcast Tx: '+ e.message)
-				}
-			}
-		},
-		async sendMsgUpdateCustomerbills({ rootGetters }, { value, fee = [], memo = '' }) {
-			try {
-				const client=await initClient(rootGetters)
-				const result = await client.ElectraMeter.tx.sendMsgUpdateCustomerbills({ value, fee: {amount: fee, gas: "200000"}, memo })
-				return result
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgUpdateCustomerbills:Init Could not initialize signing client. Wallet is required.')
-				}else{
-					throw new Error('TxClient:MsgUpdateCustomerbills:Send Could not broadcast Tx: '+ e.message)
-				}
-			}
-		},
-		async sendMsgRecord({ rootGetters }, { value, fee = [], memo = '' }) {
-			try {
-				const client=await initClient(rootGetters)
-				const result = await client.ElectraMeter.tx.sendMsgRecord({ value, fee: {amount: fee, gas: "200000"}, memo })
-				return result
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgRecord:Init Could not initialize signing client. Wallet is required.')
-				}else{
-					throw new Error('TxClient:MsgRecord:Send Could not broadcast Tx: '+ e.message)
-				}
-			}
-		},
-		async sendMsgDeleteCustomerbills({ rootGetters }, { value, fee = [], memo = '' }) {
-			try {
-				const client=await initClient(rootGetters)
-				const result = await client.ElectraMeter.tx.sendMsgDeleteCustomerbills({ value, fee: {amount: fee, gas: "200000"}, memo })
-				return result
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgDeleteCustomerbills:Init Could not initialize signing client. Wallet is required.')
-				}else{
-					throw new Error('TxClient:MsgDeleteCustomerbills:Send Could not broadcast Tx: '+ e.message)
 				}
 			}
 		},
@@ -975,55 +858,42 @@ export default {
 				}
 			}
 		},
-		async sendMsgUpdateCustomerbillingline({ rootGetters }, { value, fee = [], memo = '' }) {
+		async sendMsgCreateBillingcycles({ rootGetters }, { value, fee = [], memo = '' }) {
 			try {
 				const client=await initClient(rootGetters)
-				const result = await client.ElectraMeter.tx.sendMsgUpdateCustomerbillingline({ value, fee: {amount: fee, gas: "200000"}, memo })
+				const result = await client.ElectraMeter.tx.sendMsgCreateBillingcycles({ value, fee: {amount: fee, gas: "200000"}, memo })
 				return result
 			} catch (e) {
 				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgUpdateCustomerbillingline:Init Could not initialize signing client. Wallet is required.')
+					throw new Error('TxClient:MsgCreateBillingcycles:Init Could not initialize signing client. Wallet is required.')
 				}else{
-					throw new Error('TxClient:MsgUpdateCustomerbillingline:Send Could not broadcast Tx: '+ e.message)
+					throw new Error('TxClient:MsgCreateBillingcycles:Send Could not broadcast Tx: '+ e.message)
 				}
 			}
 		},
-		async sendMsgCreatePpaMap({ rootGetters }, { value, fee = [], memo = '' }) {
+		async sendMsgUpdateCustomerbills({ rootGetters }, { value, fee = [], memo = '' }) {
 			try {
 				const client=await initClient(rootGetters)
-				const result = await client.ElectraMeter.tx.sendMsgCreatePpaMap({ value, fee: {amount: fee, gas: "200000"}, memo })
+				const result = await client.ElectraMeter.tx.sendMsgUpdateCustomerbills({ value, fee: {amount: fee, gas: "200000"}, memo })
 				return result
 			} catch (e) {
 				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgCreatePpaMap:Init Could not initialize signing client. Wallet is required.')
+					throw new Error('TxClient:MsgUpdateCustomerbills:Init Could not initialize signing client. Wallet is required.')
 				}else{
-					throw new Error('TxClient:MsgCreatePpaMap:Send Could not broadcast Tx: '+ e.message)
+					throw new Error('TxClient:MsgUpdateCustomerbills:Send Could not broadcast Tx: '+ e.message)
 				}
 			}
 		},
-		async sendMsgCreateCustomerbills({ rootGetters }, { value, fee = [], memo = '' }) {
+		async sendMsgDeleteProducerbillingline({ rootGetters }, { value, fee = [], memo = '' }) {
 			try {
 				const client=await initClient(rootGetters)
-				const result = await client.ElectraMeter.tx.sendMsgCreateCustomerbills({ value, fee: {amount: fee, gas: "200000"}, memo })
+				const result = await client.ElectraMeter.tx.sendMsgDeleteProducerbillingline({ value, fee: {amount: fee, gas: "200000"}, memo })
 				return result
 			} catch (e) {
 				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgCreateCustomerbills:Init Could not initialize signing client. Wallet is required.')
+					throw new Error('TxClient:MsgDeleteProducerbillingline:Init Could not initialize signing client. Wallet is required.')
 				}else{
-					throw new Error('TxClient:MsgCreateCustomerbills:Send Could not broadcast Tx: '+ e.message)
-				}
-			}
-		},
-		async sendMsgUpdateProducerbillingline({ rootGetters }, { value, fee = [], memo = '' }) {
-			try {
-				const client=await initClient(rootGetters)
-				const result = await client.ElectraMeter.tx.sendMsgUpdateProducerbillingline({ value, fee: {amount: fee, gas: "200000"}, memo })
-				return result
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgUpdateProducerbillingline:Init Could not initialize signing client. Wallet is required.')
-				}else{
-					throw new Error('TxClient:MsgUpdateProducerbillingline:Send Could not broadcast Tx: '+ e.message)
+					throw new Error('TxClient:MsgDeleteProducerbillingline:Send Could not broadcast Tx: '+ e.message)
 				}
 			}
 		},
@@ -1040,29 +910,16 @@ export default {
 				}
 			}
 		},
-		async sendMsgUpdateProducerbills({ rootGetters }, { value, fee = [], memo = '' }) {
+		async sendMsgCreatePpaMap({ rootGetters }, { value, fee = [], memo = '' }) {
 			try {
 				const client=await initClient(rootGetters)
-				const result = await client.ElectraMeter.tx.sendMsgUpdateProducerbills({ value, fee: {amount: fee, gas: "200000"}, memo })
+				const result = await client.ElectraMeter.tx.sendMsgCreatePpaMap({ value, fee: {amount: fee, gas: "200000"}, memo })
 				return result
 			} catch (e) {
 				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgUpdateProducerbills:Init Could not initialize signing client. Wallet is required.')
+					throw new Error('TxClient:MsgCreatePpaMap:Init Could not initialize signing client. Wallet is required.')
 				}else{
-					throw new Error('TxClient:MsgUpdateProducerbills:Send Could not broadcast Tx: '+ e.message)
-				}
-			}
-		},
-		async sendMsgDeleteCustomerbillingline({ rootGetters }, { value, fee = [], memo = '' }) {
-			try {
-				const client=await initClient(rootGetters)
-				const result = await client.ElectraMeter.tx.sendMsgDeleteCustomerbillingline({ value, fee: {amount: fee, gas: "200000"}, memo })
-				return result
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgDeleteCustomerbillingline:Init Could not initialize signing client. Wallet is required.')
-				}else{
-					throw new Error('TxClient:MsgDeleteCustomerbillingline:Send Could not broadcast Tx: '+ e.message)
+					throw new Error('TxClient:MsgCreatePpaMap:Send Could not broadcast Tx: '+ e.message)
 				}
 			}
 		},
@@ -1079,6 +936,110 @@ export default {
 				}
 			}
 		},
+		async sendMsgUpdateProducerbills({ rootGetters }, { value, fee = [], memo = '' }) {
+			try {
+				const client=await initClient(rootGetters)
+				const result = await client.ElectraMeter.tx.sendMsgUpdateProducerbills({ value, fee: {amount: fee, gas: "200000"}, memo })
+				return result
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgUpdateProducerbills:Init Could not initialize signing client. Wallet is required.')
+				}else{
+					throw new Error('TxClient:MsgUpdateProducerbills:Send Could not broadcast Tx: '+ e.message)
+				}
+			}
+		},
+		async sendMsgRecord3({ rootGetters }, { value, fee = [], memo = '' }) {
+			try {
+				const client=await initClient(rootGetters)
+				const result = await client.ElectraMeter.tx.sendMsgRecord3({ value, fee: {amount: fee, gas: "200000"}, memo })
+				return result
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgRecord3:Init Could not initialize signing client. Wallet is required.')
+				}else{
+					throw new Error('TxClient:MsgRecord3:Send Could not broadcast Tx: '+ e.message)
+				}
+			}
+		},
+		async sendMsgCreatePowerPurchaseContract({ rootGetters }, { value, fee = [], memo = '' }) {
+			try {
+				const client=await initClient(rootGetters)
+				const result = await client.ElectraMeter.tx.sendMsgCreatePowerPurchaseContract({ value, fee: {amount: fee, gas: "200000"}, memo })
+				return result
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgCreatePowerPurchaseContract:Init Could not initialize signing client. Wallet is required.')
+				}else{
+					throw new Error('TxClient:MsgCreatePowerPurchaseContract:Send Could not broadcast Tx: '+ e.message)
+				}
+			}
+		},
+		async sendMsgDeleteCustomerbillingline({ rootGetters }, { value, fee = [], memo = '' }) {
+			try {
+				const client=await initClient(rootGetters)
+				const result = await client.ElectraMeter.tx.sendMsgDeleteCustomerbillingline({ value, fee: {amount: fee, gas: "200000"}, memo })
+				return result
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgDeleteCustomerbillingline:Init Could not initialize signing client. Wallet is required.')
+				}else{
+					throw new Error('TxClient:MsgDeleteCustomerbillingline:Send Could not broadcast Tx: '+ e.message)
+				}
+			}
+		},
+		async sendMsgCreateCustomerbills({ rootGetters }, { value, fee = [], memo = '' }) {
+			try {
+				const client=await initClient(rootGetters)
+				const result = await client.ElectraMeter.tx.sendMsgCreateCustomerbills({ value, fee: {amount: fee, gas: "200000"}, memo })
+				return result
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgCreateCustomerbills:Init Could not initialize signing client. Wallet is required.')
+				}else{
+					throw new Error('TxClient:MsgCreateCustomerbills:Send Could not broadcast Tx: '+ e.message)
+				}
+			}
+		},
+		async sendMsgUpdateBillingcycles({ rootGetters }, { value, fee = [], memo = '' }) {
+			try {
+				const client=await initClient(rootGetters)
+				const result = await client.ElectraMeter.tx.sendMsgUpdateBillingcycles({ value, fee: {amount: fee, gas: "200000"}, memo })
+				return result
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgUpdateBillingcycles:Init Could not initialize signing client. Wallet is required.')
+				}else{
+					throw new Error('TxClient:MsgUpdateBillingcycles:Send Could not broadcast Tx: '+ e.message)
+				}
+			}
+		},
+		async sendMsgUpdateProducerbillingline({ rootGetters }, { value, fee = [], memo = '' }) {
+			try {
+				const client=await initClient(rootGetters)
+				const result = await client.ElectraMeter.tx.sendMsgUpdateProducerbillingline({ value, fee: {amount: fee, gas: "200000"}, memo })
+				return result
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgUpdateProducerbillingline:Init Could not initialize signing client. Wallet is required.')
+				}else{
+					throw new Error('TxClient:MsgUpdateProducerbillingline:Send Could not broadcast Tx: '+ e.message)
+				}
+			}
+		},
+		async sendMsgRecord({ rootGetters }, { value, fee = [], memo = '' }) {
+			try {
+				const client=await initClient(rootGetters)
+				const result = await client.ElectraMeter.tx.sendMsgRecord({ value, fee: {amount: fee, gas: "200000"}, memo })
+				return result
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgRecord:Init Could not initialize signing client. Wallet is required.')
+				}else{
+					throw new Error('TxClient:MsgRecord:Send Could not broadcast Tx: '+ e.message)
+				}
+			}
+		},
 		async sendMsgCreateCustomerbillingline({ rootGetters }, { value, fee = [], memo = '' }) {
 			try {
 				const client=await initClient(rootGetters)
@@ -1089,45 +1050,6 @@ export default {
 					throw new Error('TxClient:MsgCreateCustomerbillingline:Init Could not initialize signing client. Wallet is required.')
 				}else{
 					throw new Error('TxClient:MsgCreateCustomerbillingline:Send Could not broadcast Tx: '+ e.message)
-				}
-			}
-		},
-		async sendMsgDeletePpaMap({ rootGetters }, { value, fee = [], memo = '' }) {
-			try {
-				const client=await initClient(rootGetters)
-				const result = await client.ElectraMeter.tx.sendMsgDeletePpaMap({ value, fee: {amount: fee, gas: "200000"}, memo })
-				return result
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgDeletePpaMap:Init Could not initialize signing client. Wallet is required.')
-				}else{
-					throw new Error('TxClient:MsgDeletePpaMap:Send Could not broadcast Tx: '+ e.message)
-				}
-			}
-		},
-		async sendMsgDeletePowerPurchaseContract({ rootGetters }, { value, fee = [], memo = '' }) {
-			try {
-				const client=await initClient(rootGetters)
-				const result = await client.ElectraMeter.tx.sendMsgDeletePowerPurchaseContract({ value, fee: {amount: fee, gas: "200000"}, memo })
-				return result
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgDeletePowerPurchaseContract:Init Could not initialize signing client. Wallet is required.')
-				}else{
-					throw new Error('TxClient:MsgDeletePowerPurchaseContract:Send Could not broadcast Tx: '+ e.message)
-				}
-			}
-		},
-		async sendMsgCreateProducerbillingline({ rootGetters }, { value, fee = [], memo = '' }) {
-			try {
-				const client=await initClient(rootGetters)
-				const result = await client.ElectraMeter.tx.sendMsgCreateProducerbillingline({ value, fee: {amount: fee, gas: "200000"}, memo })
-				return result
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgCreateProducerbillingline:Init Could not initialize signing client. Wallet is required.')
-				}else{
-					throw new Error('TxClient:MsgCreateProducerbillingline:Send Could not broadcast Tx: '+ e.message)
 				}
 			}
 		},
@@ -1144,20 +1066,85 @@ export default {
 				}
 			}
 		},
-		
-		async MsgDeleteProducerbillingline({ rootGetters }, { value }) {
+		async sendMsgCreateProducerbillingline({ rootGetters }, { value, fee = [], memo = '' }) {
 			try {
-				const client=initClient(rootGetters)
-				const msg = await client.ElectraMeter.tx.msgDeleteProducerbillingline({value})
-				return msg
+				const client=await initClient(rootGetters)
+				const result = await client.ElectraMeter.tx.sendMsgCreateProducerbillingline({ value, fee: {amount: fee, gas: "200000"}, memo })
+				return result
 			} catch (e) {
 				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgDeleteProducerbillingline:Init Could not initialize signing client. Wallet is required.')
-				} else{
-					throw new Error('TxClient:MsgDeleteProducerbillingline:Create Could not create message: ' + e.message)
+					throw new Error('TxClient:MsgCreateProducerbillingline:Init Could not initialize signing client. Wallet is required.')
+				}else{
+					throw new Error('TxClient:MsgCreateProducerbillingline:Send Could not broadcast Tx: '+ e.message)
 				}
 			}
 		},
+		async sendMsgDeletePpaMap({ rootGetters }, { value, fee = [], memo = '' }) {
+			try {
+				const client=await initClient(rootGetters)
+				const result = await client.ElectraMeter.tx.sendMsgDeletePpaMap({ value, fee: {amount: fee, gas: "200000"}, memo })
+				return result
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgDeletePpaMap:Init Could not initialize signing client. Wallet is required.')
+				}else{
+					throw new Error('TxClient:MsgDeletePpaMap:Send Could not broadcast Tx: '+ e.message)
+				}
+			}
+		},
+		async sendMsgDeleteCustomerbills({ rootGetters }, { value, fee = [], memo = '' }) {
+			try {
+				const client=await initClient(rootGetters)
+				const result = await client.ElectraMeter.tx.sendMsgDeleteCustomerbills({ value, fee: {amount: fee, gas: "200000"}, memo })
+				return result
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgDeleteCustomerbills:Init Could not initialize signing client. Wallet is required.')
+				}else{
+					throw new Error('TxClient:MsgDeleteCustomerbills:Send Could not broadcast Tx: '+ e.message)
+				}
+			}
+		},
+		async sendMsgDeletePowerPurchaseContract({ rootGetters }, { value, fee = [], memo = '' }) {
+			try {
+				const client=await initClient(rootGetters)
+				const result = await client.ElectraMeter.tx.sendMsgDeletePowerPurchaseContract({ value, fee: {amount: fee, gas: "200000"}, memo })
+				return result
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgDeletePowerPurchaseContract:Init Could not initialize signing client. Wallet is required.')
+				}else{
+					throw new Error('TxClient:MsgDeletePowerPurchaseContract:Send Could not broadcast Tx: '+ e.message)
+				}
+			}
+		},
+		async sendMsgUpdatePowerPurchaseContract({ rootGetters }, { value, fee = [], memo = '' }) {
+			try {
+				const client=await initClient(rootGetters)
+				const result = await client.ElectraMeter.tx.sendMsgUpdatePowerPurchaseContract({ value, fee: {amount: fee, gas: "200000"}, memo })
+				return result
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgUpdatePowerPurchaseContract:Init Could not initialize signing client. Wallet is required.')
+				}else{
+					throw new Error('TxClient:MsgUpdatePowerPurchaseContract:Send Could not broadcast Tx: '+ e.message)
+				}
+			}
+		},
+		async sendMsgUpdateCustomerbillingline({ rootGetters }, { value, fee = [], memo = '' }) {
+			try {
+				const client=await initClient(rootGetters)
+				const result = await client.ElectraMeter.tx.sendMsgUpdateCustomerbillingline({ value, fee: {amount: fee, gas: "200000"}, memo })
+				return result
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgUpdateCustomerbillingline:Init Could not initialize signing client. Wallet is required.')
+				}else{
+					throw new Error('TxClient:MsgUpdateCustomerbillingline:Send Could not broadcast Tx: '+ e.message)
+				}
+			}
+		},
+		
 		async MsgUpdatePpaMap({ rootGetters }, { value }) {
 			try {
 				const client=initClient(rootGetters)
@@ -1168,110 +1155,6 @@ export default {
 					throw new Error('TxClient:MsgUpdatePpaMap:Init Could not initialize signing client. Wallet is required.')
 				} else{
 					throw new Error('TxClient:MsgUpdatePpaMap:Create Could not create message: ' + e.message)
-				}
-			}
-		},
-		async MsgUpdateBillingcycles({ rootGetters }, { value }) {
-			try {
-				const client=initClient(rootGetters)
-				const msg = await client.ElectraMeter.tx.msgUpdateBillingcycles({value})
-				return msg
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgUpdateBillingcycles:Init Could not initialize signing client. Wallet is required.')
-				} else{
-					throw new Error('TxClient:MsgUpdateBillingcycles:Create Could not create message: ' + e.message)
-				}
-			}
-		},
-		async MsgUpdatePowerPurchaseContract({ rootGetters }, { value }) {
-			try {
-				const client=initClient(rootGetters)
-				const msg = await client.ElectraMeter.tx.msgUpdatePowerPurchaseContract({value})
-				return msg
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgUpdatePowerPurchaseContract:Init Could not initialize signing client. Wallet is required.')
-				} else{
-					throw new Error('TxClient:MsgUpdatePowerPurchaseContract:Create Could not create message: ' + e.message)
-				}
-			}
-		},
-		async MsgCreatePowerPurchaseContract({ rootGetters }, { value }) {
-			try {
-				const client=initClient(rootGetters)
-				const msg = await client.ElectraMeter.tx.msgCreatePowerPurchaseContract({value})
-				return msg
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgCreatePowerPurchaseContract:Init Could not initialize signing client. Wallet is required.')
-				} else{
-					throw new Error('TxClient:MsgCreatePowerPurchaseContract:Create Could not create message: ' + e.message)
-				}
-			}
-		},
-		async MsgCreateBillingcycles({ rootGetters }, { value }) {
-			try {
-				const client=initClient(rootGetters)
-				const msg = await client.ElectraMeter.tx.msgCreateBillingcycles({value})
-				return msg
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgCreateBillingcycles:Init Could not initialize signing client. Wallet is required.')
-				} else{
-					throw new Error('TxClient:MsgCreateBillingcycles:Create Could not create message: ' + e.message)
-				}
-			}
-		},
-		async MsgRecord3({ rootGetters }, { value }) {
-			try {
-				const client=initClient(rootGetters)
-				const msg = await client.ElectraMeter.tx.msgRecord3({value})
-				return msg
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgRecord3:Init Could not initialize signing client. Wallet is required.')
-				} else{
-					throw new Error('TxClient:MsgRecord3:Create Could not create message: ' + e.message)
-				}
-			}
-		},
-		async MsgUpdateCustomerbills({ rootGetters }, { value }) {
-			try {
-				const client=initClient(rootGetters)
-				const msg = await client.ElectraMeter.tx.msgUpdateCustomerbills({value})
-				return msg
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgUpdateCustomerbills:Init Could not initialize signing client. Wallet is required.')
-				} else{
-					throw new Error('TxClient:MsgUpdateCustomerbills:Create Could not create message: ' + e.message)
-				}
-			}
-		},
-		async MsgRecord({ rootGetters }, { value }) {
-			try {
-				const client=initClient(rootGetters)
-				const msg = await client.ElectraMeter.tx.msgRecord({value})
-				return msg
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgRecord:Init Could not initialize signing client. Wallet is required.')
-				} else{
-					throw new Error('TxClient:MsgRecord:Create Could not create message: ' + e.message)
-				}
-			}
-		},
-		async MsgDeleteCustomerbills({ rootGetters }, { value }) {
-			try {
-				const client=initClient(rootGetters)
-				const msg = await client.ElectraMeter.tx.msgDeleteCustomerbills({value})
-				return msg
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgDeleteCustomerbills:Init Could not initialize signing client. Wallet is required.')
-				} else{
-					throw new Error('TxClient:MsgDeleteCustomerbills:Create Could not create message: ' + e.message)
 				}
 			}
 		},
@@ -1288,55 +1171,42 @@ export default {
 				}
 			}
 		},
-		async MsgUpdateCustomerbillingline({ rootGetters }, { value }) {
+		async MsgCreateBillingcycles({ rootGetters }, { value }) {
 			try {
 				const client=initClient(rootGetters)
-				const msg = await client.ElectraMeter.tx.msgUpdateCustomerbillingline({value})
+				const msg = await client.ElectraMeter.tx.msgCreateBillingcycles({value})
 				return msg
 			} catch (e) {
 				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgUpdateCustomerbillingline:Init Could not initialize signing client. Wallet is required.')
+					throw new Error('TxClient:MsgCreateBillingcycles:Init Could not initialize signing client. Wallet is required.')
 				} else{
-					throw new Error('TxClient:MsgUpdateCustomerbillingline:Create Could not create message: ' + e.message)
+					throw new Error('TxClient:MsgCreateBillingcycles:Create Could not create message: ' + e.message)
 				}
 			}
 		},
-		async MsgCreatePpaMap({ rootGetters }, { value }) {
+		async MsgUpdateCustomerbills({ rootGetters }, { value }) {
 			try {
 				const client=initClient(rootGetters)
-				const msg = await client.ElectraMeter.tx.msgCreatePpaMap({value})
+				const msg = await client.ElectraMeter.tx.msgUpdateCustomerbills({value})
 				return msg
 			} catch (e) {
 				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgCreatePpaMap:Init Could not initialize signing client. Wallet is required.')
+					throw new Error('TxClient:MsgUpdateCustomerbills:Init Could not initialize signing client. Wallet is required.')
 				} else{
-					throw new Error('TxClient:MsgCreatePpaMap:Create Could not create message: ' + e.message)
+					throw new Error('TxClient:MsgUpdateCustomerbills:Create Could not create message: ' + e.message)
 				}
 			}
 		},
-		async MsgCreateCustomerbills({ rootGetters }, { value }) {
+		async MsgDeleteProducerbillingline({ rootGetters }, { value }) {
 			try {
 				const client=initClient(rootGetters)
-				const msg = await client.ElectraMeter.tx.msgCreateCustomerbills({value})
+				const msg = await client.ElectraMeter.tx.msgDeleteProducerbillingline({value})
 				return msg
 			} catch (e) {
 				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgCreateCustomerbills:Init Could not initialize signing client. Wallet is required.')
+					throw new Error('TxClient:MsgDeleteProducerbillingline:Init Could not initialize signing client. Wallet is required.')
 				} else{
-					throw new Error('TxClient:MsgCreateCustomerbills:Create Could not create message: ' + e.message)
-				}
-			}
-		},
-		async MsgUpdateProducerbillingline({ rootGetters }, { value }) {
-			try {
-				const client=initClient(rootGetters)
-				const msg = await client.ElectraMeter.tx.msgUpdateProducerbillingline({value})
-				return msg
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgUpdateProducerbillingline:Init Could not initialize signing client. Wallet is required.')
-				} else{
-					throw new Error('TxClient:MsgUpdateProducerbillingline:Create Could not create message: ' + e.message)
+					throw new Error('TxClient:MsgDeleteProducerbillingline:Create Could not create message: ' + e.message)
 				}
 			}
 		},
@@ -1353,29 +1223,16 @@ export default {
 				}
 			}
 		},
-		async MsgUpdateProducerbills({ rootGetters }, { value }) {
+		async MsgCreatePpaMap({ rootGetters }, { value }) {
 			try {
 				const client=initClient(rootGetters)
-				const msg = await client.ElectraMeter.tx.msgUpdateProducerbills({value})
+				const msg = await client.ElectraMeter.tx.msgCreatePpaMap({value})
 				return msg
 			} catch (e) {
 				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgUpdateProducerbills:Init Could not initialize signing client. Wallet is required.')
+					throw new Error('TxClient:MsgCreatePpaMap:Init Could not initialize signing client. Wallet is required.')
 				} else{
-					throw new Error('TxClient:MsgUpdateProducerbills:Create Could not create message: ' + e.message)
-				}
-			}
-		},
-		async MsgDeleteCustomerbillingline({ rootGetters }, { value }) {
-			try {
-				const client=initClient(rootGetters)
-				const msg = await client.ElectraMeter.tx.msgDeleteCustomerbillingline({value})
-				return msg
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgDeleteCustomerbillingline:Init Could not initialize signing client. Wallet is required.')
-				} else{
-					throw new Error('TxClient:MsgDeleteCustomerbillingline:Create Could not create message: ' + e.message)
+					throw new Error('TxClient:MsgCreatePpaMap:Create Could not create message: ' + e.message)
 				}
 			}
 		},
@@ -1392,6 +1249,110 @@ export default {
 				}
 			}
 		},
+		async MsgUpdateProducerbills({ rootGetters }, { value }) {
+			try {
+				const client=initClient(rootGetters)
+				const msg = await client.ElectraMeter.tx.msgUpdateProducerbills({value})
+				return msg
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgUpdateProducerbills:Init Could not initialize signing client. Wallet is required.')
+				} else{
+					throw new Error('TxClient:MsgUpdateProducerbills:Create Could not create message: ' + e.message)
+				}
+			}
+		},
+		async MsgRecord3({ rootGetters }, { value }) {
+			try {
+				const client=initClient(rootGetters)
+				const msg = await client.ElectraMeter.tx.msgRecord3({value})
+				return msg
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgRecord3:Init Could not initialize signing client. Wallet is required.')
+				} else{
+					throw new Error('TxClient:MsgRecord3:Create Could not create message: ' + e.message)
+				}
+			}
+		},
+		async MsgCreatePowerPurchaseContract({ rootGetters }, { value }) {
+			try {
+				const client=initClient(rootGetters)
+				const msg = await client.ElectraMeter.tx.msgCreatePowerPurchaseContract({value})
+				return msg
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgCreatePowerPurchaseContract:Init Could not initialize signing client. Wallet is required.')
+				} else{
+					throw new Error('TxClient:MsgCreatePowerPurchaseContract:Create Could not create message: ' + e.message)
+				}
+			}
+		},
+		async MsgDeleteCustomerbillingline({ rootGetters }, { value }) {
+			try {
+				const client=initClient(rootGetters)
+				const msg = await client.ElectraMeter.tx.msgDeleteCustomerbillingline({value})
+				return msg
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgDeleteCustomerbillingline:Init Could not initialize signing client. Wallet is required.')
+				} else{
+					throw new Error('TxClient:MsgDeleteCustomerbillingline:Create Could not create message: ' + e.message)
+				}
+			}
+		},
+		async MsgCreateCustomerbills({ rootGetters }, { value }) {
+			try {
+				const client=initClient(rootGetters)
+				const msg = await client.ElectraMeter.tx.msgCreateCustomerbills({value})
+				return msg
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgCreateCustomerbills:Init Could not initialize signing client. Wallet is required.')
+				} else{
+					throw new Error('TxClient:MsgCreateCustomerbills:Create Could not create message: ' + e.message)
+				}
+			}
+		},
+		async MsgUpdateBillingcycles({ rootGetters }, { value }) {
+			try {
+				const client=initClient(rootGetters)
+				const msg = await client.ElectraMeter.tx.msgUpdateBillingcycles({value})
+				return msg
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgUpdateBillingcycles:Init Could not initialize signing client. Wallet is required.')
+				} else{
+					throw new Error('TxClient:MsgUpdateBillingcycles:Create Could not create message: ' + e.message)
+				}
+			}
+		},
+		async MsgUpdateProducerbillingline({ rootGetters }, { value }) {
+			try {
+				const client=initClient(rootGetters)
+				const msg = await client.ElectraMeter.tx.msgUpdateProducerbillingline({value})
+				return msg
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgUpdateProducerbillingline:Init Could not initialize signing client. Wallet is required.')
+				} else{
+					throw new Error('TxClient:MsgUpdateProducerbillingline:Create Could not create message: ' + e.message)
+				}
+			}
+		},
+		async MsgRecord({ rootGetters }, { value }) {
+			try {
+				const client=initClient(rootGetters)
+				const msg = await client.ElectraMeter.tx.msgRecord({value})
+				return msg
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgRecord:Init Could not initialize signing client. Wallet is required.')
+				} else{
+					throw new Error('TxClient:MsgRecord:Create Could not create message: ' + e.message)
+				}
+			}
+		},
 		async MsgCreateCustomerbillingline({ rootGetters }, { value }) {
 			try {
 				const client=initClient(rootGetters)
@@ -1405,29 +1366,16 @@ export default {
 				}
 			}
 		},
-		async MsgDeletePpaMap({ rootGetters }, { value }) {
+		async MsgDeleteBillingcycles({ rootGetters }, { value }) {
 			try {
 				const client=initClient(rootGetters)
-				const msg = await client.ElectraMeter.tx.msgDeletePpaMap({value})
+				const msg = await client.ElectraMeter.tx.msgDeleteBillingcycles({value})
 				return msg
 			} catch (e) {
 				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgDeletePpaMap:Init Could not initialize signing client. Wallet is required.')
+					throw new Error('TxClient:MsgDeleteBillingcycles:Init Could not initialize signing client. Wallet is required.')
 				} else{
-					throw new Error('TxClient:MsgDeletePpaMap:Create Could not create message: ' + e.message)
-				}
-			}
-		},
-		async MsgDeletePowerPurchaseContract({ rootGetters }, { value }) {
-			try {
-				const client=initClient(rootGetters)
-				const msg = await client.ElectraMeter.tx.msgDeletePowerPurchaseContract({value})
-				return msg
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgDeletePowerPurchaseContract:Init Could not initialize signing client. Wallet is required.')
-				} else{
-					throw new Error('TxClient:MsgDeletePowerPurchaseContract:Create Could not create message: ' + e.message)
+					throw new Error('TxClient:MsgDeleteBillingcycles:Create Could not create message: ' + e.message)
 				}
 			}
 		},
@@ -1444,16 +1392,68 @@ export default {
 				}
 			}
 		},
-		async MsgDeleteBillingcycles({ rootGetters }, { value }) {
+		async MsgDeletePpaMap({ rootGetters }, { value }) {
 			try {
 				const client=initClient(rootGetters)
-				const msg = await client.ElectraMeter.tx.msgDeleteBillingcycles({value})
+				const msg = await client.ElectraMeter.tx.msgDeletePpaMap({value})
 				return msg
 			} catch (e) {
 				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgDeleteBillingcycles:Init Could not initialize signing client. Wallet is required.')
+					throw new Error('TxClient:MsgDeletePpaMap:Init Could not initialize signing client. Wallet is required.')
 				} else{
-					throw new Error('TxClient:MsgDeleteBillingcycles:Create Could not create message: ' + e.message)
+					throw new Error('TxClient:MsgDeletePpaMap:Create Could not create message: ' + e.message)
+				}
+			}
+		},
+		async MsgDeleteCustomerbills({ rootGetters }, { value }) {
+			try {
+				const client=initClient(rootGetters)
+				const msg = await client.ElectraMeter.tx.msgDeleteCustomerbills({value})
+				return msg
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgDeleteCustomerbills:Init Could not initialize signing client. Wallet is required.')
+				} else{
+					throw new Error('TxClient:MsgDeleteCustomerbills:Create Could not create message: ' + e.message)
+				}
+			}
+		},
+		async MsgDeletePowerPurchaseContract({ rootGetters }, { value }) {
+			try {
+				const client=initClient(rootGetters)
+				const msg = await client.ElectraMeter.tx.msgDeletePowerPurchaseContract({value})
+				return msg
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgDeletePowerPurchaseContract:Init Could not initialize signing client. Wallet is required.')
+				} else{
+					throw new Error('TxClient:MsgDeletePowerPurchaseContract:Create Could not create message: ' + e.message)
+				}
+			}
+		},
+		async MsgUpdatePowerPurchaseContract({ rootGetters }, { value }) {
+			try {
+				const client=initClient(rootGetters)
+				const msg = await client.ElectraMeter.tx.msgUpdatePowerPurchaseContract({value})
+				return msg
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgUpdatePowerPurchaseContract:Init Could not initialize signing client. Wallet is required.')
+				} else{
+					throw new Error('TxClient:MsgUpdatePowerPurchaseContract:Create Could not create message: ' + e.message)
+				}
+			}
+		},
+		async MsgUpdateCustomerbillingline({ rootGetters }, { value }) {
+			try {
+				const client=initClient(rootGetters)
+				const msg = await client.ElectraMeter.tx.msgUpdateCustomerbillingline({value})
+				return msg
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgUpdateCustomerbillingline:Init Could not initialize signing client. Wallet is required.')
+				} else{
+					throw new Error('TxClient:MsgUpdateCustomerbillingline:Create Could not create message: ' + e.message)
 				}
 			}
 		},

@@ -123,7 +123,8 @@ chmod a+x $SOURCE__DIR/scripts/custo/integration_tests/*.*
 cp $SOURCE__DIR/scripts $DESTINATION -r
 cp ./scripts/custo/public ./vue -r
 cp ./scripts/custo/vue/index.html ./vue
-cp ./scripts/custo/config.yml .
+cp ./scripts/custo/vue/.env* ./vue
+cp ./scripts/custo/config.ym* .
 cp ./scripts/custo/readme.md .
 cp ./scripts/custo/.gitignore .
 # Coding meter parameters ########################################################################################
