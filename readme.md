@@ -118,7 +118,7 @@ More on the [IEC 62056 21 standard](https://community.openhab.org/t/reading-powe
 - [Cosmos SDK docs](https://docs.cosmos.network)
 - [Developer Chat](https://discord.gg/ignite)
 
-![Link tree QR](/vue/public/LinktreeQR.pngg "QR to Link Tree")
+![Link tree QR](/vue/public/LinktreeQR.png "QR to Link Tree")
 
 
 ## Disclaimer | No Liability
