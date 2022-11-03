@@ -121,9 +121,12 @@ git commit -am "scaffold electra billing in meter module"
 chmod a+x $SOURCE__DIR/scripts/custo/integration_tests/*.*
 # Copy Scripts ###################################################################################################
 cp $SOURCE__DIR/scripts $DESTINATION -r
+# Copy Front End Customisation ###################################################################################################
 cp ./scripts/custo/public ./vue -r
 cp ./scripts/custo/vue/index.html ./vue
 cp ./scripts/custo/vue/.env* ./vue
+cp ./scripts/custo/vue/SpNavbar.vue ./vue/node_modules/@starport/vue/src/components/SpNavbar/SpNavbar.vue
+# Copy Front End Customisation ###################################################################################################
 cp ./scripts/custo/config.ym* .
 cp ./scripts/custo/readme.md .
 cp ./scripts/custo/.gitignore .
