@@ -85,7 +85,11 @@ curl https://get.ignite.com/alkia/electra@latest! | sudo bash
 ```
 `alkia/electra` are the `username` and `repo_name` of the Github repository to which the source code is pushed. 
 
-
+Edit /etc/security/limits.conf
+```
+$ ulimit -Sn 16384
+$ ulimit -Hn 65536
+```
 
 ### Web Frontend
 
@@ -110,6 +114,7 @@ More on the [IEC 62056 21 standard](https://community.openhab.org/t/reading-powe
 
 ## Learn more
 - [Alkia IT Services Co., Ltd.](https://alkia.net)
+- [Link tree](linktr.ee/alkia)
 - [Cosmos SDK docs](https://docs.cosmos.network)
 - [Developer Chat](https://discord.gg/ignite)
 
@@ -128,7 +133,7 @@ https://hub.cosmos.network/master/validators/overview.html
 
 Electra is proud to be an open-source project, and we welcome all other projects to use our repo. We use modules from the cosmos-sdk and other open source projects.
 
-We have ourselves used the following modules from fellow Cosmos projects. Huge thank you to these projects!
+We have ourselves used the following modules from fellow Cosmos projects. Big thank you to these projects!
 
 We use the following modules from [Osmosis](https://github.com/osmosis-labs/osmosis) provided  under [this License](https://github.com/osmosis-labs/osmosis/blob/main/LICENSE):
 ```
