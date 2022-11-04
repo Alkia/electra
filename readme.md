@@ -103,6 +103,9 @@ npm run serve
 
 The frontend app is built using the `@starport/vue` and `@starport/vuex` packages.
 
+## Deploying an Electra node
+To deploy a node on testnet-0 please follp the guide: ![Electra Node](https://github.com/Alkia/testnet-0/blob/main/README.md)
+
 ## Implementing the blockachain meter
 ![Electra Logo](/vue/public/ElectraSmartMeter.png "Electra BlockChain Smart Meter")
 
