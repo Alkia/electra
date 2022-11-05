@@ -1,0 +1,539 @@
+{ 
+  "app_hash" : "",
+  "app_state" : { 
+      "auth" : { 
+          "accounts" : [ 
+              { 
+                "@type" : "/cosmos.auth.v1beta1.BaseAccount",
+                "account_number" : "6",
+                "address" : "electra1rf56um69dum7em0kx9xen794x8gm49vxstkjwy",
+                "pub_key" : null,
+                "sequence" : "0"
+              },
+              { 
+                "@type" : "/cosmos.auth.v1beta1.ModuleAccount",
+                "base_account" : { 
+                    "account_number" : "13",
+                    "address" : "electra1yl6hdjhmkf37639730gffanpzndzdpmhjjcdvq",
+                    "pub_key" : null,
+                    "sequence" : "0"
+                  },
+                "name" : "transfer",
+                "permissions" : [ 
+                    "minter",
+                    "burner"
+                  ]
+              },
+              { 
+                "@type" : "/cosmos.auth.v1beta1.BaseAccount",
+                "account_number" : "2",
+                "address" : "electra19mhfyxz7532gumtyw5zrq00qv23mqtc4plgfzy",
+                "pub_key" : null,
+                "sequence" : "0"
+              },
+              { 
+                "@type" : "/cosmos.auth.v1beta1.ModuleAccount",
+                "base_account" : { 
+                    "account_number" : "9",
+                    "address" : "electra1fl48vsnmsdzcv85q5d2q4z5ajdha8yu3fk8tz5",
+                    "pub_key" : null,
+                    "sequence" : "0"
+                  },
+                "name" : "bonded_tokens_pool",
+                "permissions" : [ 
+                    "burner",
+                    "staking"
+                  ]
+              },
+              { 
+                "@type" : "/cosmos.auth.v1beta1.BaseAccount",
+                "account_number" : "1",
+                "address" : "electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz",
+                "pub_key" : null,
+                "sequence" : "0"
+              },
+              { 
+                "@type" : "/cosmos.auth.v1beta1.BaseAccount",
+                "account_number" : "0",
+                "address" : "electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7",
+                "pub_key" : null,
+                "sequence" : "0"
+              },
+              { 
+                "@type" : "/cosmos.auth.v1beta1.ModuleAccount",
+                "base_account" : { 
+                    "account_number" : "10",
+                    "address" : "electra1tygms3xhhs3yv487phx3dw4a95jn7t7lakm65q",
+                    "pub_key" : null,
+                    "sequence" : "0"
+                  },
+                "name" : "not_bonded_tokens_pool",
+                "permissions" : [ 
+                    "burner",
+                    "staking"
+                  ]
+              },
+              { 
+                "@type" : "/cosmos.auth.v1beta1.ModuleAccount",
+                "base_account" : { 
+                    "account_number" : "11",
+                    "address" : "electra10d07y265gmmuvt4z0w9aw880jnsr700jx0apds",
+                    "pub_key" : null,
+                    "sequence" : "0"
+                  },
+                "name" : "gov",
+                "permissions" : [ "burner" ]
+              },
+              { 
+                "@type" : "/cosmos.auth.v1beta1.ModuleAccount",
+                "base_account" : { 
+                    "account_number" : "8",
+                    "address" : "electra1jv65s3grqf6v6jl3dp4t6c9t9rk99cd8mj2cju",
+                    "pub_key" : null,
+                    "sequence" : "0"
+                  },
+                "name" : "distribution",
+                "permissions" : [  ]
+              },
+              { 
+                "@type" : "/cosmos.auth.v1beta1.BaseAccount",
+                "account_number" : "4",
+                "address" : "electra1krkk5xtp8s7lk9xf2az70txle50zfzga7dah87",
+                "pub_key" : null,
+                "sequence" : "0"
+              },
+              { 
+                "@type" : "/cosmos.auth.v1beta1.BaseAccount",
+                "account_number" : "5",
+                "address" : "electra16p7dd9wp76kmxckus64un7udt59kvprfd0tw8v",
+                "pub_key" : null,
+                "sequence" : "0"
+              },
+              { 
+                "@type" : "/cosmos.auth.v1beta1.BaseAccount",
+                "account_number" : "3",
+                "address" : "electra16n5tnkck6rcg7gxmalc057daputvac5pzjeal9",
+                "pub_key" : { 
+                    "@type" : "/cosmos.crypto.secp256k1.PubKey",
+                    "key" : "AiuZN/H8SLPnPv8tDKxje+EdLZFFleHKD6zhJDziJJrs"
+                  },
+                "sequence" : "1"
+              },
+              { 
+                "@type" : "/cosmos.auth.v1beta1.ModuleAccount",
+                "base_account" : { 
+                    "account_number" : "12",
+                    "address" : "electra1m3h30wlvsf8llruxtpukdvsy0km2kum85ufuur",
+                    "pub_key" : null,
+                    "sequence" : "0"
+                  },
+                "name" : "mint",
+                "permissions" : [ "minter" ]
+              },
+              { 
+                "@type" : "/cosmos.auth.v1beta1.ModuleAccount",
+                "base_account" : { 
+                    "account_number" : "7",
+                    "address" : "electra17xpfvakm2amg962yls6f84z3kell8c5lv5dys7",
+                    "pub_key" : null,
+                    "sequence" : "0"
+                  },
+                "name" : "fee_collector",
+                "permissions" : [  ]
+              }
+            ],
+          "params" : { 
+              "max_memo_characters" : "256",
+              "sig_verify_cost_ed25519" : "590",
+              "sig_verify_cost_secp256k1" : "1000",
+              "tx_sig_limit" : "7",
+              "tx_size_cost_per_byte" : "10"
+            }
+        },
+      "authz" : { "authorization" : [  ] },
+      "bank" : { 
+          "balances" : [ 
+              { 
+                "address" : "electra1rf56um69dum7em0kx9xen794x8gm49vxstkjwy",
+                "coins" : [ { 
+                      "amount" : "200000000",
+                      "denom" : "uelectra"
+                    } ]
+              },
+              { 
+                "address" : "electra19mhfyxz7532gumtyw5zrq00qv23mqtc4plgfzy",
+                "coins" : [ { 
+                      "amount" : "200000000",
+                      "denom" : "uelectra"
+                    } ]
+              },
+              { 
+                "address" : "electra1fl48vsnmsdzcv85q5d2q4z5ajdha8yu3fk8tz5",
+                "coins" : [ { 
+                      "amount" : "1000000",
+                      "denom" : "uelectra"
+                    } ]
+              },
+              { 
+                "address" : "electra12r6lx69zfef6ht3fk7drm9f5222qk4ur6zjpvz",
+                "coins" : [ { 
+                      "amount" : "200000000",
+                      "denom" : "uelectra"
+                    } ]
+              },
+              { 
+                "address" : "electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7",
+                "coins" : [ { 
+                      "amount" : "200000000",
+                      "denom" : "uelectra"
+                    } ]
+              },
+              { 
+                "address" : "electra1jv65s3grqf6v6jl3dp4t6c9t9rk99cd8mj2cju",
+                "coins" : [ { 
+                      "amount" : "15744",
+                      "denom" : "stake"
+                    } ]
+              },
+              { 
+                "address" : "electra1krkk5xtp8s7lk9xf2az70txle50zfzga7dah87",
+                "coins" : [ { 
+                      "amount" : "1000000000",
+                      "denom" : "uelectra"
+                    } ]
+              },
+              { 
+                "address" : "electra16p7dd9wp76kmxckus64un7udt59kvprfd0tw8v",
+                "coins" : [ { 
+                      "amount" : "200000000",
+                      "denom" : "uelectra"
+                    } ]
+              },
+              { 
+                "address" : "electra16n5tnkck6rcg7gxmalc057daputvac5pzjeal9",
+                "coins" : [ { 
+                      "amount" : "1999000000",
+                      "denom" : "uelectra"
+                    } ]
+              }
+            ],
+          "denom_metadata" : [  ],
+          "params" : { 
+              "default_send_enabled" : true,
+              "send_enabled" : [  ]
+            },
+          "supply" : [ 
+              { 
+                "amount" : "15744",
+                "denom" : "stake"
+              },
+              { 
+                "amount" : "4000000000",
+                "denom" : "uelectra"
+              }
+            ]
+        },
+      "capability" : { 
+          "index" : "3",
+          "owners" : [ 
+              { 
+                "index" : "1",
+                "index_owners" : { "owners" : [ 
+                        { 
+                          "module" : "ibc",
+                          "name" : "ports/transfer"
+                        },
+                        { 
+                          "module" : "transfer",
+                          "name" : "ports/transfer"
+                        }
+                      ] }
+              },
+              { 
+                "index" : "2",
+                "index_owners" : { "owners" : [ 
+                        { 
+                          "module" : "ibc",
+                          "name" : "ports/monitoringp"
+                        },
+                        { 
+                          "module" : "monitoringp",
+                          "name" : "ports/monitoringp"
+                        }
+                      ] }
+              }
+            ]
+        },
+      "crisis" : { "constant_fee" : { 
+              "amount" : "1000",
+              "denom" : "uelectra"
+            } },
+      "distribution" : { 
+          "delegator_starting_infos" : [ { 
+                "delegator_address" : "electra16n5tnkck6rcg7gxmalc057daputvac5pzjeal9",
+                "starting_info" : { 
+                    "height" : "0",
+                    "previous_period" : "1",
+                    "stake" : "1000000.000000000000000000"
+                  },
+                "validator_address" : "electravaloper16n5tnkck6rcg7gxmalc057daputvac5ppr8lwq"
+              } ],
+          "delegator_withdraw_infos" : [  ],
+          "fee_pool" : { "community_pool" : [ { 
+                    "amount" : "314.880000000000000000",
+                    "denom" : "uelectra"
+                  } ] },
+          "outstanding_rewards" : [ { 
+                "outstanding_rewards" : [ { 
+                      "amount" : "15429.120000000000000000",
+                      "denom" : "uelectra"
+                    } ],
+                "validator_address" : "electravaloper16n5tnkck6rcg7gxmalc057daputvac5ppr8lwq"
+              } ],
+          "params" : { 
+              "base_proposer_reward" : "0.010000000000000000",
+              "bonus_proposer_reward" : "0.040000000000000000",
+              "community_tax" : "0.020000000000000000",
+              "withdraw_addr_enabled" : true
+            },
+          "previous_proposer" : "electravalcons1puxzh5eda7eys60prtz7ewpg4ewp77razadu44",
+          "validator_accumulated_commissions" : [ { 
+                "accumulated" : { "commission" : [ { 
+                          "amount" : "1542.912000000000000000",
+                          "denom" : "uelectra"
+                        } ] },
+                "validator_address" : "electravaloper16n5tnkck6rcg7gxmalc057daputvac5ppr8lwq"
+              } ],
+          "validator_current_rewards" : [ { 
+                "rewards" : { 
+                    "period" : "2",
+                    "rewards" : [ { 
+                          "amount" : "13886.208000000000000000",
+                          "denom" : "uelectra"
+                        } ]
+                  },
+                "validator_address" : "electravaloper16n5tnkck6rcg7gxmalc057daputvac5ppr8lwq"
+              } ],
+          "validator_historical_rewards" : [ { 
+                "period" : "1",
+                "rewards" : { 
+                    "cumulative_reward_ratio" : [  ],
+                    "reference_count" : 2
+                  },
+                "validator_address" : "electravaloper16n5tnkck6rcg7gxmalc057daputvac5ppr8lwq"
+              } ],
+          "validator_slash_events" : [  ]
+        },
+      "evidence" : { "evidence" : [  ] },
+      "feegrant" : { "allowances" : [  ] },
+      "genutil" : { "gen_txs" : [  ] },
+      "gov" : { 
+          "deposits" : [  ],
+          "deposit_params" : { 
+              "max_deposit_period" : "172800s",
+              "min_deposit" : [ { 
+                    "amount" : "10000000",
+                    "denom" : "uelectra"
+                  } ]
+            },
+          "proposals" : [  ],
+          "starting_proposal_id" : "1",
+          "tally_params" : { 
+              "quorum" : "0.334000000000000000",
+              "threshold" : "0.500000000000000000",
+              "veto_threshold" : "0.334000000000000000"
+            },
+          "votes" : [  ],
+          "voting_params" : { "voting_period" : "172800s" }
+        },
+      "ibc" : { 
+          "channel_genesis" : { 
+              "acknowledgements" : [  ],
+              "ack_sequences" : [  ],
+              "channels" : [  ],
+              "commitments" : [  ],
+              "next_channel_sequence" : "0",
+              "receipts" : [  ],
+              "recv_sequences" : [  ],
+              "send_sequences" : [  ]
+            },
+          "client_genesis" : { 
+              "clients" : [  ],
+              "clients_consensus" : [  ],
+              "clients_metadata" : [  ],
+              "create_localhost" : false,
+              "next_client_sequence" : "0",
+              "params" : { "allowed_clients" : [ 
+                      "06-solomachine",
+                      "07-tendermint"
+                    ] }
+            },
+          "connection_genesis" : { 
+              "client_connection_paths" : [  ],
+              "connections" : [  ],
+              "next_connection_sequence" : "0",
+              "params" : { "max_expected_time_per_block" : "30000000000" }
+            }
+        },
+      "meter" : { 
+          "billingcyclesList" : [  ],
+          "customerbillinglineList" : [  ],
+          "customerbillsList" : [  ],
+          "meterdirectoryList" : [  ],
+          "meterreadingsList" : [  ],
+          "params" : { 
+              "billingAdmin" : "electra1krkk5xtp8s7lk9xf2az70txle50zfzga7dah87",
+              "maxBillingIteration" : "16",
+              "moduleParamBestForCustomer" : true,
+              "payAutomatically" : false
+            },
+          "powerPurchaseContractList" : [  ],
+          "ppaMapList" : [  ],
+          "producerbillinglineList" : [  ],
+          "producerbillsList" : [  ]
+        },
+      "mint" : { 
+          "minter" : { 
+              "annual_provisions" : "520015812.790938880000000000",
+              "inflation" : "0.130003953197734720"
+            },
+          "params" : { 
+              "blocks_per_year" : "6311520",
+              "goal_bonded" : "0.670000000000000000",
+              "inflation_max" : "0.900000000000000000",
+              "inflation_min" : "0.070000000000000000",
+              "inflation_rate_change" : "0.130000000000000000",
+              "mint_denom" : "uelectra"
+            }
+        },
+      "monitoringp" : { 
+          "connectionChannelID" : null,
+          "consumerClientID" : null,
+          "monitoringInfo" : null,
+          "params" : { 
+              "consumerChainID" : "spn-1",
+              "consumerConsensusState" : { 
+                  "nextValidatorsHash" : "",
+                  "root" : { "hash" : "" },
+                  "timestamp" : ""
+                },
+              "consumerRevisionHeight" : "1",
+              "consumerUnbondingPeriod" : "1814400",
+              "lastBlockHeight" : "1"
+            },
+          "port_id" : "monitoringp"
+        },
+      "params" : null,
+      "slashing" : { 
+          "missed_blocks" : [ { 
+                "address" : "electravalcons1puxzh5eda7eys60prtz7ewpg4ewp77razadu44",
+                "missed_blocks" : [  ]
+              } ],
+          "params" : { 
+              "downtime_jail_duration" : "600s",
+              "min_signed_per_window" : "0.500000000000000000",
+              "signed_blocks_window" : "100",
+              "slash_fraction_double_sign" : "0.050000000000000000",
+              "slash_fraction_downtime" : "0.010000000000000000"
+            },
+          "signing_infos" : [ { 
+                "address" : "electravalcons1puxzh5eda7eys60prtz7ewpg4ewp77razadu44",
+                "validator_signing_info" : { 
+                    "address" : "electravalcons1puxzh5eda7eys60prtz7ewpg4ewp77razadu44",
+                    "index_offset" : "191",
+                    "jailed_until" : "1970-01-01T00:00:00Z",
+                    "missed_blocks_counter" : "0",
+                    "start_height" : "0",
+                    "tombstoned" : false
+                  }
+              } ]
+        },
+      "staking" : { 
+          "delegations" : [ { 
+                "delegator_address" : "electra16n5tnkck6rcg7gxmalc057daputvac5pzjeal9",
+                "shares" : "1000000.000000000000000000",
+                "validator_address" : "electravaloper16n5tnkck6rcg7gxmalc057daputvac5ppr8lwq"
+              } ],
+          "exported" : true,
+          "last_total_power" : "1",
+          "last_validator_powers" : [ { 
+                "address" : "electravaloper16n5tnkck6rcg7gxmalc057daputvac5ppr8lwq",
+                "power" : "1"
+              } ],
+          "params" : { 
+              "bond_denom" : "uelectra",
+              "historical_entries" : 10000,
+              "max_entries" : 7,
+              "max_validators" : 100,
+              "unbonding_time" : "1814400s"
+            },
+          "redelegations" : [  ],
+          "unbonding_delegations" : [  ],
+          "validators" : [ { 
+                "commission" : { 
+                    "commission_rates" : { 
+                        "max_change_rate" : "0.010000000000000000",
+                        "max_rate" : "0.200000000000000000",
+                        "rate" : "0.100000000000000000"
+                      },
+                    "update_time" : "2022-11-05T10:58:00.245292993Z"
+                  },
+                "consensus_pubkey" : { 
+                    "@type" : "/cosmos.crypto.ed25519.PubKey",
+                    "key" : "Xue8+oifXYILmgqfkgHuCgYS4KKNDTFVuOMJiVgLImc="
+                  },
+                "delegator_shares" : "1000000.000000000000000000",
+                "description" : { 
+                    "details" : "",
+                    "identity" : "",
+                    "moniker" : "electra01",
+                    "security_contact" : "",
+                    "website" : ""
+                  },
+                "jailed" : false,
+                "min_self_delegation" : "1",
+                "operator_address" : "electravaloper16n5tnkck6rcg7gxmalc057daputvac5ppr8lwq",
+                "status" : "BOND_STATUS_BONDED",
+                "tokens" : "1000000",
+                "unbonding_height" : "0",
+                "unbonding_time" : "1970-01-01T00:00:00Z"
+              } ]
+        },
+      "transfer" : { 
+          "denom_traces" : [  ],
+          "params" : { 
+              "receive_enabled" : true,
+              "send_enabled" : true
+            },
+          "port_id" : "transfer"
+        },
+      "upgrade" : {  },
+      "vesting" : {  }
+    },
+  "chain_id" : "electra-testnet-0",
+  "consensus_params" : { 
+      "block" : { 
+          "max_bytes" : "22020096",
+          "max_gas" : "-1",
+          "time_iota_ms" : "1000"
+        },
+      "evidence" : { 
+          "max_age_duration" : "172800000000000",
+          "max_age_num_blocks" : "100000",
+          "max_bytes" : "1048576"
+        },
+      "validator" : { "pub_key_types" : [ "ed25519" ] },
+      "version" : {  }
+    },
+  "genesis_time" : "2022-11-05T10:58:00.245292993Z",
+  "initial_height" : "193",
+  "validators" : [ { 
+        "address" : "0F0C2BD32DEFB24869E11AC5ECB828AE5C1F787D",
+        "name" : "electra01",
+        "power" : "1",
+        "pub_key" : { 
+            "type" : "tendermint/PubKeyEd25519",
+            "value" : "Xue8+oifXYILmgqfkgHuCgYS4KKNDTFVuOMJiVgLImc="
+          }
+      } ]
+}

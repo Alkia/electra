@@ -1,0 +1,5 @@
+broadcast-mode = "block"
+chain-id = "electra-testnet-0"
+keyring-backend = "os"
+node = "tcp://localhost:26659"
+output = "text"
