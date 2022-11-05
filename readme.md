@@ -115,14 +115,6 @@ Most Standard IEC energy meters will be upgradable to blockchain meters using th
 
 More on the [IEC 62056 21 standard](https://community.openhab.org/t/reading-power-consumption-of-the-electricity-meter-with-the-ir-interface/94996).
 
-## Learn more
-- [Alkia IT Services Co., Ltd.](https://alkia.net)
-- [Link tree](linktr.ee/alkia)
-- [Cosmos SDK docs](https://docs.cosmos.network)
-- [Developer Chat](https://discord.gg/ignite)
-
-![Link tree QR](/vue/public/LinktreeQR.png "QR to Link Tree")
-
 ## Testnets
 
 - [electra-testnet-0](https://github.com/Alkia/electra-testnet-0)
@@ -151,3 +143,13 @@ x/mint
 We use the following module (marketed as public infra) from [Quicksilver](https://github.com/ingenuity-build/quicksilver) provided under [this License](https://github.com/ingenuity-build/quicksilver/blob/main/LICENSE): 
 ```
 x/interchainqueries
+
+
+
+## Learn more
+- [Alkia IT Services Co., Ltd.](https://alkia.net)
+- [Link tree](linktr.ee/alkia)
+- [Cosmos SDK docs](https://docs.cosmos.network)
+- [Developer Chat](https://discord.gg/ignite)
+
+![Link tree QR](/vue/public/LinktreeQR.png "QR to Link Tree")
