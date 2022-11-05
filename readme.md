@@ -124,7 +124,8 @@ More on the [IEC 62056 21 standard](https://community.openhab.org/t/reading-powe
 ![Link tree QR](/vue/public/LinktreeQR.png "QR to Link Tree")
 
 ## Testnets
-- [electra-testnet-0](https://github.com/Alkia/electra-testnet-0))
+
+- [electra-testnet-0](https://github.com/Alkia/electra-testnet-0)
 
 ## Disclaimer | No Liability
 This project is bleeding-edge and does not conform with Poetry package structure.
