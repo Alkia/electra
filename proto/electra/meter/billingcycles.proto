@@ -1,0 +1,19 @@
+syntax = "proto3";
+package electra.meter;
+
+option go_package = "electra/x/meter/types";
+
+message Billingcycles {
+  uint64 cycleID = 1; 
+  uint64 begin = 2; 
+  uint64 end = 3; 
+  uint64 whin = 4; 
+  uint64 whout = 5; 
+  uint64 moneyin = 6; 
+  uint64 moneyout = 7; 
+  string curency = 8; 
+  bool valid = 9; 
+  bool paid = 10; 
+  string creator = 11;
+}
+

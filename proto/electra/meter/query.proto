@@ -8,6 +8,12 @@ import "electra/meter/params.proto";
 import "electra/meter/meterreadings.proto";
 import "electra/meter/meterdirectory.proto";
 import "electra/meter/power_purchase_contract.proto";
+import "electra/meter/ppa_map.proto";
+import "electra/meter/billingcycles.proto";
+import "electra/meter/customerbillingline.proto";
+import "electra/meter/customerbills.proto";
+import "electra/meter/producerbillingline.proto";
+import "electra/meter/producerbills.proto";
 // this line is used by starport scaffolding # 1
 
 option go_package = "electra/x/meter/types";
@@ -51,6 +57,81 @@ service Query {
 	// Queries a list of PowerPurchaseContract items.
 	rpc PowerPurchaseContractAll(QueryAllPowerPurchaseContractRequest) returns (QueryAllPowerPurchaseContractResponse) {
 		option (google.api.http).get = "/electra/meter/power_purchase_contract";
+	}
+
+// Queries a PpaMap by index.
+	rpc PpaMap(QueryGetPpaMapRequest) returns (QueryGetPpaMapResponse) {
+		option (google.api.http).get = "/electra/meter/ppa_map/{consumerDeviceID}/{agreementID}/{agreementActive}/{contractID}";
+	}
+
+	// Queries a list of PpaMap items.
+	rpc PpaMapAll(QueryAllPpaMapRequest) returns (QueryAllPpaMapResponse) {
+		option (google.api.http).get = "/electra/meter/ppa_map";
+	}
+
+// Queries a Billingcycles by index.
+	rpc Billingcycles(QueryGetBillingcyclesRequest) returns (QueryGetBillingcyclesResponse) {
+		option (google.api.http).get = "/electra/meter/billingcycles/{cycleID}";
+	}
+
+	// Queries a list of Billingcycles items.
+	rpc BillingcyclesAll(QueryAllBillingcyclesRequest) returns (QueryAllBillingcyclesResponse) {
+		option (google.api.http).get = "/electra/meter/billingcycles";
+	}
+
+// Queries a list of CurrentcycleID items.
+	rpc CurrentcycleID(QueryCurrentcycleIDRequest) returns (QueryCurrentcycleIDResponse) {
+		option (google.api.http).get = "/electra/meter/currentcycle_id";
+	}
+
+// Queries a Customerbillingline by index.
+	rpc Customerbillingline(QueryGetCustomerbillinglineRequest) returns (QueryGetCustomerbillinglineResponse) {
+		option (google.api.http).get = "/electra/meter/customerbillingline/{customerDeviceID}/{cycleID}/{lineid}/{paid}";
+	}
+
+	// Queries a list of Customerbillingline items.
+	rpc CustomerbillinglineAll(QueryAllCustomerbillinglineRequest) returns (QueryAllCustomerbillinglineResponse) {
+		option (google.api.http).get = "/electra/meter/customerbillingline";
+	}
+
+// Queries a list of Getcustomerbill items.
+	rpc Getcustomerbill(QueryGetcustomerbillRequest) returns (QueryGetcustomerbillResponse) {
+		option (google.api.http).get = "/electra/meter/getcustomerbill/{customerDeviceID}/{billCycleID}";
+	}
+
+// Queries a Customerbills by index.
+	rpc Customerbills(QueryGetCustomerbillsRequest) returns (QueryGetCustomerbillsResponse) {
+		option (google.api.http).get = "/electra/meter/customerbills/{billCycleID}/{customerDeviceID}";
+	}
+
+	// Queries a list of Customerbills items.
+	rpc CustomerbillsAll(QueryAllCustomerbillsRequest) returns (QueryAllCustomerbillsResponse) {
+		option (google.api.http).get = "/electra/meter/customerbills";
+	}
+
+// Queries a Producerbillingline by index.
+	rpc Producerbillingline(QueryGetProducerbillinglineRequest) returns (QueryGetProducerbillinglineResponse) {
+		option (google.api.http).get = "/electra/meter/producerbillingline/{producerDeviceID}/{cycleID}/{lineid}/{paid}";
+	}
+
+	// Queries a list of Producerbillingline items.
+	rpc ProducerbillinglineAll(QueryAllProducerbillinglineRequest) returns (QueryAllProducerbillinglineResponse) {
+		option (google.api.http).get = "/electra/meter/producerbillingline";
+	}
+
+// Queries a list of Getproducerbill items.
+	rpc Getproducerbill(QueryGetproducerbillRequest) returns (QueryGetproducerbillResponse) {
+		option (google.api.http).get = "/electra/meter/getproducerbill/{producerDeviceID}/{billCycleID}";
+	}
+
+// Queries a Producerbills by index.
+	rpc Producerbills(QueryGetProducerbillsRequest) returns (QueryGetProducerbillsResponse) {
+		option (google.api.http).get = "/electra/meter/producerbills/{billCycleID}/{producerDeviceID}";
+	}
+
+	// Queries a list of Producerbills items.
+	rpc ProducerbillsAll(QueryAllProducerbillsRequest) returns (QueryAllProducerbillsResponse) {
+		option (google.api.http).get = "/electra/meter/producerbills";
 	}
 
 // this line is used by starport scaffolding # 2
@@ -132,6 +213,167 @@ message QueryAllPowerPurchaseContractRequest {
 
 message QueryAllPowerPurchaseContractResponse {
 	repeated PowerPurchaseContract powerPurchaseContract = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetPpaMapRequest {
+	  string consumerDeviceID = 1;
+  string agreementID = 2;
+  bool agreementActive = 3;
+  string contractID = 4;
+
+}
+
+message QueryGetPpaMapResponse {
+	PpaMap ppaMap = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllPpaMapRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllPpaMapResponse {
+	repeated PpaMap ppaMap = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetBillingcyclesRequest {
+	  uint64 cycleID = 1;
+
+}
+
+message QueryGetBillingcyclesResponse {
+	Billingcycles billingcycles = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllBillingcyclesRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllBillingcyclesResponse {
+	repeated Billingcycles billingcycles = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryCurrentcycleIDRequest {
+}
+
+message QueryCurrentcycleIDResponse {
+  uint64 cycleID = 1;
+  uint64 begin = 2;
+  uint64 end = 3;
+  uint64 whin = 4;
+  uint64 whout = 5;
+  uint64 moneyin = 6;
+  uint64 moneyout = 7;
+  string curency = 8;
+}
+
+message QueryGetCustomerbillinglineRequest {
+	  string customerDeviceID = 1;
+  uint64 cycleID = 2;
+  uint64 lineid = 3;
+  bool paid = 4;
+
+}
+
+message QueryGetCustomerbillinglineResponse {
+	Customerbillingline customerbillingline = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllCustomerbillinglineRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllCustomerbillinglineResponse {
+	repeated Customerbillingline customerbillingline = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetcustomerbillRequest {
+  string customerDeviceID = 1;
+  uint64 billCycleID = 2;
+}
+
+message QueryGetcustomerbillResponse {
+  string customerbillinglines = 1;
+  uint64 billTotalWh = 2;
+  uint64 billTotalPrice = 3;
+  string currency = 4;
+  uint64 nblines = 5;
+  string comments = 6;
+}
+
+message QueryGetCustomerbillsRequest {
+	  uint64 billCycleID = 1;
+  string customerDeviceID = 2;
+
+}
+
+message QueryGetCustomerbillsResponse {
+	Customerbills customerbills = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllCustomerbillsRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllCustomerbillsResponse {
+	repeated Customerbills customerbills = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetProducerbillinglineRequest {
+	  string producerDeviceID = 1;
+  uint64 cycleID = 2;
+  uint64 lineid = 3;
+  bool paid = 4;
+
+}
+
+message QueryGetProducerbillinglineResponse {
+	Producerbillingline producerbillingline = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllProducerbillinglineRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllProducerbillinglineResponse {
+	repeated Producerbillingline producerbillingline = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetproducerbillRequest {
+  string producerDeviceID = 1;
+  uint64 billCycleID = 2;
+}
+
+message QueryGetproducerbillResponse {
+  string producerbillinglines = 1;
+  uint64 billTotalWh = 2;
+  uint64 billTotalPrice = 3;
+  string curency = 4;
+  uint64 nblines = 5;
+  string comments = 6;
+}
+
+message QueryGetProducerbillsRequest {
+	  uint64 billCycleID = 1;
+  string producerDeviceID = 2;
+
+}
+
+message QueryGetProducerbillsResponse {
+	Producerbills producerbills = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllProducerbillsRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllProducerbillsResponse {
+	repeated Producerbills producerbills = 1 [(gogoproto.nullable) = false];
 	cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 

@@ -1,0 +1,20 @@
+syntax = "proto3";
+package electra.meter;
+
+option go_package = "electra/x/meter/types";
+
+message Producerbillingline {
+  string producerDeviceID = 1; 
+  uint64 cycleID = 2; 
+  uint64 lineid = 3; 
+  bool paid = 4; 
+  string customerDeviceID = 5; 
+  string billContractID = 6; 
+  uint64 lineWh = 7; 
+  uint64 lineWhPrice = 8; 
+  string curency = 9; 
+  uint64 lineWhTotalPrice = 10; 
+  uint64 phase = 11; 
+  string creator = 12;
+}
+
