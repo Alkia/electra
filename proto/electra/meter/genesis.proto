@@ -5,6 +5,7 @@ import "gogoproto/gogo.proto";
 import "electra/meter/params.proto";
 import "electra/meter/meterreadings.proto";
 import "electra/meter/meterdirectory.proto";
+import "electra/meter/power_purchase_contract.proto";
 // this line is used by starport scaffolding # genesis/proto/import
 
 option go_package = "electra/x/meter/types";
@@ -14,5 +15,6 @@ message GenesisState {
   Params params = 1 [(gogoproto.nullable) = false];
   repeated Meterreadings meterreadingsList = 2 [(gogoproto.nullable) = false];
   repeated Meterdirectory meterdirectoryList = 3 [(gogoproto.nullable) = false];
+  repeated PowerPurchaseContract powerPurchaseContractList = 4 [(gogoproto.nullable) = false];
   // this line is used by starport scaffolding # genesis/proto/state
 }

@@ -34,6 +34,16 @@ func TestGenesis(t *testing.T) {
 				Barcodeserial: "1",
 			},
 		},
+		PowerPurchaseContractList: []types.PowerPurchaseContract{
+			{
+				ContractID:       "0",
+				ContractDeviceID: "0",
+			},
+			{
+				ContractID:       "1",
+				ContractDeviceID: "1",
+			},
+		},
 		// this line is used by starport scaffolding # genesis/test/state
 	}
 
@@ -47,5 +57,6 @@ func TestGenesis(t *testing.T) {
 
 	require.ElementsMatch(t, genesisState.MeterreadingsList, got.MeterreadingsList)
 	require.ElementsMatch(t, genesisState.MeterdirectoryList, got.MeterdirectoryList)
+	require.ElementsMatch(t, genesisState.PowerPurchaseContractList, got.PowerPurchaseContractList)
 	// this line is used by starport scaffolding # genesis/test/assert
 }

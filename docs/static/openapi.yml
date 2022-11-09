@@ -33963,6 +33963,260 @@ paths:
                   additionalProperties: {}
       tags:
         - Query
+  /electra/meter/power_purchase_contract:
+    get:
+      summary: Queries a list of PowerPurchaseContract items.
+      operationId: ElectraMeterPowerPurchaseContractAll
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              powerPurchaseContract:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    contractID:
+                      type: string
+                    contractDeviceID:
+                      type: string
+                    contractName:
+                      type: string
+                    contractActive:
+                      type: boolean
+                    contractPhase:
+                      type: string
+                      format: uint64
+                    contractForAll:
+                      type: boolean
+                    contractForAllPrice:
+                      type: string
+                      format: uint64
+                    contractForAllCurency:
+                      type: string
+                    contractForAllActivePeriod:
+                      type: string
+                    contractPreferred:
+                      type: boolean
+                    contractPreferredPrice:
+                      type: string
+                      format: uint64
+                    contractPreferredActivePeriod:
+                      type: string
+                    contractPreferredCurency:
+                      type: string
+                    contractStartDate:
+                      type: string
+                      format: uint64
+                    contractEndDate:
+                      type: string
+                      format: uint64
+                    phase1RemainingWh:
+                      type: string
+                      format: uint64
+                    phase2RemainingWh:
+                      type: string
+                      format: uint64
+                    phase3RemainingWh:
+                      type: string
+                      format: uint64
+                    creator:
+                      type: string
+              pagination:
+                type: object
+                properties:
+                  next_key:
+                    type: string
+                    format: byte
+                    description: |-
+                      next_key is the key to be passed to PageRequest.key to
+                      query the next page most efficiently. It will be empty if
+                      there are no more results.
+                  total:
+                    type: string
+                    format: uint64
+                    title: >-
+                      total is total number of results available if
+                      PageRequest.count_total
+
+                      was set, its value is undefined otherwise
+                description: >-
+                  PageResponse is to be embedded in gRPC response messages where
+                  the
+
+                  corresponding request message has used PageRequest.
+
+                   message SomeResponse {
+                           repeated Bar results = 1;
+                           PageResponse page = 2;
+                   }
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: pagination.key
+          description: |-
+            key is a value returned in PageResponse.next_key to begin
+            querying the next page most efficiently. Only one of offset or key
+            should be set.
+          in: query
+          required: false
+          type: string
+          format: byte
+        - name: pagination.offset
+          description: >-
+            offset is a numeric offset that can be used when key is unavailable.
+
+            It is less efficient than using key. Only one of offset or key
+            should
+
+            be set.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.limit
+          description: >-
+            limit is the total number of results to be returned in the result
+            page.
+
+            If left empty it will default to a value to be set by each app.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.count_total
+          description: >-
+            count_total is set to true  to indicate that the result set should
+            include
+
+            a count of the total number of items available for pagination in
+            UIs.
+
+            count_total is only respected when offset is used. It is ignored
+            when key
+
+            is set.
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
+          in: query
+          required: false
+          type: boolean
+      tags:
+        - Query
+  /electra/meter/power_purchase_contract/{contractID}/{contractDeviceID}:
+    get:
+      summary: Queries a PowerPurchaseContract by index.
+      operationId: ElectraMeterPowerPurchaseContract
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              powerPurchaseContract:
+                type: object
+                properties:
+                  contractID:
+                    type: string
+                  contractDeviceID:
+                    type: string
+                  contractName:
+                    type: string
+                  contractActive:
+                    type: boolean
+                  contractPhase:
+                    type: string
+                    format: uint64
+                  contractForAll:
+                    type: boolean
+                  contractForAllPrice:
+                    type: string
+                    format: uint64
+                  contractForAllCurency:
+                    type: string
+                  contractForAllActivePeriod:
+                    type: string
+                  contractPreferred:
+                    type: boolean
+                  contractPreferredPrice:
+                    type: string
+                    format: uint64
+                  contractPreferredActivePeriod:
+                    type: string
+                  contractPreferredCurency:
+                    type: string
+                  contractStartDate:
+                    type: string
+                    format: uint64
+                  contractEndDate:
+                    type: string
+                    format: uint64
+                  phase1RemainingWh:
+                    type: string
+                    format: uint64
+                  phase2RemainingWh:
+                    type: string
+                    format: uint64
+                  phase3RemainingWh:
+                    type: string
+                    format: uint64
+                  creator:
+                    type: string
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: contractID
+          in: path
+          required: true
+          type: string
+        - name: contractDeviceID
+          in: path
+          required: true
+          type: string
+      tags:
+        - Query
   /ibc/apps/interchain_accounts/controller/v1/owners/{owner}/connections/{connection_id}:
     get:
       summary: >-
@@ -69327,9 +69581,15 @@ definitions:
       maxmi:
         type: string
         format: uint64
+  electra.meter.MsgCreatePowerPurchaseContractResponse:
+    type: object
+  electra.meter.MsgDeletePowerPurchaseContractResponse:
+    type: object
   electra.meter.MsgRecord3Response:
     type: object
   electra.meter.MsgRecordResponse:
+    type: object
+  electra.meter.MsgUpdatePowerPurchaseContractResponse:
     type: object
   electra.meter.Params:
     type: object
@@ -69344,6 +69604,55 @@ definitions:
       billingAdmin:
         type: string
     description: Params defines the parameters for the module.
+  electra.meter.PowerPurchaseContract:
+    type: object
+    properties:
+      contractID:
+        type: string
+      contractDeviceID:
+        type: string
+      contractName:
+        type: string
+      contractActive:
+        type: boolean
+      contractPhase:
+        type: string
+        format: uint64
+      contractForAll:
+        type: boolean
+      contractForAllPrice:
+        type: string
+        format: uint64
+      contractForAllCurency:
+        type: string
+      contractForAllActivePeriod:
+        type: string
+      contractPreferred:
+        type: boolean
+      contractPreferredPrice:
+        type: string
+        format: uint64
+      contractPreferredActivePeriod:
+        type: string
+      contractPreferredCurency:
+        type: string
+      contractStartDate:
+        type: string
+        format: uint64
+      contractEndDate:
+        type: string
+        format: uint64
+      phase1RemainingWh:
+        type: string
+        format: uint64
+      phase2RemainingWh:
+        type: string
+        format: uint64
+      phase3RemainingWh:
+        type: string
+        format: uint64
+      creator:
+        type: string
   electra.meter.QueryAllMeterdirectoryResponse:
     type: object
     properties:
@@ -69464,6 +69773,86 @@ definitions:
                    repeated Bar results = 1;
                    PageResponse page = 2;
            }
+  electra.meter.QueryAllPowerPurchaseContractResponse:
+    type: object
+    properties:
+      powerPurchaseContract:
+        type: array
+        items:
+          type: object
+          properties:
+            contractID:
+              type: string
+            contractDeviceID:
+              type: string
+            contractName:
+              type: string
+            contractActive:
+              type: boolean
+            contractPhase:
+              type: string
+              format: uint64
+            contractForAll:
+              type: boolean
+            contractForAllPrice:
+              type: string
+              format: uint64
+            contractForAllCurency:
+              type: string
+            contractForAllActivePeriod:
+              type: string
+            contractPreferred:
+              type: boolean
+            contractPreferredPrice:
+              type: string
+              format: uint64
+            contractPreferredActivePeriod:
+              type: string
+            contractPreferredCurency:
+              type: string
+            contractStartDate:
+              type: string
+              format: uint64
+            contractEndDate:
+              type: string
+              format: uint64
+            phase1RemainingWh:
+              type: string
+              format: uint64
+            phase2RemainingWh:
+              type: string
+              format: uint64
+            phase3RemainingWh:
+              type: string
+              format: uint64
+            creator:
+              type: string
+      pagination:
+        type: object
+        properties:
+          next_key:
+            type: string
+            format: byte
+            description: |-
+              next_key is the key to be passed to PageRequest.key to
+              query the next page most efficiently. It will be empty if
+              there are no more results.
+          total:
+            type: string
+            format: uint64
+            title: >-
+              total is total number of results available if
+              PageRequest.count_total
+
+              was set, its value is undefined otherwise
+        description: |-
+          PageResponse is to be embedded in gRPC response messages where the
+          corresponding request message has used PageRequest.
+
+           message SomeResponse {
+                   repeated Bar results = 1;
+                   PageResponse page = 2;
+           }
   electra.meter.QueryGetMeterdirectoryResponse:
     type: object
     properties:
@@ -69528,6 +69917,58 @@ definitions:
           maxmi:
             type: string
             format: uint64
+  electra.meter.QueryGetPowerPurchaseContractResponse:
+    type: object
+    properties:
+      powerPurchaseContract:
+        type: object
+        properties:
+          contractID:
+            type: string
+          contractDeviceID:
+            type: string
+          contractName:
+            type: string
+          contractActive:
+            type: boolean
+          contractPhase:
+            type: string
+            format: uint64
+          contractForAll:
+            type: boolean
+          contractForAllPrice:
+            type: string
+            format: uint64
+          contractForAllCurency:
+            type: string
+          contractForAllActivePeriod:
+            type: string
+          contractPreferred:
+            type: boolean
+          contractPreferredPrice:
+            type: string
+            format: uint64
+          contractPreferredActivePeriod:
+            type: string
+          contractPreferredCurency:
+            type: string
+          contractStartDate:
+            type: string
+            format: uint64
+          contractEndDate:
+            type: string
+            format: uint64
+          phase1RemainingWh:
+            type: string
+            format: uint64
+          phase2RemainingWh:
+            type: string
+            format: uint64
+          phase3RemainingWh:
+            type: string
+            format: uint64
+          creator:
+            type: string
   electra.meter.QueryListrecordingsResponse:
     type: object
     properties:
