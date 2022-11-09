@@ -1,0 +1,5 @@
+broadcast-mode = "block"
+chain-id = "electra-testnet-0"
+keyring-backend = "test"
+node = "tcp://66.42.50.244:26659"
+output = "text"

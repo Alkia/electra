@@ -1,0 +1,1 @@
+{"version":3,"file":"bank.js","sourceRoot":"","sources":["../../src/lcdapi/bank.ts"],"names":[],"mappings":";;;AAeA,SAAgB,kBAAkB,CAAC,IAAe;IAChD,OAAO;QACL,IAAI,EAAE;YACJ,QAAQ,EAAE,KAAK,EAAE,OAAe,EAAE,EAAE;gBAClC,MAAM,IAAI,GAAG,kBAAkB,OAAO,EAAE,CAAC;gBACzC,OAAO,IAAI,CAAC,GAAG,CAAC,IAAI,CAAC,CAAC;YACxB,CAAC;SACF;KACF,CAAC;AACJ,CAAC;AATD,gDASC"}

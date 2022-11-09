@@ -1,0 +1,74 @@
+accounts:
+  - name: test1
+    coins: ["200000000uelectra"]
+    mnemonic: "slogan wreck armor floor change female industry smart daughter spawn today system shop pigeon game olive always dish camp response can perfect salon stone"
+  - name: test2
+    coins: ["200000000uelectra"]
+    mnemonic: "boil silk digital carry photo explain kitchen wall unusual garlic suspect leave accident discover banana catch margin reward gap asset raccoon anchor leisure ostrich"
+  - name: test3
+    coins: ["200000000uelectra"]
+    mnemonic: "bounce duty afraid make item occur curious mention stamp lava inspire shock wall hungry culture apart harsh icon burden glide cabbage deal during charge"
+  - name: alice
+    coins: ["2000000000uelectra"]
+    mnemonic: satisfy dirt consider electric apart coin later recall enhance pizza dust way shop erosion innocent actor member double always budget rival congress person uncle
+  - name: bob
+    coins: ["1000000000uelectra"]
+    mnemonic: address slogan history guitar fringe health coral dish exercise excite utility now thank mosquito soul vacuum doctor squeeze host never dinosaur afford tide tide
+  - name: prod1
+    coins: ["200000000uelectra"]
+    mnemonic: "thing lamp dwarf pupil hundred harsh snack review chest pledge people normal pattern shoe cereal drill staff people finger type timber buddy grab rate"
+  - name: prod2
+    coins: ["200000000uelectra"]
+    mnemonic: "invest theme among elbow weekend couple erode oyster stand enjoy series collect ripple fringe actual muscle idle vast heavy brass donkey minimum envelope capable"
+validator:
+  name: alice
+  staked: "1000000uelectra"
+  gas-prices: "10uelectra"
+client:
+  typescript:
+    path: "ts-client"
+  openapi:
+    path: "docs/static/openapi.yml"
+  vuex:
+    path: "vue/src/store"
+faucet:
+  name: bob
+  coins: ["1000000uelectra"]
+host:
+  rpc: ":26659"
+  p2p: ":26658"
+  prof: ":6061"
+  grpc: ":9092"
+  grpc-web: ":9093"
+  api: ":1318"
+init:
+  home: "$HOME/.electra"
+genesis:
+  chain_id: "electra-testnet-1"
+  bank:
+    denom_metadata:
+    description: "The native staking token of electra blockchain"
+    display: "electra"
+    base: "uelectra"
+    name: "electra"
+    symbol: "elc"
+    denom_units:
+      denom: "electra"
+      exponent: "6"
+      aliases: "electra"
+  app_state:
+    staking:
+      params:
+        bond_denom: "uelectra"
+    mint:
+      params:
+        mint_denom: "uelectra"
+    crisis:
+      constant_fee:
+        amount: "10"
+        denom: "uelectra"
+    gov:
+      deposit_params:
+        min_deposit:
+          denom: "uelectra"
+          amount: "10"

@@ -1,0 +1,12 @@
+vue/node_modules
+vue/dist
+release/
+ts-client/node_modules/.bin
+ts-client/node_modules/cosmjs-types/node_modules/.bin
+scripts/deploy/
+scripts/backup/
+.idea/
+.vscode/
+.DS_Store
+trace.log
+billing.log

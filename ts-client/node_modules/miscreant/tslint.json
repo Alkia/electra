@@ -1,0 +1,7 @@
+{
+    "extends": "tslint:recommended",
+    "rules": {
+        "no-bitwise": false,
+        "variable-name": ["allow-leading-underscore"]
+    }
+}
