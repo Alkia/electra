@@ -9,7 +9,11 @@ import (
 	grpc1 "github.com/gogo/protobuf/grpc"
 	proto "github.com/gogo/protobuf/proto"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
+	io "io"
 	math "math"
+	math_bits "math/bits"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -23,17 +27,421 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
+type MsgRecord struct {
+	Creator   string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Timestamp uint64 `protobuf:"varint,2,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
+	Phase     uint64 `protobuf:"varint,3,opt,name=phase,proto3" json:"phase,omitempty"`
+	Whin      uint64 `protobuf:"varint,4,opt,name=whin,proto3" json:"whin,omitempty"`
+	Whout     uint64 `protobuf:"varint,5,opt,name=whout,proto3" json:"whout,omitempty"`
+	Mvolt     uint64 `protobuf:"varint,6,opt,name=mvolt,proto3" json:"mvolt,omitempty"`
+	Mhertz    uint64 `protobuf:"varint,7,opt,name=mhertz,proto3" json:"mhertz,omitempty"`
+	Mpf       uint64 `protobuf:"varint,8,opt,name=mpf,proto3" json:"mpf,omitempty"`
+	Maxmi     uint64 `protobuf:"varint,9,opt,name=maxmi,proto3" json:"maxmi,omitempty"`
+}
+
+func (m *MsgRecord) Reset()         { *m = MsgRecord{} }
+func (m *MsgRecord) String() string { return proto.CompactTextString(m) }
+func (*MsgRecord) ProtoMessage()    {}
+func (*MsgRecord) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{0}
+}
+func (m *MsgRecord) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgRecord) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgRecord.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgRecord) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgRecord.Merge(m, src)
+}
+func (m *MsgRecord) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgRecord) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgRecord.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgRecord proto.InternalMessageInfo
+
+func (m *MsgRecord) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgRecord) GetTimestamp() uint64 {
+	if m != nil {
+		return m.Timestamp
+	}
+	return 0
+}
+
+func (m *MsgRecord) GetPhase() uint64 {
+	if m != nil {
+		return m.Phase
+	}
+	return 0
+}
+
+func (m *MsgRecord) GetWhin() uint64 {
+	if m != nil {
+		return m.Whin
+	}
+	return 0
+}
+
+func (m *MsgRecord) GetWhout() uint64 {
+	if m != nil {
+		return m.Whout
+	}
+	return 0
+}
+
+func (m *MsgRecord) GetMvolt() uint64 {
+	if m != nil {
+		return m.Mvolt
+	}
+	return 0
+}
+
+func (m *MsgRecord) GetMhertz() uint64 {
+	if m != nil {
+		return m.Mhertz
+	}
+	return 0
+}
+
+func (m *MsgRecord) GetMpf() uint64 {
+	if m != nil {
+		return m.Mpf
+	}
+	return 0
+}
+
+func (m *MsgRecord) GetMaxmi() uint64 {
+	if m != nil {
+		return m.Maxmi
+	}
+	return 0
+}
+
+type MsgRecordResponse struct {
+}
+
+func (m *MsgRecordResponse) Reset()         { *m = MsgRecordResponse{} }
+func (m *MsgRecordResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgRecordResponse) ProtoMessage()    {}
+func (*MsgRecordResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{1}
+}
+func (m *MsgRecordResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgRecordResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgRecordResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgRecordResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgRecordResponse.Merge(m, src)
+}
+func (m *MsgRecordResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgRecordResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgRecordResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgRecordResponse proto.InternalMessageInfo
+
+type MsgRecord3 struct {
+	Creator   string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Timestamp uint64 `protobuf:"varint,2,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
+	Whin1     uint64 `protobuf:"varint,3,opt,name=whin1,proto3" json:"whin1,omitempty"`
+	Whout1    uint64 `protobuf:"varint,4,opt,name=whout1,proto3" json:"whout1,omitempty"`
+	Mvolt1    uint64 `protobuf:"varint,5,opt,name=mvolt1,proto3" json:"mvolt1,omitempty"`
+	Mhertz1   uint64 `protobuf:"varint,6,opt,name=mhertz1,proto3" json:"mhertz1,omitempty"`
+	Mpf1      uint64 `protobuf:"varint,7,opt,name=mpf1,proto3" json:"mpf1,omitempty"`
+	Maxmi1    uint64 `protobuf:"varint,8,opt,name=maxmi1,proto3" json:"maxmi1,omitempty"`
+	Whin2     uint64 `protobuf:"varint,9,opt,name=whin2,proto3" json:"whin2,omitempty"`
+	Whout2    uint64 `protobuf:"varint,10,opt,name=whout2,proto3" json:"whout2,omitempty"`
+	Mvolt2    uint64 `protobuf:"varint,11,opt,name=mvolt2,proto3" json:"mvolt2,omitempty"`
+	Mhertz2   uint64 `protobuf:"varint,12,opt,name=mhertz2,proto3" json:"mhertz2,omitempty"`
+	Mpf2      uint64 `protobuf:"varint,13,opt,name=mpf2,proto3" json:"mpf2,omitempty"`
+	Maxmi2    uint64 `protobuf:"varint,14,opt,name=maxmi2,proto3" json:"maxmi2,omitempty"`
+	Whin3     uint64 `protobuf:"varint,15,opt,name=whin3,proto3" json:"whin3,omitempty"`
+	Whout3    uint64 `protobuf:"varint,16,opt,name=whout3,proto3" json:"whout3,omitempty"`
+	Mvolt3    uint64 `protobuf:"varint,17,opt,name=mvolt3,proto3" json:"mvolt3,omitempty"`
+	Mhertz3   uint64 `protobuf:"varint,18,opt,name=mhertz3,proto3" json:"mhertz3,omitempty"`
+	Mpf3      uint64 `protobuf:"varint,19,opt,name=mpf3,proto3" json:"mpf3,omitempty"`
+	Maxmi3    uint64 `protobuf:"varint,20,opt,name=maxmi3,proto3" json:"maxmi3,omitempty"`
+}
+
+func (m *MsgRecord3) Reset()         { *m = MsgRecord3{} }
+func (m *MsgRecord3) String() string { return proto.CompactTextString(m) }
+func (*MsgRecord3) ProtoMessage()    {}
+func (*MsgRecord3) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{2}
+}
+func (m *MsgRecord3) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgRecord3) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgRecord3.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgRecord3) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgRecord3.Merge(m, src)
+}
+func (m *MsgRecord3) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgRecord3) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgRecord3.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgRecord3 proto.InternalMessageInfo
+
+func (m *MsgRecord3) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgRecord3) GetTimestamp() uint64 {
+	if m != nil {
+		return m.Timestamp
+	}
+	return 0
+}
+
+func (m *MsgRecord3) GetWhin1() uint64 {
+	if m != nil {
+		return m.Whin1
+	}
+	return 0
+}
+
+func (m *MsgRecord3) GetWhout1() uint64 {
+	if m != nil {
+		return m.Whout1
+	}
+	return 0
+}
+
+func (m *MsgRecord3) GetMvolt1() uint64 {
+	if m != nil {
+		return m.Mvolt1
+	}
+	return 0
+}
+
+func (m *MsgRecord3) GetMhertz1() uint64 {
+	if m != nil {
+		return m.Mhertz1
+	}
+	return 0
+}
+
+func (m *MsgRecord3) GetMpf1() uint64 {
+	if m != nil {
+		return m.Mpf1
+	}
+	return 0
+}
+
+func (m *MsgRecord3) GetMaxmi1() uint64 {
+	if m != nil {
+		return m.Maxmi1
+	}
+	return 0
+}
+
+func (m *MsgRecord3) GetWhin2() uint64 {
+	if m != nil {
+		return m.Whin2
+	}
+	return 0
+}
+
+func (m *MsgRecord3) GetWhout2() uint64 {
+	if m != nil {
+		return m.Whout2
+	}
+	return 0
+}
+
+func (m *MsgRecord3) GetMvolt2() uint64 {
+	if m != nil {
+		return m.Mvolt2
+	}
+	return 0
+}
+
+func (m *MsgRecord3) GetMhertz2() uint64 {
+	if m != nil {
+		return m.Mhertz2
+	}
+	return 0
+}
+
+func (m *MsgRecord3) GetMpf2() uint64 {
+	if m != nil {
+		return m.Mpf2
+	}
+	return 0
+}
+
+func (m *MsgRecord3) GetMaxmi2() uint64 {
+	if m != nil {
+		return m.Maxmi2
+	}
+	return 0
+}
+
+func (m *MsgRecord3) GetWhin3() uint64 {
+	if m != nil {
+		return m.Whin3
+	}
+	return 0
+}
+
+func (m *MsgRecord3) GetWhout3() uint64 {
+	if m != nil {
+		return m.Whout3
+	}
+	return 0
+}
+
+func (m *MsgRecord3) GetMvolt3() uint64 {
+	if m != nil {
+		return m.Mvolt3
+	}
+	return 0
+}
+
+func (m *MsgRecord3) GetMhertz3() uint64 {
+	if m != nil {
+		return m.Mhertz3
+	}
+	return 0
+}
+
+func (m *MsgRecord3) GetMpf3() uint64 {
+	if m != nil {
+		return m.Mpf3
+	}
+	return 0
+}
+
+func (m *MsgRecord3) GetMaxmi3() uint64 {
+	if m != nil {
+		return m.Maxmi3
+	}
+	return 0
+}
+
+type MsgRecord3Response struct {
+}
+
+func (m *MsgRecord3Response) Reset()         { *m = MsgRecord3Response{} }
+func (m *MsgRecord3Response) String() string { return proto.CompactTextString(m) }
+func (*MsgRecord3Response) ProtoMessage()    {}
+func (*MsgRecord3Response) Descriptor() ([]byte, []int) {
+	return fileDescriptor_687c50bdd23ff25e, []int{3}
+}
+func (m *MsgRecord3Response) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgRecord3Response) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgRecord3Response.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgRecord3Response) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgRecord3Response.Merge(m, src)
+}
+func (m *MsgRecord3Response) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgRecord3Response) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgRecord3Response.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgRecord3Response proto.InternalMessageInfo
+
+func init() {
+	proto.RegisterType((*MsgRecord)(nil), "electra.meter.MsgRecord")
+	proto.RegisterType((*MsgRecordResponse)(nil), "electra.meter.MsgRecordResponse")
+	proto.RegisterType((*MsgRecord3)(nil), "electra.meter.MsgRecord3")
+	proto.RegisterType((*MsgRecord3Response)(nil), "electra.meter.MsgRecord3Response")
+}
+
 func init() { proto.RegisterFile("electra/meter/tx.proto", fileDescriptor_687c50bdd23ff25e) }
 
 var fileDescriptor_687c50bdd23ff25e = []byte{
-	// 106 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0x4b, 0xcd, 0x49, 0x4d,
-	0x2e, 0x29, 0x4a, 0xd4, 0xcf, 0x4d, 0x2d, 0x49, 0x2d, 0xd2, 0x2f, 0xa9, 0xd0, 0x2b, 0x28, 0xca,
-	0x2f, 0xc9, 0x17, 0xe2, 0x85, 0x8a, 0xeb, 0x81, 0xc5, 0x8d, 0x58, 0xb9, 0x98, 0x7d, 0x8b, 0xd3,
-	0x9d, 0xf4, 0x4f, 0x3c, 0x92, 0x63, 0xbc, 0xf0, 0x48, 0x8e, 0xf1, 0xc1, 0x23, 0x39, 0xc6, 0x09,
-	0x8f, 0xe5, 0x18, 0x2e, 0x3c, 0x96, 0x63, 0xb8, 0xf1, 0x58, 0x8e, 0x21, 0x4a, 0x14, 0x66, 0x4e,
-	0x05, 0xcc, 0xa4, 0xca, 0x82, 0xd4, 0xe2, 0x24, 0x36, 0xb0, 0x69, 0xc6, 0x80, 0x00, 0x00, 0x00,
-	0xff, 0xff, 0x54, 0x15, 0xa1, 0x3e, 0x67, 0x00, 0x00, 0x00,
+	// 447 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x93, 0x3f, 0x73, 0xd3, 0x30,
+	0x18, 0xc6, 0x23, 0x92, 0x26, 0xe4, 0x85, 0x42, 0xab, 0x86, 0xde, 0x4b, 0x8f, 0xf3, 0x05, 0x4f,
+	0x9d, 0x9c, 0xb3, 0xf4, 0x0d, 0x38, 0xee, 0x98, 0xba, 0x78, 0x64, 0x33, 0x41, 0xad, 0x73, 0x57,
+	0xd5, 0x3e, 0x5b, 0xd0, 0xc0, 0xa7, 0x60, 0xe0, 0x43, 0x31, 0x76, 0x84, 0x8d, 0x4b, 0x16, 0x3e,
+	0x06, 0xa7, 0xd7, 0x92, 0x2c, 0x86, 0x4c, 0x6c, 0x7a, 0x1e, 0xfd, 0xc9, 0xef, 0x17, 0x4b, 0x70,
+	0xae, 0x6e, 0xd5, 0xda, 0xb4, 0xe5, 0x4a, 0x2b, 0xa3, 0xda, 0x95, 0xd9, 0x66, 0x4d, 0x5b, 0x9b,
+	0x9a, 0x1f, 0xbb, 0x3e, 0xa3, 0x3e, 0xfd, 0xc5, 0x60, 0x7e, 0xd5, 0xdd, 0x14, 0x6a, 0x5d, 0xb7,
+	0x1f, 0x39, 0xc2, 0x6c, 0xdd, 0xaa, 0xd2, 0xd4, 0x2d, 0xb2, 0x25, 0xbb, 0x9c, 0x17, 0x3e, 0xf2,
+	0x57, 0x30, 0x37, 0x1b, 0xad, 0x3a, 0x53, 0xea, 0x06, 0x1f, 0x2d, 0xd9, 0xe5, 0xa4, 0x18, 0x0a,
+	0xbe, 0x80, 0xa3, 0xa6, 0x2a, 0x3b, 0x85, 0x63, 0x9a, 0xe9, 0x03, 0xe7, 0x30, 0xb9, 0xaf, 0x36,
+	0x77, 0x38, 0xa1, 0x92, 0xc6, 0x76, 0xe5, 0x7d, 0x55, 0x7f, 0x32, 0x78, 0xd4, 0xaf, 0xa4, 0x60,
+	0x5b, 0xfd, 0xb9, 0xbe, 0x35, 0x38, 0xed, 0x5b, 0x0a, 0xfc, 0x1c, 0xa6, 0xba, 0x52, 0xad, 0xf9,
+	0x8a, 0x33, 0xaa, 0x5d, 0xe2, 0x27, 0x30, 0xd6, 0xcd, 0x35, 0x3e, 0xa6, 0xd2, 0x0e, 0x69, 0x7f,
+	0xb9, 0xd5, 0x1b, 0x9c, 0xbb, 0xfd, 0x36, 0xa4, 0x67, 0x70, 0x1a, 0xd4, 0x0a, 0xd5, 0x35, 0xf5,
+	0x5d, 0xa7, 0xd2, 0x3f, 0x63, 0x80, 0xd0, 0xca, 0xff, 0x31, 0xb6, 0x3e, 0xb9, 0x37, 0xa6, 0x60,
+	0x89, 0x49, 0x28, 0x77, 0xce, 0x2e, 0x91, 0x89, 0x55, 0xca, 0x9d, 0xb6, 0x4b, 0xf6, 0xd7, 0x7b,
+	0xa7, 0xdc, 0x99, 0xfb, 0x68, 0xff, 0x3b, 0xdd, 0x5c, 0xe7, 0xce, 0x9c, 0xc6, 0x74, 0x8a, 0x15,
+	0xcb, 0x9d, 0xba, 0x4b, 0x9e, 0x45, 0x78, 0x7b, 0x0a, 0x81, 0x45, 0x20, 0x44, 0x2c, 0x22, 0xb0,
+	0x08, 0x7c, 0x12, 0xb1, 0x88, 0x81, 0x45, 0xe0, 0xd3, 0x98, 0x45, 0x38, 0x16, 0x81, 0xc7, 0x81,
+	0x45, 0x04, 0x16, 0x81, 0xcf, 0x22, 0x16, 0xe1, 0x59, 0x24, 0x3e, 0x1f, 0x58, 0x64, 0x60, 0x91,
+	0x78, 0x12, 0xb1, 0xc8, 0xc0, 0x22, 0xf1, 0x34, 0x62, 0x91, 0x03, 0x8b, 0x44, 0x1e, 0xb3, 0x48,
+	0xc7, 0x22, 0xf1, 0x2c, 0xb0, 0xc8, 0xc0, 0x22, 0x71, 0x11, 0xb1, 0xc8, 0x74, 0x01, 0x7c, 0xf8,
+	0xd2, 0xfe, 0x02, 0x88, 0xef, 0x0c, 0xc6, 0x57, 0xdd, 0x0d, 0x7f, 0x0b, 0x53, 0x7f, 0xeb, 0xb3,
+	0x7f, 0xde, 0x44, 0x16, 0x36, 0x5d, 0x2c, 0x0f, 0xcd, 0xf8, 0xd3, 0xf8, 0x3b, 0x98, 0xf9, 0xab,
+	0xf4, 0xf2, 0xd0, 0x62, 0x79, 0xf1, 0xfa, 0xe0, 0x94, 0x3f, 0xe8, 0xcd, 0xea, 0xc7, 0x2e, 0x61,
+	0x0f, 0xbb, 0x84, 0xfd, 0xde, 0x25, 0xec, 0xdb, 0x3e, 0x19, 0x3d, 0xec, 0x93, 0xd1, 0xcf, 0x7d,
+	0x32, 0x7a, 0xff, 0xc2, 0xbf, 0xe4, 0xad, 0x7f, 0xcb, 0x5f, 0x1a, 0xd5, 0x7d, 0x98, 0xd2, 0x7b,
+	0x96, 0x7f, 0x03, 0x00, 0x00, 0xff, 0xff, 0x22, 0x0b, 0x38, 0x58, 0xe9, 0x03, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -48,6 +456,8 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type MsgClient interface {
+	Record(ctx context.Context, in *MsgRecord, opts ...grpc.CallOption) (*MsgRecordResponse, error)
+	Record3(ctx context.Context, in *MsgRecord3, opts ...grpc.CallOption) (*MsgRecord3Response, error)
 }
 
 type msgClient struct {
@@ -58,22 +468,1349 @@ func NewMsgClient(cc grpc1.ClientConn) MsgClient {
 	return &msgClient{cc}
 }
 
+func (c *msgClient) Record(ctx context.Context, in *MsgRecord, opts ...grpc.CallOption) (*MsgRecordResponse, error) {
+	out := new(MsgRecordResponse)
+	err := c.cc.Invoke(ctx, "/electra.meter.Msg/Record", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) Record3(ctx context.Context, in *MsgRecord3, opts ...grpc.CallOption) (*MsgRecord3Response, error) {
+	out := new(MsgRecord3Response)
+	err := c.cc.Invoke(ctx, "/electra.meter.Msg/Record3", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MsgServer is the server API for Msg service.
 type MsgServer interface {
+	Record(context.Context, *MsgRecord) (*MsgRecordResponse, error)
+	Record3(context.Context, *MsgRecord3) (*MsgRecord3Response, error)
 }
 
 // UnimplementedMsgServer can be embedded to have forward compatible implementations.
 type UnimplementedMsgServer struct {
 }
 
+func (*UnimplementedMsgServer) Record(ctx context.Context, req *MsgRecord) (*MsgRecordResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Record not implemented")
+}
+func (*UnimplementedMsgServer) Record3(ctx context.Context, req *MsgRecord3) (*MsgRecord3Response, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Record3 not implemented")
+}
+
 func RegisterMsgServer(s grpc1.Server, srv MsgServer) {
 	s.RegisterService(&_Msg_serviceDesc, srv)
+}
+
+func _Msg_Record_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgRecord)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).Record(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/electra.meter.Msg/Record",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).Record(ctx, req.(*MsgRecord))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_Record3_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgRecord3)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).Record3(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/electra.meter.Msg/Record3",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).Record3(ctx, req.(*MsgRecord3))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 var _Msg_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "electra.meter.Msg",
 	HandlerType: (*MsgServer)(nil),
-	Methods:     []grpc.MethodDesc{},
-	Streams:     []grpc.StreamDesc{},
-	Metadata:    "electra/meter/tx.proto",
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "Record",
+			Handler:    _Msg_Record_Handler,
+		},
+		{
+			MethodName: "Record3",
+			Handler:    _Msg_Record3_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "electra/meter/tx.proto",
 }
+
+func (m *MsgRecord) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgRecord) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgRecord) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Maxmi != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Maxmi))
+		i--
+		dAtA[i] = 0x48
+	}
+	if m.Mpf != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Mpf))
+		i--
+		dAtA[i] = 0x40
+	}
+	if m.Mhertz != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Mhertz))
+		i--
+		dAtA[i] = 0x38
+	}
+	if m.Mvolt != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Mvolt))
+		i--
+		dAtA[i] = 0x30
+	}
+	if m.Whout != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Whout))
+		i--
+		dAtA[i] = 0x28
+	}
+	if m.Whin != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Whin))
+		i--
+		dAtA[i] = 0x20
+	}
+	if m.Phase != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Phase))
+		i--
+		dAtA[i] = 0x18
+	}
+	if m.Timestamp != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Timestamp))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgRecordResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgRecordResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgRecordResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgRecord3) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgRecord3) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgRecord3) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Maxmi3 != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Maxmi3))
+		i--
+		dAtA[i] = 0x1
+		i--
+		dAtA[i] = 0xa0
+	}
+	if m.Mpf3 != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Mpf3))
+		i--
+		dAtA[i] = 0x1
+		i--
+		dAtA[i] = 0x98
+	}
+	if m.Mhertz3 != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Mhertz3))
+		i--
+		dAtA[i] = 0x1
+		i--
+		dAtA[i] = 0x90
+	}
+	if m.Mvolt3 != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Mvolt3))
+		i--
+		dAtA[i] = 0x1
+		i--
+		dAtA[i] = 0x88
+	}
+	if m.Whout3 != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Whout3))
+		i--
+		dAtA[i] = 0x1
+		i--
+		dAtA[i] = 0x80
+	}
+	if m.Whin3 != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Whin3))
+		i--
+		dAtA[i] = 0x78
+	}
+	if m.Maxmi2 != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Maxmi2))
+		i--
+		dAtA[i] = 0x70
+	}
+	if m.Mpf2 != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Mpf2))
+		i--
+		dAtA[i] = 0x68
+	}
+	if m.Mhertz2 != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Mhertz2))
+		i--
+		dAtA[i] = 0x60
+	}
+	if m.Mvolt2 != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Mvolt2))
+		i--
+		dAtA[i] = 0x58
+	}
+	if m.Whout2 != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Whout2))
+		i--
+		dAtA[i] = 0x50
+	}
+	if m.Whin2 != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Whin2))
+		i--
+		dAtA[i] = 0x48
+	}
+	if m.Maxmi1 != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Maxmi1))
+		i--
+		dAtA[i] = 0x40
+	}
+	if m.Mpf1 != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Mpf1))
+		i--
+		dAtA[i] = 0x38
+	}
+	if m.Mhertz1 != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Mhertz1))
+		i--
+		dAtA[i] = 0x30
+	}
+	if m.Mvolt1 != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Mvolt1))
+		i--
+		dAtA[i] = 0x28
+	}
+	if m.Whout1 != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Whout1))
+		i--
+		dAtA[i] = 0x20
+	}
+	if m.Whin1 != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Whin1))
+		i--
+		dAtA[i] = 0x18
+	}
+	if m.Timestamp != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Timestamp))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgRecord3Response) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgRecord3Response) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgRecord3Response) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func encodeVarintTx(dAtA []byte, offset int, v uint64) int {
+	offset -= sovTx(v)
+	base := offset
+	for v >= 1<<7 {
+		dAtA[offset] = uint8(v&0x7f | 0x80)
+		v >>= 7
+		offset++
+	}
+	dAtA[offset] = uint8(v)
+	return base
+}
+func (m *MsgRecord) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.Timestamp != 0 {
+		n += 1 + sovTx(uint64(m.Timestamp))
+	}
+	if m.Phase != 0 {
+		n += 1 + sovTx(uint64(m.Phase))
+	}
+	if m.Whin != 0 {
+		n += 1 + sovTx(uint64(m.Whin))
+	}
+	if m.Whout != 0 {
+		n += 1 + sovTx(uint64(m.Whout))
+	}
+	if m.Mvolt != 0 {
+		n += 1 + sovTx(uint64(m.Mvolt))
+	}
+	if m.Mhertz != 0 {
+		n += 1 + sovTx(uint64(m.Mhertz))
+	}
+	if m.Mpf != 0 {
+		n += 1 + sovTx(uint64(m.Mpf))
+	}
+	if m.Maxmi != 0 {
+		n += 1 + sovTx(uint64(m.Maxmi))
+	}
+	return n
+}
+
+func (m *MsgRecordResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgRecord3) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.Timestamp != 0 {
+		n += 1 + sovTx(uint64(m.Timestamp))
+	}
+	if m.Whin1 != 0 {
+		n += 1 + sovTx(uint64(m.Whin1))
+	}
+	if m.Whout1 != 0 {
+		n += 1 + sovTx(uint64(m.Whout1))
+	}
+	if m.Mvolt1 != 0 {
+		n += 1 + sovTx(uint64(m.Mvolt1))
+	}
+	if m.Mhertz1 != 0 {
+		n += 1 + sovTx(uint64(m.Mhertz1))
+	}
+	if m.Mpf1 != 0 {
+		n += 1 + sovTx(uint64(m.Mpf1))
+	}
+	if m.Maxmi1 != 0 {
+		n += 1 + sovTx(uint64(m.Maxmi1))
+	}
+	if m.Whin2 != 0 {
+		n += 1 + sovTx(uint64(m.Whin2))
+	}
+	if m.Whout2 != 0 {
+		n += 1 + sovTx(uint64(m.Whout2))
+	}
+	if m.Mvolt2 != 0 {
+		n += 1 + sovTx(uint64(m.Mvolt2))
+	}
+	if m.Mhertz2 != 0 {
+		n += 1 + sovTx(uint64(m.Mhertz2))
+	}
+	if m.Mpf2 != 0 {
+		n += 1 + sovTx(uint64(m.Mpf2))
+	}
+	if m.Maxmi2 != 0 {
+		n += 1 + sovTx(uint64(m.Maxmi2))
+	}
+	if m.Whin3 != 0 {
+		n += 1 + sovTx(uint64(m.Whin3))
+	}
+	if m.Whout3 != 0 {
+		n += 2 + sovTx(uint64(m.Whout3))
+	}
+	if m.Mvolt3 != 0 {
+		n += 2 + sovTx(uint64(m.Mvolt3))
+	}
+	if m.Mhertz3 != 0 {
+		n += 2 + sovTx(uint64(m.Mhertz3))
+	}
+	if m.Mpf3 != 0 {
+		n += 2 + sovTx(uint64(m.Mpf3))
+	}
+	if m.Maxmi3 != 0 {
+		n += 2 + sovTx(uint64(m.Maxmi3))
+	}
+	return n
+}
+
+func (m *MsgRecord3Response) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func sovTx(x uint64) (n int) {
+	return (math_bits.Len64(x|1) + 6) / 7
+}
+func sozTx(x uint64) (n int) {
+	return sovTx(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+}
+func (m *MsgRecord) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgRecord: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgRecord: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Timestamp", wireType)
+			}
+			m.Timestamp = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Timestamp |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Phase", wireType)
+			}
+			m.Phase = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Phase |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 4:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Whin", wireType)
+			}
+			m.Whin = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Whin |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 5:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Whout", wireType)
+			}
+			m.Whout = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Whout |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 6:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Mvolt", wireType)
+			}
+			m.Mvolt = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Mvolt |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 7:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Mhertz", wireType)
+			}
+			m.Mhertz = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Mhertz |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 8:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Mpf", wireType)
+			}
+			m.Mpf = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Mpf |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 9:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Maxmi", wireType)
+			}
+			m.Maxmi = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Maxmi |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgRecordResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgRecordResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgRecordResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgRecord3) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgRecord3: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgRecord3: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Timestamp", wireType)
+			}
+			m.Timestamp = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Timestamp |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Whin1", wireType)
+			}
+			m.Whin1 = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Whin1 |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 4:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Whout1", wireType)
+			}
+			m.Whout1 = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Whout1 |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 5:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Mvolt1", wireType)
+			}
+			m.Mvolt1 = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Mvolt1 |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 6:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Mhertz1", wireType)
+			}
+			m.Mhertz1 = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Mhertz1 |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 7:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Mpf1", wireType)
+			}
+			m.Mpf1 = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Mpf1 |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 8:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Maxmi1", wireType)
+			}
+			m.Maxmi1 = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Maxmi1 |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 9:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Whin2", wireType)
+			}
+			m.Whin2 = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Whin2 |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 10:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Whout2", wireType)
+			}
+			m.Whout2 = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Whout2 |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 11:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Mvolt2", wireType)
+			}
+			m.Mvolt2 = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Mvolt2 |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 12:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Mhertz2", wireType)
+			}
+			m.Mhertz2 = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Mhertz2 |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 13:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Mpf2", wireType)
+			}
+			m.Mpf2 = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Mpf2 |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 14:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Maxmi2", wireType)
+			}
+			m.Maxmi2 = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Maxmi2 |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 15:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Whin3", wireType)
+			}
+			m.Whin3 = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Whin3 |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 16:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Whout3", wireType)
+			}
+			m.Whout3 = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Whout3 |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 17:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Mvolt3", wireType)
+			}
+			m.Mvolt3 = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Mvolt3 |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 18:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Mhertz3", wireType)
+			}
+			m.Mhertz3 = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Mhertz3 |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 19:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Mpf3", wireType)
+			}
+			m.Mpf3 = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Mpf3 |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 20:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Maxmi3", wireType)
+			}
+			m.Maxmi3 = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Maxmi3 |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgRecord3Response) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgRecord3Response: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgRecord3Response: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func skipTx(dAtA []byte) (n int, err error) {
+	l := len(dAtA)
+	iNdEx := 0
+	depth := 0
+	for iNdEx < l {
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return 0, ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return 0, io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		wireType := int(wire & 0x7)
+		switch wireType {
+		case 0:
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return 0, ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return 0, io.ErrUnexpectedEOF
+				}
+				iNdEx++
+				if dAtA[iNdEx-1] < 0x80 {
+					break
+				}
+			}
+		case 1:
+			iNdEx += 8
+		case 2:
+			var length int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return 0, ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return 0, io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				length |= (int(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if length < 0 {
+				return 0, ErrInvalidLengthTx
+			}
+			iNdEx += length
+		case 3:
+			depth++
+		case 4:
+			if depth == 0 {
+				return 0, ErrUnexpectedEndOfGroupTx
+			}
+			depth--
+		case 5:
+			iNdEx += 4
+		default:
+			return 0, fmt.Errorf("proto: illegal wireType %d", wireType)
+		}
+		if iNdEx < 0 {
+			return 0, ErrInvalidLengthTx
+		}
+		if depth == 0 {
+			return iNdEx, nil
+		}
+	}
+	return 0, io.ErrUnexpectedEOF
+}
+
+var (
+	ErrInvalidLengthTx        = fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowTx          = fmt.Errorf("proto: integer overflow")
+	ErrUnexpectedEndOfGroupTx = fmt.Errorf("proto: unexpected end of group")
+)
