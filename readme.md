@@ -26,6 +26,13 @@ The grid gateway synchronize the micro-grid and import extra energy as needed. T
 
 ![Electra Logo](/vue/public/Concept.png "The concept")
 
+## Responsible Disclosure
+Send us an email to report any security related bugs or vulnerabilities at security@muun.com.
+
+You can encrypt your email message using our public PGP key.
+
+Public key: [here](https://raw.githubusercontent.com/Alkia/electra/master/public_key.pgp)
+
 ## Get started
 
 **electra** is built using Cosmos SDK and Tendermint and created with Ignite.
