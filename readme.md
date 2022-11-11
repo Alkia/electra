@@ -3,6 +3,8 @@
 # Electra
 **Electra** is an open source sovereign blockchain that enables local micro-grid to operate smoothly between trustless actors enabling a real circular economy based on exchange of electricity units (kWh) by the means of pre-purchased tokens.
 
+More about ![Electra](https://linktr.ee/admin?q=%2Fadmin) 
+
 ## The BlockChain based Micro-Grid Architecture
 
 A **micro-grid**, is a local transport structure semi-isolated from the main transport backbone.
