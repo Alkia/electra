@@ -27,7 +27,7 @@ The grid gateway synchronize the micro-grid and import extra energy as needed. T
 ![Electra Logo](/vue/public/Concept.png "The concept")
 
 ## Responsible Disclosure
-Send us an email to report any security related bugs or vulnerabilities at security@muun.com.
+Send us an email to report any security related bugs or vulnerabilities at security@alkia.net
 
 You can encrypt your email message using our public PGP key.
 
