@@ -29,9 +29,7 @@ The grid gateway synchronize the micro-grid and import extra energy as needed. T
 ## Responsible Disclosure
 Send us an email to report any security related bugs or vulnerabilities at security@alkia.net
 
-You can encrypt your email message using our public PGP key.
-
-Public key: [here](https://raw.githubusercontent.com/Alkia/electra/master/public_key.pgp)
+You can encrypt your email message using our public PGP key : [Public key](https://raw.githubusercontent.com/Alkia/electra/master/public_key.pgp)
 
 ## Get started
 
