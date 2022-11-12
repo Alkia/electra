@@ -153,4 +153,5 @@ We use the following modules from [Osmosis](https://github.com/osmosis-labs/osmo
 - [Cosmos SDK docs](https://docs.cosmos.network)
 - [Developer Chat](https://discord.gg/ignite)
 
+
 ![Link tree QR](/vue/public/LinktreeQR.png "QR to Link Tree")
