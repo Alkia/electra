@@ -88,5 +88,5 @@ genesis:
   chain_id: electra-testnet-0
 validators:
 - name: alice
-  bonded: 1000000uelectra
+  bonded: 100000000uelectra
   home: $HOME/.electra
