@@ -84,8 +84,8 @@ genesis:
     description: The native staking token of electra blockchain
     display: electra
     name: electra
-    symbol: elc
-  chain_id: electra-testnet-1
+    symbol: ELC
+  chain_id: electra-testnet-0
 validators:
 - name: alice
   bonded: 10000000000uelectra
