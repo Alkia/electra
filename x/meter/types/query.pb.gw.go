@@ -275,6 +275,10 @@ func local_request_Query_MeterdirectoryAll_0(ctx context.Context, marshaler runt
 
 }
 
+var (
+	filter_Query_Listrecordings_0 = &utilities.DoubleArray{Encoding: map[string]int{"deviceID": 0, "start": 1, "end": 2, "byUnixTime": 3}, Base: []int{1, 1, 2, 3, 4, 0, 0, 0, 0}, Check: []int{0, 1, 1, 1, 1, 2, 3, 4, 5}}
+)
+
 func request_Query_Listrecordings_0(ctx context.Context, marshaler runtime.Marshaler, client QueryClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq QueryListrecordingsRequest
 	var metadata runtime.ServerMetadata
@@ -328,6 +332,13 @@ func request_Query_Listrecordings_0(ctx context.Context, marshaler runtime.Marsh
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "byUnixTime", err)
+	}
+
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Query_Listrecordings_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.Listrecordings(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -388,6 +399,13 @@ func local_request_Query_Listrecordings_0(ctx context.Context, marshaler runtime
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "byUnixTime", err)
+	}
+
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Query_Listrecordings_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := server.Listrecordings(ctx, &protoReq)
@@ -771,6 +789,10 @@ func local_request_Query_CurrentcycleID_0(ctx context.Context, marshaler runtime
 
 }
 
+var (
+	filter_Query_Customerbillingline_0 = &utilities.DoubleArray{Encoding: map[string]int{"customerDeviceID": 0, "cycleID": 1, "lineid": 2}, Base: []int{1, 1, 2, 3, 0, 0, 0}, Check: []int{0, 1, 1, 1, 2, 3, 4}}
+)
+
 func request_Query_Customerbillingline_0(ctx context.Context, marshaler runtime.Marshaler, client QueryClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq QueryGetCustomerbillinglineRequest
 	var metadata runtime.ServerMetadata
@@ -815,15 +837,11 @@ func request_Query_Customerbillingline_0(ctx context.Context, marshaler runtime.
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "lineid", err)
 	}
 
-	val, ok = pathParams["paid"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "paid")
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-
-	protoReq.Paid, err = runtime.Bool(val)
-
-	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "paid", err)
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Query_Customerbillingline_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.Customerbillingline(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -875,15 +893,11 @@ func local_request_Query_Customerbillingline_0(ctx context.Context, marshaler ru
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "lineid", err)
 	}
 
-	val, ok = pathParams["paid"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "paid")
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-
-	protoReq.Paid, err = runtime.Bool(val)
-
-	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "paid", err)
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Query_Customerbillingline_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := server.Customerbillingline(ctx, &protoReq)
@@ -927,6 +941,10 @@ func local_request_Query_CustomerbillinglineAll_0(ctx context.Context, marshaler
 
 }
 
+var (
+	filter_Query_Getcustomerbill_0 = &utilities.DoubleArray{Encoding: map[string]int{"customerDeviceID": 0, "billCycleID": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
+)
+
 func request_Query_Getcustomerbill_0(ctx context.Context, marshaler runtime.Marshaler, client QueryClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq QueryGetcustomerbillRequest
 	var metadata runtime.ServerMetadata
@@ -958,6 +976,13 @@ func request_Query_Getcustomerbill_0(ctx context.Context, marshaler runtime.Mars
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "billCycleID", err)
+	}
+
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Query_Getcustomerbill_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.Getcustomerbill(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -996,6 +1021,13 @@ func local_request_Query_Getcustomerbill_0(ctx context.Context, marshaler runtim
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "billCycleID", err)
+	}
+
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Query_Getcustomerbill_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := server.Getcustomerbill(ctx, &protoReq)
@@ -1115,6 +1147,10 @@ func local_request_Query_CustomerbillsAll_0(ctx context.Context, marshaler runti
 
 }
 
+var (
+	filter_Query_Producerbillingline_0 = &utilities.DoubleArray{Encoding: map[string]int{"producerDeviceID": 0, "cycleID": 1, "lineid": 2}, Base: []int{1, 1, 2, 3, 0, 0, 0}, Check: []int{0, 1, 1, 1, 2, 3, 4}}
+)
+
 func request_Query_Producerbillingline_0(ctx context.Context, marshaler runtime.Marshaler, client QueryClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq QueryGetProducerbillinglineRequest
 	var metadata runtime.ServerMetadata
@@ -1159,15 +1195,11 @@ func request_Query_Producerbillingline_0(ctx context.Context, marshaler runtime.
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "lineid", err)
 	}
 
-	val, ok = pathParams["paid"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "paid")
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-
-	protoReq.Paid, err = runtime.Bool(val)
-
-	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "paid", err)
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Query_Producerbillingline_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.Producerbillingline(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -1219,15 +1251,11 @@ func local_request_Query_Producerbillingline_0(ctx context.Context, marshaler ru
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "lineid", err)
 	}
 
-	val, ok = pathParams["paid"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "paid")
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-
-	protoReq.Paid, err = runtime.Bool(val)
-
-	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "paid", err)
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Query_Producerbillingline_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := server.Producerbillingline(ctx, &protoReq)
@@ -1271,6 +1299,10 @@ func local_request_Query_ProducerbillinglineAll_0(ctx context.Context, marshaler
 
 }
 
+var (
+	filter_Query_Getproducerbill_0 = &utilities.DoubleArray{Encoding: map[string]int{"producerDeviceID": 0, "billCycleID": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
+)
+
 func request_Query_Getproducerbill_0(ctx context.Context, marshaler runtime.Marshaler, client QueryClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq QueryGetproducerbillRequest
 	var metadata runtime.ServerMetadata
@@ -1302,6 +1334,13 @@ func request_Query_Getproducerbill_0(ctx context.Context, marshaler runtime.Mars
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "billCycleID", err)
+	}
+
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Query_Getproducerbill_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.Getproducerbill(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -1340,6 +1379,13 @@ func local_request_Query_Getproducerbill_0(ctx context.Context, marshaler runtim
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "billCycleID", err)
+	}
+
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Query_Getproducerbill_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := server.Getproducerbill(ctx, &protoReq)
@@ -2525,7 +2571,7 @@ var (
 
 	pattern_Query_CurrentcycleID_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"electra", "meter", "currentcycle_id"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_Query_Customerbillingline_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"electra", "meter", "customerbillingline", "customerDeviceID", "cycleID", "lineid", "paid"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_Query_Customerbillingline_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"electra", "meter", "customerbillingline", "customerDeviceID", "cycleID", "lineid"}, "", runtime.AssumeColonVerbOpt(true)))
 
 	pattern_Query_CustomerbillinglineAll_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"electra", "meter", "customerbillingline"}, "", runtime.AssumeColonVerbOpt(true)))
 
@@ -2535,7 +2581,7 @@ var (
 
 	pattern_Query_CustomerbillsAll_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"electra", "meter", "customerbills"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_Query_Producerbillingline_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"electra", "meter", "producerbillingline", "producerDeviceID", "cycleID", "lineid", "paid"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_Query_Producerbillingline_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"electra", "meter", "producerbillingline", "producerDeviceID", "cycleID", "lineid"}, "", runtime.AssumeColonVerbOpt(true)))
 
 	pattern_Query_ProducerbillinglineAll_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"electra", "meter", "producerbillingline"}, "", runtime.AssumeColonVerbOpt(true)))
 

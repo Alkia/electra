@@ -66,12 +66,14 @@ export interface QueryListrecordingsRequest {
   start: number;
   end: number;
   byUnixTime: boolean;
+  pagination: PageRequest | undefined;
 }
 
 export interface QueryListrecordingsResponse {
-  meterreadings: string;
+  meterreadings: string[];
   comments: string;
   total: number;
+  pagination: PageResponse | undefined;
 }
 
 export interface QueryGetPowerPurchaseContractRequest {
@@ -166,15 +168,17 @@ export interface QueryAllCustomerbillinglineResponse {
 export interface QueryGetcustomerbillRequest {
   customerDeviceID: string;
   billCycleID: number;
+  pagination: PageRequest | undefined;
 }
 
 export interface QueryGetcustomerbillResponse {
-  customerbillinglines: string;
+  customerbillinglines: string[];
   billTotalWh: number;
   billTotalPrice: number;
   currency: string;
   nblines: number;
   comments: string;
+  pagination: PageResponse | undefined;
 }
 
 export interface QueryGetCustomerbillsRequest {
@@ -218,15 +222,17 @@ export interface QueryAllProducerbillinglineResponse {
 export interface QueryGetproducerbillRequest {
   producerDeviceID: string;
   billCycleID: number;
+  pagination: PageRequest | undefined;
 }
 
 export interface QueryGetproducerbillResponse {
-  producerbillinglines: string;
+  producerbillinglines: string[];
   billTotalWh: number;
   billTotalPrice: number;
   curency: string;
   nblines: number;
   comments: string;
+  pagination: PageResponse | undefined;
 }
 
 export interface QueryGetProducerbillsRequest {
@@ -800,7 +806,7 @@ export const QueryAllMeterdirectoryResponse = {
 };
 
 function createBaseQueryListrecordingsRequest(): QueryListrecordingsRequest {
-  return { deviceID: "", start: 0, end: 0, byUnixTime: false };
+  return { deviceID: "", start: 0, end: 0, byUnixTime: false, pagination: undefined };
 }
 
 export const QueryListrecordingsRequest = {
@@ -816,6 +822,9 @@ export const QueryListrecordingsRequest = {
     }
     if (message.byUnixTime === true) {
       writer.uint32(32).bool(message.byUnixTime);
+    }
+    if (message.pagination !== undefined) {
+      PageRequest.encode(message.pagination, writer.uint32(42).fork()).ldelim();
     }
     return writer;
   },
@@ -839,6 +848,9 @@ export const QueryListrecordingsRequest = {
         case 4:
           message.byUnixTime = reader.bool();
           break;
+        case 5:
+          message.pagination = PageRequest.decode(reader, reader.uint32());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -853,6 +865,7 @@ export const QueryListrecordingsRequest = {
       start: isSet(object.start) ? Number(object.start) : 0,
       end: isSet(object.end) ? Number(object.end) : 0,
       byUnixTime: isSet(object.byUnixTime) ? Boolean(object.byUnixTime) : false,
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined,
     };
   },
 
@@ -862,6 +875,8 @@ export const QueryListrecordingsRequest = {
     message.start !== undefined && (obj.start = Math.round(message.start));
     message.end !== undefined && (obj.end = Math.round(message.end));
     message.byUnixTime !== undefined && (obj.byUnixTime = message.byUnixTime);
+    message.pagination !== undefined
+      && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
     return obj;
   },
 
@@ -871,24 +886,30 @@ export const QueryListrecordingsRequest = {
     message.start = object.start ?? 0;
     message.end = object.end ?? 0;
     message.byUnixTime = object.byUnixTime ?? false;
+    message.pagination = (object.pagination !== undefined && object.pagination !== null)
+      ? PageRequest.fromPartial(object.pagination)
+      : undefined;
     return message;
   },
 };
 
 function createBaseQueryListrecordingsResponse(): QueryListrecordingsResponse {
-  return { meterreadings: "", comments: "", total: 0 };
+  return { meterreadings: [], comments: "", total: 0, pagination: undefined };
 }
 
 export const QueryListrecordingsResponse = {
   encode(message: QueryListrecordingsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.meterreadings !== "") {
-      writer.uint32(10).string(message.meterreadings);
+    for (const v of message.meterreadings) {
+      writer.uint32(10).string(v!);
     }
     if (message.comments !== "") {
       writer.uint32(18).string(message.comments);
     }
     if (message.total !== 0) {
       writer.uint32(24).uint64(message.total);
+    }
+    if (message.pagination !== undefined) {
+      PageResponse.encode(message.pagination, writer.uint32(34).fork()).ldelim();
     }
     return writer;
   },
@@ -901,13 +922,16 @@ export const QueryListrecordingsResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.meterreadings = reader.string();
+          message.meterreadings.push(reader.string());
           break;
         case 2:
           message.comments = reader.string();
           break;
         case 3:
           message.total = longToNumber(reader.uint64() as Long);
+          break;
+        case 4:
+          message.pagination = PageResponse.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -919,25 +943,35 @@ export const QueryListrecordingsResponse = {
 
   fromJSON(object: any): QueryListrecordingsResponse {
     return {
-      meterreadings: isSet(object.meterreadings) ? String(object.meterreadings) : "",
+      meterreadings: Array.isArray(object?.meterreadings) ? object.meterreadings.map((e: any) => String(e)) : [],
       comments: isSet(object.comments) ? String(object.comments) : "",
       total: isSet(object.total) ? Number(object.total) : 0,
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined,
     };
   },
 
   toJSON(message: QueryListrecordingsResponse): unknown {
     const obj: any = {};
-    message.meterreadings !== undefined && (obj.meterreadings = message.meterreadings);
+    if (message.meterreadings) {
+      obj.meterreadings = message.meterreadings.map((e) => e);
+    } else {
+      obj.meterreadings = [];
+    }
     message.comments !== undefined && (obj.comments = message.comments);
     message.total !== undefined && (obj.total = Math.round(message.total));
+    message.pagination !== undefined
+      && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
     return obj;
   },
 
   fromPartial<I extends Exact<DeepPartial<QueryListrecordingsResponse>, I>>(object: I): QueryListrecordingsResponse {
     const message = createBaseQueryListrecordingsResponse();
-    message.meterreadings = object.meterreadings ?? "";
+    message.meterreadings = object.meterreadings?.map((e) => e) || [];
     message.comments = object.comments ?? "";
     message.total = object.total ?? 0;
+    message.pagination = (object.pagination !== undefined && object.pagination !== null)
+      ? PageResponse.fromPartial(object.pagination)
+      : undefined;
     return message;
   },
 };
@@ -2050,7 +2084,7 @@ export const QueryAllCustomerbillinglineResponse = {
 };
 
 function createBaseQueryGetcustomerbillRequest(): QueryGetcustomerbillRequest {
-  return { customerDeviceID: "", billCycleID: 0 };
+  return { customerDeviceID: "", billCycleID: 0, pagination: undefined };
 }
 
 export const QueryGetcustomerbillRequest = {
@@ -2060,6 +2094,9 @@ export const QueryGetcustomerbillRequest = {
     }
     if (message.billCycleID !== 0) {
       writer.uint32(16).uint64(message.billCycleID);
+    }
+    if (message.pagination !== undefined) {
+      PageRequest.encode(message.pagination, writer.uint32(26).fork()).ldelim();
     }
     return writer;
   },
@@ -2077,6 +2114,9 @@ export const QueryGetcustomerbillRequest = {
         case 2:
           message.billCycleID = longToNumber(reader.uint64() as Long);
           break;
+        case 3:
+          message.pagination = PageRequest.decode(reader, reader.uint32());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -2089,6 +2129,7 @@ export const QueryGetcustomerbillRequest = {
     return {
       customerDeviceID: isSet(object.customerDeviceID) ? String(object.customerDeviceID) : "",
       billCycleID: isSet(object.billCycleID) ? Number(object.billCycleID) : 0,
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined,
     };
   },
 
@@ -2096,6 +2137,8 @@ export const QueryGetcustomerbillRequest = {
     const obj: any = {};
     message.customerDeviceID !== undefined && (obj.customerDeviceID = message.customerDeviceID);
     message.billCycleID !== undefined && (obj.billCycleID = Math.round(message.billCycleID));
+    message.pagination !== undefined
+      && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
     return obj;
   },
 
@@ -2103,18 +2146,29 @@ export const QueryGetcustomerbillRequest = {
     const message = createBaseQueryGetcustomerbillRequest();
     message.customerDeviceID = object.customerDeviceID ?? "";
     message.billCycleID = object.billCycleID ?? 0;
+    message.pagination = (object.pagination !== undefined && object.pagination !== null)
+      ? PageRequest.fromPartial(object.pagination)
+      : undefined;
     return message;
   },
 };
 
 function createBaseQueryGetcustomerbillResponse(): QueryGetcustomerbillResponse {
-  return { customerbillinglines: "", billTotalWh: 0, billTotalPrice: 0, currency: "", nblines: 0, comments: "" };
+  return {
+    customerbillinglines: [],
+    billTotalWh: 0,
+    billTotalPrice: 0,
+    currency: "",
+    nblines: 0,
+    comments: "",
+    pagination: undefined,
+  };
 }
 
 export const QueryGetcustomerbillResponse = {
   encode(message: QueryGetcustomerbillResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.customerbillinglines !== "") {
-      writer.uint32(10).string(message.customerbillinglines);
+    for (const v of message.customerbillinglines) {
+      writer.uint32(10).string(v!);
     }
     if (message.billTotalWh !== 0) {
       writer.uint32(16).uint64(message.billTotalWh);
@@ -2131,6 +2185,9 @@ export const QueryGetcustomerbillResponse = {
     if (message.comments !== "") {
       writer.uint32(50).string(message.comments);
     }
+    if (message.pagination !== undefined) {
+      PageResponse.encode(message.pagination, writer.uint32(58).fork()).ldelim();
+    }
     return writer;
   },
 
@@ -2142,7 +2199,7 @@ export const QueryGetcustomerbillResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.customerbillinglines = reader.string();
+          message.customerbillinglines.push(reader.string());
           break;
         case 2:
           message.billTotalWh = longToNumber(reader.uint64() as Long);
@@ -2159,6 +2216,9 @@ export const QueryGetcustomerbillResponse = {
         case 6:
           message.comments = reader.string();
           break;
+        case 7:
+          message.pagination = PageResponse.decode(reader, reader.uint32());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -2169,34 +2229,46 @@ export const QueryGetcustomerbillResponse = {
 
   fromJSON(object: any): QueryGetcustomerbillResponse {
     return {
-      customerbillinglines: isSet(object.customerbillinglines) ? String(object.customerbillinglines) : "",
+      customerbillinglines: Array.isArray(object?.customerbillinglines)
+        ? object.customerbillinglines.map((e: any) => String(e))
+        : [],
       billTotalWh: isSet(object.billTotalWh) ? Number(object.billTotalWh) : 0,
       billTotalPrice: isSet(object.billTotalPrice) ? Number(object.billTotalPrice) : 0,
       currency: isSet(object.currency) ? String(object.currency) : "",
       nblines: isSet(object.nblines) ? Number(object.nblines) : 0,
       comments: isSet(object.comments) ? String(object.comments) : "",
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined,
     };
   },
 
   toJSON(message: QueryGetcustomerbillResponse): unknown {
     const obj: any = {};
-    message.customerbillinglines !== undefined && (obj.customerbillinglines = message.customerbillinglines);
+    if (message.customerbillinglines) {
+      obj.customerbillinglines = message.customerbillinglines.map((e) => e);
+    } else {
+      obj.customerbillinglines = [];
+    }
     message.billTotalWh !== undefined && (obj.billTotalWh = Math.round(message.billTotalWh));
     message.billTotalPrice !== undefined && (obj.billTotalPrice = Math.round(message.billTotalPrice));
     message.currency !== undefined && (obj.currency = message.currency);
     message.nblines !== undefined && (obj.nblines = Math.round(message.nblines));
     message.comments !== undefined && (obj.comments = message.comments);
+    message.pagination !== undefined
+      && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
     return obj;
   },
 
   fromPartial<I extends Exact<DeepPartial<QueryGetcustomerbillResponse>, I>>(object: I): QueryGetcustomerbillResponse {
     const message = createBaseQueryGetcustomerbillResponse();
-    message.customerbillinglines = object.customerbillinglines ?? "";
+    message.customerbillinglines = object.customerbillinglines?.map((e) => e) || [];
     message.billTotalWh = object.billTotalWh ?? 0;
     message.billTotalPrice = object.billTotalPrice ?? 0;
     message.currency = object.currency ?? "";
     message.nblines = object.nblines ?? 0;
     message.comments = object.comments ?? "";
+    message.pagination = (object.pagination !== undefined && object.pagination !== null)
+      ? PageResponse.fromPartial(object.pagination)
+      : undefined;
     return message;
   },
 };
@@ -2687,7 +2759,7 @@ export const QueryAllProducerbillinglineResponse = {
 };
 
 function createBaseQueryGetproducerbillRequest(): QueryGetproducerbillRequest {
-  return { producerDeviceID: "", billCycleID: 0 };
+  return { producerDeviceID: "", billCycleID: 0, pagination: undefined };
 }
 
 export const QueryGetproducerbillRequest = {
@@ -2697,6 +2769,9 @@ export const QueryGetproducerbillRequest = {
     }
     if (message.billCycleID !== 0) {
       writer.uint32(16).uint64(message.billCycleID);
+    }
+    if (message.pagination !== undefined) {
+      PageRequest.encode(message.pagination, writer.uint32(26).fork()).ldelim();
     }
     return writer;
   },
@@ -2714,6 +2789,9 @@ export const QueryGetproducerbillRequest = {
         case 2:
           message.billCycleID = longToNumber(reader.uint64() as Long);
           break;
+        case 3:
+          message.pagination = PageRequest.decode(reader, reader.uint32());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -2726,6 +2804,7 @@ export const QueryGetproducerbillRequest = {
     return {
       producerDeviceID: isSet(object.producerDeviceID) ? String(object.producerDeviceID) : "",
       billCycleID: isSet(object.billCycleID) ? Number(object.billCycleID) : 0,
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined,
     };
   },
 
@@ -2733,6 +2812,8 @@ export const QueryGetproducerbillRequest = {
     const obj: any = {};
     message.producerDeviceID !== undefined && (obj.producerDeviceID = message.producerDeviceID);
     message.billCycleID !== undefined && (obj.billCycleID = Math.round(message.billCycleID));
+    message.pagination !== undefined
+      && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
     return obj;
   },
 
@@ -2740,18 +2821,29 @@ export const QueryGetproducerbillRequest = {
     const message = createBaseQueryGetproducerbillRequest();
     message.producerDeviceID = object.producerDeviceID ?? "";
     message.billCycleID = object.billCycleID ?? 0;
+    message.pagination = (object.pagination !== undefined && object.pagination !== null)
+      ? PageRequest.fromPartial(object.pagination)
+      : undefined;
     return message;
   },
 };
 
 function createBaseQueryGetproducerbillResponse(): QueryGetproducerbillResponse {
-  return { producerbillinglines: "", billTotalWh: 0, billTotalPrice: 0, curency: "", nblines: 0, comments: "" };
+  return {
+    producerbillinglines: [],
+    billTotalWh: 0,
+    billTotalPrice: 0,
+    curency: "",
+    nblines: 0,
+    comments: "",
+    pagination: undefined,
+  };
 }
 
 export const QueryGetproducerbillResponse = {
   encode(message: QueryGetproducerbillResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.producerbillinglines !== "") {
-      writer.uint32(10).string(message.producerbillinglines);
+    for (const v of message.producerbillinglines) {
+      writer.uint32(10).string(v!);
     }
     if (message.billTotalWh !== 0) {
       writer.uint32(16).uint64(message.billTotalWh);
@@ -2768,6 +2860,9 @@ export const QueryGetproducerbillResponse = {
     if (message.comments !== "") {
       writer.uint32(50).string(message.comments);
     }
+    if (message.pagination !== undefined) {
+      PageResponse.encode(message.pagination, writer.uint32(58).fork()).ldelim();
+    }
     return writer;
   },
 
@@ -2779,7 +2874,7 @@ export const QueryGetproducerbillResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.producerbillinglines = reader.string();
+          message.producerbillinglines.push(reader.string());
           break;
         case 2:
           message.billTotalWh = longToNumber(reader.uint64() as Long);
@@ -2796,6 +2891,9 @@ export const QueryGetproducerbillResponse = {
         case 6:
           message.comments = reader.string();
           break;
+        case 7:
+          message.pagination = PageResponse.decode(reader, reader.uint32());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -2806,34 +2904,46 @@ export const QueryGetproducerbillResponse = {
 
   fromJSON(object: any): QueryGetproducerbillResponse {
     return {
-      producerbillinglines: isSet(object.producerbillinglines) ? String(object.producerbillinglines) : "",
+      producerbillinglines: Array.isArray(object?.producerbillinglines)
+        ? object.producerbillinglines.map((e: any) => String(e))
+        : [],
       billTotalWh: isSet(object.billTotalWh) ? Number(object.billTotalWh) : 0,
       billTotalPrice: isSet(object.billTotalPrice) ? Number(object.billTotalPrice) : 0,
       curency: isSet(object.curency) ? String(object.curency) : "",
       nblines: isSet(object.nblines) ? Number(object.nblines) : 0,
       comments: isSet(object.comments) ? String(object.comments) : "",
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined,
     };
   },
 
   toJSON(message: QueryGetproducerbillResponse): unknown {
     const obj: any = {};
-    message.producerbillinglines !== undefined && (obj.producerbillinglines = message.producerbillinglines);
+    if (message.producerbillinglines) {
+      obj.producerbillinglines = message.producerbillinglines.map((e) => e);
+    } else {
+      obj.producerbillinglines = [];
+    }
     message.billTotalWh !== undefined && (obj.billTotalWh = Math.round(message.billTotalWh));
     message.billTotalPrice !== undefined && (obj.billTotalPrice = Math.round(message.billTotalPrice));
     message.curency !== undefined && (obj.curency = message.curency);
     message.nblines !== undefined && (obj.nblines = Math.round(message.nblines));
     message.comments !== undefined && (obj.comments = message.comments);
+    message.pagination !== undefined
+      && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
     return obj;
   },
 
   fromPartial<I extends Exact<DeepPartial<QueryGetproducerbillResponse>, I>>(object: I): QueryGetproducerbillResponse {
     const message = createBaseQueryGetproducerbillResponse();
-    message.producerbillinglines = object.producerbillinglines ?? "";
+    message.producerbillinglines = object.producerbillinglines?.map((e) => e) || [];
     message.billTotalWh = object.billTotalWh ?? 0;
     message.billTotalPrice = object.billTotalPrice ?? 0;
     message.curency = object.curency ?? "";
     message.nblines = object.nblines ?? 0;
     message.comments = object.comments ?? "";
+    message.pagination = (object.pagination !== undefined && object.pagination !== null)
+      ? PageResponse.fromPartial(object.pagination)
+      : undefined;
     return message;
   },
 };
