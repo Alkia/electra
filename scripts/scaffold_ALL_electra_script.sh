@@ -180,7 +180,7 @@ sed -i.bak -e "s/localhost/$external_address/g" $HOME/electra/vue/node_modules/.
 sed -i.bak -e "s/1317/1318/g" $HOME/electra/vue/node_modules/.vite/@starport_vuex.js
 sed -i.bak -e "s/26657/26659/g" $HOME/electra/vue/node_modules/.vite/@starport_vuex.js
 ##################################################################################################################
-git tag v0.1.4
+git tag v0.1.5
 end=`date +%s`
 echo Execution time was `expr $end - $start` seconds.
 #git push --set-upstream origin master --force
