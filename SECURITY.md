@@ -9,4 +9,4 @@
 
 ## Reporting a Vulnerability
 
-Please report any security issues via email to <report@alkia.net>.
+Please report any security issues via email to <report@alkia.net>. 
