@@ -96,7 +96,7 @@
           "coins": [
             {
               "denom": "uelectra",
-              "amount": "200000000"
+              "amount": "200000000000"
             }
           ]
         },
@@ -105,7 +105,7 @@
           "coins": [
             {
               "denom": "uelectra",
-              "amount": "200000000"
+              "amount": "200000000000"
             }
           ]
         },
@@ -114,7 +114,7 @@
           "coins": [
             {
               "denom": "uelectra",
-              "amount": "200000000"
+              "amount": "200000000000"
             }
           ]
         },
@@ -123,7 +123,7 @@
           "coins": [
             {
               "denom": "uelectra",
-              "amount": "200000000"
+              "amount": "200000000000"
             }
           ]
         },
@@ -132,7 +132,7 @@
           "coins": [
             {
               "denom": "uelectra",
-              "amount": "1000000000"
+              "amount": "1000000000000"
             }
           ]
         },
@@ -141,7 +141,7 @@
           "coins": [
             {
               "denom": "uelectra",
-              "amount": "200000000"
+              "amount": "200000000000"
             }
           ]
         },
@@ -150,13 +150,41 @@
           "coins": [
             {
               "denom": "uelectra",
-              "amount": "2000000000"
+              "amount": "2000000000000"
             }
           ]
         }
       ],
-      "supply": [],
-      "denom_metadata": []
+      "supply": [{
+          "denom": "uelectra",
+          "amount": "1000000000000000"
+        }
+],
+      "denom_metadata": [
+        {
+          "description": "The native staking token of the Electra network.",
+          "denom_units": [
+            {
+              "denom": "uelectra",
+              "exponent": 0,
+              "aliases": [
+                "microelectra"
+              ]
+            },
+            {
+              "denom": "Electra",
+              "exponent": 6,
+              "aliases": []
+            }
+          ],
+          "base": "uelectra",
+          "display": "Electra",
+          "name": "Electra",
+          "symbol": "ELC",
+          "uri": "",
+          "uri_hash": ""
+        }
+      ]
     },
     "capability": {
       "index": "1",
@@ -201,9 +229,9 @@
               {
                 "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
                 "description": {
-                  "moniker": "mynode",
+                  "moniker": "electra01",
                   "identity": "",
-                  "website": "",
+                  "website": "https://www.alkia.net",
                   "security_contact": "",
                   "details": ""
                 },
@@ -385,7 +413,7 @@
         "bond_denom": "uelectra",
         "historical_entries": 10000,
         "max_entries": 7,
-        "max_validators": 100,
+        "max_validators": 150,
         "unbonding_time": "1814400s"
       },
       "redelegations": [],
