@@ -57,7 +57,7 @@ client:
     path: vue/src/store
   openapi:
     path: docs/static/openapi.yml
-genesis:
+genesis: 
   app_state:
     crisis:
       constant_fee:

@@ -24,7 +24,7 @@ The grid gateway synchronize the micro-grid and import extra energy as needed. T
 - Demand response 
 - Stake/Validate the local Layer 2 BlockChain AS well AS the Layer 1 main chain.
 
-![Electra Logo](/vue/public/Concept.png "The concept")
+![Electra Logo](/vue/public/Concept.png "The concept") 
 
 ## Responsible Disclosure
 Send us an email to report any security related bugs or vulnerabilities at security@alkia.net
