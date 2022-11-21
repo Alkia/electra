@@ -81,7 +81,7 @@ genesis:
       exponent: "6"
       aliases: microelectra
       denom: electra
-      exponent: "6"
+      exponent: "0"
     description: The native staking token of electra blockchain
     base: uelectra
     display: electra
