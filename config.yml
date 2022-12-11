@@ -104,4 +104,4 @@ validators:
     rpc:
       laddr: :26659
       pprof_laddr: :6061
-  home: $HOME/.electra
+  home: $HOME/.electra 
