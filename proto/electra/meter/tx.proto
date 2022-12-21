@@ -1,6 +1,6 @@
 syntax = "proto3";
-package electra.meter;
-
+package electra.meter; 
+ 
 import "electra/meter/power_purchase_contract.proto";
 import "electra/meter/ppa_map.proto";
 import "electra/meter/billingcycles.proto";
