@@ -14,5 +14,5 @@ message Meterreadings {
   uint64 mpf = 8; 
   uint64 maxmi = 9; 
   
-}
+}   
 
