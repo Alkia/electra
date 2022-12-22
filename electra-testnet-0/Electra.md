@@ -22,6 +22,10 @@
 | 26659     | rpc laddr|
 | 6061      | rpc pprof|
 
+### Get your peer address
+Currently you get your Tendermint peer address by:
+electrad tendermint show-node-id to get the 6364e63227345d7d4be951c8b771303dc2dfc27a component, and then you manually copy paste the @{your IP}:{your port}.
+
 ### Preparing the server
 
     sudo apt update && sudo apt upgrade -y && \
