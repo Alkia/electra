@@ -1,6 +1,6 @@
 accounts:
   - name: test1
-    coins: ["200000000uelectra"]
+    coins: ["300000000uelectra"]
     mnemonic: "slogan wreck armor floor change female industry smart daughter spawn today system shop pigeon game olive always dish camp response can perfect salon stone"
   - name: test2
     coins: ["200000000uelectra"]
@@ -9,13 +9,13 @@ accounts:
     coins: ["200000000uelectra"]
     mnemonic: "bounce duty afraid make item occur curious mention stamp lava inspire shock wall hungry culture apart harsh icon burden glide cabbage deal during charge"
   - name: alice
-    coins: ["2000000000uelectra"]
+    coins: ["9000000000uelectra"]
     mnemonic: satisfy dirt consider electric apart coin later recall enhance pizza dust way shop erosion innocent actor member double always budget rival congress person uncle
   - name: bob
-    coins: ["1000000000uelectra"]
+    coins: ["7000000000uelectra"]
     mnemonic: address slogan history guitar fringe health coral dish exercise excite utility now thank mosquito soul vacuum doctor squeeze host never dinosaur afford tide tide
   - name: prod1
-    coins: ["200000000uelectra"]
+    coins: ["300000000uelectra"]
     mnemonic: "thing lamp dwarf pupil hundred harsh snack review chest pledge people normal pattern shoe cereal drill staff people finger type timber buddy grab rate"
   - name: prod2
     coins: ["200000000uelectra"]
