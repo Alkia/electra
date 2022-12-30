@@ -1,7 +1,7 @@
 ![Electra Logo](/vue/public/Electra.png "Electra")
 
 # Electra
-**Electra** is an open source sovereign blockchain that enables local micro-grid to operate smoothly between trustless actors enabling a real circular economy based on exchange of electricity units (kWh) by the means of pre-purchased tokens.
+**Electra** is a BSD open-source sovereign blockchain solution that enables local micro-grid to operate smoothly between trustless actors enabling a real circular economy based on the exchange of electricity units (kWh) by the means of pre-purchased tokens.
 
 More about [Electra](https://linktr.ee/alkia) on its link tree. 
 
