@@ -47,8 +47,7 @@ electrad tendermint show-node-id to get the 6364e63227345d7d4be951c8b771303dc2df
     make install
 `electrad version`
 + 0.2.0
-
-  
+ 
       
 ## Set the variables
 ```
