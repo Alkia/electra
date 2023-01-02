@@ -28,6 +28,8 @@ export interface AbciEventAttribute {
 
   /** @format byte */
   value?: string;
+
+  /** nondeterministic */
   index?: boolean;
 }
 
@@ -325,38 +327,59 @@ export interface TypesHeader {
 
   /**
    * hashes of block data
+   * commit from validators from the last block
    * @format byte
    */
   last_commit_hash?: string;
 
-  /** @format byte */
+  /**
+   * transactions
+   * @format byte
+   */
   data_hash?: string;
 
   /**
    * hashes from the app output from the prev block
+   * validators for the current block
    * @format byte
    */
   validators_hash?: string;
 
-  /** @format byte */
+  /**
+   * validators for the next block
+   * @format byte
+   */
   next_validators_hash?: string;
 
-  /** @format byte */
+  /**
+   * consensus params for current block
+   * @format byte
+   */
   consensus_hash?: string;
 
-  /** @format byte */
+  /**
+   * state after txs from the previous block
+   * @format byte
+   */
   app_hash?: string;
 
-  /** @format byte */
+  /**
+   * root hash of all results from the txs from the previous block
+   * @format byte
+   */
   last_results_hash?: string;
 
   /**
    * consensus info
+   * evidence included in the block
    * @format byte
    */
   evidence_hash?: string;
 
-  /** @format byte */
+  /**
+   * original proposer of the block
+   * @format byte
+   */
   proposer_address?: string;
 }
 
@@ -437,6 +460,8 @@ export interface TypesVote {
 
   /** @format int32 */
   round?: number;
+
+  /** zero if vote is nil. */
   block_id?: TypesBlockID;
 
   /** @format date-time */

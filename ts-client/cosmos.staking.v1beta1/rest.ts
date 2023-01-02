@@ -215,38 +215,59 @@ export interface TypesHeader {
 
   /**
    * hashes of block data
+   * commit from validators from the last block
    * @format byte
    */
   last_commit_hash?: string;
 
-  /** @format byte */
+  /**
+   * transactions
+   * @format byte
+   */
   data_hash?: string;
 
   /**
    * hashes from the app output from the prev block
+   * validators for the current block
    * @format byte
    */
   validators_hash?: string;
 
-  /** @format byte */
+  /**
+   * validators for the next block
+   * @format byte
+   */
   next_validators_hash?: string;
 
-  /** @format byte */
+  /**
+   * consensus params for current block
+   * @format byte
+   */
   consensus_hash?: string;
 
-  /** @format byte */
+  /**
+   * state after txs from the previous block
+   * @format byte
+   */
   app_hash?: string;
 
-  /** @format byte */
+  /**
+   * root hash of all results from the txs from the previous block
+   * @format byte
+   */
   last_results_hash?: string;
 
   /**
    * consensus info
+   * evidence included in the block
    * @format byte
    */
   evidence_hash?: string;
 
-  /** @format byte */
+  /**
+   * original proposer of the block
+   * @format byte
+   */
   proposer_address?: string;
 }
 
@@ -673,7 +694,11 @@ export interface V1Beta1Redelegation {
   /** validator_dst_address is the validator redelegation destination operator address. */
   validator_dst_address?: string;
 
-  /** entries are the redelegation entries. */
+  /**
+   * entries are the redelegation entries.
+   *
+   * redelegation entries
+   */
   entries?: V1Beta1RedelegationEntry[];
 }
 
@@ -736,7 +761,11 @@ export interface V1Beta1UnbondingDelegation {
   /** validator_address is the bech32-encoded address of the validator. */
   validator_address?: string;
 
-  /** entries are the unbonding delegation entries. */
+  /**
+   * entries are the unbonding delegation entries.
+   *
+   * unbonding delegation entries
+   */
   entries?: V1Beta1UnbondingDelegationEntry[];
 }
 
