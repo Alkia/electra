@@ -28,7 +28,7 @@ export default {
 
     // state
     let navbarLinks = [
-      { name: 'Portfolio', url: '/portfolio' },
+      { name: 'Wallet', url: '/portfolio' },
       { name: 'Data', url: '/data' }
     ]
 
