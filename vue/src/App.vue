@@ -32,7 +32,6 @@ export default {
       { name: 'Data', url: '/data' }
     ]
 
-    
     // computed
     let address = computed(() => $s.getters['common/wallet/address'])
 
