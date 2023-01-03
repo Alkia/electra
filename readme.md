@@ -51,7 +51,7 @@ Your Electra blockchain in development can be configured with `config.yml`.
 
 To check the current cycle ID your Electra chain reached, run the following command:
 ```
-electrad query meter currentcycle-id
+electrad query meter currentcycle-id 
 ```
 To prepare a bill:
 ```
