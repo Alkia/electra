@@ -1,0 +1,107 @@
+version: 1
+build:
+  proto:
+    path: proto
+    third_party_paths:
+    - third_party/proto
+    - proto_vendor
+accounts:
+- name: test1
+  coins:
+  - 20000000000uelectra
+  mnemonic: slogan wreck armor floor change female industry smart daughter spawn today
+    system shop pigeon game olive always dish camp response can perfect salon stone
+- name: test2
+  coins:
+  - 20000000000uelectra
+  mnemonic: boil silk digital carry photo explain kitchen wall unusual garlic suspect
+    leave accident discover banana catch margin reward gap asset raccoon anchor leisure
+    ostrich
+- name: test3
+  coins:
+  - 200000000000uelectra
+  mnemonic: bounce duty afraid make item occur curious mention stamp lava inspire
+    shock wall hungry culture apart harsh icon burden glide cabbage deal during charge
+- name: alice
+  coins:
+  - 990000000000000uelectra
+  mnemonic: satisfy dirt consider electric apart coin later recall enhance pizza dust
+    way shop erosion innocent actor member double always budget rival congress person
+    uncle
+- name: bob
+  coins:
+  - 91000000000000uelectra
+  mnemonic: address slogan history guitar fringe health coral dish exercise excite
+    utility now thank mosquito soul vacuum doctor squeeze host never dinosaur afford
+    tide tide
+- name: prod1
+  coins:
+  - 20000000000uelectra
+  mnemonic: thing lamp dwarf pupil hundred harsh snack review chest pledge people
+    normal pattern shoe cereal drill staff people finger type timber buddy grab rate
+- name: prod2
+  coins:
+  - 200000000000uelectra
+  mnemonic: invest theme among elbow weekend couple erode oyster stand enjoy series
+    collect ripple fringe actual muscle idle vast heavy brass donkey minimum envelope
+    capable
+faucet:
+  name: bob
+  coins:
+  - 1000000000uelectra
+  host: 0.0.0.0:4500
+client:
+  typescript:
+    path: ts-client
+  vuex:
+    path: vue/src/store
+  openapi:
+    path: docs/static/openapi.yml
+genesis: 
+  app_state:
+    crisis:
+      constant_fee:
+        amount: "10"
+        denom: uelectra
+    gov:
+      deposit_params:
+        min_deposit:
+          amount: "10"
+          denom: uelectra
+    mint:
+      params:
+        mint_denom: uelectra
+    staking:
+      params:
+        bond_denom: uelectra
+  bank:
+    denom_metadata: null
+    denom_units:
+      denom: uelectra
+      exponent: "6"
+      aliases: microelectra
+      denom: electra
+      exponent: "0"
+    description: The native staking token of electra blockchain
+    base: uelectra
+    display: electra
+    name: electra
+    symbol: ELC
+  chain_id: electra-testnet-0
+validators:
+- name: alice
+  bonded: 10000000000uelectra
+  app:
+    api:
+      address: :1318
+    grpc:
+      address: :9092
+    grpc-web:
+      address: :9093
+  config:
+    p2p:
+      laddr: :26658
+    rpc:
+      laddr: :26659
+      pprof_laddr: :6061
+  home: $HOME/.electra 
