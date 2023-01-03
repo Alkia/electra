@@ -93,15 +93,15 @@ validators:
   bonded: 10000000000uelectra
   app:
     api:
-      address: :1318
+      address: :1317
     grpc:
       address: :9092
     grpc-web:
       address: :9093
   config:
     p2p:
-      laddr: :26658
+      laddr: :26657
     rpc:
-      laddr: :26659
+      laddr: :26658
       pprof_laddr: :6061
   home: $HOME/.electra 
