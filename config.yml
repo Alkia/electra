@@ -19,7 +19,7 @@ accounts:
     ostrich
 - name: test3
   coins:
-  - 200000000000uelectra
+  - 240000000000uelectra
   mnemonic: bounce duty afraid make item occur curious mention stamp lava inspire
     shock wall hungry culture apart harsh icon burden glide cabbage deal during charge
 - name: alice
