@@ -91,17 +91,4 @@ genesis:
 validators:
 - name: alice
   bonded: 10000000000uelectra
-  app:
-    api:
-      address: :1317
-    grpc:
-      address: :9090
-    grpc-web:
-      address: :9091
-  config:
-    p2p:
-      laddr: :26657
-    rpc:
-      laddr: :26658
-      pprof_laddr: :6060
   home: $HOME/.electra 
