@@ -7,6 +7,7 @@ MONIKER="electra"
 KEYALGO="secp256k1"
 LOGLEVEL="info"
 
+
 # validate dependencies are installed
 command -v jq > /dev/null 2>&1 || { echo >&2 "jq not installed. More info: https://stedolan.github.io/jq/download/"; exit 1; }
 command -v toml > /dev/null 2>&1 || { echo >&2 "toml not installed. More info: https://github.com/mrijken/toml-cli"; exit 1; }
