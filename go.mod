@@ -21,7 +21,7 @@ require (
 	google.golang.org/grpc v1.51.0
 	gopkg.in/yaml.v2 v2.4.0
 )
-  
+
 require (
 	cloud.google.com/go v0.105.0 // indirect
 	cloud.google.com/go/compute v1.13.0 // indirect

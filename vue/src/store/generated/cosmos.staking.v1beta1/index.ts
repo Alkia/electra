@@ -577,16 +577,16 @@ export default {
 		},
 		
 		
-		async sendMsgCancelUnbondingDelegation({ rootGetters }, { value, fee = [], memo = '' }) {
+		async sendMsgCreateValidator({ rootGetters }, { value, fee = [], memo = '' }) {
 			try {
 				const client=await initClient(rootGetters)
-				const result = await client.CosmosStakingV1Beta1.tx.sendMsgCancelUnbondingDelegation({ value, fee: {amount: fee, gas: "200000"}, memo })
+				const result = await client.CosmosStakingV1Beta1.tx.sendMsgCreateValidator({ value, fee: {amount: fee, gas: "200000"}, memo })
 				return result
 			} catch (e) {
 				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgCancelUnbondingDelegation:Init Could not initialize signing client. Wallet is required.')
+					throw new Error('TxClient:MsgCreateValidator:Init Could not initialize signing client. Wallet is required.')
 				}else{
-					throw new Error('TxClient:MsgCancelUnbondingDelegation:Send Could not broadcast Tx: '+ e.message)
+					throw new Error('TxClient:MsgCreateValidator:Send Could not broadcast Tx: '+ e.message)
 				}
 			}
 		},
@@ -603,6 +603,19 @@ export default {
 				}
 			}
 		},
+		async sendMsgUndelegate({ rootGetters }, { value, fee = [], memo = '' }) {
+			try {
+				const client=await initClient(rootGetters)
+				const result = await client.CosmosStakingV1Beta1.tx.sendMsgUndelegate({ value, fee: {amount: fee, gas: "200000"}, memo })
+				return result
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgUndelegate:Init Could not initialize signing client. Wallet is required.')
+				}else{
+					throw new Error('TxClient:MsgUndelegate:Send Could not broadcast Tx: '+ e.message)
+				}
+			}
+		},
 		async sendMsgBeginRedelegate({ rootGetters }, { value, fee = [], memo = '' }) {
 			try {
 				const client=await initClient(rootGetters)
@@ -616,16 +629,16 @@ export default {
 				}
 			}
 		},
-		async sendMsgUndelegate({ rootGetters }, { value, fee = [], memo = '' }) {
+		async sendMsgCancelUnbondingDelegation({ rootGetters }, { value, fee = [], memo = '' }) {
 			try {
 				const client=await initClient(rootGetters)
-				const result = await client.CosmosStakingV1Beta1.tx.sendMsgUndelegate({ value, fee: {amount: fee, gas: "200000"}, memo })
+				const result = await client.CosmosStakingV1Beta1.tx.sendMsgCancelUnbondingDelegation({ value, fee: {amount: fee, gas: "200000"}, memo })
 				return result
 			} catch (e) {
 				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgUndelegate:Init Could not initialize signing client. Wallet is required.')
+					throw new Error('TxClient:MsgCancelUnbondingDelegation:Init Could not initialize signing client. Wallet is required.')
 				}else{
-					throw new Error('TxClient:MsgUndelegate:Send Could not broadcast Tx: '+ e.message)
+					throw new Error('TxClient:MsgCancelUnbondingDelegation:Send Could not broadcast Tx: '+ e.message)
 				}
 			}
 		},
@@ -642,30 +655,17 @@ export default {
 				}
 			}
 		},
-		async sendMsgCreateValidator({ rootGetters }, { value, fee = [], memo = '' }) {
-			try {
-				const client=await initClient(rootGetters)
-				const result = await client.CosmosStakingV1Beta1.tx.sendMsgCreateValidator({ value, fee: {amount: fee, gas: "200000"}, memo })
-				return result
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgCreateValidator:Init Could not initialize signing client. Wallet is required.')
-				}else{
-					throw new Error('TxClient:MsgCreateValidator:Send Could not broadcast Tx: '+ e.message)
-				}
-			}
-		},
 		
-		async MsgCancelUnbondingDelegation({ rootGetters }, { value }) {
+		async MsgCreateValidator({ rootGetters }, { value }) {
 			try {
 				const client=initClient(rootGetters)
-				const msg = await client.CosmosStakingV1Beta1.tx.msgCancelUnbondingDelegation({value})
+				const msg = await client.CosmosStakingV1Beta1.tx.msgCreateValidator({value})
 				return msg
 			} catch (e) {
 				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgCancelUnbondingDelegation:Init Could not initialize signing client. Wallet is required.')
+					throw new Error('TxClient:MsgCreateValidator:Init Could not initialize signing client. Wallet is required.')
 				} else{
-					throw new Error('TxClient:MsgCancelUnbondingDelegation:Create Could not create message: ' + e.message)
+					throw new Error('TxClient:MsgCreateValidator:Create Could not create message: ' + e.message)
 				}
 			}
 		},
@@ -682,19 +682,6 @@ export default {
 				}
 			}
 		},
-		async MsgBeginRedelegate({ rootGetters }, { value }) {
-			try {
-				const client=initClient(rootGetters)
-				const msg = await client.CosmosStakingV1Beta1.tx.msgBeginRedelegate({value})
-				return msg
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgBeginRedelegate:Init Could not initialize signing client. Wallet is required.')
-				} else{
-					throw new Error('TxClient:MsgBeginRedelegate:Create Could not create message: ' + e.message)
-				}
-			}
-		},
 		async MsgUndelegate({ rootGetters }, { value }) {
 			try {
 				const client=initClient(rootGetters)
@@ -708,6 +695,32 @@ export default {
 				}
 			}
 		},
+		async MsgBeginRedelegate({ rootGetters }, { value }) {
+			try {
+				const client=initClient(rootGetters)
+				const msg = await client.CosmosStakingV1Beta1.tx.msgBeginRedelegate({value})
+				return msg
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgBeginRedelegate:Init Could not initialize signing client. Wallet is required.')
+				} else{
+					throw new Error('TxClient:MsgBeginRedelegate:Create Could not create message: ' + e.message)
+				}
+			}
+		},
+		async MsgCancelUnbondingDelegation({ rootGetters }, { value }) {
+			try {
+				const client=initClient(rootGetters)
+				const msg = await client.CosmosStakingV1Beta1.tx.msgCancelUnbondingDelegation({value})
+				return msg
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgCancelUnbondingDelegation:Init Could not initialize signing client. Wallet is required.')
+				} else{
+					throw new Error('TxClient:MsgCancelUnbondingDelegation:Create Could not create message: ' + e.message)
+				}
+			}
+		},
 		async MsgDelegate({ rootGetters }, { value }) {
 			try {
 				const client=initClient(rootGetters)
@@ -718,19 +731,6 @@ export default {
 					throw new Error('TxClient:MsgDelegate:Init Could not initialize signing client. Wallet is required.')
 				} else{
 					throw new Error('TxClient:MsgDelegate:Create Could not create message: ' + e.message)
-				}
-			}
-		},
-		async MsgCreateValidator({ rootGetters }, { value }) {
-			try {
-				const client=initClient(rootGetters)
-				const msg = await client.CosmosStakingV1Beta1.tx.msgCreateValidator({value})
-				return msg
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgCreateValidator:Init Could not initialize signing client. Wallet is required.')
-				} else{
-					throw new Error('TxClient:MsgCreateValidator:Create Could not create message: ' + e.message)
 				}
 			}
 		},

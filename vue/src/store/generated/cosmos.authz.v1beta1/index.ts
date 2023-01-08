@@ -208,19 +208,6 @@ export default {
 		},
 		
 		
-		async sendMsgGrant({ rootGetters }, { value, fee = [], memo = '' }) {
-			try {
-				const client=await initClient(rootGetters)
-				const result = await client.CosmosAuthzV1Beta1.tx.sendMsgGrant({ value, fee: {amount: fee, gas: "200000"}, memo })
-				return result
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgGrant:Init Could not initialize signing client. Wallet is required.')
-				}else{
-					throw new Error('TxClient:MsgGrant:Send Could not broadcast Tx: '+ e.message)
-				}
-			}
-		},
 		async sendMsgExec({ rootGetters }, { value, fee = [], memo = '' }) {
 			try {
 				const client=await initClient(rootGetters)
@@ -247,20 +234,20 @@ export default {
 				}
 			}
 		},
-		
-		async MsgGrant({ rootGetters }, { value }) {
+		async sendMsgGrant({ rootGetters }, { value, fee = [], memo = '' }) {
 			try {
-				const client=initClient(rootGetters)
-				const msg = await client.CosmosAuthzV1Beta1.tx.msgGrant({value})
-				return msg
+				const client=await initClient(rootGetters)
+				const result = await client.CosmosAuthzV1Beta1.tx.sendMsgGrant({ value, fee: {amount: fee, gas: "200000"}, memo })
+				return result
 			} catch (e) {
 				if (e == MissingWalletError) {
 					throw new Error('TxClient:MsgGrant:Init Could not initialize signing client. Wallet is required.')
-				} else{
-					throw new Error('TxClient:MsgGrant:Create Could not create message: ' + e.message)
+				}else{
+					throw new Error('TxClient:MsgGrant:Send Could not broadcast Tx: '+ e.message)
 				}
 			}
 		},
+		
 		async MsgExec({ rootGetters }, { value }) {
 			try {
 				const client=initClient(rootGetters)
@@ -284,6 +271,19 @@ export default {
 					throw new Error('TxClient:MsgRevoke:Init Could not initialize signing client. Wallet is required.')
 				} else{
 					throw new Error('TxClient:MsgRevoke:Create Could not create message: ' + e.message)
+				}
+			}
+		},
+		async MsgGrant({ rootGetters }, { value }) {
+			try {
+				const client=initClient(rootGetters)
+				const msg = await client.CosmosAuthzV1Beta1.tx.msgGrant({value})
+				return msg
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgGrant:Init Could not initialize signing client. Wallet is required.')
+				} else{
+					throw new Error('TxClient:MsgGrant:Create Could not create message: ' + e.message)
 				}
 			}
 		},
