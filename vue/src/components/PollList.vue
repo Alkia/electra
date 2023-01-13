@@ -36,8 +36,6 @@
   .electra_poll {
     border-radius: 1.2rem;
     padding: 1rem;
-    margin: 10rem;
-    margin-bottom: 1rem;
     font-size: 1.4rem;
     background: whitesmoke;
     font-size: 2rem;
