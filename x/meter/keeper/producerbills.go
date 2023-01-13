@@ -1,6 +1,5 @@
 package keeper
 
-
 import (
 	"electra/x/meter/types"
 	"github.com/cosmos/cosmos-sdk/store/prefix"

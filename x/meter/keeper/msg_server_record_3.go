@@ -13,7 +13,7 @@ func (k msgServer) Record3(goCtx context.Context, msg *types.MsgRecord3) (*types
 	// DONE: Handling the message
 	var recording1 = types.Meterreadings{
 		DeviceID:  msg.Creator,
-		Timestamp: msg.Timestamp,  
+		Timestamp: msg.Timestamp,
 		Phase:     1,
 		Whin:      msg.Whin1,
 		Whout:     msg.Whout1,
@@ -25,7 +25,7 @@ func (k msgServer) Record3(goCtx context.Context, msg *types.MsgRecord3) (*types
 
 	var recording2 = types.Meterreadings{
 		DeviceID:  msg.Creator,
-		Timestamp: msg.Timestamp,  
+		Timestamp: msg.Timestamp,
 		Phase:     2,
 		Whin:      msg.Whin2,
 		Whout:     msg.Whout2,
@@ -37,7 +37,7 @@ func (k msgServer) Record3(goCtx context.Context, msg *types.MsgRecord3) (*types
 
 	var recording3 = types.Meterreadings{
 		DeviceID:  msg.Creator,
-		Timestamp: msg.Timestamp, 
+		Timestamp: msg.Timestamp,
 		Phase:     3,
 		Whin:      msg.Whin3,
 		Whout:     msg.Whout3,

@@ -2,9 +2,9 @@ package keeper
 
 import (
 	"context"
-	"time"
+	"encoding/json"
 	"fmt"
-    "encoding/json"
+	"time"
 
 	"github.com/cosmos/cosmos-sdk/store/prefix"
 	"github.com/cosmos/cosmos-sdk/types/query"
@@ -24,9 +24,9 @@ func (k Keeper) Getcustomerbill(goCtx context.Context, req *types.QueryGetcustom
 	// DONE: Process the query
 	var customerbillinglines []types.Customerbillingline
 	var nblines uint64 = 0
-	var billTotalWh, billTotalPrice uint64 = 0 ,0 
-	var stDebug,currency string = "","uelectra"
-	
+	var billTotalWh, billTotalPrice uint64 = 0, 0
+	var stDebug, currency string = "", "uelectra"
+
 	ctx := sdk.UnwrapSDKContext(goCtx)
 	store := ctx.KVStore(k.storeKey)
 	customerbillinglineStore := prefix.NewStore(store, types.KeyPrefix(types.CustomerbillinglineKeyPrefix))
@@ -36,11 +36,11 @@ func (k Keeper) Getcustomerbill(goCtx context.Context, req *types.QueryGetcustom
 		if err := k.cdc.Unmarshal(value, &customerbillingline); err != nil {
 			return err
 		}
-		
-		if (req.CustomerDeviceID  == customerbillingline.CustomerDeviceID) && (uint64(customerbillingline.CycleID) == uint64(req.BillCycleID))  {
+
+		if (req.CustomerDeviceID == customerbillingline.CustomerDeviceID) && (uint64(customerbillingline.CycleID) == uint64(req.BillCycleID)) {
 			customerbillinglines = append(customerbillinglines, customerbillingline)
-			billTotalWh 	+= customerbillingline.LineWh          
-			billTotalPrice 	+= customerbillingline.LineWhPrice 
+			billTotalWh += customerbillingline.LineWh
+			billTotalPrice += customerbillingline.LineWhPrice
 			nblines++
 		}
 		return nil
@@ -50,7 +50,7 @@ func (k Keeper) Getcustomerbill(goCtx context.Context, req *types.QueryGetcustom
 		return nil, status.Error(codes.Internal, err.Error())
 	}
 	// Convert to array of json string
-	var displaybillinglines []string 
+	var displaybillinglines []string
 	for _, line := range customerbillinglines {
 		json, _ := json.Marshal(line)
 		displaybillinglines = append(displaybillinglines, string(json))
@@ -58,5 +58,5 @@ func (k Keeper) Getcustomerbill(goCtx context.Context, req *types.QueryGetcustom
 
 	elapsed := time.Since(start)
 	stDebug = fmt.Sprintf("Search took %s", elapsed)
-	return &types.QueryGetcustomerbillResponse{Customerbillinglines: displaybillinglines, BillTotalWh:billTotalWh, BillTotalPrice: billTotalPrice, Currency: currency, Nblines: nblines, Comments: stDebug, Pagination: pageRes}, nil
+	return &types.QueryGetcustomerbillResponse{Customerbillinglines: displaybillinglines, BillTotalWh: billTotalWh, BillTotalPrice: billTotalPrice, Currency: currency, Nblines: nblines, Comments: stDebug, Pagination: pageRes}, nil
 }

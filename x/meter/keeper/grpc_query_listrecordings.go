@@ -2,11 +2,11 @@ package keeper
 
 import (
 	"context"
-	"time"
-	"fmt"
 	"encoding/json"
+	"fmt"
 	"github.com/cosmos/cosmos-sdk/store/prefix"
 	"github.com/cosmos/cosmos-sdk/types/query"
+	"time"
 
 	"electra/x/meter/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -59,7 +59,7 @@ func (k Keeper) Listrecordings(goCtx context.Context, req *types.QueryListrecord
 	}
 
 	// Convert to array of json string
-	var displaylines []string 
+	var displaylines []string
 	for _, line := range meterreadingss {
 		json, _ := json.Marshal(line)
 		displaylines = append(displaylines, string(json))

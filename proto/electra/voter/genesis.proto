@@ -1,0 +1,14 @@
+syntax = "proto3";
+package electra.voter;
+
+import "gogoproto/gogo.proto";
+import "electra/voter/params.proto";
+// this line is used by starport scaffolding # genesis/proto/import
+
+option go_package = "electra/x/voter/types";
+
+// GenesisState defines the voter module's genesis state.
+message GenesisState {
+  Params params = 1 [(gogoproto.nullable) = false];
+  // this line is used by starport scaffolding # genesis/proto/state
+}
