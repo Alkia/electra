@@ -1,6 +1,6 @@
 <template>
     <div>
-      <div class="sp-voter__main sp-box sp-shadow sp-form-group">
+      <div class="electra_sp sp-voter__main sp-shadow sp-form-group">
           <form class="sp-voter__main__form">
             <div class="sp-voter__main__rcpt__header sp-box-header">
                 <h3> Create a Poll </h3>
@@ -16,7 +16,19 @@
       </div>
     </div>
 </template>
-
+<style scoped>
+  .electra_sp {
+    border-radius: 1.2rem;
+    padding: 2rem;
+    font-size: 1.4rem;
+    background: rgba(234,220,255,0.3);
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
+  }
+</style>
 <script>
 export default {
     name: "PollForm",
