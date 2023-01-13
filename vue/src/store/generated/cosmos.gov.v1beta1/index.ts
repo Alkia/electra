@@ -359,19 +359,6 @@ export default {
 		},
 		
 		
-		async sendMsgSubmitProposal({ rootGetters }, { value, fee = [], memo = '' }) {
-			try {
-				const client=await initClient(rootGetters)
-				const result = await client.CosmosGovV1Beta1.tx.sendMsgSubmitProposal({ value, fee: {amount: fee, gas: "200000"}, memo })
-				return result
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgSubmitProposal:Init Could not initialize signing client. Wallet is required.')
-				}else{
-					throw new Error('TxClient:MsgSubmitProposal:Send Could not broadcast Tx: '+ e.message)
-				}
-			}
-		},
 		async sendMsgVoteWeighted({ rootGetters }, { value, fee = [], memo = '' }) {
 			try {
 				const client=await initClient(rootGetters)
@@ -411,20 +398,20 @@ export default {
 				}
 			}
 		},
-		
-		async MsgSubmitProposal({ rootGetters }, { value }) {
+		async sendMsgSubmitProposal({ rootGetters }, { value, fee = [], memo = '' }) {
 			try {
-				const client=initClient(rootGetters)
-				const msg = await client.CosmosGovV1Beta1.tx.msgSubmitProposal({value})
-				return msg
+				const client=await initClient(rootGetters)
+				const result = await client.CosmosGovV1Beta1.tx.sendMsgSubmitProposal({ value, fee: {amount: fee, gas: "200000"}, memo })
+				return result
 			} catch (e) {
 				if (e == MissingWalletError) {
 					throw new Error('TxClient:MsgSubmitProposal:Init Could not initialize signing client. Wallet is required.')
-				} else{
-					throw new Error('TxClient:MsgSubmitProposal:Create Could not create message: ' + e.message)
+				}else{
+					throw new Error('TxClient:MsgSubmitProposal:Send Could not broadcast Tx: '+ e.message)
 				}
 			}
 		},
+		
 		async MsgVoteWeighted({ rootGetters }, { value }) {
 			try {
 				const client=initClient(rootGetters)
@@ -461,6 +448,19 @@ export default {
 					throw new Error('TxClient:MsgVote:Init Could not initialize signing client. Wallet is required.')
 				} else{
 					throw new Error('TxClient:MsgVote:Create Could not create message: ' + e.message)
+				}
+			}
+		},
+		async MsgSubmitProposal({ rootGetters }, { value }) {
+			try {
+				const client=initClient(rootGetters)
+				const msg = await client.CosmosGovV1Beta1.tx.msgSubmitProposal({value})
+				return msg
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgSubmitProposal:Init Could not initialize signing client. Wallet is required.')
+				} else{
+					throw new Error('TxClient:MsgSubmitProposal:Create Could not create message: ' + e.message)
 				}
 			}
 		},

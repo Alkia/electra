@@ -7,19 +7,13 @@ import { msgTypes } from './registry';
 import { IgniteClient } from "../client"
 import { MissingWalletError } from "../helpers"
 import { Api } from "./rest";
-import { MsgSubmitProposal } from "./types/cosmos/gov/v1beta1/tx";
 import { MsgVoteWeighted } from "./types/cosmos/gov/v1beta1/tx";
 import { MsgDeposit } from "./types/cosmos/gov/v1beta1/tx";
 import { MsgVote } from "./types/cosmos/gov/v1beta1/tx";
+import { MsgSubmitProposal } from "./types/cosmos/gov/v1beta1/tx";
 
 
-export { MsgSubmitProposal, MsgVoteWeighted, MsgDeposit, MsgVote };
-
-type sendMsgSubmitProposalParams = {
-  value: MsgSubmitProposal,
-  fee?: StdFee,
-  memo?: string
-};
+export { MsgVoteWeighted, MsgDeposit, MsgVote, MsgSubmitProposal };
 
 type sendMsgVoteWeightedParams = {
   value: MsgVoteWeighted,
@@ -39,10 +33,12 @@ type sendMsgVoteParams = {
   memo?: string
 };
 
-
-type msgSubmitProposalParams = {
+type sendMsgSubmitProposalParams = {
   value: MsgSubmitProposal,
+  fee?: StdFee,
+  memo?: string
 };
+
 
 type msgVoteWeightedParams = {
   value: MsgVoteWeighted,
@@ -54,6 +50,10 @@ type msgDepositParams = {
 
 type msgVoteParams = {
   value: MsgVote,
+};
+
+type msgSubmitProposalParams = {
+  value: MsgSubmitProposal,
 };
 
 
@@ -73,20 +73,6 @@ interface TxClientOptions {
 export const txClient = ({ signer, prefix, addr }: TxClientOptions = { addr: "http://localhost:26657", prefix: "cosmos" }) => {
 
   return {
-		
-		async sendMsgSubmitProposal({ value, fee, memo }: sendMsgSubmitProposalParams): Promise<DeliverTxResponse> {
-			if (!signer) {
-					throw new Error('TxClient:sendMsgSubmitProposal: Unable to sign Tx. Signer is not present.')
-			}
-			try {			
-				const { address } = (await signer.getAccounts())[0]; 
-				const signingClient = await SigningStargateClient.connectWithSigner(addr,signer,{registry, prefix});
-				let msg = this.msgSubmitProposal({ value: MsgSubmitProposal.fromPartial(value) })
-				return await signingClient.signAndBroadcast(address, [msg], fee ? fee : defaultFee, memo)
-			} catch (e: any) {
-				throw new Error('TxClient:sendMsgSubmitProposal: Could not broadcast Tx: '+ e.message)
-			}
-		},
 		
 		async sendMsgVoteWeighted({ value, fee, memo }: sendMsgVoteWeightedParams): Promise<DeliverTxResponse> {
 			if (!signer) {
@@ -130,14 +116,20 @@ export const txClient = ({ signer, prefix, addr }: TxClientOptions = { addr: "ht
 			}
 		},
 		
-		
-		msgSubmitProposal({ value }: msgSubmitProposalParams): EncodeObject {
-			try {
-				return { typeUrl: "/cosmos.gov.v1beta1.MsgSubmitProposal", value: MsgSubmitProposal.fromPartial( value ) }  
+		async sendMsgSubmitProposal({ value, fee, memo }: sendMsgSubmitProposalParams): Promise<DeliverTxResponse> {
+			if (!signer) {
+					throw new Error('TxClient:sendMsgSubmitProposal: Unable to sign Tx. Signer is not present.')
+			}
+			try {			
+				const { address } = (await signer.getAccounts())[0]; 
+				const signingClient = await SigningStargateClient.connectWithSigner(addr,signer,{registry, prefix});
+				let msg = this.msgSubmitProposal({ value: MsgSubmitProposal.fromPartial(value) })
+				return await signingClient.signAndBroadcast(address, [msg], fee ? fee : defaultFee, memo)
 			} catch (e: any) {
-				throw new Error('TxClient:MsgSubmitProposal: Could not create message: ' + e.message)
+				throw new Error('TxClient:sendMsgSubmitProposal: Could not broadcast Tx: '+ e.message)
 			}
 		},
+		
 		
 		msgVoteWeighted({ value }: msgVoteWeightedParams): EncodeObject {
 			try {
@@ -160,6 +152,14 @@ export const txClient = ({ signer, prefix, addr }: TxClientOptions = { addr: "ht
 				return { typeUrl: "/cosmos.gov.v1beta1.MsgVote", value: MsgVote.fromPartial( value ) }  
 			} catch (e: any) {
 				throw new Error('TxClient:MsgVote: Could not create message: ' + e.message)
+			}
+		},
+		
+		msgSubmitProposal({ value }: msgSubmitProposalParams): EncodeObject {
+			try {
+				return { typeUrl: "/cosmos.gov.v1beta1.MsgSubmitProposal", value: MsgSubmitProposal.fromPartial( value ) }  
+			} catch (e: any) {
+				throw new Error('TxClient:MsgSubmitProposal: Could not create message: ' + e.message)
 			}
 		},
 		
