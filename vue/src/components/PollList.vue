@@ -1,6 +1,8 @@
 <template>
     <div class=" sp-box sp-shadow sp-form-group">
-    <h3> List of Polls </h3>
+        <div class="sp-voter__main__rcpt__header sp-box-header">
+            <h3> List of Polls </h3>
+        </div>
     <div v-for="poll in polls" v-bind:key="'poll' + poll.id">
         <h4> {{poll.id}}. {{ poll.title }} </h4>
         <AppRadioItem
