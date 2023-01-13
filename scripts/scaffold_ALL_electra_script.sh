@@ -205,3 +205,5 @@ cp proto/voter/poll.proto
 cp proto/voter/tx.proto
 cp x/voter/types/messages_poll.go
 cp /x/voter/client/cli/tx_poll.go
+cp /x/voter/client/cli/tx_poll.go
+# test electrad tx voter create-poll "How wonderful is Cosmos on a scale of 1(worst) to 4(best) ?" "1" "2" "3" "4" --from bob
