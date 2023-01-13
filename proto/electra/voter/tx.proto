@@ -17,7 +17,7 @@ service Msg {
 message MsgCreatePoll {
   string creator = 1;
   string title = 2;
-  string options = 3;
+  repeated string options = 3;
 }
 
 message MsgCreatePollResponse {
@@ -28,7 +28,7 @@ message MsgUpdatePoll {
   string creator = 1;
   uint64 id = 2;
   string title = 3;
-  string options = 4;
+  repeated string options = 4;
 }
 
 message MsgUpdatePollResponse {}
