@@ -36,6 +36,18 @@ const (
 	// TODO: Determine the simulation weight value
 	defaultWeightMsgDeletePoll int = 100
 
+	opWeightMsgCreateVote = "op_weight_msg_vote"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgCreateVote int = 100
+
+	opWeightMsgUpdateVote = "op_weight_msg_vote"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgUpdateVote int = 100
+
+	opWeightMsgDeleteVote = "op_weight_msg_vote"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgDeleteVote int = 100
+
 	// this line is used by starport scaffolding # simapp/module/const
 )
 
@@ -58,6 +70,17 @@ func (AppModule) GenerateGenesisState(simState *module.SimulationState) {
 			},
 		},
 		PollCount: 2,
+		VoteList: []types.Vote{
+			{
+				Id:      0,
+				Creator: sample.AccAddress(),
+			},
+			{
+				Id:      1,
+				Creator: sample.AccAddress(),
+			},
+		},
+		VoteCount: 2,
 		// this line is used by starport scaffolding # simapp/module/genesisState
 	}
 	simState.GenState[types.ModuleName] = simState.Cdc.MustMarshalJSON(&voterGenesis)
@@ -112,6 +135,39 @@ func (am AppModule) WeightedOperations(simState module.SimulationState) []simtyp
 	operations = append(operations, simulation.NewWeightedOperation(
 		weightMsgDeletePoll,
 		votersimulation.SimulateMsgDeletePoll(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
+	var weightMsgCreateVote int
+	simState.AppParams.GetOrGenerate(simState.Cdc, opWeightMsgCreateVote, &weightMsgCreateVote, nil,
+		func(_ *rand.Rand) {
+			weightMsgCreateVote = defaultWeightMsgCreateVote
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgCreateVote,
+		votersimulation.SimulateMsgCreateVote(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
+	var weightMsgUpdateVote int
+	simState.AppParams.GetOrGenerate(simState.Cdc, opWeightMsgUpdateVote, &weightMsgUpdateVote, nil,
+		func(_ *rand.Rand) {
+			weightMsgUpdateVote = defaultWeightMsgUpdateVote
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgUpdateVote,
+		votersimulation.SimulateMsgUpdateVote(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
+	var weightMsgDeleteVote int
+	simState.AppParams.GetOrGenerate(simState.Cdc, opWeightMsgDeleteVote, &weightMsgDeleteVote, nil,
+		func(_ *rand.Rand) {
+			weightMsgDeleteVote = defaultWeightMsgDeleteVote
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgDeleteVote,
+		votersimulation.SimulateMsgDeleteVote(am.accountKeeper, am.bankKeeper, am.keeper),
 	))
 
 	// this line is used by starport scaffolding # simapp/module/operation

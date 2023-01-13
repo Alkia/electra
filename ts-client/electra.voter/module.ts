@@ -7,21 +7,24 @@ import { msgTypes } from './registry';
 import { IgniteClient } from "../client"
 import { MissingWalletError } from "../helpers"
 import { Api } from "./rest";
-import { MsgUpdatePoll } from "./types/electra/voter/tx";
 import { MsgDeletePoll } from "./types/electra/voter/tx";
+import { MsgDeleteVote } from "./types/electra/voter/tx";
 import { MsgCreatePoll } from "./types/electra/voter/tx";
+import { MsgCreateVote } from "./types/electra/voter/tx";
+import { MsgUpdateVote } from "./types/electra/voter/tx";
+import { MsgUpdatePoll } from "./types/electra/voter/tx";
 
 
-export { MsgUpdatePoll, MsgDeletePoll, MsgCreatePoll };
+export { MsgDeletePoll, MsgDeleteVote, MsgCreatePoll, MsgCreateVote, MsgUpdateVote, MsgUpdatePoll };
 
-type sendMsgUpdatePollParams = {
-  value: MsgUpdatePoll,
+type sendMsgDeletePollParams = {
+  value: MsgDeletePoll,
   fee?: StdFee,
   memo?: string
 };
 
-type sendMsgDeletePollParams = {
-  value: MsgDeletePoll,
+type sendMsgDeleteVoteParams = {
+  value: MsgDeleteVote,
   fee?: StdFee,
   memo?: string
 };
@@ -32,17 +35,47 @@ type sendMsgCreatePollParams = {
   memo?: string
 };
 
-
-type msgUpdatePollParams = {
-  value: MsgUpdatePoll,
+type sendMsgCreateVoteParams = {
+  value: MsgCreateVote,
+  fee?: StdFee,
+  memo?: string
 };
+
+type sendMsgUpdateVoteParams = {
+  value: MsgUpdateVote,
+  fee?: StdFee,
+  memo?: string
+};
+
+type sendMsgUpdatePollParams = {
+  value: MsgUpdatePoll,
+  fee?: StdFee,
+  memo?: string
+};
+
 
 type msgDeletePollParams = {
   value: MsgDeletePoll,
 };
 
+type msgDeleteVoteParams = {
+  value: MsgDeleteVote,
+};
+
 type msgCreatePollParams = {
   value: MsgCreatePoll,
+};
+
+type msgCreateVoteParams = {
+  value: MsgCreateVote,
+};
+
+type msgUpdateVoteParams = {
+  value: MsgUpdateVote,
+};
+
+type msgUpdatePollParams = {
+  value: MsgUpdatePoll,
 };
 
 
@@ -63,20 +96,6 @@ export const txClient = ({ signer, prefix, addr }: TxClientOptions = { addr: "ht
 
   return {
 		
-		async sendMsgUpdatePoll({ value, fee, memo }: sendMsgUpdatePollParams): Promise<DeliverTxResponse> {
-			if (!signer) {
-					throw new Error('TxClient:sendMsgUpdatePoll: Unable to sign Tx. Signer is not present.')
-			}
-			try {			
-				const { address } = (await signer.getAccounts())[0]; 
-				const signingClient = await SigningStargateClient.connectWithSigner(addr,signer,{registry, prefix});
-				let msg = this.msgUpdatePoll({ value: MsgUpdatePoll.fromPartial(value) })
-				return await signingClient.signAndBroadcast(address, [msg], fee ? fee : defaultFee, memo)
-			} catch (e: any) {
-				throw new Error('TxClient:sendMsgUpdatePoll: Could not broadcast Tx: '+ e.message)
-			}
-		},
-		
 		async sendMsgDeletePoll({ value, fee, memo }: sendMsgDeletePollParams): Promise<DeliverTxResponse> {
 			if (!signer) {
 					throw new Error('TxClient:sendMsgDeletePoll: Unable to sign Tx. Signer is not present.')
@@ -88,6 +107,20 @@ export const txClient = ({ signer, prefix, addr }: TxClientOptions = { addr: "ht
 				return await signingClient.signAndBroadcast(address, [msg], fee ? fee : defaultFee, memo)
 			} catch (e: any) {
 				throw new Error('TxClient:sendMsgDeletePoll: Could not broadcast Tx: '+ e.message)
+			}
+		},
+		
+		async sendMsgDeleteVote({ value, fee, memo }: sendMsgDeleteVoteParams): Promise<DeliverTxResponse> {
+			if (!signer) {
+					throw new Error('TxClient:sendMsgDeleteVote: Unable to sign Tx. Signer is not present.')
+			}
+			try {			
+				const { address } = (await signer.getAccounts())[0]; 
+				const signingClient = await SigningStargateClient.connectWithSigner(addr,signer,{registry, prefix});
+				let msg = this.msgDeleteVote({ value: MsgDeleteVote.fromPartial(value) })
+				return await signingClient.signAndBroadcast(address, [msg], fee ? fee : defaultFee, memo)
+			} catch (e: any) {
+				throw new Error('TxClient:sendMsgDeleteVote: Could not broadcast Tx: '+ e.message)
 			}
 		},
 		
@@ -105,14 +138,48 @@ export const txClient = ({ signer, prefix, addr }: TxClientOptions = { addr: "ht
 			}
 		},
 		
-		
-		msgUpdatePoll({ value }: msgUpdatePollParams): EncodeObject {
-			try {
-				return { typeUrl: "/electra.voter.MsgUpdatePoll", value: MsgUpdatePoll.fromPartial( value ) }  
+		async sendMsgCreateVote({ value, fee, memo }: sendMsgCreateVoteParams): Promise<DeliverTxResponse> {
+			if (!signer) {
+					throw new Error('TxClient:sendMsgCreateVote: Unable to sign Tx. Signer is not present.')
+			}
+			try {			
+				const { address } = (await signer.getAccounts())[0]; 
+				const signingClient = await SigningStargateClient.connectWithSigner(addr,signer,{registry, prefix});
+				let msg = this.msgCreateVote({ value: MsgCreateVote.fromPartial(value) })
+				return await signingClient.signAndBroadcast(address, [msg], fee ? fee : defaultFee, memo)
 			} catch (e: any) {
-				throw new Error('TxClient:MsgUpdatePoll: Could not create message: ' + e.message)
+				throw new Error('TxClient:sendMsgCreateVote: Could not broadcast Tx: '+ e.message)
 			}
 		},
+		
+		async sendMsgUpdateVote({ value, fee, memo }: sendMsgUpdateVoteParams): Promise<DeliverTxResponse> {
+			if (!signer) {
+					throw new Error('TxClient:sendMsgUpdateVote: Unable to sign Tx. Signer is not present.')
+			}
+			try {			
+				const { address } = (await signer.getAccounts())[0]; 
+				const signingClient = await SigningStargateClient.connectWithSigner(addr,signer,{registry, prefix});
+				let msg = this.msgUpdateVote({ value: MsgUpdateVote.fromPartial(value) })
+				return await signingClient.signAndBroadcast(address, [msg], fee ? fee : defaultFee, memo)
+			} catch (e: any) {
+				throw new Error('TxClient:sendMsgUpdateVote: Could not broadcast Tx: '+ e.message)
+			}
+		},
+		
+		async sendMsgUpdatePoll({ value, fee, memo }: sendMsgUpdatePollParams): Promise<DeliverTxResponse> {
+			if (!signer) {
+					throw new Error('TxClient:sendMsgUpdatePoll: Unable to sign Tx. Signer is not present.')
+			}
+			try {			
+				const { address } = (await signer.getAccounts())[0]; 
+				const signingClient = await SigningStargateClient.connectWithSigner(addr,signer,{registry, prefix});
+				let msg = this.msgUpdatePoll({ value: MsgUpdatePoll.fromPartial(value) })
+				return await signingClient.signAndBroadcast(address, [msg], fee ? fee : defaultFee, memo)
+			} catch (e: any) {
+				throw new Error('TxClient:sendMsgUpdatePoll: Could not broadcast Tx: '+ e.message)
+			}
+		},
+		
 		
 		msgDeletePoll({ value }: msgDeletePollParams): EncodeObject {
 			try {
@@ -122,11 +189,43 @@ export const txClient = ({ signer, prefix, addr }: TxClientOptions = { addr: "ht
 			}
 		},
 		
+		msgDeleteVote({ value }: msgDeleteVoteParams): EncodeObject {
+			try {
+				return { typeUrl: "/electra.voter.MsgDeleteVote", value: MsgDeleteVote.fromPartial( value ) }  
+			} catch (e: any) {
+				throw new Error('TxClient:MsgDeleteVote: Could not create message: ' + e.message)
+			}
+		},
+		
 		msgCreatePoll({ value }: msgCreatePollParams): EncodeObject {
 			try {
 				return { typeUrl: "/electra.voter.MsgCreatePoll", value: MsgCreatePoll.fromPartial( value ) }  
 			} catch (e: any) {
 				throw new Error('TxClient:MsgCreatePoll: Could not create message: ' + e.message)
+			}
+		},
+		
+		msgCreateVote({ value }: msgCreateVoteParams): EncodeObject {
+			try {
+				return { typeUrl: "/electra.voter.MsgCreateVote", value: MsgCreateVote.fromPartial( value ) }  
+			} catch (e: any) {
+				throw new Error('TxClient:MsgCreateVote: Could not create message: ' + e.message)
+			}
+		},
+		
+		msgUpdateVote({ value }: msgUpdateVoteParams): EncodeObject {
+			try {
+				return { typeUrl: "/electra.voter.MsgUpdateVote", value: MsgUpdateVote.fromPartial( value ) }  
+			} catch (e: any) {
+				throw new Error('TxClient:MsgUpdateVote: Could not create message: ' + e.message)
+			}
+		},
+		
+		msgUpdatePoll({ value }: msgUpdatePollParams): EncodeObject {
+			try {
+				return { typeUrl: "/electra.voter.MsgUpdatePoll", value: MsgUpdatePoll.fromPartial( value ) }  
+			} catch (e: any) {
+				throw new Error('TxClient:MsgUpdatePoll: Could not create message: ' + e.message)
 			}
 		},
 		

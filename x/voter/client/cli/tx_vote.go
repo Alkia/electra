@@ -10,25 +10,21 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func CmdCreatePoll() *cobra.Command {
+func CmdCreateVote() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "create-poll [title] [options]",
-		Short: "Create a new poll",
-		// Change this
-		// BEFORE: Args:  cobra.ExactArgs(2),
-		Args: cobra.MinimumNArgs(2),
+		Use:   "create-vote [poll-id] [option]",
+		Short: "Create a new vote",
+		Args:  cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
-			argTitle := args[0]
-			// Change this also
-			// BEFORE: argOptions := args[1]
-			argOptions := []string{args[1]}
+			argPollID := args[0]
+			argOption := args[1]
 
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
 				return err
 			}
 
-			msg := types.NewMsgCreatePoll(clientCtx.GetFromAddress().String(), argTitle, argOptions)
+			msg := types.NewMsgCreateVote(clientCtx.GetFromAddress().String(), argPollID, argOption)
 			if err := msg.ValidateBasic(); err != nil {
 				return err
 			}
@@ -41,31 +37,27 @@ func CmdCreatePoll() *cobra.Command {
 	return cmd
 }
 
-func CmdUpdatePoll() *cobra.Command {
+func CmdUpdateVote() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "update-poll [id] [title] [options]",
-		Short: "Update a poll",
-		// Change this
-		// BEFORE: Args:  cobra.ExactArgs(3),
-		Args: cobra.MinimumNArgs(3),
+		Use:   "update-vote [id] [poll-id] [option]",
+		Short: "Update a vote",
+		Args:  cobra.ExactArgs(3),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
 			id, err := strconv.ParseUint(args[0], 10, 64)
 			if err != nil {
 				return err
 			}
 
-			argTitle := args[1]
+			argPollID := args[1]
 
-			// Change this also
-			// BEFORE: argOptions := args[2]
-			argOptions := []string{args[2]}
+			argOption := args[2]
 
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
 				return err
 			}
 
-			msg := types.NewMsgUpdatePoll(clientCtx.GetFromAddress().String(), id, argTitle, argOptions)
+			msg := types.NewMsgUpdateVote(clientCtx.GetFromAddress().String(), id, argPollID, argOption)
 			if err := msg.ValidateBasic(); err != nil {
 				return err
 			}
@@ -78,10 +70,10 @@ func CmdUpdatePoll() *cobra.Command {
 	return cmd
 }
 
-func CmdDeletePoll() *cobra.Command {
+func CmdDeleteVote() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "delete-poll [id]",
-		Short: "Delete a poll by id",
+		Use:   "delete-vote [id]",
+		Short: "Delete a vote by id",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			id, err := strconv.ParseUint(args[0], 10, 64)
@@ -94,7 +86,7 @@ func CmdDeletePoll() *cobra.Command {
 				return err
 			}
 
-			msg := types.NewMsgDeletePoll(clientCtx.GetFromAddress().String(), id)
+			msg := types.NewMsgDeleteVote(clientCtx.GetFromAddress().String(), id)
 			if err := msg.ValidateBasic(); err != nil {
 				return err
 			}

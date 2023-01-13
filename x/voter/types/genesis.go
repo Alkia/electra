@@ -11,6 +11,7 @@ const DefaultIndex uint64 = 1
 func DefaultGenesis() *GenesisState {
 	return &GenesisState{
 		PollList: []Poll{},
+		VoteList: []Vote{},
 		// this line is used by starport scaffolding # genesis/types/default
 		Params: DefaultParams(),
 	}
@@ -30,6 +31,18 @@ func (gs GenesisState) Validate() error {
 			return fmt.Errorf("poll id should be lower or equal than the last id")
 		}
 		pollIdMap[elem.Id] = true
+	}
+	// Check for duplicated ID in vote
+	voteIdMap := make(map[uint64]bool)
+	voteCount := gs.GetVoteCount()
+	for _, elem := range gs.VoteList {
+		if _, ok := voteIdMap[elem.Id]; ok {
+			return fmt.Errorf("duplicated id for vote")
+		}
+		if elem.Id >= voteCount {
+			return fmt.Errorf("vote id should be lower or equal than the last id")
+		}
+		voteIdMap[elem.Id] = true
 	}
 	// this line is used by starport scaffolding # genesis/types/validate
 

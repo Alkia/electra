@@ -4,6 +4,7 @@ package electra.voter;
 import "gogoproto/gogo.proto";
 import "electra/voter/params.proto";
 import "electra/voter/poll.proto";
+import "electra/voter/vote.proto";
 // this line is used by starport scaffolding # genesis/proto/import
 
 option go_package = "electra/x/voter/types";
@@ -13,5 +14,7 @@ message GenesisState {
   Params params = 1 [(gogoproto.nullable) = false];
   repeated Poll pollList = 2 [(gogoproto.nullable) = false];
   uint64 pollCount = 3;
+  repeated Vote voteList = 4 [(gogoproto.nullable) = false];
+  uint64 voteCount = 5;
   // this line is used by starport scaffolding # genesis/proto/state
 }

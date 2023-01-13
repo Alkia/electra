@@ -3,6 +3,7 @@ import Long from "long";
 import _m0 from "protobufjs/minimal";
 import { Params } from "./params";
 import { Poll } from "./poll";
+import { Vote } from "./vote";
 
 export const protobufPackage = "electra.voter";
 
@@ -10,12 +11,14 @@ export const protobufPackage = "electra.voter";
 export interface GenesisState {
   params: Params | undefined;
   pollList: Poll[];
-  /** this line is used by starport scaffolding # genesis/proto/state */
   pollCount: number;
+  voteList: Vote[];
+  /** this line is used by starport scaffolding # genesis/proto/state */
+  voteCount: number;
 }
 
 function createBaseGenesisState(): GenesisState {
-  return { params: undefined, pollList: [], pollCount: 0 };
+  return { params: undefined, pollList: [], pollCount: 0, voteList: [], voteCount: 0 };
 }
 
 export const GenesisState = {
@@ -28,6 +31,12 @@ export const GenesisState = {
     }
     if (message.pollCount !== 0) {
       writer.uint32(24).uint64(message.pollCount);
+    }
+    for (const v of message.voteList) {
+      Vote.encode(v!, writer.uint32(34).fork()).ldelim();
+    }
+    if (message.voteCount !== 0) {
+      writer.uint32(40).uint64(message.voteCount);
     }
     return writer;
   },
@@ -48,6 +57,12 @@ export const GenesisState = {
         case 3:
           message.pollCount = longToNumber(reader.uint64() as Long);
           break;
+        case 4:
+          message.voteList.push(Vote.decode(reader, reader.uint32()));
+          break;
+        case 5:
+          message.voteCount = longToNumber(reader.uint64() as Long);
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -61,6 +76,8 @@ export const GenesisState = {
       params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
       pollList: Array.isArray(object?.pollList) ? object.pollList.map((e: any) => Poll.fromJSON(e)) : [],
       pollCount: isSet(object.pollCount) ? Number(object.pollCount) : 0,
+      voteList: Array.isArray(object?.voteList) ? object.voteList.map((e: any) => Vote.fromJSON(e)) : [],
+      voteCount: isSet(object.voteCount) ? Number(object.voteCount) : 0,
     };
   },
 
@@ -73,6 +90,12 @@ export const GenesisState = {
       obj.pollList = [];
     }
     message.pollCount !== undefined && (obj.pollCount = Math.round(message.pollCount));
+    if (message.voteList) {
+      obj.voteList = message.voteList.map((e) => e ? Vote.toJSON(e) : undefined);
+    } else {
+      obj.voteList = [];
+    }
+    message.voteCount !== undefined && (obj.voteCount = Math.round(message.voteCount));
     return obj;
   },
 
@@ -83,6 +106,8 @@ export const GenesisState = {
       : undefined;
     message.pollList = object.pollList?.map((e) => Poll.fromPartial(e)) || [];
     message.pollCount = object.pollCount ?? 0;
+    message.voteList = object.voteList?.map((e) => Vote.fromPartial(e)) || [];
+    message.voteCount = object.voteCount ?? 0;
     return message;
   },
 };

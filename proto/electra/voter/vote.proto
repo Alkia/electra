@@ -1,0 +1,11 @@
+syntax = "proto3";
+package electra.voter;
+
+option go_package = "electra/x/voter/types";
+
+message Vote {
+  uint64 id = 1;
+  string pollID = 2; 
+  string option = 3; 
+  string creator = 4;
+}
