@@ -256,32 +256,6 @@ export default {
 		},
 		
 		
-		async sendMsgDeletePoll({ rootGetters }, { value, fee = [], memo = '' }) {
-			try {
-				const client=await initClient(rootGetters)
-				const result = await client.ElectraVoter.tx.sendMsgDeletePoll({ value, fee: {amount: fee, gas: "200000"}, memo })
-				return result
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgDeletePoll:Init Could not initialize signing client. Wallet is required.')
-				}else{
-					throw new Error('TxClient:MsgDeletePoll:Send Could not broadcast Tx: '+ e.message)
-				}
-			}
-		},
-		async sendMsgDeleteVote({ rootGetters }, { value, fee = [], memo = '' }) {
-			try {
-				const client=await initClient(rootGetters)
-				const result = await client.ElectraVoter.tx.sendMsgDeleteVote({ value, fee: {amount: fee, gas: "200000"}, memo })
-				return result
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgDeleteVote:Init Could not initialize signing client. Wallet is required.')
-				}else{
-					throw new Error('TxClient:MsgDeleteVote:Send Could not broadcast Tx: '+ e.message)
-				}
-			}
-		},
 		async sendMsgCreatePoll({ rootGetters }, { value, fee = [], memo = '' }) {
 			try {
 				const client=await initClient(rootGetters)
@@ -292,19 +266,6 @@ export default {
 					throw new Error('TxClient:MsgCreatePoll:Init Could not initialize signing client. Wallet is required.')
 				}else{
 					throw new Error('TxClient:MsgCreatePoll:Send Could not broadcast Tx: '+ e.message)
-				}
-			}
-		},
-		async sendMsgCreateVote({ rootGetters }, { value, fee = [], memo = '' }) {
-			try {
-				const client=await initClient(rootGetters)
-				const result = await client.ElectraVoter.tx.sendMsgCreateVote({ value, fee: {amount: fee, gas: "200000"}, memo })
-				return result
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgCreateVote:Init Could not initialize signing client. Wallet is required.')
-				}else{
-					throw new Error('TxClient:MsgCreateVote:Send Could not broadcast Tx: '+ e.message)
 				}
 			}
 		},
@@ -321,6 +282,19 @@ export default {
 				}
 			}
 		},
+		async sendMsgDeleteVote({ rootGetters }, { value, fee = [], memo = '' }) {
+			try {
+				const client=await initClient(rootGetters)
+				const result = await client.ElectraVoter.tx.sendMsgDeleteVote({ value, fee: {amount: fee, gas: "200000"}, memo })
+				return result
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgDeleteVote:Init Could not initialize signing client. Wallet is required.')
+				}else{
+					throw new Error('TxClient:MsgDeleteVote:Send Could not broadcast Tx: '+ e.message)
+				}
+			}
+		},
 		async sendMsgUpdatePoll({ rootGetters }, { value, fee = [], memo = '' }) {
 			try {
 				const client=await initClient(rootGetters)
@@ -334,33 +308,33 @@ export default {
 				}
 			}
 		},
-		
-		async MsgDeletePoll({ rootGetters }, { value }) {
+		async sendMsgDeletePoll({ rootGetters }, { value, fee = [], memo = '' }) {
 			try {
-				const client=initClient(rootGetters)
-				const msg = await client.ElectraVoter.tx.msgDeletePoll({value})
-				return msg
+				const client=await initClient(rootGetters)
+				const result = await client.ElectraVoter.tx.sendMsgDeletePoll({ value, fee: {amount: fee, gas: "200000"}, memo })
+				return result
 			} catch (e) {
 				if (e == MissingWalletError) {
 					throw new Error('TxClient:MsgDeletePoll:Init Could not initialize signing client. Wallet is required.')
-				} else{
-					throw new Error('TxClient:MsgDeletePoll:Create Could not create message: ' + e.message)
+				}else{
+					throw new Error('TxClient:MsgDeletePoll:Send Could not broadcast Tx: '+ e.message)
 				}
 			}
 		},
-		async MsgDeleteVote({ rootGetters }, { value }) {
+		async sendMsgCreateVote({ rootGetters }, { value, fee = [], memo = '' }) {
 			try {
-				const client=initClient(rootGetters)
-				const msg = await client.ElectraVoter.tx.msgDeleteVote({value})
-				return msg
+				const client=await initClient(rootGetters)
+				const result = await client.ElectraVoter.tx.sendMsgCreateVote({ value, fee: {amount: fee, gas: "200000"}, memo })
+				return result
 			} catch (e) {
 				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgDeleteVote:Init Could not initialize signing client. Wallet is required.')
-				} else{
-					throw new Error('TxClient:MsgDeleteVote:Create Could not create message: ' + e.message)
+					throw new Error('TxClient:MsgCreateVote:Init Could not initialize signing client. Wallet is required.')
+				}else{
+					throw new Error('TxClient:MsgCreateVote:Send Could not broadcast Tx: '+ e.message)
 				}
 			}
 		},
+		
 		async MsgCreatePoll({ rootGetters }, { value }) {
 			try {
 				const client=initClient(rootGetters)
@@ -371,19 +345,6 @@ export default {
 					throw new Error('TxClient:MsgCreatePoll:Init Could not initialize signing client. Wallet is required.')
 				} else{
 					throw new Error('TxClient:MsgCreatePoll:Create Could not create message: ' + e.message)
-				}
-			}
-		},
-		async MsgCreateVote({ rootGetters }, { value }) {
-			try {
-				const client=initClient(rootGetters)
-				const msg = await client.ElectraVoter.tx.msgCreateVote({value})
-				return msg
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgCreateVote:Init Could not initialize signing client. Wallet is required.')
-				} else{
-					throw new Error('TxClient:MsgCreateVote:Create Could not create message: ' + e.message)
 				}
 			}
 		},
@@ -400,6 +361,19 @@ export default {
 				}
 			}
 		},
+		async MsgDeleteVote({ rootGetters }, { value }) {
+			try {
+				const client=initClient(rootGetters)
+				const msg = await client.ElectraVoter.tx.msgDeleteVote({value})
+				return msg
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgDeleteVote:Init Could not initialize signing client. Wallet is required.')
+				} else{
+					throw new Error('TxClient:MsgDeleteVote:Create Could not create message: ' + e.message)
+				}
+			}
+		},
 		async MsgUpdatePoll({ rootGetters }, { value }) {
 			try {
 				const client=initClient(rootGetters)
@@ -410,6 +384,32 @@ export default {
 					throw new Error('TxClient:MsgUpdatePoll:Init Could not initialize signing client. Wallet is required.')
 				} else{
 					throw new Error('TxClient:MsgUpdatePoll:Create Could not create message: ' + e.message)
+				}
+			}
+		},
+		async MsgDeletePoll({ rootGetters }, { value }) {
+			try {
+				const client=initClient(rootGetters)
+				const msg = await client.ElectraVoter.tx.msgDeletePoll({value})
+				return msg
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgDeletePoll:Init Could not initialize signing client. Wallet is required.')
+				} else{
+					throw new Error('TxClient:MsgDeletePoll:Create Could not create message: ' + e.message)
+				}
+			}
+		},
+		async MsgCreateVote({ rootGetters }, { value }) {
+			try {
+				const client=initClient(rootGetters)
+				const msg = await client.ElectraVoter.tx.msgCreateVote({value})
+				return msg
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgCreateVote:Init Could not initialize signing client. Wallet is required.')
+				} else{
+					throw new Error('TxClient:MsgCreateVote:Create Could not create message: ' + e.message)
 				}
 			}
 		},
