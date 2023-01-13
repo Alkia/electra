@@ -18,10 +18,7 @@ func CmdCreatePoll() *cobra.Command {
 		// BEFORE: Args:  cobra.ExactArgs(2),
 		Args:  cobra.MinimumNArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
-			argsTitle, err := cast.ToStringE(args[0])
-			if err != nil {
-				return err
-			}
+			argTitle := args[0]
 			// Change this also
 			// BEFORE: argOptions := args[1]
 			argOptions := []string{args[1]}
@@ -57,10 +54,8 @@ func CmdUpdatePoll() *cobra.Command {
 				return err
 			}
 
-			argsTitle, err := cast.ToStringE(args[1])
-			if err != nil {
-				return err
-			}
+			argTitle := args[1]
+
 			// Change this also
 			// BEFORE: argOptions := args[2]
 			argOptions := []string{args[2]}

@@ -7,12 +7,12 @@ export const protobufPackage = "electra.voter";
 export interface Poll {
   id: number;
   title: string;
-  options: string;
+  options: string[];
   creator: string;
 }
 
 function createBasePoll(): Poll {
-  return { id: 0, title: "", options: "", creator: "" };
+  return { id: 0, title: "", options: [], creator: "" };
 }
 
 export const Poll = {
@@ -23,8 +23,8 @@ export const Poll = {
     if (message.title !== "") {
       writer.uint32(18).string(message.title);
     }
-    if (message.options !== "") {
-      writer.uint32(26).string(message.options);
+    for (const v of message.options) {
+      writer.uint32(26).string(v!);
     }
     if (message.creator !== "") {
       writer.uint32(34).string(message.creator);
@@ -46,7 +46,7 @@ export const Poll = {
           message.title = reader.string();
           break;
         case 3:
-          message.options = reader.string();
+          message.options.push(reader.string());
           break;
         case 4:
           message.creator = reader.string();
@@ -63,7 +63,7 @@ export const Poll = {
     return {
       id: isSet(object.id) ? Number(object.id) : 0,
       title: isSet(object.title) ? String(object.title) : "",
-      options: isSet(object.options) ? String(object.options) : "",
+      options: Array.isArray(object?.options) ? object.options.map((e: any) => String(e)) : [],
       creator: isSet(object.creator) ? String(object.creator) : "",
     };
   },
@@ -72,7 +72,11 @@ export const Poll = {
     const obj: any = {};
     message.id !== undefined && (obj.id = Math.round(message.id));
     message.title !== undefined && (obj.title = message.title);
-    message.options !== undefined && (obj.options = message.options);
+    if (message.options) {
+      obj.options = message.options.map((e) => e);
+    } else {
+      obj.options = [];
+    }
     message.creator !== undefined && (obj.creator = message.creator);
     return obj;
   },
@@ -81,7 +85,7 @@ export const Poll = {
     const message = createBasePoll();
     message.id = object.id ?? 0;
     message.title = object.title ?? "";
-    message.options = object.options ?? "";
+    message.options = object.options?.map((e) => e) || [];
     message.creator = object.creator ?? "";
     return message;
   },

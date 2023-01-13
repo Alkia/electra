@@ -7,7 +7,7 @@ export const protobufPackage = "electra.voter";
 export interface MsgCreatePoll {
   creator: string;
   title: string;
-  options: string;
+  options: string[];
 }
 
 export interface MsgCreatePollResponse {
@@ -18,7 +18,7 @@ export interface MsgUpdatePoll {
   creator: string;
   id: number;
   title: string;
-  options: string;
+  options: string[];
 }
 
 export interface MsgUpdatePollResponse {
@@ -33,7 +33,7 @@ export interface MsgDeletePollResponse {
 }
 
 function createBaseMsgCreatePoll(): MsgCreatePoll {
-  return { creator: "", title: "", options: "" };
+  return { creator: "", title: "", options: [] };
 }
 
 export const MsgCreatePoll = {
@@ -44,8 +44,8 @@ export const MsgCreatePoll = {
     if (message.title !== "") {
       writer.uint32(18).string(message.title);
     }
-    if (message.options !== "") {
-      writer.uint32(26).string(message.options);
+    for (const v of message.options) {
+      writer.uint32(26).string(v!);
     }
     return writer;
   },
@@ -64,7 +64,7 @@ export const MsgCreatePoll = {
           message.title = reader.string();
           break;
         case 3:
-          message.options = reader.string();
+          message.options.push(reader.string());
           break;
         default:
           reader.skipType(tag & 7);
@@ -78,7 +78,7 @@ export const MsgCreatePoll = {
     return {
       creator: isSet(object.creator) ? String(object.creator) : "",
       title: isSet(object.title) ? String(object.title) : "",
-      options: isSet(object.options) ? String(object.options) : "",
+      options: Array.isArray(object?.options) ? object.options.map((e: any) => String(e)) : [],
     };
   },
 
@@ -86,7 +86,11 @@ export const MsgCreatePoll = {
     const obj: any = {};
     message.creator !== undefined && (obj.creator = message.creator);
     message.title !== undefined && (obj.title = message.title);
-    message.options !== undefined && (obj.options = message.options);
+    if (message.options) {
+      obj.options = message.options.map((e) => e);
+    } else {
+      obj.options = [];
+    }
     return obj;
   },
 
@@ -94,7 +98,7 @@ export const MsgCreatePoll = {
     const message = createBaseMsgCreatePoll();
     message.creator = object.creator ?? "";
     message.title = object.title ?? "";
-    message.options = object.options ?? "";
+    message.options = object.options?.map((e) => e) || [];
     return message;
   },
 };
@@ -147,7 +151,7 @@ export const MsgCreatePollResponse = {
 };
 
 function createBaseMsgUpdatePoll(): MsgUpdatePoll {
-  return { creator: "", id: 0, title: "", options: "" };
+  return { creator: "", id: 0, title: "", options: [] };
 }
 
 export const MsgUpdatePoll = {
@@ -161,8 +165,8 @@ export const MsgUpdatePoll = {
     if (message.title !== "") {
       writer.uint32(26).string(message.title);
     }
-    if (message.options !== "") {
-      writer.uint32(34).string(message.options);
+    for (const v of message.options) {
+      writer.uint32(34).string(v!);
     }
     return writer;
   },
@@ -184,7 +188,7 @@ export const MsgUpdatePoll = {
           message.title = reader.string();
           break;
         case 4:
-          message.options = reader.string();
+          message.options.push(reader.string());
           break;
         default:
           reader.skipType(tag & 7);
@@ -199,7 +203,7 @@ export const MsgUpdatePoll = {
       creator: isSet(object.creator) ? String(object.creator) : "",
       id: isSet(object.id) ? Number(object.id) : 0,
       title: isSet(object.title) ? String(object.title) : "",
-      options: isSet(object.options) ? String(object.options) : "",
+      options: Array.isArray(object?.options) ? object.options.map((e: any) => String(e)) : [],
     };
   },
 
@@ -208,7 +212,11 @@ export const MsgUpdatePoll = {
     message.creator !== undefined && (obj.creator = message.creator);
     message.id !== undefined && (obj.id = Math.round(message.id));
     message.title !== undefined && (obj.title = message.title);
-    message.options !== undefined && (obj.options = message.options);
+    if (message.options) {
+      obj.options = message.options.map((e) => e);
+    } else {
+      obj.options = [];
+    }
     return obj;
   },
 
@@ -217,7 +225,7 @@ export const MsgUpdatePoll = {
     message.creator = object.creator ?? "";
     message.id = object.id ?? 0;
     message.title = object.title ?? "";
-    message.options = object.options ?? "";
+    message.options = object.options?.map((e) => e) || [];
     return message;
   },
 };
