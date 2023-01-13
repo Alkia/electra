@@ -134,7 +134,7 @@ cp ./scripts/custo/config.ym* .
 cp ./scripts/custo/readme.md .
 cp ./scripts/custo/.gitignore .
 # Coding meter parameters ########################################################################################
-cp ./scripts/custo/meter/params.go ./x/meter/types/
+cp ./scripts/custo/meter/params.go ./x/meter/types/ 
 # Coding meter record & record3phases messages ###################################################################
 cp ./scripts/custo/meter/msg_server_record.go          ./x/meter/keeper/
 cp ./scripts/custo/meter/msg_server_record_3.go        ./x/meter/keeper/
