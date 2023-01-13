@@ -29,6 +29,7 @@
     font-weight: 800;
     letter-spacing: 0.03em;
     margin-bottom: 2rem;
+    margin-left: 15rem;
 }
     .spacing{
         padding: 1rem;

@@ -31,7 +31,7 @@
     font-weight: 800;
     letter-spacing: 0.03em;
     margin-bottom: 2rem;
-    margin-bottom: 0.5rem;
+    margin-left: 15rem;
   }
   .electra_poll {
     border-radius: 1.2rem;
@@ -41,7 +41,6 @@
     font-size: 2rem;
     font-weight: 800;
     letter-spacing: 0.03em;
-    margin-bottom: 2rem;
     margin-bottom: 0.5rem;
   }
 </style>
