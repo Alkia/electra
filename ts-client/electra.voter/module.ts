@@ -7,10 +7,43 @@ import { msgTypes } from './registry';
 import { IgniteClient } from "../client"
 import { MissingWalletError } from "../helpers"
 import { Api } from "./rest";
+import { MsgDeletePoll } from "./types/electra/voter/tx";
+import { MsgCreatePoll } from "./types/electra/voter/tx";
+import { MsgUpdatePoll } from "./types/electra/voter/tx";
 
 
-export {  };
+export { MsgDeletePoll, MsgCreatePoll, MsgUpdatePoll };
 
+type sendMsgDeletePollParams = {
+  value: MsgDeletePoll,
+  fee?: StdFee,
+  memo?: string
+};
+
+type sendMsgCreatePollParams = {
+  value: MsgCreatePoll,
+  fee?: StdFee,
+  memo?: string
+};
+
+type sendMsgUpdatePollParams = {
+  value: MsgUpdatePoll,
+  fee?: StdFee,
+  memo?: string
+};
+
+
+type msgDeletePollParams = {
+  value: MsgDeletePoll,
+};
+
+type msgCreatePollParams = {
+  value: MsgCreatePoll,
+};
+
+type msgUpdatePollParams = {
+  value: MsgUpdatePoll,
+};
 
 
 export const registry = new Registry(msgTypes);
@@ -30,6 +63,72 @@ export const txClient = ({ signer, prefix, addr }: TxClientOptions = { addr: "ht
 
   return {
 		
+		async sendMsgDeletePoll({ value, fee, memo }: sendMsgDeletePollParams): Promise<DeliverTxResponse> {
+			if (!signer) {
+					throw new Error('TxClient:sendMsgDeletePoll: Unable to sign Tx. Signer is not present.')
+			}
+			try {			
+				const { address } = (await signer.getAccounts())[0]; 
+				const signingClient = await SigningStargateClient.connectWithSigner(addr,signer,{registry, prefix});
+				let msg = this.msgDeletePoll({ value: MsgDeletePoll.fromPartial(value) })
+				return await signingClient.signAndBroadcast(address, [msg], fee ? fee : defaultFee, memo)
+			} catch (e: any) {
+				throw new Error('TxClient:sendMsgDeletePoll: Could not broadcast Tx: '+ e.message)
+			}
+		},
+		
+		async sendMsgCreatePoll({ value, fee, memo }: sendMsgCreatePollParams): Promise<DeliverTxResponse> {
+			if (!signer) {
+					throw new Error('TxClient:sendMsgCreatePoll: Unable to sign Tx. Signer is not present.')
+			}
+			try {			
+				const { address } = (await signer.getAccounts())[0]; 
+				const signingClient = await SigningStargateClient.connectWithSigner(addr,signer,{registry, prefix});
+				let msg = this.msgCreatePoll({ value: MsgCreatePoll.fromPartial(value) })
+				return await signingClient.signAndBroadcast(address, [msg], fee ? fee : defaultFee, memo)
+			} catch (e: any) {
+				throw new Error('TxClient:sendMsgCreatePoll: Could not broadcast Tx: '+ e.message)
+			}
+		},
+		
+		async sendMsgUpdatePoll({ value, fee, memo }: sendMsgUpdatePollParams): Promise<DeliverTxResponse> {
+			if (!signer) {
+					throw new Error('TxClient:sendMsgUpdatePoll: Unable to sign Tx. Signer is not present.')
+			}
+			try {			
+				const { address } = (await signer.getAccounts())[0]; 
+				const signingClient = await SigningStargateClient.connectWithSigner(addr,signer,{registry, prefix});
+				let msg = this.msgUpdatePoll({ value: MsgUpdatePoll.fromPartial(value) })
+				return await signingClient.signAndBroadcast(address, [msg], fee ? fee : defaultFee, memo)
+			} catch (e: any) {
+				throw new Error('TxClient:sendMsgUpdatePoll: Could not broadcast Tx: '+ e.message)
+			}
+		},
+		
+		
+		msgDeletePoll({ value }: msgDeletePollParams): EncodeObject {
+			try {
+				return { typeUrl: "/electra.voter.MsgDeletePoll", value: MsgDeletePoll.fromPartial( value ) }  
+			} catch (e: any) {
+				throw new Error('TxClient:MsgDeletePoll: Could not create message: ' + e.message)
+			}
+		},
+		
+		msgCreatePoll({ value }: msgCreatePollParams): EncodeObject {
+			try {
+				return { typeUrl: "/electra.voter.MsgCreatePoll", value: MsgCreatePoll.fromPartial( value ) }  
+			} catch (e: any) {
+				throw new Error('TxClient:MsgCreatePoll: Could not create message: ' + e.message)
+			}
+		},
+		
+		msgUpdatePoll({ value }: msgUpdatePollParams): EncodeObject {
+			try {
+				return { typeUrl: "/electra.voter.MsgUpdatePoll", value: MsgUpdatePoll.fromPartial( value ) }  
+			} catch (e: any) {
+				throw new Error('TxClient:MsgUpdatePoll: Could not create message: ' + e.message)
+			}
+		},
 		
 	}
 };
