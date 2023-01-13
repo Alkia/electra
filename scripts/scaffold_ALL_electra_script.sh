@@ -197,3 +197,10 @@ ignite scaffold module voter
 # Git Save ####################################################################################################### 
 git add .
 git commit -m "scaffold module voter"
+ignite scaffold list poll title options --module voter
+git add .
+git commit -m "scaffold list poll in module voter"
+# Modify the Protobuffer Types
+cp proto/voter/poll.proto
+cp proto/voter/tx.proto
+cp x/voter/types/messages_poll.go
