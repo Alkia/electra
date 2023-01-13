@@ -2,8 +2,8 @@
     <div class=" electra_sp sp-shadow sp-form-group">
         <div class="sp-voter__main__rcpt__header sp-box-header">
             <h3> List of Polls </h3>
-        </div>
-    <div v-for="poll in polls" v-bind:key="'poll' + poll.id">
+        </div><br/>
+    <div class="electra_poll" v-for="poll in polls" v-bind:key="'poll' + poll.id">
         <h4> {{poll.id}}. {{ poll.title }} </h4>
         <AppRadioItem
         @click="submit(poll.id, option)"
@@ -27,6 +27,17 @@
     padding: 2rem;
     font-size: 1.4rem;
     background: rgba(234,220,255,0.3);
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  .electra_poll {
+    border-radius: 1.2rem;
+    padding: 1rem;
+    font-size: 1.4rem;
+    background: whitesmoke;
     font-size: 2rem;
     font-weight: 800;
     letter-spacing: 0.03em;

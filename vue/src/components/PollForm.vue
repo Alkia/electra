@@ -6,7 +6,7 @@
                 <h3> Create a Poll </h3>
             </div>
             <div class="spacing">
-                <input class="sp-input" placeholder="Title" v-model="title" />
+                <input class="sp-input" style="border-radius: 1rem;" placeholder="Title" v-model="title" />
                 <br/><br/>
                 <div v-for="(option, index) in options" v-bind:key="'option' + index">
                 <input class="sp-input" placeholder="Option" v-model="option.title" />
