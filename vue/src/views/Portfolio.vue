@@ -2,11 +2,14 @@
   <div class="container">
     <div class="row row-sm-revers">
       <div class="col-md-6">
-        <SpAssets />
-        <SpTokenTransferList />
+        <div class="row2">
+          <SpAssets />
+        </div>
+        <br/>
+        <div class="row2"><SpTokenTransferList /></div>        
       </div>
       <div class="col-md-5 col-lg-4 col-md-offset-1 col-lg-offset-2">
-        <SpTokenTransfer />
+        <div class="row2"><SpTokenTransfer /></div>
       </div>
     </div>
   </div>
@@ -37,6 +40,14 @@ export default {
 </script>
 
 <style scoped>
+.row2 {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2em;
+  border-spacing: 15px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1),
+      0 1px 5px -1px rgba(0, 0, 0, 0.1);
+}
 .row {
   display: flex;
   flex-wrap: wrap;
