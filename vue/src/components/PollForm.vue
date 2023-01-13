@@ -5,13 +5,16 @@
             <div class="sp-voter__main__rcpt__header sp-box-header">
                 <h3> Create a Poll </h3>
             </div>
-
-            <input class="sp-input" placeholder="Title" v-model="title" />
-            <div v-for="(option, index) in options" v-bind:key="'option' + index">
-              <input class="sp-input" placeholder="Option" v-model="option.title" />
+            <div class="spacing">
+                <input class="sp-input" placeholder="Title" v-model="title" />
+                <br/><br/>
+                <div v-for="(option, index) in options" v-bind:key="'option' + index">
+                <input class="sp-input" placeholder="Option" v-model="option.title" />
+                </div>
+                <br/>
+                <sp-button @click="add">+ Add option</sp-button> &nbsp;
+                <sp-button @click="submit">Create poll</sp-button>
             </div>
-            <sp-button @click="add">+ Add option</sp-button>
-            <sp-button @click="submit">Create poll</sp-button>
           </form>
       </div>
     </div>
@@ -26,8 +29,12 @@
     font-weight: 800;
     letter-spacing: 0.03em;
     margin-bottom: 2rem;
-    margin-bottom: 0.5rem;
-  }
+}
+    .spacing{
+        padding: 1rem;
+        margin: 1rem;
+    }
+  
 </style>
 <script>
 export default {

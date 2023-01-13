@@ -1,5 +1,5 @@
 <template>
-    <div class=" sp-box sp-shadow sp-form-group">
+    <div class=" electra_sp sp-shadow sp-form-group">
         <div class="sp-voter__main__rcpt__header sp-box-header">
             <h3> List of Polls </h3>
         </div>
@@ -21,7 +21,19 @@
     width: 50%;
 }
 </style>
-
+<style scoped>
+  .electra_sp {
+    border-radius: 1.2rem;
+    padding: 2rem;
+    font-size: 1.4rem;
+    background: rgba(234,220,255,0.3);
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
+  }
+</style>
 <script>
 import AppRadioItem from "./AppRadioItem.vue";
 import AppText from "./AppText.vue";
