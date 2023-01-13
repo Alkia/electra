@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class=" sp-box sp-shadow sp-form-group">
     <h3> List of Polls </h3>
     <div v-for="poll in polls" v-bind:key="'poll' + poll.id">
         <h4> {{poll.id}}. {{ poll.title }} </h4>
@@ -53,15 +53,15 @@ export default {
     polls() {
         return (
        // this.$store.getters["cosmonaut.voter.voter/getPollAll"]({
-        this.$store.getters["voter.voter/getPollAll"]({
+        this.$store.getters["electra.voter/getPollAll"]({
             params: {}
         })?.Poll ?? []
         );
     },
     votes() {
         return (
-        //this.$store.getters["cosmonaut.voter.voter/getVoteAll"]({    
-        this.$store.getters["voter.voter/getVoteAll"]({
+        //this.$store.getters["cosmonaut.electra.voter/getVoteAll"]({    
+        this.$store.getters["electra.voter/getVoteAll"]({
             params: {}
         })?.Vote ?? []
         );
@@ -76,12 +76,12 @@ export default {
         
         const value = { creator: this.currentAccount, pollID, option };
         //await this.$store.dispatch("cosmonaut.voter.voter/sendMsgCreateVote", {
-        await this.$store.dispatch("voter.voter/sendMsgCreateVote", {
+        await this.$store.dispatch("electra.voter/sendMsgCreateVote", {
         value,
         fee: [],
         });
         //await this.$store.dispatch("cosmonaut.voter.voter/QueryPollAll", {
-        await this.$store.dispatch("voter.voter/QueryPollAll", {
+        await this.$store.dispatch("electra.voter/QueryPollAll", {
         options: { subscribe: true, all: true },
         params: {},
         });

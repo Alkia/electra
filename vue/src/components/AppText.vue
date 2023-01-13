@@ -11,6 +11,7 @@
     font-weight: 800;
     letter-spacing: 0.03em;
     margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
   }
   .h2 {
     font-weight: 800;

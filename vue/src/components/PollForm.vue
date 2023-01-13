@@ -3,7 +3,7 @@
       <div class="sp-voter__main sp-box sp-shadow sp-form-group">
           <form class="sp-voter__main__form">
             <div class="sp-voter__main__rcpt__header sp-box-header">
-              Create a Poll
+                <h3> Create a Poll </h3>
             </div>
 
             <input class="sp-input" placeholder="Title" v-model="title" />
@@ -60,7 +60,7 @@ export default {
         };
 		// TO FIX BEFORE PUBLISHING - There may be a problem here (the transaction does not complete) 
         // Old tuto for ref: await this.$store.dispatch("cosmonaut.voter.voter/sendMsgCreatePoll", {
-        await this.$store.dispatch("voter.voter/sendMsgCreatePoll", {
+        await this.$store.dispatch("electra.voter/sendMsgCreatePoll", {
           value,
           fee: [],
         });

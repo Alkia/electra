@@ -28,8 +28,7 @@ export default {
 
     // state
     let navbarLinks = [
-      { name: 'Wallet', url: '/portfolio' },
-      { name: 'Voter', url: '/voter' },
+      { name: 'Portfolio', url: '/portfolio' },
       { name: 'Data', url: '/data' }
     ]
 
@@ -40,11 +39,7 @@ export default {
     onBeforeMount(async () => {
       await $s.dispatch('common/env/init')
 
-      await $s.dispatch("voter.voter/QueryPollAll",{options:{subscribe:true, all:true},params:{}})
-      await $s.dispatch("voter.voter/QueryVoteAll",{options:{subscribe:true, all:true},params:{}})      
-
       router.push('portfolio')
-      //router.push('vote')
     })
 
     return {
