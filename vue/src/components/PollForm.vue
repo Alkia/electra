@@ -5,11 +5,11 @@
             <div class="sp-voter__main__rcpt__header sp-box-header">
                 <h3> Create a Poll </h3>
             </div>
-            <div class="spacing">
+            <div >
                 <input class="sp-input" style="border-radius: 1rem;" placeholder="Title" v-model="title" />
                 <br/><br/>
                 <div v-for="(option, index) in options" v-bind:key="'option' + index">
-                <input class="sp-input" placeholder="Option" v-model="option.title" />
+                <input  class="sp-input spacing" placeholder="Option" v-model="option.title" />
                 </div>
                 <br/>
                 <sp-button @click="add">+ Add option</sp-button> &nbsp;
@@ -32,8 +32,8 @@
     margin-left: 15rem;
 }
     .spacing{
-        padding: 1rem;
-        margin: 1rem;
+    padding: 1rem;
+    margin-bottom: 0.2rem;
     }
   
 </style>
