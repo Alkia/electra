@@ -5,8 +5,9 @@
 		<h2>
 		Electra Governance 
 		</h2>
-		<PollForm />
-		<PollList />
+        <div ><PollForm /></div>
+		
+		<div ><PollList /></div>
 		</div>
 	</div>
 </template>
