@@ -14,11 +14,11 @@ A **micro-grid**, is a local transport structure semi-isolated from the main tra
 **BlockChain Meters**, are the key element of the solution. 
 - They precisely measure the power exchanged
 - They are a circuit breaker for the microgrid
-- They embeds a secure wallet having the capacity to validate the blocks
+- They embed a secure wallet having the capacity to validate the blocks
 - They store a full copy of the local chain 
 
 **The Grid Gateway** 
-The grid gateway synchronize the micro-grid and import extra energy as needed. This gateway is the master node validating the blocks. In some case the national grid gateway can export energy too should the microgrid and the regulation enables it. 
+The grid gateway synchronizes the micro-grid and imports extra energy as needed. This gateway is the master node validating the blocks. In some cases the national grid gateway can export energy too should the microgrid and the regulation enables it. 
 
 - The grit All features of a BlockChain meter +
 - Demand response 
@@ -29,7 +29,7 @@ The grid gateway synchronize the micro-grid and import extra energy as needed. T
 ## Responsible Disclosure
 Send us an email to report any security related bugs or vulnerabilities at security@alkia.net
 
-You can encrypt your email message using our public PGP key : [Public key](https://raw.githubusercontent.com/Alkia/electra/master/public_key.pgp)
+You can encrypt your email message using our public PGP key: [Public key](https://raw.githubusercontent.com/Alkia/electra/master/public_key.pgp)
 
 ## Get started
 
@@ -113,12 +113,12 @@ The frontend app is built using the `@starport/vue` and `@starport/vuex` package
 ## Deploying an Electra node
 To deploy a node on testnet-0 please follp the guide: ![Electra Node](https://github.com/Alkia/testnet-0/blob/main/README.md)
 
-## Implementing the blockachain meter
+## Implementing the blockchain meter
 ![Electra Logo](/vue/public/ElectraSmartMeter.png "Electra BlockChain Smart Meter")
 
 The smartmeter specs are under validation before first prototypes start moving to production.
 
-Most Standard IEC energy meters will be upgradable to blockchain meters using the rugged Electra blockchain appliance. The Electra blockchain appliance connects to legacy meters with its infrared data reading cable following IEC 62056 21 standard.
+Most Standard IEC energy meters will be upgradeable to blockchain meters using the rugged Electra blockchain appliance. The Electra blockchain appliance connects to legacy meters with its infrared data reading cable following IEC 62056 21 standard.
 
 More on the ![IEC 62056 21 standard](https://community.openhab.org/t/reading-power-consumption-of-the-electricity-meter-with-the-ir-interface/94996).
 
