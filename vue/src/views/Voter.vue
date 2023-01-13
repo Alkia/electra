@@ -10,3 +10,11 @@
 		</div>
 	</div>
 </template>
+<script>
+    import PollForm from "../components/PollForm.vue";
+    import PollList from "../components/PollList.vue";
+    export default {
+      name: 'Types',
+      components: { PollForm, PollList },
+    }
+</script>
