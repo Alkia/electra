@@ -1,6 +1,12 @@
 // THIS FILE IS GENERATED AUTOMATICALLY. DO NOT MODIFY.
 
 import ElectraMeter from './electra.meter'
+import IbcApplicationsInterchainAccountsControllerV1 from './ibc.applications.interchain_accounts.controller.v1'
+import IbcApplicationsInterchainAccountsHostV1 from './ibc.applications.interchain_accounts.host.v1'
+import IbcApplicationsTransferV1 from './ibc.applications.transfer.v1'
+import IbcCoreChannelV1 from './ibc.core.channel.v1'
+import IbcCoreClientV1 from './ibc.core.client.v1'
+import IbcCoreConnectionV1 from './ibc.core.connection.v1'
 import CosmosAuthV1Beta1 from './cosmos.auth.v1beta1'
 import CosmosAuthzV1Beta1 from './cosmos.authz.v1beta1'
 import CosmosBankV1Beta1 from './cosmos.bank.v1beta1'
@@ -20,16 +26,16 @@ import CosmosStakingV1Beta1 from './cosmos.staking.v1beta1'
 import CosmosTxV1Beta1 from './cosmos.tx.v1beta1'
 import CosmosUpgradeV1Beta1 from './cosmos.upgrade.v1beta1'
 import CosmosVestingV1Beta1 from './cosmos.vesting.v1beta1'
-import IbcApplicationsInterchainAccountsControllerV1 from './ibc.applications.interchain_accounts.controller.v1'
-import IbcApplicationsInterchainAccountsHostV1 from './ibc.applications.interchain_accounts.host.v1'
-import IbcApplicationsTransferV1 from './ibc.applications.transfer.v1'
-import IbcCoreChannelV1 from './ibc.core.channel.v1'
-import IbcCoreClientV1 from './ibc.core.client.v1'
-import IbcCoreConnectionV1 from './ibc.core.connection.v1'
 
 
 export default { 
   ElectraMeter: load(ElectraMeter, 'electra.meter'),
+  IbcApplicationsInterchainAccountsControllerV1: load(IbcApplicationsInterchainAccountsControllerV1, 'ibc.applications.interchain_accounts.controller.v1'),
+  IbcApplicationsInterchainAccountsHostV1: load(IbcApplicationsInterchainAccountsHostV1, 'ibc.applications.interchain_accounts.host.v1'),
+  IbcApplicationsTransferV1: load(IbcApplicationsTransferV1, 'ibc.applications.transfer.v1'),
+  IbcCoreChannelV1: load(IbcCoreChannelV1, 'ibc.core.channel.v1'),
+  IbcCoreClientV1: load(IbcCoreClientV1, 'ibc.core.client.v1'),
+  IbcCoreConnectionV1: load(IbcCoreConnectionV1, 'ibc.core.connection.v1'),
   CosmosAuthV1Beta1: load(CosmosAuthV1Beta1, 'cosmos.auth.v1beta1'),
   CosmosAuthzV1Beta1: load(CosmosAuthzV1Beta1, 'cosmos.authz.v1beta1'),
   CosmosBankV1Beta1: load(CosmosBankV1Beta1, 'cosmos.bank.v1beta1'),
@@ -49,12 +55,6 @@ export default {
   CosmosTxV1Beta1: load(CosmosTxV1Beta1, 'cosmos.tx.v1beta1'),
   CosmosUpgradeV1Beta1: load(CosmosUpgradeV1Beta1, 'cosmos.upgrade.v1beta1'),
   CosmosVestingV1Beta1: load(CosmosVestingV1Beta1, 'cosmos.vesting.v1beta1'),
-  IbcApplicationsInterchainAccountsControllerV1: load(IbcApplicationsInterchainAccountsControllerV1, 'ibc.applications.interchain_accounts.controller.v1'),
-  IbcApplicationsInterchainAccountsHostV1: load(IbcApplicationsInterchainAccountsHostV1, 'ibc.applications.interchain_accounts.host.v1'),
-  IbcApplicationsTransferV1: load(IbcApplicationsTransferV1, 'ibc.applications.transfer.v1'),
-  IbcCoreChannelV1: load(IbcCoreChannelV1, 'ibc.core.channel.v1'),
-  IbcCoreClientV1: load(IbcCoreClientV1, 'ibc.core.client.v1'),
-  IbcCoreConnectionV1: load(IbcCoreConnectionV1, 'ibc.core.connection.v1'),
   
 }
 
