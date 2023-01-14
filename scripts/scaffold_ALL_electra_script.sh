@@ -212,3 +212,4 @@ cp /x/voter/client/cli/tx_poll.go
 ignite scaffold list vote pollID option --module voter
 git add .
 git commit -m "scaffold list poll in module voter"
+# Test electrad tx voter create-poll "Do you like this tuto?" "Yes absolutelly" "No" "I have no idea" --from alice
