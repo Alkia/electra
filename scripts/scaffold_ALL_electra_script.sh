@@ -208,3 +208,7 @@ cp /x/voter/client/cli/tx_poll.go
 cp /x/voter/client/cli/tx_poll.go
 # test electrad tx voter create-poll "How wonderful is Cosmos on a scale of 1(worst) to 4(best) ?" "1" "2" "3" "4" --from bob
 # check the result on the front-end http://localhost:1317/#/Query/ElectraVoterPollAll
+
+ignite scaffold list vote pollID option --module vote
+git add .
+git commit -m "scaffold list poll in module voter"
