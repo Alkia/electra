@@ -204,3 +204,4 @@ git commit -m "scaffold list poll in module voter"
 cp proto/voter/poll.proto
 cp proto/voter/tx.proto
 cp x/voter/types/messages_poll.go
+cp /x/voter/client/cli/tx_poll.go
