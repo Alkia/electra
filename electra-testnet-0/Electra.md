@@ -12,7 +12,6 @@
 | Testnet   |  2 | 8GB | 0.25TB SSD/NVMe |
 | Mainnet   |  2 | 16GB | 0.5TB SSD/NVMe |
 
-
 | Ports   | Role  | 
 |-----------|----------|
 | 1318      | API      |
