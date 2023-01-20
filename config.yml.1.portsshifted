@@ -45,6 +45,18 @@ accounts:
   mnemonic: invest theme among elbow weekend couple erode oyster stand enjoy series
     collect ripple fringe actual muscle idle vast heavy brass donkey minimum envelope
     capable
+- name: treasury
+  coins:
+  - 500000000000000uelectra
+- name: fondation
+  coins:
+  - 200000000000000uelectra
+- name: advisors
+  coins:
+  - 1000000000000uelectra
+- name: team
+  coins:
+  - 100000000000000uelectra     
 faucet:
   name: bob
   coins:
@@ -93,15 +105,15 @@ validators:
   bonded: 10000000000uelectra
   app:
     api:
-      address: :1318
+      address: "1318"
     grpc:
-      address: :9092
+      address: "9092"
     grpc-web:
-      address: :9093
+      address: "9093"
   config:
     p2p:
-      laddr: :26658
+      laddr: "26658"
     rpc:
-      laddr: :26659
-      pprof_laddr: :6061
+      laddr: "26659"
+      pprof_laddr: "6061"
   home: $HOME/.electra 
