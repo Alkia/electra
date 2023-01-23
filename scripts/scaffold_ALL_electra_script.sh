@@ -51,7 +51,7 @@ git add .
 git commit -m "scaffold electra chain"
 ##################################################################################################################
 clear
-ignite scaffold module meter --dep bank,auth,staking,distribution,gov --params maxBillingIteration:uint,moduleParamBestForCustomer:bool,payAutomatically:bool,billingAdmin:string -y
+ignite scaffold module meter --dep bank,account,staking,authz,mint,gov --params maxBillingIteration:uint,moduleParamBestForCustomer:bool,payAutomatically:bool,billingAdmin:string -y
 # x/auth: retrieve information about internal blockchain accounts
 # x/bank: mint, burn or send coins
 # x/staking: bond, unbond, delegate tokens and hooks
