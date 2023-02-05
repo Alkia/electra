@@ -108,7 +108,6 @@ ignite scaffold map customerbills billDate:uint billTotalWh:uint billTotalPrice:
 #
 ignite scaffold map producerbillingline customerDeviceID:string billContractID:string lineWh:uint lineWhPrice:uint curency:string lineWhTotalPrice:uint phase:uint --index producerDeviceID:string,cycleID:uint,lineid:uint,paid:bool --module meter -y
 # Display the content of one producer bill
-##
 ## 
 ignite scaffold query getproducerbill producerDeviceID:string billCycleID:uint  --response producerbillinglines,billTotalWh:uint,billTotalPrice:uint,curency:string,nblines:uint,comments:string --module meter --desc "dispaly the producer bill from Cycle ID or START to END [parameters are interpreted as unix DateTime timestams]" -y
 # Map-list producer bills ########################################################################################
