@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+
 source scripts/serve_env.sh
 
 # Stop if it is already running
