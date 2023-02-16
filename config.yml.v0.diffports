@@ -49,4 +49,4 @@ host:
   grpc: ":9091"
   api: ":1318"
 init:
-  home: "~/.electra"
+  home: "~/.electra" 
