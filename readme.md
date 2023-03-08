@@ -33,8 +33,7 @@ You can encrypt your email message using our public PGP key: [Public key](https:
 
 ## Get started
 
-**electra** is built using Cosmos SDK and Tendermint and created with Ignite.
-
+**electra** is built using Cosmos SDK and Tendermint.
 
 ```
 ignite chain serve
