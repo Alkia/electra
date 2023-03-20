@@ -31,7 +31,7 @@
         "sig_verify_cost_secp256k1": "1000"
       },
       "accounts": [
-        {
+        { 
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
           "address": "electra12lhecv88myvrmgv92syj782dxjfsnjjg3lzvv7",
           "pub_key": null,
