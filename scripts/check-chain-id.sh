@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 
 CONTAINER_NAME="electra-node-1"
 CHAIN_ID=$(docker exec -i $CONTAINER_NAME electrad status --node http://localhost:1711 | jq ".NodeInfo.network" -r)
