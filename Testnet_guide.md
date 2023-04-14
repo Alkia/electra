@@ -1,6 +1,6 @@
 # Electra Testnet guide
 ![Electra (1)](https://github.com/Alkia/electra/raw/master/vue/public/Electra.png)
-
+     
 [Website](https://www.alkia.net/) \
 [EXPLORER](https://www.mintscan.io/electra/validators)
 =
