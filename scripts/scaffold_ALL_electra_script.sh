@@ -45,6 +45,7 @@ ignite scaffold chain electra --no-module --address-prefix electra --clear-cache
 git init electra
 cd electra
 ##################################################################################################################
+git remote add origin https://github.com/Alkia/electra_SCB.git
 git remote add origin https://github.com/Alkia/electra.git
 # https://github.com/Alkia/electra.git
 git add .
@@ -81,11 +82,14 @@ git commit -am "scaffold electra powerPurchaseContract message"
 ##################################################################################################################
 # List the subscriptions from a Consumer to a PPC contract
 ignite scaffold map ppaMap producerDeviceID:string agreementStartDate:uint agreementEndDate:uint contractPreferredPrice:uint contractPreferredCurency:string --index consumerDeviceID:string,agreementID:string,agreementActive:bool,contractID:string --module meter -y
+git commit -am "scaffold electra ppaMap maps"
 ##################################################################################################################
 # Billing Cycle
 ignite scaffold map billingcycles begin:uint end:uint whin:uint whout:uint moneyin:uint moneyout:uint curency:string valid:bool paid:bool  --index cycleID:uint --module meter -y		 
 ignite scaffold query currentcycleID --response cycleID:uint,begin:uint,end:uint,whin:uint,whout:uint,moneyin:uint,moneyout:uint,curency:string  --module meter --desc "Get the current cycleID:uint" -y
 #ignite scaffold message incrementcycleID --response cycleID:uint  --module meter --desc "Increment the current cycleID:uint" -y
+git add .
+git commit -am "scaffold electra billingcycles maps & queries"
 ##################################################################################################################
 # Le concesuss sur une bill est le checksum du tableau [customer][producer][amount][prices] le fingerprint etant le [TotalTurnover][curency][#consumers][#producers]   
 # Type Bcustomer illingLine
@@ -115,12 +119,14 @@ ignite scaffold map producerbills billDate:uint billTotalWh:uint billTotalPrice:
 # Select the customer bills Beteween a start and end timestamps
 # ignite scaffold query listproducerbills producerdeviceID:string start:uint end:uint billCycleID:uint paid:bool --response listofbills,total:uint --module meter --desc "List the producer bills from START to END [parameters are interpreted as unix DateTime timestams]" -y	 
 #
+git add .
+git commit -am "scaffold electra meter billing messages maps & queries"
 ##################################################################################################################
 # Keep the index - COMMENTED as such index could be useful if not have to browse the full recording map earch time to find the latest recordings but so far it needs ...  
 # ignite scaffold map userlistmap whin1:uint whout1:uint whin2:uint whout2:uint whin3:uint whout3:uint  --index prosumerID:string --module meter -y	
 git add .
 git commit -am "scaffold electra billing in meter module"
-#
+#  look at  vi ts-client/client.ts
 # Give the rights and Copy the scripts ###########################################################################
 chmod a+x $SOURCE__DIR/scripts/custo/integration_tests/*.*
 # Copy Scripts ###################################################################################################
