@@ -18,3 +18,4 @@ message GenesisState {
   uint64 voteCount = 5;
   // this line is used by starport scaffolding # genesis/proto/state
 }
+   
