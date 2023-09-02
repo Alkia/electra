@@ -1,5 +1,6 @@
 package app
 
+
 import (
 	"fmt"
 	"io"
@@ -116,12 +117,17 @@ import (
 	"electra/docs"
 )
 
+
 const (
 	AccountAddressPrefix = "electra"
 	Name                 = "electra"
 )
 
+
 // this line is used by starport scaffolding # stargate/wasm/app/enabledProposals
+
+
+
 
 func getGovProposalHandlers() []govclient.ProposalHandler {
 	var govProposalHandlers []govclient.ProposalHandler
