@@ -1,5 +1,5 @@
 #!/bin/bash
-
+ 
 NODE_PORT="1350"
 CONTAINER_NAME="electra-node-1"
 
