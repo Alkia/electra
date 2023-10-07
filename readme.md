@@ -154,3 +154,5 @@ We use the following modules from [Osmosis](https://github.com/osmosis-labs/osmo
 
 
 ![Link tree QR](/vue/public/LinktreeQR.png "QR to Link Tree")
+
+Done with love for a carbon free world
