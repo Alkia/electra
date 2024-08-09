@@ -1,5 +1,4 @@
 ![Electra Logo](/vue/public/Electra.png "Electra")
-
 # Electra
 **Electra** is a sovereign blockchain solution that enables local micro-grid to operate smoothly between trustless actors enabling a real circular economy based on the exchange of electricity units (kWh) by the means of pre-purchased tokens.
 
