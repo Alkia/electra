@@ -1,6 +1,6 @@
 ![Electra Logo](/vue/public/Electra.png "Electra")
 # Electra
-**Electra** is a sovereign blockchain solution that enables local micro-grid to operate smoothly between trustless actors enabling a real circular economy based on the exchange of electricity units (kWh) by the means of pre-purchased tokens.
+**Electra** is a sovereign blockchain solution that enables local micro-grid to operate smoothly between trustless actors enabling a real circular economy based on the exchange of electricity units (kWh) through pre-purchased tokens.
 
 More about [Electra](https://linktr.ee/alkia) on its link tree. 
 
@@ -15,7 +15,7 @@ A **micro-grid**, is a local transport structure semi-isolated from the main tra
 - They are a circuit breaker for the microgrid
 - They embed a secure wallet having the capacity to validate the blocks
 - They store a full copy of the local chain 
-
+   
 **The Grid Gateway** 
 The grid gateway synchronizes the micro-grid and imports extra energy as needed. This gateway is the master node validating the blocks. In some cases the national grid gateway can export energy too should the microgrid and the regulation enables it. 
 
