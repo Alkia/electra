@@ -1,1 +1,1 @@
-export declare const protobufPackage = "gogoproto";
+export {};
